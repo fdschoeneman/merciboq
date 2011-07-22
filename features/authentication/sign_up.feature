@@ -13,7 +13,10 @@ Feature: Sign up
     @wip
     Scenario: Unregistered user signs up with valid email
       And I fill in the following:
-        | Email                 | SarahSilverman@test.com   |
+        | Name                  | Sarah Silverman             |
+        | Email                 | sarahsilverman@test.com    |
+        | Password              | please                      |
+        | Password confirmation | please                      |
       And I press "Sign up"
       Then I should see "You have signed up successfully."
       And "sarahsilverman@test.com" should have 1 email
@@ -24,9 +27,13 @@ Feature: Sign up
       When I follow "Confirm my account" in the email
       Then I should see "Your account was successfully confirmed."
 
+    @wip
     Scenario: Unregistered user signs up with invalid email
       And I fill in the following:
+        | Name                  | Testy Mcuserton |
         | Email                 | invalidemail    |
+        | Password              | please          |
+        | Password confirmation | please          |
       And I press "Sign up"
       Then I should see "Email is invalid"
 

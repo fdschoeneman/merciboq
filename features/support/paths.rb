@@ -17,6 +17,7 @@ module NavigationHelpers
     when /the sign in page/
       '/users/sign_in'
 
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
@@ -37,3 +38,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
+
