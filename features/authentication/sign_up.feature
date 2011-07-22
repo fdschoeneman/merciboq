@@ -10,7 +10,6 @@ Feature: Sign up
       And I follow the "Sign up" link
       And no user exists with an email of "sarahsilverman@test.com"
 
-    @wip
     Scenario: Unregistered user signs up with valid email
       And I fill in the following:
         | Name                  | Sarah Silverman             |
