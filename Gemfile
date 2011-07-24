@@ -22,6 +22,7 @@ group :test, :development do
   gem 'spork', '0.9.0.rc9'
   gem 'rspec-rails', '>= 2.6.1'
   gem 'factory_girl_rails', '>= 1.1.beta1'
+  gem 'faker', '0.3.1'
   gem 'cucumber-rails', '1.0.1'
   gem 'email_spec'
   gem 'capybara', '>= 1.0.0'

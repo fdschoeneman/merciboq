@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721092258) do
+ActiveRecord::Schema.define(:version => 20110723083739) do
+
+  create_table "thankyous", :force => true do |t|
+    t.integer  "thanker_id"
+    t.integer  "welcomer_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "thankyous", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
+  add_index "thankyous", ["thanker_id"], :name => "index_thankyous_on_thanker_id"
+  add_index "thankyous", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

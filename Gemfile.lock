@@ -79,6 +79,7 @@ GEM
     factory_girl_rails (1.1.rc1)
       factory_girl (~> 2.0.0.rc)
       railties (>= 3.0.0)
+    faker (0.3.1)
     ffi (1.0.9)
     friendly_id (3.3.0.rc2)
       babosa (~> 0.3.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   devise (= 1.4.2)
   email_spec
   factory_girl_rails (>= 1.1.beta1)
+  faker (= 0.3.1)
   friendly_id (~> 3.3.0.alpha2)
   guard (= 0.5.0)
   guard-cucumber

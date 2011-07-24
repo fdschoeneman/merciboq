@@ -1,8 +1,22 @@
 require 'factory_girl'
 
-Factory.define :user do |u|
-  u.name 'Test User'
-  u.email 'user@test.com'
-  u.password 'please'
+Factory.define :user do |user|
+  user.name                   "doofus Hartl"
+  user.email                  "mhartl@example.com"
+  user.password               "foobar"
+  user.password_confirmation  "foobar"
+end
+
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end
+
+Factory.sequence :name do |n|
+  "Person #{n}"
+end
+
+Factory.define :thankyou do |thankyou|
+  thankyou.content "Foo bar"
+  thankyou.association :user
 end
 
