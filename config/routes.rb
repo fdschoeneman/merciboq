@@ -3,6 +3,13 @@ Merciboq::Application.routes.draw do
   devise_for :users
   resources :users, :only => :show
 
+  match '/test',          :to => 'pages#test'
+  match '/contact',       :to => 'pages#contact'
+  match '/about',         :to => 'pages#about'
+  match '/help',          :to => 'pages#help'
+  match '/terms',         :to => 'pages#terms'
+  match '/privacy',       :to => 'pages#privacy'
+
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:
