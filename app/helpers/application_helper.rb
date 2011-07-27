@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def logo
-    image_tag("logo.png", :alt => "Merciboq", :class => "round")
+    image_tag("apple-touch-icon.png", :alt => "Merciboq", :class => "round")
   end
 
 end

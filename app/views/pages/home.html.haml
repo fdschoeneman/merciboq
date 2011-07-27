@@ -1,5 +1,11 @@
 %h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+- if user_signed_in?
+  = @users.each do |user|
+    %p
+      User: #{link_to user.name, user}
+- else
+  = button_to "Sign the fuck up!", signup_path
+  = @users.each do |user|
+    %p
+      User: #{link_to user.name, user}
 

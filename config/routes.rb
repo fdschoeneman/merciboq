@@ -1,6 +1,10 @@
 Merciboq::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :users => "users" } do
+    match '/signup',      :to => 'registrations#new'
+    match '/signin',      :to => 'sessions#new'
+  end
+
   resources :users, :only => :show
 
   match '/test',          :to => 'pages#test'
@@ -9,7 +13,7 @@ Merciboq::Application.routes.draw do
   match '/help',          :to => 'pages#help'
   match '/terms',         :to => 'pages#terms'
   match '/privacy',       :to => 'pages#privacy'
-
+  match '/signup',        :to => 'registrations#new'
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:

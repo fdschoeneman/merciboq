@@ -19,8 +19,6 @@ describe UsersController do
       get :show, :id => @user.id
       assigns(:user).should == @user
     end
-
   end
-
 end
 

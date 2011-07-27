@@ -8,7 +8,15 @@ Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   end
 end
 
-Given /^I should not see a link to the home page$/ do
-  page.should have_no_xpath('/about', :text => "About")
+Then /^I should not see a link to "([^"]*)"$/ do |arg1|
+  page.should have_no_selector 'a', :text => arg1
+end
+
+Then /^I should see "([^"]*)" in the title$/ do |arg2|
+  page.should have_selector('title', :text => arg2)
+end
+
+Given /^I should see a link to "([^"]*)"$/ do |arg3|
+  page.should have_selector 'a', :text => arg3
 end
 

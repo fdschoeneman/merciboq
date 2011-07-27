@@ -2,6 +2,10 @@
   = link_to logo, root_path
   %nav.round
     %ul
-    = render 'devise/menu/registration_items'
-    = render 'devise/menu/login_items'
+      %li
+        = link_to_unless_current "Home", root_path
+        |
+        = render 'devise/menu/registration_items'
+        |
+        = render 'devise/menu/login_items'
 
