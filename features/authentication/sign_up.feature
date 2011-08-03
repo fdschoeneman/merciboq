@@ -5,13 +5,16 @@ Feature: Sign up
 
   Background:
     Given no emails have been sent
-      And no user exists with an email of "sarahsilverman@test.com"
-      And I am not logged in
-      And I am on the home page
-      And I follow the "Sign up" link
-     Then I should see "Merciboq | Sign up" in the title
-      And I should see a link to "Login"
-      And I should not see a link to "Sign up"
+    And no user exists with an email of "sarahsilverman@test.com"
+    And I am not logged in
+    And I am on the home page
+    And I follow the "Sign up" link
+    Then I should see "Merciboq | Sign up" in the title
+    And I should see a link to "Home"
+    And I should see a link to "Login"
+    And I should see a link to "Forgot your password?"
+    And I should see a link to "Didn't receive confirmation instructions?"
+    And I should not see a link to "Sign up"
 
  Scenario: Unregistered user signs up with valid email
       And I fill in the following:

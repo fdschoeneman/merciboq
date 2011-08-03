@@ -13,6 +13,8 @@ Feature: View boilerplate pages
     And I should see a link to "Contact"
     And I should see a link to "Terms of Use"
     And I should see a link to "Privacy Policy"
+    And I should see a link to "Sign up"
+    And I should see a link to "Login"
 
   Scenario:
     Given I follow the "About" link
