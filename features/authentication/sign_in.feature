@@ -10,6 +10,12 @@ Feature: Sign in
     And I am on the home page
     And I follow the "Login" link
     Then I should see "Merciboq | Login" in the title
+    And I should see a link to "About"
+    And I should see a link to "Help"
+    And I should see a link to "Contact"
+    And I should see a link to "Terms of Use"
+    And I should see a link to "Privacy Policy"
+    And I should see a link to "Sign up"
     And I should see a link to "Home"
     And I should see a link to "Sign up"
     And I should see a link to "Forgot your password?"

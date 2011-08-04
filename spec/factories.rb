@@ -1,8 +1,8 @@
 require 'factory_girl'
 
 Factory.define :user do |user|
-  user.name                   "doofus Hartl"
-  user.email                  "mhartl@example.com"
+  user.name                   "Frederick Diggle Schoeneman"
+  user.email                  "fred.schoeneman@gmail.com"
   user.password               "foobar"
   user.password_confirmation  "foobar"
 end
