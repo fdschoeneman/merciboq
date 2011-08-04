@@ -21,3 +21,21 @@ Then /^I should be signed in as "([^"]*)"$/ do |arg1|
   page.should have_selector 'a', :text => arg1
 end
 
+Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
+  user = User.create!(:name => "#{name}",
+                  :email => "#{email}",
+                  :password => "#{password}")
+  user.confirm!
+  Given %{I am not logged in}
+  When %{I go to the home page}
+  And %{I follow the "Login" link}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{I press "Sign in"}
+end
+
+Then /^I should see "([^"]*)" in the body$/ do |user_name|
+  user_name = Regexp.new(user_name)
+  page.should have_selector('a', :text => user_name)
+end
+

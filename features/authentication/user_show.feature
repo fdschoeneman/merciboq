@@ -3,9 +3,8 @@ Feature: Show Users
   As a visitor to the website
   I want to see registered users listed on the homepage
 
-    Scenario: Viewing users
-      Given I am a user named "Fred Schoeneman" with an email "user@test.com" and password "please"
+    Scenario: logged in user views other users
+      Given I am registered and logged in as "Fred Schoeneman" with an email "freddildo@test.com" and password "prettyplease"
       When I go to the homepage
       Then I should see "Merciboq | Fred Schoeneman" in the title
-      Then I should see "User: Fred Schoeneman" in the body
 

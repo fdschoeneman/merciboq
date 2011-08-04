@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
 
   def home
-    @title = "Home"
+    if signed_in?
+      @title = current_user.name
+    else
+      @title = "Home"
+    end
     @users = User.all
   end
 
