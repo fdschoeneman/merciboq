@@ -9,8 +9,11 @@ gem 'devise', ' 1.4.2'
 gem 'therubyracer-heroku', '0.8.1.pre3'
 gem 'friendly_id', '~> 3.3.0.alpha2'
 gem 'thin'
-# gem 'pg'
 gem 'haml'
+
+group :production do
+#  gem 'pg'
+end
 
 group :test, :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
@@ -21,7 +24,7 @@ group :test, :development do
   gem 'sqlite3'
   gem 'spork', '0.9.0.rc9'
   gem 'rspec-rails', '>= 2.6.1'
-  gem 'factory_girl_rails', '>= 1.1.beta1'
+  gem 'factory_girl_rails', '>=1.1.beta1'
   gem 'faker', '0.3.1'
   gem 'cucumber-rails', '1.0.1'
   gem 'email_spec'

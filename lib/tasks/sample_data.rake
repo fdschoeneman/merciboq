@@ -9,7 +9,7 @@ end
 
 def make_users
   User.create!(:name => "Example User",
-               :email => "example@railstutorial.org",
+               :email => "porejemplo@mexicocity.org",
                :password => "foobar",
                :password_confirmation => "foobar")
   99.times do |n|
