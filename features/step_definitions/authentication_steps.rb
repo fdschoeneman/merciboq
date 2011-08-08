@@ -6,9 +6,14 @@ When /^(?:|I )follow the "([^"]*)" link$/ do |link|
   click_link(link)
 end
 
+
 And /^I am confirmed$/ do
   user = User.first
   user.confirm!
+end
+
+Then /^I empty the email queue$/ do
+  reset_mailer
 end
 
 Then /^I am not signed in$/ do

@@ -39,7 +39,7 @@ Feature: Sign up
       When I follow "Confirm my account" in the email
       Then I should see "Your account was successfully confirmed."
       And I should see a link to "Logout"
-      And I should see a link to "Edit account"
+      And I should see a link to "Settings"
 
 
     Scenario: Unregistered user signs up with invalid email

@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc5'
-gem 'sass-rails', "~> 3.1.0.rc"
+gem 'sass-rails', "~> 3.1.0.rc5"
 gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
@@ -10,6 +10,8 @@ gem 'therubyracer-heroku', '0.8.1.pre3'
 gem 'friendly_id', '~> 3.3.0.alpha2'
 gem 'thin'
 gem 'haml'
+gem 'simple_form'
+gem 'client_side_validations'
 
 group :production do
 #  gem 'pg'
@@ -32,9 +34,9 @@ group :test, :development do
   gem 'database_cleaner', '0.6.7'
   gem 'rb-inotify'
   gem 'libnotify'
-  gem 'guard', '0.5.0'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
-  gem 'guard-spork'
+  gem 'guard', '0.5.1'
+  gem 'guard-rspec', '0.4.0'
+  gem 'guard-cucumber', '0.5.2'
+  gem 'guard-spork', '0.2.1'
 end
 

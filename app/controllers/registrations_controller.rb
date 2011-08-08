@@ -5,7 +5,11 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-    def show
+  def edit
+    @title = "Settings"
+  end
+
+  def show
     @user = User.find(params[:id])
   end
 

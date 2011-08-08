@@ -9,7 +9,7 @@ Feature: Edit User
     And I sign in as "user@test.com/please"
 
   Scenario: I sign in and edit my account
-    When I follow "Edit account"
+    When I follow "Settings"
     And I fill in the following:
       | Name              | baz     |
       | Current password  | please  |
