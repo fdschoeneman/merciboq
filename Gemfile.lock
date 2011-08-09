@@ -45,7 +45,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.2.0)
       ffi (~> 1.0.6)
-    client_side_validations (3.1.0)
+    client_side_validations (3.0.12)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -68,6 +68,9 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
+    em-websocket (0.3.1)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -90,6 +93,10 @@ GEM
     guard-cucumber (0.5.2)
       cucumber (>= 0.10)
       guard (>= 0.4.0)
+    guard-livereload (0.2.1)
+      em-websocket (>= 0.2.0)
+      guard (>= 0.4.0)
+      json (>= 1.5.1)
     guard-rspec (0.4.0)
       guard (>= 0.4.0)
     guard-spork (0.2.1)
@@ -224,7 +231,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (= 1.0.0)
-  client_side_validations
+  client_side_validations (= 3.0.12)
   coffee-script
   cucumber-rails (= 1.0.2)
   database_cleaner (= 0.6.7)
@@ -235,6 +242,7 @@ DEPENDENCIES
   friendly_id (~> 3.3.0.alpha2)
   guard (= 0.5.1)
   guard-cucumber (= 0.5.2)
+  guard-livereload
   guard-rspec (= 0.4.0)
   guard-spork (= 0.2.1)
   haml

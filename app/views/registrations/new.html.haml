@@ -1,10 +1,10 @@
 %h2 Sign up
-= simple_form_for(resource, validate: true, :as => resource_name, :url => registration_path(resource_name)) do |f|
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f|
   = devise_error_messages!
   = f.input :name, validate: true
   = f.input :email, validate: true
-  = f.input :password, :hint => "Letters and numbers"
-  = f.input :password_confirmation, :hint => "Must match password"
+  = f.input :password, validate: true #:hint => "Letters and numbers"
+  = f.input :password_confirmation, :validate => true #, :hint => "Must match password"
   = f.button :submit, "Sign up"
 = render :partial => "devise/shared/links"
 

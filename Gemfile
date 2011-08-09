@@ -11,7 +11,7 @@ gem 'friendly_id', '~> 3.3.0.alpha2'
 gem 'thin'
 gem 'haml'
 gem 'simple_form'
-gem 'client_side_validations'
+gem 'client_side_validations', '3.0.12'
 
 group :production do
 #  gem 'pg'
@@ -38,5 +38,6 @@ group :test, :development do
   gem 'guard-rspec', '0.4.0'
   gem 'guard-cucumber', '0.5.2'
   gem 'guard-spork', '0.2.1'
+  gem 'guard-livereload'
 end
 
