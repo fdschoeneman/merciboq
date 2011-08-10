@@ -14,7 +14,7 @@ gem 'simple_form'
 gem 'client_side_validations', '3.0.12'
 
 group :production do
-#  gem 'pg'
+  gem 'pg'
 end
 
 group :test, :development do

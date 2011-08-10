@@ -3,6 +3,7 @@ Feature: Sign out
   As a user
   I want to sign out
 
+    @wip
     Scenario: User signs out
       Given I am a user named "foo" with an email "user@test.com" and password "please"
       And I am confirmed

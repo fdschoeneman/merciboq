@@ -43,9 +43,9 @@ Feature: View boilerplate pages
 
 Scenario:
     Given I follow the "Settings" link
-    Then I should see "Merciboq | Settings" in the title
+    Then I should see "Merciboq | Edit Settings" in the title
     And I should see a link to "Logout"
-    And I should not see a link to "Settings"
+    And I should not see a link to "Edit Settings"
 
 Scenario:
     Given I follow the "Logout" link

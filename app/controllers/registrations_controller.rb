@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    @title = "Settings"
+    @title = "Edit Settings"
   end
 
   def show
