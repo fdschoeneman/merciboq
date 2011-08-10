@@ -29,7 +29,8 @@ end
 Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
   user = User.create!(:name => "#{name}",
                   :email => "#{email}",
-                  :password => "#{password}")
+                  :password => "#{password}",
+                  :password_confirmation => "#{password}")
   user.confirm!
   Given %{I am not logged in}
   When %{I go to the home page}
