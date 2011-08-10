@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
                                     :on => :create
   validates :password_confirmation, :presence => true,
                                     :on => :create
+  validates :current_password,      :presence => true,
+                                    :on => :update
 
 #  validates_uniqueness_of :name, :email, :case_sensitive => false
 

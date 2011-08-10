@@ -10,12 +10,10 @@ Feature: Request password reset
       And I am on the sign in page
       And I follow the "Forgot your password?" link
 
-    @wip
     Scenario: User attempts to reset password with the wrong email
       Given no user exists with an email of "sarahsilverman@wrongdomain.com"
       And no emails have been sent
-      And I fill in the following:
-        | Email                 | sarasilverman@WRONGDOMAIN.com |
+      And I fill in "sarasilverman@WRONGDOMAIN.com" for "Email"
       And I press "Send me reset password instructions"
       Then I should see "Email not found"
 
@@ -23,8 +21,7 @@ Feature: Request password reset
     Scenario: User resets her password with the correct email
       Given I am a user named "Dave Attell" with an email "daveattell@test.com" and password "password"
       And no emails have been sent
-      And I fill in the following:
-        | Email                 | daveattell@test.com     |
+      And I fill in "daveattell@test.com" for "Email"
       And I press "Send me reset password instructions"
       Then I should see "You will receive an email with instructions"
       And "daveattell@test.com" should have 1 email

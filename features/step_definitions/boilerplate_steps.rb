@@ -20,3 +20,9 @@ Given /^I should see a link to "([^"]*)"$/ do |arg3|
   page.should have_selector 'a', :text => arg3
 end
 
+Then /^the "([^"]*)" field should be blank$/ do |field|
+  field = find_field(field)
+  field_value = (field.tag_name == 'textarea') ? field.text : field.value
+  field_value.should be_nil
+end
+
