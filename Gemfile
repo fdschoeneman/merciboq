@@ -12,6 +12,7 @@ gem 'thin'
 gem 'haml'
 gem 'simple_form'
 gem 'client_side_validations', '3.0.12'
+gem 'faker', '0.3.1'
 
 group :production do
   gem 'pg'
@@ -27,7 +28,6 @@ group :test, :development do
   gem 'spork', '0.9.0.rc9'
   gem 'rspec-rails', '2.6.1'
   gem 'factory_girl_rails', '1.1.0'
-  gem 'faker', '0.3.1'
   gem 'cucumber-rails', '1.0.2'
   gem 'email_spec'
   gem 'capybara', '1.0.0'
