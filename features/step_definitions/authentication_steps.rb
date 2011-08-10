@@ -37,7 +37,7 @@ Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and p
   And %{I follow the "Login" link}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
-  And %{I press "Sign in"}
+  And %{I press "Login"}
 end
 
 Then /^I should see "([^"]*)" in the body$/ do |user_name|
