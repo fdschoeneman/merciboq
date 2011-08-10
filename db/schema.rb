@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110723083739) do
+ActiveRecord::Schema.define(:version => 20110804030900) do
 
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110723083739) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "subdomain"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

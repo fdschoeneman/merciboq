@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
                   :password, :password_confirmation, :remember_me
 
   # Validations:
-#  validates :email, :presence => true, :uniqueness => true
   validates_email :email
+  validates :email,                 :presence => true,
+                                    :uniqueness => true
   validates :password,              :presence => true,
                                     :confirmation => true,
                                     :on => :create
