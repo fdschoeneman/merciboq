@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-#  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only => [:edit, :update]
+  before_filter :current_user,       :only => [:edit, :update]
+  before_filter :signed_in?,         :only => [:edit, :update]
 
   def new
     @title = "Sign up"

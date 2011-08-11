@@ -1,5 +1,5 @@
 Feature: View thankyous
-  In order to see who has thankd me
+  In order to see who has thanked me
   As a registered user
   I want to view my Thankyous
 

@@ -4,12 +4,10 @@ Feature: Sign out
   I want to sign out
 
     @wip
-    Scenario: User signs out
-      Given I am a user named "foo" with an email "user@test.com" and password "please"
-      And I am confirmed
-      When I sign in as "user@test.com/please"
-      Then I should be signed in
-      And I sign out
+    Scenario: Logged in user signs out
+      Given I am registered and logged in as "foo fighter" with an email "user@test.com" and password "please"
+      And I am on the home page
+      And I press "Logout"
       Then I should see "Signed out"
       When I return next time
       Then I should be signed out

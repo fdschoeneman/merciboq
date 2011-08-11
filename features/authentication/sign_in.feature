@@ -24,17 +24,21 @@ Feature: Sign in
 
     Scenario: Unregistered user attempts to log in
       And no user exists with an email of "user@test.com"
-      When I go to the login page
-      And I sign in as "user@test.com/please"
+      And I fill in "Email" with "user@test.com"
+      And I fill in "Password" with "please"
+      And I press "Login"
       Then I should see "Invalid email or password."
       And I am on the the home page
       And I am not signed in
 
+    @wip
     Scenario: Registered user enters wrong password
       And I am a user named "foo" with an email "user@test.com" and password "please"
       And I am confirmed
-      When I go to the sign in page
-      And I sign in as "user@test.com/wrongpassword"
+      When I go to the login page
+      And I fill in "Email" with "user@test.com"
+      And I fill in "Password" with "wrongpassword"
+      And I press "Login"
       Then I should see "Invalid email or password."
       And I go to the home page
       And I am not signed in
@@ -42,8 +46,10 @@ Feature: Sign in
     Scenario: Registered user signs in
       And I am a user named "Foo Fighter" with an email "user@test.com" and password "please"
       And I am confirmed
-      When I go to the sign in page
-      And I sign in as "user@test.com/please"
+      When I go to the login page
+      And I fill in "Email" with "user@test.com"
+      And I fill in "Password" with "please"
+      And I press "Login"
       Then I should see "Signed in successfully."
       And I should be signed in
       When I return next time

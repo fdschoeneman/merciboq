@@ -17,8 +17,14 @@ module NavigationHelpers
     when /the sign in page/
       '/users/sign_in'
 
-    when /the login page/
+    when /login page/
       '/users/sign_in'
+
+    when /settings page/
+      '/users/edit'
+
+    when /settings url/
+      'users/edit'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

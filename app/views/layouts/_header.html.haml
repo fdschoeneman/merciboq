@@ -2,14 +2,11 @@
   = link_to logo, root_path
   %nav.round
     %ul
-      %li
-        = link_to_unless_current "Home", root_path
-        |
-        = link_to "Thankyous", current_user
-        |
-        = link_to "Welcomes", current_user
-        |
-        = render 'devise/menu/registration_items'
-        |
-        = render 'devise/menu/login_items'
+      %li= link_to "Thankyous", current_user
+      |
+      %li= link_to "Welcomes", current_user
+      |
+      = render 'devise/menu/registration_items'
+      |
+      = render 'devise/menu/login_items'
 

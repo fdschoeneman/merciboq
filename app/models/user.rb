@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :validatable,
   # :lockable, :timeoutable and :omniauthable
@@ -20,8 +21,8 @@ class User < ActiveRecord::Base
                                     :on => :create
   validates :password_confirmation, :presence => true,
                                     :on => :create
-  validates :current_password,      :presence => true,
-                                    :on => :update
+#  validates :current_password,      :presence => true,
+#                                    :on => :update
 
 #  validates_uniqueness_of :name, :email, :case_sensitive => false
 
@@ -46,5 +47,6 @@ class User < ActiveRecord::Base
   def unthank!(welcomer)
     thankyous.find_by_welcomer_id(welcomer).destroy
   end
+
 end
 
