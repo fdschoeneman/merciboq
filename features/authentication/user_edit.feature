@@ -4,11 +4,9 @@ Feature: Edit User
   I want to edit my user profile
 
   Background:
-    Given I am a user named "foo" with an email "user@test.com" and password "please"
-    And I am confirmed
-    And I sign in as "user@test.com/please"
+    Given I am registered and logged in as "foo fighter" with an email "user@test.com" and password "please"
 
-  Scenario: I sign in and edit my account
+  Scenario: I change my name
     When I follow "Settings"
     And I fill in the following:
       | Name              | baz     |
