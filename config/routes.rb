@@ -9,9 +9,8 @@ Merciboq::Application.routes.draw do
       match '/login',       :to => 'sessions#new'
     end
 
-  resources :users, :only => :show
+  resources :users, :only => [:show, :index]
 
-  match '/test',          :to => 'pages#test'
   match '/contact',       :to => 'pages#contact'
   match '/about',         :to => 'pages#about'
   match '/help',          :to => 'pages#help'

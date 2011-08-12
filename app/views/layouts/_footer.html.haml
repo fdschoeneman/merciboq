@@ -14,4 +14,7 @@
       %li= link_to_unless_current "Terms of Use", terms_path
       |
       %li= link_to_unless_current "Privacy Policy", privacy_path
+      - if signed_in?
+        |
+        %li= link_to_unless_current "Users", users_path
 
