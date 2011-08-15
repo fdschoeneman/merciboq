@@ -1,0 +1,10 @@
+%table.thankyous{:summary => "People who have thanked me"}
+  %tr
+    %td.main
+      %h1
+        = @user.name
+      - if @user.thankyous.any?
+        %table.thankyous{:summary => "User thankyous"}
+          = render @thankyous
+        = paginate @thankyous
+

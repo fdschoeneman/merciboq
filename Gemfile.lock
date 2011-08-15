@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/sferik/rails_admin.git
+  revision: 3ec6167b1174dca374555dbfd66ec12f680140cb
+  specs:
+    rails_admin (0.0.1)
+      builder (~> 3.0.0)
+      haml (>= 3.1.0, < 3.3.0)
+      rails (~> 3.1.0.rc1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -88,6 +97,7 @@ GEM
       babosa (~> 0.3.0)
     gherkin (2.4.5)
       json (>= 1.4.6)
+    gravatar_image_tag (1.0.0.pre2)
     guard (0.5.1)
       thor (~> 0.14.6)
     guard-cucumber (0.5.2)
@@ -243,6 +253,7 @@ DEPENDENCIES
   factory_girl_rails (= 1.1.0)
   faker (= 0.3.1)
   friendly_id (~> 3.3.0.alpha2)
+  gravatar_image_tag (= 1.0.0.pre2)
   guard (= 0.5.1)
   guard-cucumber (= 0.5.2)
   guard-livereload
@@ -257,6 +268,7 @@ DEPENDENCIES
   libnotify
   pg
   rails (= 3.1.0.rc5)
+  rails_admin!
   rb-inotify
   rspec-rails (= 2.6.1)
   ruby-debug19

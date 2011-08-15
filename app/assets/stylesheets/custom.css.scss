@@ -1,3 +1,6 @@
+body {
+}
+
 header {
   padding-top: 20px;
 
@@ -18,6 +21,7 @@ footer {
     float: none;
   }
 }
+
 section {
   margin-top: 1em;
   font-size: 120%;
@@ -77,16 +81,15 @@ nav {
         padding: 0 5px;
         font-weight: bold;
         opacity: .7;
+         -moz-transition: height 1s ease-out, opacity 2s ease;
+         -webkit-transition: height 2s ease-out, opacity 2s ease;
+         -o-transition: height 1s ease-out, opacity 1s ease;
+         transition: height 1s ease-out, opacity 1s ease;
 
-       -moz-transition: height 1s ease-out, opacity 2s ease;
-       -webkit-transition: height 2s ease-out, opacity 2s ease;
-       -o-transition: height 1s ease-out, opacity 1s ease;
-       transition: height 1s ease-out, opacity 1s ease;
-
-	    &:hover {
-	      text-decoration: none;
-	      opacity: 1;
-        }
+  	    &:hover {
+	        text-decoration: none;
+	        opacity: 1;
+          }
 
         &:visited {
           color: #09c;
@@ -103,5 +106,109 @@ ul.users {
   li {
     list-style: none;
   }
+}
+
+// User show page
+
+table.profile {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+td {
+  &.main {
+    width: 70%;
+    padding: 1em;
+  }
+
+  &.sidebar {
+    width: 30%;
+    padding: 1em;
+    vertical-align: top;
+    background: #ffc;
+  }
+}
+
+.profile {
+  img.gravatar {
+    border: 1px solid #999;
+    margin-bottom: -15;
+  }
+  td {
+    margin-bottom: 15px;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+h1.thankyou {
+  margin-bottom: 0.3em;
+}
+
+// Thankyous
+
+table.thankyous {
+  margin-top: 1em;
+  tr {
+    height: 70px;
+    td {
+      &.gravatar {
+        border-top: 1px solid #ccc;
+        vertical-align: top;
+        width: 50px;
+      }
+      &.thankyou {
+        border-top: 1px solid #ccc;
+        vertical-align: top;
+        padding-top: 10px;
+
+        &.span.timestamp {
+          display: block;
+          font-size: 85%;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+div.user_info {
+  img {
+    padding-right: 0.1em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  span {
+    .user_name {
+      position: absolute;
+    }
+
+    .thankyous {
+      font-size: 80%;
+    }
+  }
+}
+
+form.new_thankyou {
+  margin-bottom: 2em;
+
+  textarea {
+    height: 4em;
+    margin-bottom: 0;
+  }
+}
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
 }
 

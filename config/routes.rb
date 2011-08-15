@@ -1,5 +1,7 @@
 Merciboq::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   devise_for :users, :controllers => {
     :users => "users",
     :registrations => "registrations",

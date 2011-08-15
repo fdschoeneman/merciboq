@@ -4,9 +4,9 @@
   = devise_error_messages!
   = f.input :name
   = f.input :email
-  = f.input :password, label: "New password", required: false, :placeholder => "Leave blank unless you want to change it"
-  = f.input :password_confirmation, label: "New password confirmation", required: false, :placeholder => "Must match password above"
-  = f.input :current_password, :placeholder => "********"
+  = f.input :current_password, :placeholder => "********", :required => true
+  = f.input :password, label: "New password", required: false, :hint => "(Leave this blank unless you want to change your old password)"
+  = f.input :password_confirmation, label: "New password confirmation", required: false, :placeholder => "Must match new password above", :hint => "(Leave this blank unless you want to change your old password)"
   %p
     = f.button :submit, "Update your settings"
 %h3 Cancel my account
