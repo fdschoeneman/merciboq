@@ -13,7 +13,7 @@ gem 'haml'
 gem 'simple_form'
 gem 'client_side_validations', '3.0.12'
 gem 'faker', '0.3.1'
-gem 'will_paginate', '3.0.pre4'
+gem 'kaminari'
 
 group :production do
   gem 'pg'

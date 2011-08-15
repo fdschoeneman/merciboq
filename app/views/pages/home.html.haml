@@ -1,11 +1,11 @@
 %h3 Home
 - if user_signed_in?
-  = @users.each do |user|
-    %p
-      User: #{link_to user.name, user}
+  = paginate @users
+  %ul.users
+    - @users.each do |user|
+      %li
+        = link_to user.name, user
+  = paginate @users
 - else
-  = button_to "Sign the fuck up!", signup_path
-  = @users.each do |user|
-    %p
-      User: #{link_to user.name, user}
+  = render 'layouts/form_registration_new'
 

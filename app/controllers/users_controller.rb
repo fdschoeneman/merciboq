@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def index
     @title = "Who is using Merciboq?"
-    @users = User.paginate(:page => params[:page])
+    @users = User.order("name").page(params[:page])
   end
 
 end

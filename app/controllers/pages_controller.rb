@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     else
       @title = "Home"
     end
-    @users = User.all
+    @users = User.order("name").page(params[:page]).per(5)
   end
 
   def contact

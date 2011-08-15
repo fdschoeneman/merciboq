@@ -5,4 +5,9 @@ en:
   errors:
     messages:
       email: "Not an email address"
+  views:
+    pagination:
+      previous: "&lt; Previous"
+      next: "Next &gt;"
+      truncate: "..."
 

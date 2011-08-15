@@ -5,5 +5,17 @@
  *= require_self
  *= require simple_form.css.scss
  *= require_tree .
+ *= require custom.css.scss
 */
+
+html, body { height: 100%; margin: 0; }
+#container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto 60em;
+}
+#footer, #push {
+  height: 60em;
+}
 
