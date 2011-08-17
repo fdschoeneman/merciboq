@@ -7,6 +7,8 @@ class Thankyou < ActiveRecord::Base
 
   validates :thanker_id,  :presence => true
   validates :welcomer_id, :presence => true
+  validates :content,     :presence => true
+  validates :headline,    :presence => true
 
   default_scope :order => 'thankyous.created_at DESC'
 

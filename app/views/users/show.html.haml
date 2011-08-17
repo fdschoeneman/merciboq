@@ -4,10 +4,25 @@
       %h1
         = gravatar_for @user
         = @user.name
+      - if @user.thankyous.empty?
+        %p Nobody has thanked this person yet.  Want to fix that?
+        %p Step 1: Send an email to thanks@merciboq.com
+        %p Step 2: Put this person's email in the "To:" field of the same email.
+        %p Step 3: Put this person's supervisor's email in the "Cc:" field.
+        %p Step 4: Put your thankyou in the body of the email.  Be genuine, and be specific.
+        %p And as always, send your thank you without any expectation of reward.
+      -else
+        %table.thankyous{:summary => "User thankyous"}
+          = render @thankyous
+          = paginate @thankyous
+        = paginate @thankyous
     %td.sidebar.round
       %strong Name
       = @user.name
       %br/
       %strong URL
       = link_to user_path(@user), @user
+      %br/
+      %strong Thankyous
+      = @user.thankyous.count
 

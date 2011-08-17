@@ -1,0 +1,10 @@
+%tr
+  %td.thankyou
+    %span.content
+      %bold
+        = thankyou.headline
+    %span.content
+      = thankyou.content
+    %span.timestamp
+      Posted #{time_ago_in_words(thankyou.created_at)} ago about #{link_to thankyou.welcomer.name}
+
