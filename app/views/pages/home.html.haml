@@ -1,11 +1,12 @@
-%h3 Home
-- if user_signed_in?
-  = paginate @users
-  %ul.users
-    - @users.each do |user|
-      %li
-        = link_to user.name, user
-  = paginate @users
-- else
-  = render 'layouts/form_registration_new'
+.two_column
+  %h3 Home
+  - if user_signed_in?
+    = paginate @users
+    %ul.users
+      - @users.each do |user|
+        %li
+          = link_to user.name, user
+    = paginate @users
+  - else
+    = render 'layouts/form_registration_new'
 

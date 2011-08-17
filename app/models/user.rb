@@ -48,5 +48,9 @@ class User < ActiveRecord::Base
     thankyous.find_by_welcomer_id(welcomer).destroy
   end
 
+  def welcomed?(thanker)
+    welcomes.find_by_thanker_id(thanker)
+  end
+
 end
 

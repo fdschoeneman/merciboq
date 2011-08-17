@@ -3,9 +3,9 @@
   %nav.round
     %ul
       - if signed_in?
-        %li= link_to "Thankyous", current_user
+        %li= link_to_unless_current "Thankyous", thankyou_path
         |
-        %li= link_to "Welcomes", current_user
+        %li= link_to_unless_current "Welcomes", welcome_path
       -else
         %li= link_to_unless_current "Home", root_path
       |
