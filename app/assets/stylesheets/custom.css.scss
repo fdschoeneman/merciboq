@@ -171,6 +171,11 @@ table.thankyous {
           font-size: 85%;
           color: #666;
         }
+        &.span.content {
+          #gravatar {
+            margin-bottom: -5em;
+          }
+        }
       }
     }
   }
