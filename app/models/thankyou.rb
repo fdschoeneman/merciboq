@@ -12,5 +12,6 @@ class Thankyou < ActiveRecord::Base
 
   default_scope :order => 'thankyous.created_at DESC'
 
+
 end
 

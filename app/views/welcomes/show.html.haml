@@ -4,13 +4,13 @@
       %h1
         = gravatar_for @user
         = @user.name
-      - if @user.thankyous.empty?
+      = if @user.welcomes.empty?
         = render 'shared/thankyou_steps'
-      -else
-        %table.thankyous{:summary => "User thankyous"}
-          = render @thankyous
-          = paginate @thankyous
-        = paginate @thankyous
+      - else
+        %table.thankyous{:summary => "welcomes"}
+          = render @welcomes
+          = paginate @welcomes
+        = paginate @welcomes
     %td.sidebar.round
       %strong Name
       = @user.name
@@ -19,5 +19,8 @@
       = link_to user_path(@user), @user
       %br/
       %strong Thankyous
+      = @user.thankyous.count
+      %br/
+      %strong Welcomes
       = @user.thankyous.count
 

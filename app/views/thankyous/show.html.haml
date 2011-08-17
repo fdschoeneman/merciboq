@@ -18,6 +18,9 @@
       %strong URL
       = link_to user_path(@user), @user
       %br/
+      %strong Welcomes
+      = @user.thankyous.count
+      %br/
       %strong Thankyous
       = @user.thankyous.count
 
