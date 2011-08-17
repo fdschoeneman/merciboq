@@ -1,6 +1,6 @@
 class Thankyou < ActiveRecord::Base
 
-  attr_accessible :welcomer_id, :content
+  attr_accessible :welcomer_id, :content, :headline
 
   belongs_to :thanker,    :class_name => "User"
   belongs_to :welcomer,   :class_name => "User"
