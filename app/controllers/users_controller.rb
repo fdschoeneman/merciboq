@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-#    @thankyous = @user.thankyous.page(params[:page])
-#    @welcomes = @user.welcomes.page(params[:page])
+    @thankyous = @user.thankyous.page(params[:page])
+    @welcomes = @user.welcomes.page(params[:page])
     @title = @user.name
   end
 

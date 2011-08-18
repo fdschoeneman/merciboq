@@ -1,8 +1,10 @@
 %tr
-  %td.welcome
+  %td.thankyou
     %span.content
-      Welcomed #{link_to thankyou.thanker.name} --
-      "#{thankyou.content}"
+      welcomed #{link_to welcome.thanker.name} --
+      %em
+        = welcome.headline
+      "#{welcome.content}"
     %span.timestamp
-      Posted #{time_ago_in_words(thankyou.created_at)} ago about
+      Posted #{time_ago_in_words(thankyou.created_at)} ago about.
 
