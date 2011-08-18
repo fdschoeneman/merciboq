@@ -2,6 +2,11 @@ class EmailController < ApplicationController
   skip_before_filter :verify_authenticity_token
   require 'mail'
 
+  def create
+    params[:user][:password]              = "password"
+    params[:user][:password_confirmation] = "password"
+  end
+
   def input
     message = Mail.new params[:message]
 logger.fatal "message:\t#{message}"
