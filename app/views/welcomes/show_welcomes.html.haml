@@ -8,15 +8,16 @@
         = render 'shared/thankyou_steps'
       - else
         %table.thankyous{:summary => "User thankyous"}
-          %td.thankyou
           - @welcomes.each do |welcome|
-            %span.content
-              welcomed #{link_to welcome.thanker.name} --
-              %em
-                = welcome.headline
-              "#{welcome.content}"
-            %span.timestamp
-              Posted #{time_ago_in_words(welcome.created_at)} ago
+            %tr
+              %td.thankyou
+                %span.content
+                  welcomed #{link_to welcome.thanker.name} --
+                  %em
+                    = welcome.headline
+                  "#{welcome.content}"
+                %span.timestamp
+                  Posted #{time_ago_in_words(welcome.created_at)} ago
     %td.sidebar.round
       %strong Name
       = @user.name
@@ -24,9 +25,11 @@
       %strong URL
       = link_to user_path(@user), @user
       %br/
-      %strong Thankyous
+      %strong
+        Thankyous
       = @user.thankyous.count
       %br/
-      %strong Welcomes
-      = @user.thankyous.count
+      %strong
+        Welcomes
+        = @user.welcomes.count
 

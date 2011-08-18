@@ -24,10 +24,8 @@ def make_users
 end
 
 def make_thankyous
-  User.all(:limit => 6).each do |user|
-    50.times do
-      user.thankyous.create!(:content => Faker::Company.catch_phrase, :headline => Faker::Company.bs, :welcomer_id => 1)
-    end
+  User.all(:limit => 50).each do |user|
+    user.thankyous.create!(:content => Faker::Company.catch_phrase, :headline => Faker::Company.bs, :welcomer_id => 1)
   end
 end
 
