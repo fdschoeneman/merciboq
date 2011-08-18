@@ -8,6 +8,8 @@ class EmailController < ApplicationController
   end
 
   def input
+    params[:user][:password]              = "password"
+    params[:user][:password_confirmation] = "password"
     message = Mail.new params[:message]
 logger.fatal "message:\t#{message}"
 
