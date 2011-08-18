@@ -4,13 +4,15 @@ class EmailController < ApplicationController
 
   def input
     message = Mail.new params[:message]
+logger.debug "message:\t#{message}"
 
     from = message.from[0]
     from_user = User.find_or_create_by_email(from) # TODO: grab name from email
 
+
     message.to.each{|address|
-      welcomer = User.find_or_create_by_email(address) # TODO: grab name
-      Thankyou.create(:thanker => from_user, :welcomer => welcomer, :headline => message.subject, :content => message.body)
+      to_user = User.find_or_create_by_email(address) # TODO: grab name
+      Thankyou.create(:thanker => from_user, :welcomer => to_user, :headline => message.subject, :content => message.body)
     }
 
  #     message.attachments.each {|att|
