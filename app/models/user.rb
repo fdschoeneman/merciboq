@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 #                                    :confirmation => true,
 #                                    :on => :create
 #  validates :password_confirmation, :presence => true,
-                                    :on => :create
+#                                    :on => :create
 #  validates :current_password,      :presence => true,
 #                                    :on => :update
 
