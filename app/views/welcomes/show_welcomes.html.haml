@@ -7,17 +7,20 @@
       - if @user.welcomes.empty?
         = render 'shared/thankyou_steps'
       - else
+        %p These people dig me:
         %table.thankyous{:summary => "User thankyous"}
           - @welcomes.each do |welcome|
             %tr
               %td.thankyou
                 %span.content
-                  welcomed #{link_to welcome.thanker.name} --
+                  #{gravatar_for welcome.thanker, :size => 15}
+                  |
+                  #{link_to welcome.thanker.name} wrote --
                   %em
                     = welcome.headline
                   "#{welcome.content}"
                 %span.timestamp
-                  Posted #{time_ago_in_words(welcome.created_at)} ago
+                  Thankyou sent #{time_ago_in_words(welcome.created_at)} ago
     %td.sidebar.round
       %strong Name
       = @user.name
