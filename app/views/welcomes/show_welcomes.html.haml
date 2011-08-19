@@ -7,7 +7,8 @@
       - if @user.welcomes.empty?
         = render 'shared/thankyou_steps'
       - else
-        %p These people dig me:
+        %p
+          #{@user.welcome_phrase}
         %table.thankyous{:summary => "User thankyous"}
           - @welcomes.each do |welcome|
             %tr

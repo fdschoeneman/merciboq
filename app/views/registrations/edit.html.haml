@@ -5,6 +5,7 @@
   = f.input :name
   = f.input :email
   = f.input :current_password, :placeholder => "********", :required => true
+  = f.input :welcome_phrase, :hint => "(Other people will see this when they look at your thankyous)"
   = f.input :password, label: "New password", required: false, :hint => "(Leave this blank unless you want to change your old password)"
   = f.input :password_confirmation, label: "New password confirmation", required: false, :placeholder => "Must match new password above", :hint => "(Leave this blank unless you want to change your old password)"
   %p
