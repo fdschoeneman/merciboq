@@ -1,0 +1,22 @@
+class IncomingMailsController < ApplicationController
+  require 'mail'
+  skip_before_filter :verify_authenticity_token
+
+  def create
+    message = Mail.new(params[:message])
+    Rails.logger.log Logger::INFO, message.subject
+    Rails.logger.log Logger::INFO, message.body.decoded
+
+    from      = message.from[0]
+    from_user = User.find_or_create_by_email(from)
+    to_user   = User.find_or_create_by_email(to)
+    message.to.each{|address|
+    to_user = User.find_or_create_by_email(address) # TODO: grab name
+    ty = Thankyou.create!(:thanker => from_user.id, :welcomer => to_user.id, :headline => message.subject, :content => message.body)
+    }
+
+
+    render :text => 'success', :status => 200 # a status of 404 would reject the mail
+  end
+end
+
