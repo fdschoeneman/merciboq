@@ -5,21 +5,22 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :confirmable, :validatable,
-         :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+         :rememberable, :trackable, :confirmable
+         #, :validatable,
+         #:email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email,
                   :password, :password_confirmation, :remember_me
 
   # Validations:
-  validates_email :email
+#  validates_email :email
   validates :email,                 :presence => true,
                                     :uniqueness => true
-  validates :password,              :presence => true,
-                                    :confirmation => true,
-                                    :on => :create
-  validates :password_confirmation, :presence => true,
+#  validates :password,              :presence => true,
+#                                    :confirmation => true,
+#                                    :on => :create
+#  validates :password_confirmation, :presence => true,
                                     :on => :create
 #  validates :current_password,      :presence => true,
 #                                    :on => :update
