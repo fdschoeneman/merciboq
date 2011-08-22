@@ -9,18 +9,17 @@ class ThankyouByEmailController < UsersController
 
     from      = message.from[0]
     to        = message.to[0]
-    from_user = User.find_or_create_by_email!(from,
+    from_user = User.find_or_create_by_email(from,
                           :password =>             "password",
                           :password_confirmation => "password")
-    to_user   = User.find_or_create_by_email!(to,
+    to_user   = User.find_or_create_by_email(to,
                           :password => "password",
                           :password_confirmation => "password")
-    message.to.each{|address|
-    from_user.thankyous.create!(:welcomer => to_user.id,
-                                :headline => message.subject,
-                                :content => message.body)
-    }
-
+    message.to.each |address| do
+      from_user.thankyous.create!(:welcomer => to_user.id,
+                                  :headline => message.subject,
+                                  :content => message.body)
+    end
 
     render :text => 'success', :status => 200 # a status of 404 would reject the mail
   end
