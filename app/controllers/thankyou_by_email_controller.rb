@@ -20,10 +20,11 @@ class ThankyouByEmailController < UsersController
 #                                 :headline => message.subject,
 #                                 :content => message.body)}
 
-    from_user.thankyous.create!(
+    message.to.each { |address|
+      thankyou.create!(:thanker =>
                           :welcomer => to_user.id,
                           :headline => message.subject,
-                          :content => message.body)
+                          :content => message.body)}
 
     render :text => 'success', :status => 200 # a status of 404 would reject the mail
   end
