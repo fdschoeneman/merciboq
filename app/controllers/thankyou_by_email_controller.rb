@@ -13,7 +13,7 @@ class ThankyouByEmailController < ApplicationController
 #    to_user   = User.find_or_create_by_email(to)
     message.to.each{|address|
     to_user = User.find_or_create_by_email(to) # TODO: grab name
-    ty = Thankyou.create!(:thanker => from_user.id, :welcomer => to_user.id, :headline => message.subject, :content => message.body)
+    Thankyou.create!(:thanker => from_user.id, :welcomer => to_user.id, :headline => message.subject, :content => message.body)
     }
 
 
