@@ -15,9 +15,9 @@ class ThankyouByEmailController < UsersController
     to_user   = User.find_or_create_by_email(to,
                           :password => "password",
                           :password_confirmation => "password")
-    message.to.each{|address|
-      gracias = Thankyou.create!(:thanker => from_user.id,
-                                 :welcomer => to_user.id,
+    message.each{|address|
+      gracias = Thankyou.create!(:thanker_id => from_user.id,
+                                 :welcomer_id => to_user.id,
                                  :headline => message.subject,
                                  :content => message.body)}
 
