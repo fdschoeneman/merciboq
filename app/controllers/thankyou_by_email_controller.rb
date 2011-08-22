@@ -16,7 +16,8 @@ class ThankyouByEmailController < UsersController
                           :password => "password",
                           :password_confirmation => "password")
     message.to.each do
-      from_user.thankyous.create!(:welcomer_id => to_user.id,
+      from_user.thankyous.create!(:thanker_id => from_user.id,
+                                  :welcomer_id => to_user.id,
                                   :headline => message.subject,
                                   :content => message.body)
     end
