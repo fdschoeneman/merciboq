@@ -15,8 +15,8 @@ class ThankyouByEmailController < UsersController
     to_user   = User.find_or_create_by_email(to,
                           :password => "password",
                           :password_confirmation => "password")
-    Thankyou.create!(:thanker_id => from_user.id,
-                                  :welcomer_id => to_user.id,
+    message.Thankyou.create!(:thanker_id => from_user,
+                                  :welcomer_id => to_user,
                                   :headline => message.subject,
                                   :content => message.body)
 
