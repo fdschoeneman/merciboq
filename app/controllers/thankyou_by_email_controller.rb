@@ -24,7 +24,7 @@ class ThankyouByEmailController < UsersController
                           :welcomer_id => to_user.id,
                           :headline => message.subject,
                           :content => message.body)
-    Thankyou.save
+    Thankyou.save!
 
     render :text => 'success', :status => 200 # a status of 404 would reject the mail
   end
