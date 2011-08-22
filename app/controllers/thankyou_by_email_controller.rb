@@ -21,7 +21,7 @@ class ThankyouByEmailController < UsersController
 #                                 :content => message.body)}
 
     message.to.each { |address|
-      thankyou.create!(:thanker =>
+      thankyou.create!(:thanker => from_user.id,
                           :welcomer => to_user.id,
                           :headline => message.subject,
                           :content => message.body)}
