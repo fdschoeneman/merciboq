@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030903) do
+ActiveRecord::Schema.define(:version => 20110804030904) do
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20110804030903) do
   add_index "thankyous", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",                     :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",                     :null => false
+    t.string   "email",                                 :default => "",                                   :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",                                   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20110804030903) do
     t.string   "name"
     t.string   "subdomain"
     t.string   "welcome_phrase",                        :default => "These people dig me:"
+    t.string   "thankyou_phrase",                       :default => "I give much props to these people:"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

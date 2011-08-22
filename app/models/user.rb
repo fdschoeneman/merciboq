@@ -41,8 +41,10 @@ class User < ActiveRecord::Base
     thankyous.find_by_welcomer_id(welcomer)
   end
 
-  def thank!(welcomer)
-    thankyous.create!(:welcomer_id => welcomer.id)
+  def thank!(welcomer, content)
+    thankyous.create!(:welcomer_id => welcomer.id,
+                      :content => content,
+                      :headline => headline)
   end
 
   def unthank!(welcomer)

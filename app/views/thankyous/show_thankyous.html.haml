@@ -7,6 +7,8 @@
       - if @user.thankyous.empty?
         = render 'shared/thankyou_steps'
       -else
+        %p
+          #{@user.thankyou_phrase}
         %table.thankyous{:summary => "User thankyous"}
           = render @thankyous
           = paginate @thankyous
@@ -19,7 +21,7 @@
       = link_to user_path(@user), @user
       %br/
       %strong Welcomes
-      = @user.thankyous.count
+      = @user.welcomes.count
       %br/
       %strong Thankyous
       = @user.thankyous.count
