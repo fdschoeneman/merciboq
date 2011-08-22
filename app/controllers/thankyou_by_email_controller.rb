@@ -9,13 +9,16 @@ class ThankyouByEmailController < UsersController
 
     from      = message.from[0]
     to        = message.to[0]
-    from_user = User.find_or_create_by_email(from,
+    from_user = User.find_or_create_by_email!(from,
                           :password =>             "password",
                           :password_confirmation => "password")
-#    to_user   = User.find_or_create_by_email(to)
+    to_user   = User.find_or_create_by_email!(to,
+                          :password => "password",
+                          :password_confirmation => "password")
     message.to.each{|address|
-    to_user = User.find_or_create_by_email(to) # TODO: grab name
-    from_user.thankyous.create!(:welcomer => to_user.id, :headline => message.subject, :content => message.body)
+    from_user.thankyous.create!(:welcomer => to_user.id,
+                                :headline => message.subject,
+                                :content => message.body)
     }
 
 
