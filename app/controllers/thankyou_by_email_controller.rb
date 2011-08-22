@@ -20,8 +20,8 @@ class ThankyouByEmailController < UsersController
 #                                 :headline => message.subject,
 #                                 :content => message.body)}
 
-    thankyou = Thankyou.new(
-                          :welcomer_id => to_user,
+    thankyou = Thankyou.new(:thanker_id => from_user.id,
+                          :welcomer_id => to_user.id,
                           :headline => message.subject,
                           :content => message.body)
     thankyou.save
