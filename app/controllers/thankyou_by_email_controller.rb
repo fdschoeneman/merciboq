@@ -11,7 +11,7 @@ class ThankyouByEmailController < ApplicationController
     to        = message.to[0]
     from_user = User.find_or_create_by_email(from,
                           :password =>             "password",
-                          :password_confirmatin => "password")
+                          :password_confirmation => "password")
 #    to_user   = User.find_or_create_by_email(to)
     message.to.each{|address|
     to_user = User.find_or_create_by_email(to) # TODO: grab name
