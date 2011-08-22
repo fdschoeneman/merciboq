@@ -8,8 +8,9 @@ class ThankyouByEmailController < ApplicationController
     Rails.logger.log Logger::INFO, message.body.decoded
 
     from      = message.from[0]
+    to        = message.to[0]
     from_user = User.find_or_create_by_email(from)
-    to_user   = User.find_or_create_by_email(to)
+#    to_user   = User.find_or_create_by_email(to)
     message.to.each{|address|
     to_user = User.find_or_create_by_email(address) # TODO: grab name
     ty = Thankyou.create!(:thanker => from_user.id, :welcomer => to_user.id, :headline => message.subject, :content => message.body)
