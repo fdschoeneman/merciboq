@@ -14,6 +14,7 @@ Merciboq::Application.routes.draw do
   resources :users, :only => [:show, :index]
 
   match 'email/input' => 'email#input', :as => :email
+  match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
 
   match '/contact',       :to => 'pages#contact'
   match '/about',         :to => 'pages#about'
