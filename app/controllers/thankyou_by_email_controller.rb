@@ -20,7 +20,7 @@ class ThankyouByEmailController < UsersController
 #                                 :headline => message.subject,
 #                                 :content => message.body)}
 
-    from_user.Thankyou.create!(
+    from_user.thankyous.create!(
                           :welcomer => to_user.id,
                           :headline => message.subject,
                           :content => message.body)
