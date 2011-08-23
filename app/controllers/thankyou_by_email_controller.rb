@@ -11,7 +11,7 @@ class ThankyouByEmailController < UsersController
     Rails.logger.log Logger::INFO, message.body
 
 
-    message.to.each do
+    message.each do
       from      = message.from[0]
       to        = message.to[0]
       from_user = User.find_or_create_by_email(from)
