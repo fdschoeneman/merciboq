@@ -21,6 +21,7 @@ class ThankyouByEmailController < ApplicationController
                                   :welcomer => "#{to_user.id}",
                                   :content => "#{content}",
                                   :headline => "#{headline}")
+    render :text => 'success', :status => 200 # 404 would reject the mail
   end
 #                          :password =>             "password",
 #                          :password_confirmation => "password")
@@ -49,7 +50,6 @@ class ThankyouByEmailController < ApplicationController
 #                          :headline => message.subject,
 #                          :content => message.body)}
 
-    render :text => 'success', :status => 200 # a status of 404 would reject the mail
 #  end
 end
 
