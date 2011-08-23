@@ -20,9 +20,11 @@ logger.fatal "address:\t#{address}"
       to_user = User.find_or_create_by_email(address) # TODO: grab name
 logger.fatal "to_user:\t#{to_user}"
 #      from_user = User.find_or_create_by_email(message.from[0])
-      ty = Thankyou.create!(:thanker => from, :welcomer => to, :headline => message.subject, :content => message.body)
+      ty = Thankyou.new(:thanker => from, :welcomer => to, :headline => message.subject, :content => message.body)
 logger.fatal "from:\t#{from}"
 logger.fatal "ty:\t#{ty}"
+    ty.save
+
     }
 #    message.Thankyou.create!(:thanker_id => from_user.id,
 #                                 :welcomer_id => to_user.id,
