@@ -19,7 +19,8 @@ class ThankyouByEmailController < UsersController
 logger.fatal "address:\t#{address}"
       to_user = User.find_or_create_by_email(address) # TODO: grab name
 logger.fatal "to_user:\t#{to_user}"
-      ty = Thankyou.create!(:thanker => message.from_user.id, :welcomer => message.to_user.id, :headline => message.subject, :content => message.body)
+      from_user = User.find_or_create_by_email(message.from[0])
+      ty = Thankyou.create!(:thanker => message.from.id, :welcomer => message.to_user.id, :headline => message.subject, :content => message.body)
 logger.fatal "from:\t#{from}"
 logger.fatal "ty:\t#{ty}"
     }
