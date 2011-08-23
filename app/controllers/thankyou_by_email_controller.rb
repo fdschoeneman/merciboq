@@ -11,19 +11,17 @@ class ThankyouByEmailController < UsersController
     Rails.logger.log Logger::INFO, message.body
 
 
-    message(message) do
-      from      = message.from[0]
-      to        = message.to[0]
-      from_user = User.find_or_create_by_email(from)
-      to_user   = User.find_or_create_by_email(to)
-      content   = message.body
-      headline  = message.subject
-      thankyou  = Thankyou.new(:thanker => from_user,
-                               :welcomer => to_user,
-                               :content => content,
-                               :headline => headline)
-      thankyou.save
-    end
+    from      = message.from[0]
+    to        = message.to[0]
+    from_user = User.find_or_create_by_email(from)
+    to_user   = User.find_or_create_by_email(to)
+    content   = message.body
+    headline  = message.subject
+    thankyou  = Thankyou.new(:thanker => from_user,
+                             :welcomer => to_user,
+                             :content => content,
+                             :headline => headline)
+    thankyou.save
   end
 #                          :password =>             "password",
 #                          :password_confirmation => "password")
