@@ -22,6 +22,7 @@ class ThankyouByEmailController < UsersController
                                :headline => headline)
       thankyou.save
     end
+  end
 #                          :password =>             "password",
 #                          :password_confirmation => "password")
 #     to_user   = User.find_or_create_by_email(to,
