@@ -17,8 +17,8 @@ class ThankyouByEmailController < UsersController
     to_user   = User.find_or_create_by_email(to)
     content   = message.body
     headline  = message.subject
-    thankyou  = Thankyou.new(:thanker => from_user,
-                             :welcomer => to_user,
+    thankyou  = Thankyou.new(:thanker => from_user.id,
+                             :welcomer => to_user.id,
                              :content => content,
                              :headline => headline)
     thankyou.save
