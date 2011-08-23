@@ -3,7 +3,7 @@ class CreateThankyous < ActiveRecord::Migration
     create_table :thankyous do |t|
       t.integer :thanker_id
       t.integer :welcomer_id
-      t.string :content
+      t.text    :content
 
       t.timestamps
     end

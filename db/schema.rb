@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(:version => 20110804030904) do
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"
     t.integer  "welcomer_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "headline"
+    t.text     "headline"
   end
 
   add_index "thankyous", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
