@@ -10,7 +10,16 @@ class ThankyouByEmailController < ThankyousController
     Rails.logger.log Logger::INFO, message.subject
     Rails.logger.log Logger::INFO, message.body
 
-message.to.each{|address|
+ message = Mail.new params[:message]
+logger.fatal "message:\t#{message}"
+
+    from = message.from[0]
+logger.fatal "from:\t#{from}"
+    from_user = User.find_or_create_by_email(from) # TODO: grab name from email
+
+logger.fatal "from_user:\t#{from_user}"
+
+    message.to.each{|address|
 logger.fatal "address:\t#{address}"
       to_user = User.find_or_create_by_email(address) # TODO: grab name
 logger.fatal "to_user:\t#{to_user}"
