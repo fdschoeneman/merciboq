@@ -4,6 +4,7 @@
       %h1
         = gravatar_for @user
         = @user.name
+        = render 'shared/thankyou_form'
       - if @user.thankyous.empty?
         = render 'shared/thankyou_steps'
       -else
@@ -14,6 +15,7 @@
           = paginate @thankyous
         = paginate @thankyous
     %td.sidebar.round
+      = render 'shared/user_info'
       %strong Name
       = @user.name
       %br/
