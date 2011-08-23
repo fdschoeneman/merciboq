@@ -1,4 +1,4 @@
-class ThankyouByEmailController < Controller
+class ThankyouByEmailController < UsersController
   require 'mail'
   skip_before_filter :verify_authenticity_token
 
