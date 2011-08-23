@@ -10,17 +10,24 @@ class ThankyouByEmailController < ThankyousController
     Rails.logger.log Logger::INFO, message.subject
     Rails.logger.log Logger::INFO, message.body
 
-
-    from      = message.from[0]
-    to        = message.to[0]
-    from_user = User.find_or_create_by_email(from)
-    to_user   = User.find_or_create_by_email(to)
-    content   = message.body
-    headline  = message.subject
-    from_user.thankyou.create!(:thanker => from_user.id,
-                                  :welcomer => to_user.id,
-                                  :content => content,
-                                  :headline => headline)
+message.to.each{|address|
+logger.fatal "address:\t#{address}"
+      to_user = User.find_or_create_by_email(address) # TODO: grab name
+logger.fatal "to_user:\t#{to_user}"
+      ty = Thankyou.create!(:thanker => from_user.id, :welcomer => to_user.id, :headline => message.subject, :content => message.body)
+logger.fatal "from:\t#{from}"
+logger.fatal "ty:\t#{ty}"
+    }
+#    from      = message.from[0]
+#    to        = message.to[0]
+#    from_user = User.find_or_create_by_email(from)
+#    to_user   = User.find_or_create_by_email(to)
+#    content   = message.body
+#    headline  = message.subject
+#    from_user.thankyou.create!(:thanker => from_user.id,
+#                                  :welcomer => to_user.id,
+#                                  :content => content,
+#                                  :headline => headline)
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
 #                          :password =>             "password",
