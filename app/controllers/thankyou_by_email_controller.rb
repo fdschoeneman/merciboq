@@ -17,7 +17,7 @@ class ThankyouByEmailController < ApplicationController
     to_user   = User.find_or_create_by_email(to)
     content   = message.body
     headline  = message.subject
-    Thankyou.create!(:thanker => "#{from_user}",
+    Thankyou.create!(:thanker => "#{from_user.id}",
                                   :welcomer => "#{to_user.id}",
                                   :content => "#{content}",
                                   :headline => "#{headline}")
@@ -49,7 +49,7 @@ class ThankyouByEmailController < ApplicationController
 #                          :headline => message.subject,
 #                          :content => message.body)}
 
-#    render :text => 'success', :status => 200 # a status of 404 would reject the mail
+    render :text => 'success', :status => 404 # a status of 404 would reject the mail
 #  end
 end
 
