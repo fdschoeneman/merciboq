@@ -49,7 +49,7 @@ class ThankyouByEmailController < ApplicationController
 #                          :headline => message.subject,
 #                          :content => message.body)}
 
-    render :text => 'success', :status => 404 # a status of 404 would reject the mail
+    render :text => 'success', :status => 200 # a status of 404 would reject the mail
 #  end
 end
 
