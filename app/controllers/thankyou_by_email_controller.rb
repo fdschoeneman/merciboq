@@ -17,11 +17,10 @@ class ThankyouByEmailController < UsersController
     to_user   = User.find_or_create_by_email(to)
     content   = message.body
     headline  = message.subject
-    thankyou  = Thankyou.new(:thanker => from_user.id,
-                             :welcomer => to_user.id,
-                             :content => content,
-                             :headline => headline)
-    thankyou.save
+    thankyou  = Thankyous.create!(:thanker => from_user.id,
+                                  :welcomer => to_user.id,
+                                  :content => content,
+                                  :headline => headline)
   end
 #                          :password =>             "password",
 #                          :password_confirmation => "password")
