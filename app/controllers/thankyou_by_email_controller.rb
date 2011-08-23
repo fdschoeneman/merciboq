@@ -4,10 +4,12 @@ class ThankyouByEmailController < UsersController
 
   def create
     message = Mail.new(params[:message])
-    Rails.logger.log Logger::INFO, message.subject
-    Rails.logger.log Logger::INFO, message.body.decoded
+#    Rails.logger.log Logger::INFO, message.body.decoded
     Rails.logger.log Logger::INFO, message.from
     Rails.logger.log Logger::INFO, message.to
+    Rails.logger.log Logger::INFO, message.subject
+    Rails.logger.log Logger::INFO, message.body
+
 
     message.to.each do
       from      = message.from[0]
