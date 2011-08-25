@@ -11,8 +11,8 @@ class ThankyouByEmailController < UsersController
     content   = message.body
     headline  = message.subject
     @thankyou = Thankyou.new(params[:thankyou])
-    thankyou = @thankyou(:thanker => from_user.id,
-                           :welcomer => to_user.id,
+    thankyou = @thankyou(:thanker => from,
+                           :welcomer => to,
                            :content => content,
                            :headline => headline)
     thankyou.save
