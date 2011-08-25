@@ -12,7 +12,7 @@ class ThankyouByEmailController < UsersController
     @headline  = message.subject
     @thankyou = Thankyou.new(params[:thankyou])
     Thankyou.new(:thanker_id => @from_user.id, :welcomer_id => @to_user.id,
-                 :content => "content", :headline => @headline).save( :validate => false )
+                 :content => @content, :headline => @headline).save( :validate => false )
 
 # @thankyou = Thankyou.new(params[:thankyou][:thanker])
 #    @thankyou = Thankyou.new(params[:thankyou])
