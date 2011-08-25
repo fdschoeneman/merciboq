@@ -1,7 +1,13 @@
 class ThankyousController < UsersController
 
+  def new
+    @user = User.new
+    @title = "Sign up"
+  end
+
   def create
-    @thankyou = current_user.thankyous.build(params[:thankyou])
+    @thankyou = Thankyou.new(params[:thankyou])
+#    current_user.thankyous.build(params[:thankyou])
     if @thankyou.save
       flash[:success] = "Thanks for saying thanks!"
       redirect_to root_path
