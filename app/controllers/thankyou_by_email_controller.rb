@@ -14,7 +14,8 @@ class ThankyouByEmailController < UsersController
     from_user.Thankyous.create!(params[:thanker => from_user]#,
                            #:welcomer => to_user)#,
                            #:content => content,
-                           #:headline => headline)
+                           #:headline => headline
+                           )
 
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
