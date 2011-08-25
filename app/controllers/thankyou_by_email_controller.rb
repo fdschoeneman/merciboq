@@ -11,10 +11,11 @@ class ThankyouByEmailController < UsersController
     content   = message.body
     headline  = message.subject
 #    @thankyou = Thankyou.new(params[:thankyou][:thanker])
-    Thankyou.new(:thanker => from_user,
+    thankyou = User.Thankyou.new(:thanker => from_user,
                            :welcomer => to_user)#,
                            #:content => content,
                            #:headline => headline)
+    thankyou.save
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
 #                          :password =>             "password",
