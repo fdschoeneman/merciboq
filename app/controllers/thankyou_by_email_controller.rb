@@ -4,12 +4,16 @@ class ThankyouByEmailController < UsersController
 
   def create
     message = Mail.new params[:message]
+    Rails.logger.log message.subject #print the subject to the logs
+    Rails.logger.log message.body.decoded #print the decoded body to the logs
+    Rails.logger.log message.attachments.first.inspect
+
     from      = message.from[0]
     to        = message.to[0]
     @from_user = User.find_or_create_by_email(from)
     @to_user   = User.find_or_create_by_email(to)
-    @content   = message.plain
-    @headline  = message.body.decoded
+    @content   = message.body.decoded
+    @headline  = message.subject
     @thankyou = Thankyou.new(params[:thankyou])
     Thankyou.new(:thanker_id => @from_user.id, :welcomer_id => @to_user.id,
                  :content => @content, :headline => @headline).save( :validate => false )
