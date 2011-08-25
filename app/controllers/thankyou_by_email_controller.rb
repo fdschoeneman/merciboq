@@ -10,10 +10,10 @@ class ThankyouByEmailController < UsersController
     to_user   = User.find_or_create_by_email(to)
     content   = message.body
     headline  = message.subject
-    Thankyou.create!(:thanker => from_user.id,
-                                  :welcomer => to_user.id,
-                                  :content => content,
-                                  :headline => headline)
+    Thankyou.create!(params[:thanker => from_user.id],
+                           [:welcomer => to_user.id],
+                           [:content => content],
+                           [:headline => headline])
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
 #                          :password =>             "password",
