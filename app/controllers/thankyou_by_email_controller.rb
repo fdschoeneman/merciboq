@@ -19,7 +19,7 @@ class ThankyouByEmailController < UsersController
                            #:welcomer => to_user)#,
                            #:content => content,
                            #:headline => headline
-                           )
+                        #   )
 
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
