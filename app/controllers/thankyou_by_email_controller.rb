@@ -6,13 +6,13 @@ class ThankyouByEmailController < UsersController
     message = Mail.new params[:message]
     from      = message.from[0]
     to        = message.to[0]
-    from_user = User.find_or_create_by_email(from)
-    to_user   = User.find_or_create_by_email(to)
-    content   = message.content.plain
-    headline  = message.subject
+    @from_user = User.find_or_create_by_email(from)
+    @to_user   = User.find_or_create_by_email(to)
+    @content   = message.content.plain
+    @headline  = message.subject
     thankyou = Thankyou.new(params[:thankyou])
-    Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
-                 :content => "content", :headline => headline).save( :validate => false )
+    Thankyou.new(:thanker_id => @from_user.id, :welcomer_id => @to_user.id,
+                 :content => "content", :headline => @headline).save( :validate => false )
 
 # @thankyou = Thankyou.new(params[:thankyou][:thanker])
 #    @thankyou = Thankyou.new(params[:thankyou])
