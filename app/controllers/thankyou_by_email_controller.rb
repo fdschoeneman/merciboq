@@ -4,11 +4,14 @@ class ThankyouByEmailController < UsersController
 
   def create
     message = Mail.new params[:message]
+
+    Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
+
     from      = message.from[0]
     to        = message.to[0]
     @from_user = User.find_or_create_by_email(from)
     @to_user   = User.find_or_create_by_email(to)
-    @content   = message.body.decoded.text
+    @content   = message.body.decoded.plain
     @headline  = message.subject
     thankyou = Thankyou.new(params[:thankyou])
     Thankyou.new(:thanker_id => @from_user.id, :welcomer_id => @to_user.id,
