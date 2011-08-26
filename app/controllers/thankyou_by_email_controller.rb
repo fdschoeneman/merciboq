@@ -8,7 +8,7 @@ class ThankyouByEmailController < UsersController
     to        = message.to[0]
     @from_user = User.find_or_create_by_email(from)
     @to_user   = User.find_or_create_by_email(to)
-    @content   = message.plain
+    @content   = message.body
     @headline  = message.subject
     thankyou = Thankyou.new(params[:thankyou])
     Thankyou.new(:thanker_id => @from_user.id, :welcomer_id => @to_user.id,
