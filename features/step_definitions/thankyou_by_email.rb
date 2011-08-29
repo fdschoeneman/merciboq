@@ -1,7 +1,9 @@
+
+
 params = {
 	:to=>"<333581f1ce6f4de6207a@cloudmailin.net>",
 	:disposable=>"",
-	:from=>"fred.schoeneman@gmail.com",
+	:from=>"@gmail.com",
 	:subject=>"cucumber test",
 	:plain=>"small body email",
 	:html=>"small body email",
@@ -22,3 +24,4 @@ small body email
 
 --90e6ba6e872292602c04ab80e060--
 """
+
