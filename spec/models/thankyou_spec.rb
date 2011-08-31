@@ -25,8 +25,9 @@ describe Thankyou do
       @thankyou.should respond_to(:thanker)
     end
 
-    it "should have the right thanker" do
+    it "should have the correct thanker" do
       @thankyou.thanker.should == @thanker
+      @thankyou.thanker_id.should == @thanker.id
     end
 
     it "should have a welcomer attribute" do
