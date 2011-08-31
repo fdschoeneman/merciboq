@@ -17,6 +17,6 @@ end
 
 Factory.define :thankyou do |thankyou|
   thankyou.content "Foo bar"
-  thankyou.association :user
+  thankyou.headline "baz quuux"
 end
 

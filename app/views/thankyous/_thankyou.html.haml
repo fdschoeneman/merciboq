@@ -2,7 +2,7 @@
   %td.thankyou
     %span.content
       #{gravatar_for thankyou.welcomer, :size => 15}
-      | #{link_to thankyou.welcomer.name} --
+      | #{link_to thankyou.welcomer.name, thankyou.welcomer} --
       %em
         = thankyou.headline
       "#{thankyou.content}"

@@ -6,8 +6,9 @@ describe Thankyou do
     @thanker  = Factory(:user)
     @welcomer = Factory(:user, :email => Factory.next(:email),
                                :name  => Factory.next(:name))
-
-    @thankyou = @thanker.thankyous.build(:welcomer_id => @welcomer.id)
+    @thankyou = @thanker.thankyous.build(:welcomer_id => @welcomer.id,
+                                         :content => "content",
+                                         :headline => "headline")
   end
 
   it "should create a new instance given valid attributes" do
@@ -45,7 +46,17 @@ describe Thankyou do
     end
 
     it "should require a welcomer_id" do
-      @thankyou.thanker_id = nil
+      @thankyou.welcomer_id = nil
+      @thankyou.should_not be_valid
+    end
+
+    it "should require some kind of content" do
+      @thankyou.content = nil
+      @thankyou.should_not be_valid
+    end
+
+    it "should require a headline" do
+      @thankyou.headline = nil
       @thankyou.should_not be_valid
     end
   end

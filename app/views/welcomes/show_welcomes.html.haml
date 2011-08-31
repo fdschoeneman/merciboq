@@ -16,7 +16,7 @@
                 %span.content
                   #{gravatar_for welcome.thanker, :size => 15}
                   |
-                  #{link_to welcome.thanker.name} wrote --
+                  #{link_to welcome.thanker.name, welcome.thanker} wrote --
                   %em
                     = welcome.headline
                   "#{welcome.content}"
