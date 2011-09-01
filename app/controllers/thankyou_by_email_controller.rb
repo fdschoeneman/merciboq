@@ -4,8 +4,6 @@ class ThankyouByEmailController < ApplicationController
 
   def create
     message = Mail.new params[:message]
-    Rails.logger.log message.subject #print the subject to the logs
-    Rails.logger.log message.body.decoded #print the decoded body to the logs
 
     from      = message.from[0]
     from_user = User.find_or_create_by_email(from)
