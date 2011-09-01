@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
-gem 'sass-rails', "~> 3.1.0.rc5"
+gem 'rails', '3.1.0'
+gem 'sass-rails'
 gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
-gem 'devise', ' 1.4.2'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'devise'
+#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'therubyracer-heroku', '0.8.1.pre3'
 gem 'friendly_id', '~> 3.3.0.alpha2'
 gem 'thin'

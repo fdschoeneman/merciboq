@@ -3,10 +3,9 @@ Feature: Thankyou by email
   As a person with an email address
   I want to send a thankyou and have it published
 
+@wip
   Scenario: Registered user thanks another registered
-    Given A a user with an email of "n email has been sent to the application as a POST request
-    Then A a
-
+    Given I am unregistered and thank another unregistered user
 
   Scenario: Registered user thanks unregistered
 

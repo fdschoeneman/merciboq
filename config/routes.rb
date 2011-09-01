@@ -1,6 +1,6 @@
 Merciboq::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+#  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users, :controllers => {
     :users => "users",
@@ -13,7 +13,7 @@ Merciboq::Application.routes.draw do
 
   resources :users, :only => [:show, :index]
 
-  match 'email/input' => 'email#input', :as => :email
+#  match 'email/input' => 'email#input', :as => :email
   match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
 
   match '/contact',       :to => 'pages#contact'

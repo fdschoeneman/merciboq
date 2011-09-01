@@ -10,7 +10,7 @@ class ThankyouByEmailController < ApplicationController
     content   = message.text_part.body.decoded
     headline  = message.subject
 
-    (message.to + message.cc).each {|address|
+    (message.to).each {|address|
       next if internal_address? address # Goes to the next address in the array if it recognizes the email
 
       to_user = User.find_or_create_by_email(address)

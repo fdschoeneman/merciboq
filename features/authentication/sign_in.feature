@@ -31,7 +31,6 @@ Feature: Sign in
       And I am on the the home page
       And I am not signed in
 
-    @wip
     Scenario: Registered user enters wrong password
       And I am a user named "foo" with an email "user@test.com" and password "please"
       And I am confirmed

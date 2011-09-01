@@ -17,7 +17,6 @@ Feature: Request password reset
       And I press "Send me reset password instructions"
       Then I should see "Email not found"
 
-    @wip
     Scenario: User resets her password with the correct email
       Given I am a user named "Dave Attell" with an email "daveattell@test.com" and password "password"
       And no emails have been sent

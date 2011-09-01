@@ -26,6 +26,9 @@ module NavigationHelpers
     when /settings url/
       'users/edit'
 
+    when /thankyou_by_email/
+      'thankyou_by_email/create'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
