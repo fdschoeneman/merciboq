@@ -1,5 +1,4 @@
 .two_column
-  %h3 Home
   - if user_signed_in?
     = paginate @users
     %ul.users
@@ -8,5 +7,8 @@
           = link_to user.name, user
     = paginate @users
   - else
-    = render 'layouts/form_registration_new'
+    %h3 Have someone you'd like to thank?
+    = render 'shared/short_intro'
+    = render 'shared/thankyou_steps'
+    = render 'shared/thankyou_tips'
 
