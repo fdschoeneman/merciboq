@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
          #:email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :welcome_phrase,
+  attr_accessible :name, :email, :welcome_phrase, :thankyou_phrase,
                   :password, :password_confirmation, :remember_me
 
   # Validations:
@@ -53,6 +53,12 @@ class User < ActiveRecord::Base
 
   def welcomed?(thanker)
     welcomes.find_by_thanker_id(thanker)
+  end
+
+  def password_match?
+    self.errors[:password] << 'mismatch' if password != password_confirmation
+    self.errors[:password] << 'blank!' if password.blank?
+    password == password_confirmation and !password.blank?
   end
 
 end

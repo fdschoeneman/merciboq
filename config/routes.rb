@@ -5,8 +5,10 @@ Merciboq::Application.routes.draw do
   devise_for :users, :controllers => {
     :users => "users",
     :registrations => "registrations",
+    :confirmations => "confirmations",
     :sessions => "sessions"
   } do
+      match 'confirm_user', :to => 'confirmations#confirm_user'
       match '/signup',      :to => 'registrations#new'
       match '/login',       :to => 'sessions#new'
     end
