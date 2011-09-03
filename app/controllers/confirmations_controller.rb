@@ -1,5 +1,6 @@
 class ConfirmationsController < Devise::ConfirmationsController
   def show
+    @title = "Confirm your account"
     @user = User.find_by_confirmation_token(params[:confirmation_token])
     if !@user.present?
       render_with_scope :new

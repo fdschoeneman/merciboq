@@ -20,7 +20,7 @@ Feature: Sign up
 #    And I should see a link to "Forgot your password?"
 #    And I should see a link to "Didn't receive confirmation instructions?"
 #    And I should not see a link to "Sign up"
-
+@wip
     Scenario: Unregistered user signs up with valid email
       And I fill in the following:
 #        | Name                  | Sarah Silverman             |
@@ -37,9 +37,15 @@ Feature: Sign up
       And I should see "sarahsilverman" in the email body
       And I should see "confirm" in the email body
       When I follow "Confirm my account" in the email
+      Then I should see "Merciboq | Confirm your account" in the title
+      Then I should see "Confirm your account"
+      And I should see a link to "Login"
+      And I should see a link to "Sign up"
+      And I fill in the following:
+        | Password              | password |
+        | Password confirmation | password |
+      And I press "Accept terms of use and confirm"
       Then I should see "Your account was successfully confirmed."
-      And I should see a link to "Logout"
-      And I should see a link to "Settings"
 
 
     Scenario: Unregistered user signs up with invalid email
@@ -49,5 +55,5 @@ Feature: Sign up
 #        | Password              | please          |
 #        | Password confirmation | please          |
       And I press "Sign up"
-      Then I should see "Email is invalid"
+      Then I should stay on the signup page
 

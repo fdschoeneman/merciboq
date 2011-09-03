@@ -5,7 +5,7 @@ Feature: Thankyou by email
 
 @wip
   Scenario: Registered user thanks another registered
-    Given I am unregistered and thank another unregistered user
+#    Given I am unregistered and thank another unregistered user
 
   Scenario: Registered user thanks unregistered
 

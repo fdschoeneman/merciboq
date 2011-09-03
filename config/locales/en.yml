@@ -2,9 +2,19 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Can't be blank"
+              invalid: "Doesn't look quite right"
+              taken: "Did you already register?  Try \"Forgot your password\" below"
   errors:
     messages:
       email: "Not an email address"
+      email_format: "Doesn't quite look like an email, does it?"
   views:
     pagination:
       previous: "&lt; Previous"

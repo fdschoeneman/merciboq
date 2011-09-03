@@ -18,6 +18,13 @@ module ApplicationHelper
     end
   end
 
+  def has_or_have(user)
+    if user == current_user
+      "have"
+    else
+      "has"
+    end
+  end
 
   def logo
     image_tag("starklogo.png", :alt => "Merciboq")

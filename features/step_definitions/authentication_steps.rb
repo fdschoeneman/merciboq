@@ -45,3 +45,7 @@ Then /^I should see "([^"]*)" in the body$/ do |user_name|
   page.should have_selector('a', :text => user_name)
 end
 
+Then /^I should stay on the signup page$/ do
+  %{I should see "Merciboq | Sign up" in the title}
+end
+
