@@ -17,9 +17,9 @@ class ThankyouByEmailController < ApplicationController
 
       Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
                    :content => content, :headline => headline).save( :validate => false )
-    }
+      }
 
-    (message.from)
+    (message.from).each {|address|
 
       from_user = User.find_or_create_by_email(address)
 
