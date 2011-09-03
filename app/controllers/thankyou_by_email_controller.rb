@@ -7,7 +7,7 @@ class ThankyouByEmailController < ApplicationController
 #    Rails.logger.fatal message.inspect
 #    Rails.logger.log message.subject #print the subject to the logs
   #    Rails.logger.log message.body.decoded #print the decoded body to the logs
-    message.attachments.each{|attachments| Rails.logger.fatal attachment.inspect} #inspect each attachment
+    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
 
     from      = message.from[0]
     from_user = User.find_or_create_by_email(from)
