@@ -5,7 +5,9 @@
         = gravatar_for @user
         = @user.name
       - if @user.welcomes.empty?
+        Nobody has thanked #{you_or_user(@user)} yet.
         = render 'shared/thankyou_steps'
+        = render 'shared/thankyou_tips'
       - else
         %p
           #{@user.welcome_phrase}

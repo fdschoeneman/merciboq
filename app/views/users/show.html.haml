@@ -5,7 +5,9 @@
         = gravatar_for @user
         = @user.name
       - if @user.thankyous.empty?
+        Nobody has thanked #{@user.name} yet.  Would you like to be the first?
         = render 'shared/thankyou_steps'
+        = render 'shared/thankyou_tips'
       -else
         %table.thankyous{:summary => "User thankyous"}
           = render @thankyous

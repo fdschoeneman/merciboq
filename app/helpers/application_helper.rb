@@ -9,6 +9,16 @@ module ApplicationHelper
     end
   end
 
+  def you_or_user(user)
+    base_pronoun = "you"
+    if user == current_user
+      base_pronoun
+    else
+      "this user"
+    end
+  end
+
+
   def logo
     image_tag("starklogo.png", :alt => "Merciboq")
   end
