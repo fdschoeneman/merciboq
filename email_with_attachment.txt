@@ -1,0 +1,50 @@
+Received: by iakc1 with SMTP id c1so4683348iak.3        for <333581f1ce6f4de6207a@cloudmailin.net>; Sat, 03 Sep 2011 15:12:16 -0700 (PDT)
+Received: by 10.43.133.72 with SMTP id hx8mr2043399icc.500.1315087614563;
+        Sat, 03 Sep 2011 15:06:54 -0700 (PDT)
+X-Forwarded-To: 333581f1ce6f4de6207a@cloudmailin.net
+X-Forwarded-For: _application@merciboq.com 333581f1ce6f4de6207a@cloudmailin.net
+Delivered-To: fuckyou@merciboq.com
+Received: by 10.42.221.70 with SMTP id ib6cs32136icb;
+        Sat, 3 Sep 2011 15:06:54 -0700 (PDT)
+Received: by 10.231.2.195 with SMTP id 3mr4749238ibk.35.1315087614365;
+        Sat, 03 Sep 2011 15:06:54 -0700 (PDT)
+Return-Path: <fred.schoeneman@gmail.com>
+Received: from mail-iy0-f174.google.com (mail-iy0-f174.google.com [209.85.210.174])
+       by mx.google.com with ESMTPS id f2si1005246ibo.10.2011.09.03.15.06.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 03 Sep 2011 15:06:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fred.schoeneman@gmail.com designates 209.85.210.174 as permitted sender) client-ip=209.85.210.174;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of fred.schoeneman@gmail.com designates 209.85.210.174 as permitted sender) smtp.mail=fred.schoeneman@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by iabu26 with SMTP id u26so4544008iab.19
+        for <fuckyou@merciboq.com>; Sat, 03 Sep 2011 15:06:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=3XunCl//WEIoifxjhEeT6xxxkUdPwFbDjNhyFuFplPo=;
+        b=c5znwn4YS8/K4vsdwhuqYdW+umBLNqSWQepAP6xhzP1xN/FroeWLrL7RkmXYt2q9wW
+         v3WGuXIoVXXj930jfaBUvZKXssqM3FHfL54SxQX1wLKAdxl/TU1+oZh791p2hk+3suDv
+         G23OZYuTbUWtlnwun+PUzB7wT5JFKhZWDdV+Y=
+MIME-Version: 1.0
+Received: by 10.42.161.135 with SMTP id t7mr2215992icx.413.1315087614246; Sat, 03 Sep 2011 15:06:54 -0700 (PDT)
+Received: by 10.42.227.138 with HTTP; Sat, 3 Sep 2011 15:06:54 -0700 (PDT)
+Date: Sat, 3 Sep 2011 15:06:54 -0700
+Message-ID: <CAE+Remyt3fHphUSRU4YajQ82qnM5Ttp5ZaMFNLqkGWUhkGewFw@mail.gmail.com>
+Subject: test attachments again
+From: Fred Schoeneman <fred.schoeneman@gmail.com>
+To: fdschoeneman@gmail.com, fuckyou@merciboq.com
+Content-Type: multipart/mixed; boundary=90e6ba1f0006187f7504ac10b201
+
+--90e6ba1f0006187f7504ac10b201
+Content-Type: text/plain; charset=ISO-8859-1
+
+just a test
+
+--90e6ba1f0006187f7504ac10b201
+Content-Type: text/html; charset=US-ASCII; name=\"googlef0b6b94fcb7782d2 (1).html\"
+Content-Disposition: attachment; filename=\"googlef0b6b94fcb7782d2 (1).html\"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_gs5566ux0
+
+Z29vZ2xlLXNpdGUtdmVyaWZpY2F0aW9uOiBnb29nbGVmMGI2Yjk0ZmNiNzc4MmQyLmh0bWw=
+--90e6ba1f0006187f7504ac10b201--
+
