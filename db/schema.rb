@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030904) do
+ActiveRecord::Schema.define(:version => 20110804030905) do
+
+  create_table "attachments", :force => true do |t|
+    t.integer "thankyou_id"
+    t.string  "filename"
+    t.string  "mimetype"
+    t.integer "bytecount"
+    t.binary  "bytes"
+  end
+
+  add_index "attachments", ["thankyou_id", "filename", "id"], :name => "index_attachments_on_thankyou_id_and_filename_and_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
