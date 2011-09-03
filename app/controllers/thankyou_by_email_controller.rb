@@ -19,9 +19,16 @@ class ThankyouByEmailController < ApplicationController
 
       to_user = User.find_or_create_by_email(address)
 
-      Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
-                   :content => content, :headline => headline).save( :validate => false )
+      thankyou = Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
+                   :content => content, :headline => headline)
+      thankyou.save( :validate => false )
+
+
+      message.attachments.each{|attachment|
+        Rails.logger.info attachment.inspect
+#        thankyou.attachments << Attachment.new()
       }
+    }
 
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
