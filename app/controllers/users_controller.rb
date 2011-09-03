@@ -8,6 +8,12 @@ class UsersController < ApplicationController
     @title = "Sign up"
   end
 
+  def create
+    @user = User.new(params[:user])
+    params[:user][:name]      = temporary_name
+    super
+  end
+
   def show
     @user = User.find(params[:id])
     @thankyous = @user.thankyous.page(params[:page])
@@ -18,6 +24,12 @@ class UsersController < ApplicationController
   def index
     @title = "Who is using Merciboq?"
     @users = User.order("name").page(params[:page])
+  end
+
+  def temporary_name(email)
+    email = @user.email.split('@')
+    local_part = email[0]
+    @name = local_part
   end
 
 end
