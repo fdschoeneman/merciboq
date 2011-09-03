@@ -4,6 +4,10 @@ class ThankyouByEmailController < ApplicationController
 
   def create
     message = Mail.new params[:message]
+    Rails.logger.log message.subject #print the subject to the logs
+    Rails.logger.log message.body.decoded #print the decoded body to the logs
+    Rails.logger.log message.attachments.first.inspect #inspect the first attachment
+
 
     from      = message.from[0]
     from_user = User.find_or_create_by_email(from)
@@ -18,14 +22,6 @@ class ThankyouByEmailController < ApplicationController
       Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
                    :content => content, :headline => headline).save( :validate => false )
       }
-
-    (message.from).each {|address|
-
-      from_user = User.find_or_create_by_email(address)
-
-      Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
-                   :content => content, :headline => headline).save( :validate => false )
-    }
 
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
