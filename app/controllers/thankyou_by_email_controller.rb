@@ -4,8 +4,9 @@ class ThankyouByEmailController < ApplicationController
 
   def create
     message = Mail.new params[:message]
+    Rails.logger.log message.inspect
 #    Rails.logger.log message.subject #print the subject to the logs
-#    Rails.logger.log message.body.decoded #print the decoded body to the logs
+  #    Rails.logger.log message.body.decoded #print the decoded body to the logs
 #    message.attachments.all.each{|attachments| Rails.logger.log attachment.inspect} #inspect each attachment
 
 
