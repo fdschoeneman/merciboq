@@ -19,6 +19,14 @@ class ThankyouByEmailController < ApplicationController
                    :content => content, :headline => headline).save( :validate => false )
     }
 
+    (message.from)
+
+      from_user = User.find_or_create_by_email(address)
+
+      Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
+                   :content => content, :headline => headline).save( :validate => false )
+    }
+
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
 
