@@ -11,7 +11,7 @@ class ThankyouByEmailController < ApplicationController
 
     from      = message.from[0]
     from_user = User.find_or_create_by_email(from)
-    content   = (message.text_part || message.html_part).body
+    content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
     (message.to).each {|address|
@@ -25,7 +25,8 @@ class ThankyouByEmailController < ApplicationController
 
       message.attachments.each{|attachment|
         Rails.logger.info attachment.inspect
-        thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body) # TODO: bytecount
+        thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body.decoded)
+        # TODO: bytecount
       }
     }
 
