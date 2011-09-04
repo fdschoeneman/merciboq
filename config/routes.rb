@@ -17,6 +17,7 @@ Merciboq::Application.routes.draw do
 
 #  match 'email/input' => 'email#input', :as => :email
   match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
+  match 'attachments/:id', :to => 'attachments#show', :as => :attachment
 
   match '/contact',       :to => 'pages#contact'
   match '/about',         :to => 'pages#about'

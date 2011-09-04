@@ -79,9 +79,10 @@ def make_thankyous
       welcomer = n+1
       headline = Faker::Company.catch_phrase
       content = Faker::Company.bs
-      user.thankyous.create!(:welcomer_id => welcomer,
+      thankyou = user.thankyous.create!(:welcomer_id => welcomer,
                              :content => content,
                              :headline => headline)
+      thankyou.attachments << Attachment.new(:mimetype => "text/plain", :filename => "foo.txt", :bytes => "Fred is the man!\nrecognize, bitches!")
     end
   end
 end

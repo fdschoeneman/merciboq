@@ -5,9 +5,9 @@ class ThankyouByEmailController < ApplicationController
   def create
     message = Mail.new params[:message]
 #    Rails.logger.fatal message.inspect
-#    Rails.logger.log message.subject #print the subject to the logs
-  #    Rails.logger.log message.body.decoded #print the decoded body to the logs
-    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
+#    Rails.logger.fatal message.subject #print the subject to the logs
+#    Rails.logger.fatal message.body.decoded #print the decoded body to the logs
+#    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
 
     from      = message.from[0]
     from_user = User.find_or_create_by_email(from)
@@ -25,7 +25,7 @@ class ThankyouByEmailController < ApplicationController
 
       message.attachments.each{|attachment|
         Rails.logger.info attachment.inspect
-        thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body)
+        thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body) # TODO: bytecount
       }
     }
 
