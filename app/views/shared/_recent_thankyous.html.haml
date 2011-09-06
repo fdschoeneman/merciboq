@@ -1,0 +1,13 @@
+%tr
+  %td.thankyou
+    %span.content
+      #{gravatar_for thankyou.welcomer, :size => 15}
+      | #{link_to thankyou.welcomer.name, thankyou.welcomer} --
+      %strong
+        = thankyou.headline
+      "#{thankyou.content}"
+    %span.timestamp
+      Posted #{time_ago_in_words(thankyou.created_at)} ago.
+      - thankyou.attachments.each do |attachment|
+        = link_to(attachment.filename, attachment, :target => '_blank')
+

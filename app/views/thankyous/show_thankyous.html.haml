@@ -4,7 +4,7 @@
       %h1
         = gravatar_for @user
         = @user.name
-        //= render 'shared/thankyou_form'
+        = render 'shared/thankyou_form'
       - if @user.thankyous.empty?
         #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
         = render 'shared/thankyou_steps'
