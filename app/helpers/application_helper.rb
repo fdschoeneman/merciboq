@@ -13,6 +13,8 @@ module ApplicationHelper
     base_pronoun = "you"
     if user == current_user
       base_pronoun
+    elsif user.name.blank?
+      "this user"
     else
       "this user"
     end
