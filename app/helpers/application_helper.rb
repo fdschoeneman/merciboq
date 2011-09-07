@@ -12,9 +12,10 @@ module ApplicationHelper
   def you_or_user(user)
     base_pronoun = "you"
     if user == current_user
-      base_pronoun
-    elsif user.name.blank?
-      "this user"
+      if current_user.name.blank?
+        "this user"
+      else
+        base_pronoun
     else
       "this user"
     end
