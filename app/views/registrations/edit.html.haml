@@ -2,7 +2,8 @@
   Edit your settings:
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
   = devise_error_messages!
-  = f.input :name
+  = f.input :name, :required => true
+  = f.input :subdomain, :required => true
   = f.input :email
   = f.input :current_password, :placeholder => "********", :required => true
   = f.input :welcome_phrase, :hint => "(Other people will see this when they look at your thankyous)"
