@@ -16,6 +16,7 @@ module ApplicationHelper
         "this user"
       else
         base_pronoun
+      end
     else
       "this user"
     end
