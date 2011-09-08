@@ -8,18 +8,11 @@ class ThankyouByEmailController < ApplicationController
 #    Rails.logger.fatal message.subject #print the subject to the logs
 #    Rails.logger.fatal message.body.decoded #print the decoded body to the logs
 #    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
-    from_email          = message.from[0]
-    local_part          = from_email.split('@')
-    temporary_name      = from_email[0]
-    temporary_subdomain = temporary_name + SecureRandom.base64(10)
 
-    from_user = User.find_or_create_by_email(
-            from,
-            :name => "temporary_name",
-            :subdomain => "temporary_subdomain")
-
-    content         = (message.text_part || message.html_part).body.decoded
-    headline        = message.subject
+    from      = message.from[0]
+    from_user = User.find_or_create_by_email(:email => from, :name => "temporary_name", :subdomain => "temporary_subdomain")
+    content   = (message.text_part || message.html_part).body.decoded
+    headline  = message.subject
 
     (message.to).each {|address|
       next if internal_address? address # Goes to the next address in the array if it recognizes the email
