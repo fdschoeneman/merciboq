@@ -1,4 +1,4 @@
-class ThankyouByEmailController < ApplicationController
+gphuclass ThankyouByEmailController < ApplicationController
   require 'mail'
   skip_before_filter :verify_authenticity_token
 
