@@ -15,6 +15,7 @@
               %tr
                 %td.thankyou
                   %span.content
+                    = link_to gravatar_for thankyou.thanker, :size => 15
                     = link_to thankyou.thanker.name, thankyou.thanker
                     thanked
                     = link_to thankyou.welcomer.name, thankyou.welcomer

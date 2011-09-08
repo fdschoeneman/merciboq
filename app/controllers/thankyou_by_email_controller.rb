@@ -10,7 +10,7 @@ class ThankyouByEmailController < ApplicationController
 #    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
 
     from      = message.from[0]
-    from_user = User.find_or_create_by_email(:email => from, :name => "temporary_name", :subdomain => "temporary_subdomain")
+    from_user = User.find_or_create_by_email(from)
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
