@@ -14,7 +14,7 @@ class ThankyouByEmailController < ApplicationController
     temporary_subdomain = temporary_name + SecureRandom.base64(10)
 
     from_user = User.find_or_create_by_email(
-            :email => "from_email",
+            from,
             :name => "temporary_name",
             :subdomain => "temporary_subdomain")
 
