@@ -1,4 +1,4 @@
-gphuclass ThankyouByEmailController < ApplicationController
+class ThankyouByEmailController < ApplicationController
   require 'mail'
   skip_before_filter :verify_authenticity_token
 
@@ -34,6 +34,7 @@ gphuclass ThankyouByEmailController < ApplicationController
   end
 
   private
+
     def internal_address?(address)
       "333581f1ce6f4de6207a@cloudmailin.net" == address or address.end_with? "@merciboq.com"
     end
