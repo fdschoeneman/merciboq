@@ -1,0 +1,9 @@
+%td.sidebar.round
+  - if user_signed_in?
+    = render 'shared/user_info'
+  - else
+    %h3
+      Have someone you'd like to thank?
+    = render 'shared/thankyou_steps'
+    = render 'shared/thankyou_tips'
+
