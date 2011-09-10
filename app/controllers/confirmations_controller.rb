@@ -1,4 +1,5 @@
 class ConfirmationsController < Devise::ConfirmationsController
+
   def show
     @title = "Confirm your account"
     @user = User.find_by_confirmation_token(params[:confirmation_token])
