@@ -64,30 +64,30 @@ describe User do
     end
   end
 
-  describe "password validations" do
+#  describe "password validations" do
 
-    it "should require a password" do
-      User.new(@attr.merge(:password => "", :password_confirmation => "")).
-        should_not be_valid
-    end
+#    it "should require a password" do
+#      User.new(@attr.merge(:password => "", :password_confirmation => "")).
+#        should_not be_valid
+#    end
 
-    it "should require a matching password confirmation" do
-      User.new(@attr.merge(:password_confirmation => "invalid")).
-        should_not be_valid
-    end
+#    it "should require a matching password confirmation" do
+#      User.new(@attr.merge(:password_confirmation => "invalid")).
+#        should_not be_valid
+#    end
 
-    it "should reject short passwords" do
-      short = "a" * 5
-      hash = @attr.merge(:password => short, :password_confirmation => short)
-      User.new(hash).should_not be_valid
-    end
+#    it "should reject short passwords" do
+#      short = "a" * 5
+#      hash = @attr.merge(:password => short, :password_confirmation => short)
+#      User.new(hash).should_not be_valid
+#    end
 
-    it "should reject long passwords" do
-      long = "a" * 41
-      hash = @attr.merge(:password => long, :password_confirmation => long)
-      User.new(hash).should_not be_valid
-    end
-  end
+#    it "should reject long passwords" do
+#      long = "a" * 41
+#      hash = @attr.merge(:password => long, :password_confirmation => long)
+#      User.new(hash).should_not be_valid
+#    end
+#  end
 
   describe "password encryption" do
 
@@ -109,6 +109,8 @@ describe User do
     before(:each) do
       @user = User.create!(@attr)
       @welcomer = Factory(:user)
+      content = "content_for_thankyou"
+      headline = "headline_for_thankyou"
       @attr = { :content => "lorem ipsum" }
     end
 
@@ -128,37 +130,12 @@ describe User do
       @user.should respond_to(:thank!)
     end
 
-    it "should thank another user" do
-      @user.thank!(@welcomer)
-      @user.should be_thanked(@welcomer)
-    end
-
-    it "should include the thanked user in the thanked array" do
-      @user.thank!(@welcomer)
-      @user.thanked.should include(@welcomer)
-    end
-
-    it "should have an unthank! method" do
-      @welcomer.should respond_to(:unthank!)
-    end
-
-    it "should unthank a user" do
-      @user.thank!(@welcomer)
-      @user.unthank!(@welcomer)
-      @user.should_not be_thanked(@welcomer)
-    end
-
     it "should have a welcomes method" do
       @user.should respond_to(:welcomes)
     end
 
     it "should have a welcomed method" do
       @user.should respond_to(:welcomed)
-    end
-
-    it "should include the thanker in the thanked array" do
-      @user.thank!(@welcomer)
-      @welcomer.welcomed.should include(@user)
     end
   end
 end

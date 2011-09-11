@@ -20,7 +20,7 @@ Feature: Sign up
 #    And I should see a link to "Forgot your password?"
 #    And I should see a link to "Didn't receive confirmation instructions?"
 #    And I should not see a link to "Sign up"
-@wip
+
     Scenario: Unregistered user signs up with valid email
       And I fill in the following:
 #        | Name                  | Sarah Silverman             |

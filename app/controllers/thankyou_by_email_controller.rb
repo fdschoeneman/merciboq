@@ -24,7 +24,7 @@ class ThankyouByEmailController < ApplicationController
       thankyou.save( :validate => false )
 
       message.attachments.each{|attachment|
-        Rails.logger.info attachment.inspect
+#        Rails.logger.info attachment.inspect
         thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body.decoded)
         # TODO: bytecount
       }
