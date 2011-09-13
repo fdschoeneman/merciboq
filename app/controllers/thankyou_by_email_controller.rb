@@ -14,8 +14,12 @@ class ThankyouByEmailController < ApplicationController
     from_local          = from_split[0]
     local_spaced        = from_local.split('.').join(' ')
     from_name           = local_spaced.titleize
-    temporary_subdomain = "something"
-    from_user = User.find_or_create_by_email(from, :name => from_name, :subdomain => "something" )
+    local_dashed        = from_local.split('.').join('-')
+    from_subdomain      = local_dashed + random_subdomain_number
+    from_user = User.find_or_create_by_email(
+                :email => from,
+                :name => from_name,
+                :subdomain => from_subdomain )
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
