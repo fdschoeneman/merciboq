@@ -9,8 +9,13 @@ class ThankyouByEmailController < ApplicationController
 #    Rails.logger.fatal message.body.decoded #print the decoded body to the logs
 #    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
 
-    from      = message.from[0]
-    from_user = User.find_or_create_by_email(from)
+    from                = message.from[0]
+    from_split          = from.split('@')
+    from_local          = from_split[0]
+    local_spaced        = from_local.split('.').join(' ')
+    from_name           = local_spaced.titleize
+    temporary_subdomain = "something"
+    from_user = User.find_or_create_by_email(from, :name => from_name, :subdomain => "something" )
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
@@ -30,6 +35,13 @@ class ThankyouByEmailController < ApplicationController
       }
     }
 
+#    def temporary_name(email)
+#      split_email     = (email).split('@')
+#      local_part      = split_email[0]
+#      spaced          = local_part.split('.').join(' ')
+#      temporary_name  = spaced.titleize
+#    end
+
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
 
@@ -37,6 +49,10 @@ class ThankyouByEmailController < ApplicationController
 
     def internal_address?(address)
       "333581f1ce6f4de6207a@cloudmailin.net" == address or address.end_with? "@merciboq.com"
+    end
+
+    def random_subdomain_number
+      random_subdomain_number = SecureRandom.base64(10)
     end
 end
 

@@ -23,10 +23,7 @@ Feature: Sign up
 
     Scenario: Unregistered user signs up with valid email
       And I fill in the following:
-#        | Name                  | Sarah Silverman             |
         | Email                 | sarahsilverman@test.com     |
-#        | Password              | please                      |
-#        | Password confirmation | please                      |
       And I press "Sign up"
       Then I should see "You have signed up successfully."
       And I should see a link to "Login"

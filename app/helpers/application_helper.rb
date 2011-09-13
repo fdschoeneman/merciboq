@@ -49,5 +49,13 @@ module ApplicationHelper
   def welcomer
     welcomer = thankyou.welcomer_id
   end
+
+  def temporary_name(email)
+    split_email     = (email).split('@')
+    local_part      = split_email[0]
+    spaced          = local_part.split('.').join(' ')
+    temporary_name  = spaced.titleize
+  end
+
 end
 

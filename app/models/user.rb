@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
          #:email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :welcome_phrase, :thankyou_phrase,
-                  :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :subdomain,
+                  :password, :password_confirmation, :remember_me,
+                  :welcome_phrase, :thankyou_phrase
 
   # Validations:
 #  validates_email :email
