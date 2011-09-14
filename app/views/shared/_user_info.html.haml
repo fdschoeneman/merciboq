@@ -3,15 +3,18 @@
     = gravatar_for current_user, :size => 30
   %strong
     Name
+  %br/
   = current_user.name
   %br/
   %strong
     URL
+    %br/
   = link_to user_path(current_user), current_user
   %br/
   %strong
     Subdomain
-  #{link_to current_user.subdomain, current_user}.merciboq.com
+  %p
+    #{link_to current_user.subdomain, (current_user.subdomain + ".merciboq.com")}.merciboq.com
   %br/
   %strong
     = current_user.welcomes.count
