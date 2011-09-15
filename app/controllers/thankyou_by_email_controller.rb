@@ -38,6 +38,8 @@ class ThankyouByEmailController < ApplicationController
                    :content => content, :headline => headline)
       thankyou.save( :validate => false )
 
+      ThankyouMailer.thankyou_notice(thankyou).deliver
+
       message.attachments.each{|attachment|
 #        Rails.logger.info attachment.inspect
         thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body.decoded)

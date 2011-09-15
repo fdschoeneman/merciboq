@@ -26,7 +26,7 @@ message4 = "Received: by gyf3 with SMTP id 3so3470151gyf.3\r\n        for <33358
       end
     end
 
-    describe "from user temporary name" do
+    describe "From: user temporary name" do
 
       it "should not be blank" do
         post :create, :message => "#{message1}"
