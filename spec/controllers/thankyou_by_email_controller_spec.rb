@@ -92,8 +92,17 @@ message4 = "Received: by gyf3 with SMTP id 3so3470151gyf.3\r\n        for <33358
         temporary_user_subdomain = temporary_user.subdomain
         temporary_user_subdomain.should =~ /engelbert-humperdink/
       end
-    end
 
+#      it "should send email" do
+#        post :create, :message => message1
+
+#        msgs = ActionMailer::Base.deliveries
+#        msgs.should_not be_empty
+#        replymail = msgs.last
+#        replymail.to.should match("fdschoeneman@gmail.com")
+#        replymail.subject.should match("Welcome to My Awesome Site")
+#      end
+    end
   end
 end
 
