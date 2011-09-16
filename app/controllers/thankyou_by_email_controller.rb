@@ -32,7 +32,8 @@ class ThankyouByEmailController < ApplicationController
       to_user = User.find_or_create_by_email(
                 :email => address,
                 :name => temporary_name(address),
-                :subdomain => temporary_subdomain(address) )
+                :subdomain => temporary_subdomain(address)
+                )
 
       thankyou = Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
                    :content => content, :headline => headline)
