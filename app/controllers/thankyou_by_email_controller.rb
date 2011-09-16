@@ -15,7 +15,7 @@ class ThankyouByEmailController < ApplicationController
     local_spaced        = from_local.split('.').join(' ')
     from_name           = local_spaced.titleize
     local_dashed        = from_local.split('.').join('-')
-    from_subdomain      = local_dashed + "-" + random_subdomain_number
+    from_subdomain      = "#{local_dashed} + #{random_subdomain_number}"
     from_user = User.find_or_create_by_email(
                 :email => from,
                 :name => from_name,
@@ -23,7 +23,7 @@ class ThankyouByEmailController < ApplicationController
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
-    (message.to).each {|address|
+    (message.to).each do |address|
       next if internal_address? address # Goes to the next address in the array if it recognizes the email
 
       to_user = User.find_or_create_by_email(address)
@@ -37,7 +37,7 @@ class ThankyouByEmailController < ApplicationController
         thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body.decoded)
         # TODO: bytecount
       }
-    }
+    end
 
 #    def temporary_name(email)
 #      split_email     = (email).split('@')
@@ -56,7 +56,7 @@ class ThankyouByEmailController < ApplicationController
     end
 
     def random_subdomain_number
-      random_subdomain_number = random_number(10)
+      random_subdomain_number = SecureRandom.random_number(10)
     end
 end
 
