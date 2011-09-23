@@ -8,6 +8,7 @@ Feature: Thankyou by email
     When a thankyou email is sent from one unregistered user to another
     Then the thanker should have a confirmation email
     And the welcomer should have a confirmation email
+    And the welcomer should have a thankyou notice
 
 
 @wip

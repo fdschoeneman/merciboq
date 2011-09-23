@@ -12,6 +12,10 @@ Then /^the thanker should have a confirmation email$/ do
 end
 
 Then /^the welcomer should have a confirmation email$/ do
+  And %{"hairstylist@test.com" should have 2 emails}
+end
+
+Then /^the welcomer should have a thankyou notice$/ do
   And %{"hairstylist@test.com" should have 1 email}
 end
 
