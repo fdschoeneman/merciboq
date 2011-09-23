@@ -22,7 +22,6 @@ Feature: Thankyou by email
     Then she should see "Your account was successfully confirmed"
 
 
-
   Scenario: Registered user thanks unregistered
 
   Scenario: Unregistered user thanks registered user

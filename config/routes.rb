@@ -14,8 +14,11 @@ Merciboq::Application.routes.draw do
     end
 
   resources :users, :only => [:show, :index]
+  constraints(Subdomain) do
+    match '/' => 'pages#home'
+  end
+#match '/' => 'users#show', :constraints => { :subdomain => /.+/ }
 
-#  match 'email/input' => 'email#input', :as => :email
   match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
   match 'attachments/:id', :to => 'attachments#show', :as => :attachment
 

@@ -18,8 +18,8 @@ class ThankyouByEmailController < ApplicationController
     from_subdomain      = "#{local_dashed}-#{random_subdomain_number}"
     from_user = User.find_or_create_by_email(
                 :email => from,
-                :name => from_name, # refactoring demo:  temporary_name(from),
-                :subdomain => from_subdomain  # refactoring demo: temporary_subdomain(from)
+                :name => temporary_name(from),
+                :subdomain => temporary_subdomain(from)
                 )
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
