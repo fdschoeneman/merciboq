@@ -10,20 +10,6 @@ class ThankyouByEmailController < ApplicationController
 #    Rails.logger.fatal message.body.decoded #print the decoded body to the logs
 #    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
 
-<<<<<<< HEAD
-    from                = message.from[0]
-    from_split          = from.split('@')
-    from_local          = from_split[0]
-    local_spaced        = from_local.split('.').join(' ')
-    from_name           = local_spaced.titleize
-    local_dashed        = from_local.split('.').join('-')
-    from_subdomain      = "#{local_dashed}-#{random_subdomain_number}"
-    from_user = User.find_or_create_by_email(
-                :email => from,
-                :name => temporary_name(from),
-                :subdomain => temporary_subdomain(from)
-                )
-=======
     from_email          = message.from[0]
 #    from_split          = from.split('@')
 #    from_local          = from_split[0]
@@ -37,7 +23,6 @@ class ThankyouByEmailController < ApplicationController
                 :email => from_email,
                 :name => temporary_name(from_email),
                 :subdomain => temporary_subdomain(from_email) )
->>>>>>> 5d416b297458b7d9ac6e8a252111a6752cd524a7
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
@@ -72,14 +57,9 @@ class ThankyouByEmailController < ApplicationController
       "333581f1ce6f4de6207a@cloudmailin.net" == address or address.end_with? "@merciboq.com"
     end
 
-<<<<<<< HEAD
     def random_subdomain_number
       random_subdomain_number = SecureRandom.random_number(10)
     end
-=======
-#    def random_subdomain_number
-#      random_subdomain_number = SecureRandom.random_number(10)
-#    end
->>>>>>> 5d416b297458b7d9ac6e8a252111a6752cd524a7
+
 end
 
