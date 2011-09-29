@@ -14,11 +14,8 @@ class User < ActiveRecord::Base
                   :password, :password_confirmation, :remember_me,
                   :welcome_phrase, :thankyou_phrase
 
-  # Validations:
-#  validates_email :email
+  # Email validations:
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-
   validates :email, :presence => true,
                     :format => { :with => email_regex },
                     :uniqueness => true
@@ -32,6 +29,20 @@ class User < ActiveRecord::Base
 #                                    :on => :update
 
 #  validates_uniqueness_of :name, :email, :case_sensitive => false
+
+#  validates_presence_of :subdomain
+#  validates_format_of :subdomain, :with => /^[A-Za-z0-9-]+$/,
+#    :message => 'The subdomain can only contain alphanumeric characters
+#     and dashes.',
+#    :allow_blank => true
+#  validates_uniqueness_of :subdomain, :case_sensitive => false
+
+#  before_validation :downcase_subdomain
+
+#  validates_exclusion_of :subdomain,
+#    :in => %w( support blog www billing help api ),
+#    :message => "The subdomain <strong>{{value}}</strong>
+#    is reserved and unavailable."
 
   has_many :thankyous,          :dependent    => :destroy,
                                 :foreign_key  => "thanker_id"
@@ -64,6 +75,12 @@ class User < ActiveRecord::Base
     self.errors[:password] << 'blank!' if password.blank?
     password == password_confirmation and !password.blank?
   end
+
+  protected
+
+    def downcase_subdomain
+      self.subdomain.downcase! if attribute_present?("subdomain")
+    end
 
 end
 

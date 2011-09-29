@@ -17,6 +17,12 @@
       %strong Name
       = @user.name
       %br/
+      %strong Subdomain
+      = @user.subdomain
+      //= link_to "#{@user.subdomain}.merciboq.com", @user
+      %br/
+      = link_to "#{@user.subdomain}.merciboq.com", root_url(:host => @user.subdomain + '.' + request.domain + request.port_string)
+      %br/
       %strong URL
       = link_to user_path(@user), @user
       %br/

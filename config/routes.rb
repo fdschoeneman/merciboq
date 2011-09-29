@@ -13,11 +13,19 @@ Merciboq::Application.routes.draw do
       match '/login',       :to => 'sessions#new'
     end
 
-  resources :users, :only => [:show, :index]
-  constraints(Subdomain) do
-    match '/' => 'pages#home'
+  resources :users, :only => [:show, :index] do
+    resources :subdomains, :shallow => true
   end
-#match '/' => 'users#show', :constraints => { :subdomain => /.+/ }
+
+  constraints(Subdomain) do
+    match '/' => 'users#show'
+  end
+#  constraints(Subdomain) do
+#    match '/' => 'pages#home'
+#  end
+#  match '/' => 'users#show', :constraints => { :subdomain => /.+/ }
+#  match '/' => 'pages#home', :constraints => { :subdomain => 'www' }
+#  match '/' => 'users#show', :constraints => { :subdomain => '/.+/' }
 
   match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
   match 'attachments/:id', :to => 'attachments#show', :as => :attachment

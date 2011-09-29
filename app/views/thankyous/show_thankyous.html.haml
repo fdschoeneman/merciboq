@@ -24,7 +24,8 @@
       = link_to user_path(@user), @user
       %br/
       %strong Subdomain
-      #{link_to @user.subdomain}.merciboq.com
+      %br/
+      = link_to "#{@user.subdomain}.merciboq.com"
       %br/
       %strong Welcomes
       = @user.welcomes.count

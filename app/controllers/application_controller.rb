@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   include UrlHelper
+# include SubdomainUsers
+
   protect_from_forgery
+
+ # before_filter :check_user_status
+#  before_filter :limit_subdomain_access
 
   def temporary_name(email)
     email_split = email.split('@')
@@ -20,5 +25,18 @@ class ApplicationController < ActionController::Base
     random_subdomain_number = SecureRandom.random_number(10)
   end
 
+  protected
+
+    def check_user_status
+      unless user_subdomain == default_user_subdomain
+        redirect_to default_user_url if current_user_with_subdomain.nil?
+      end
+    end
+
+    def limit_subdomain_access
+      if request.subdomain.present?
+        redirect_to root_url(:subdomain => false)
+      end
+    end
 end
 

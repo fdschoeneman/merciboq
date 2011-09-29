@@ -6,7 +6,7 @@
         %ul.users
           - @users.each do |user|
             %li
-              = link_to user.name, root_url(:subdomain => user.subdomain)
+              = link_to user.name, root_url
         = paginate @users
       - else
         - @recent_thankyous.each do |thankyou|
@@ -18,7 +18,7 @@
                     = link_to gravatar_for thankyou.thanker, :size => 15
                     = link_to thankyou.thanker.name, thankyou.thanker
                     thanked
-                    = link_to thankyou.welcomer.name, thankyou.welcomer
+                    = link_to thankyou.welcomer.name, root_url(:subdomain => thankyou.welcomer.subdomain)
                     %strong
                       #{thankyou.headline} --
                     "#{thankyou.content}"
