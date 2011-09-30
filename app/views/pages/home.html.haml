@@ -16,7 +16,7 @@
                 %td.thankyou
                   %span.content
                     = link_to gravatar_for thankyou.thanker, :size => 15
-                    = link_to thankyou.thanker.name, root_url(:subdomain => with_subdomain(thankyou.thanker.subdomain))
+                    = link_to thankyou.thanker.name, thankyou.thanker.subdomain
                     thanked
                     = link_to thankyou.welcomer.name, root_url(:subdomain => with_subdomain(thankyou.welcomer.subdomain))
                     %strong
