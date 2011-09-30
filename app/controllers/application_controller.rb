@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
  # before_filter :check_user_status
-  before_filter :limit_subdomain_access
+ # before_filter :limit_subdomain_access
 
   def temporary_name(email)
     email_split = email.split('@')
