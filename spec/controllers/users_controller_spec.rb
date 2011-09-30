@@ -11,7 +11,7 @@ describe UsersController do
   describe "GET 'show'" do
 
     it "should be successful" do
-      get :show, :id => @user.id
+      get :show, :subdomain => "testuser"
       response.should be_success
     end
 

@@ -16,6 +16,11 @@ class ThankyousController < UsersController
 #    end
   end
 
+  def edit
+    @thankyou = Thankyou.new
+    @title = "Edit your Thankyou"
+  end
+
   def show_thankyous
     @user = current_user
     @thankyous = @user.thankyous.page(params[:page])
