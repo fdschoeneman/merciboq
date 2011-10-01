@@ -18,14 +18,20 @@ class ApplicationController < ActionController::Base
     email_split   = email.split('@')
     email_local   = email_split[0]
     local_dashed  = email_local.split('.').join('-')
-    temporary_subdomain = "#{local_dashed}-#{random_subdomain_number}"
+    temporary_subdomain = "#{local_dashed}-#{subdomain_placeholder}"
   end
 
   def random_subdomain_number
-    random_subdomain_number = SecureRandom.random_number(10)
+    random_subdomain_number = SecureRandom.random_number(1000)
   end
 
   protected
+
+    def subdomain_placeholder
+      modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
+      adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
+      subdomain_placeholder = "#{modifiers.rand}-#{adjectives.rand}"
+    end
 
     def check_user_status
       unless user_subdomain == default_user_subdomain

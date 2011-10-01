@@ -5,11 +5,20 @@ body {
 header {
   padding-top: 20px;
 
-
   img {
     padding: 1em;
 //    background: #fff;
     background: #99cc00;
+  }
+
+  #logo {
+    float: none;
+    font-family: 'Yellowtail', cursive;
+    font-size: 400%;
+    padding-top: 30px;
+    padding-bottom: 10px;
+//    background: black;
+//    font-color: white;
   }
 }
 
@@ -56,7 +65,7 @@ a {
 
 header {
 //  padding-top: 20px;
-  padding-bottom: 20px;
+//  padding-bottom: 20px;
 
   img {
     padding: 1em;
@@ -69,8 +78,9 @@ header {
 
 nav {
   float: right;
-  background-color: white;
+//  background-color: black;
   padding: 0 0.7em;
+//  padding-bottom: 10px;
   white-space: nowrap;
 
   ul {
