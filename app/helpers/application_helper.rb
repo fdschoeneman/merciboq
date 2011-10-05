@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def logo
-    image_tag("starklogo.png", :alt => "Merciboq")
+    image_tag("redlogo.png", :alt => "Merciboq")
   end
 
   def resource_name

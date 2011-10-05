@@ -11,11 +11,11 @@ header {
 //  width: 710px;
 //  padding-top: 20px;
 
-//  img {
-//    padding: 1em;
-//    background: #fff;
+  img {
+    padding: 1em;
+    background: #fff;
 //    background: #99cc00;
-//  }
+  }
 
   .nav {
     float: right;
@@ -26,6 +26,7 @@ header {
   .logo {
     font-family: 'Yellowtail', cursive;
     font-size: 500%;
+//    color: red;
     padding-top: 40px;
   }
 }

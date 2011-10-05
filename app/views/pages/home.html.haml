@@ -1,29 +1,23 @@
 %table.profile
   %tr
     %td.main
-      - if user_signed_in?
-        = paginate @users
-        %ul.users
-          - @users.each do |user|
-            %li
-              = link_to user.name, root_url
-        = paginate @users
-      - else
-        - @recent_thankyous.each do |thankyou|
-          %table.thankyous{:summary => "Recent thankyous"}
-            - @recent_thankyous.each do |thankyou|
-              %tr
-                %td.thankyou
-                  %span.content
-                    = link_to gravatar_for thankyou.thanker, :size => 15
-                    = link_to thankyou.thanker.name, root_url(:subdomain => thankyou.thanker.subdomain)
-                    thanked
-                    = link_to thankyou.welcomer.name, root_url(:subdomain => thankyou.welcomer.subdomain)
-                    %strong
-                      #{thankyou.headline} --
-                    "#{thankyou.content}"
-                  %span.timestamp
-                    Posted recently.
+      - @recent_thankyous.each do |thankyou|
+        %table.thankyous{:summary => "Recent thankyous"}
+          - @recent_thankyous.each do |thankyou|
+            %tr
+              %td.thankyou
+                %span.content
+                  = link_to gravatar_for thankyou.thanker, :size => 15
+                  = link_to thankyou.thanker.name, thankyou.thanker(:subdomain => thankyou.thanker.subdomain)
+                  = link_to thankyou.thanker.name, thankyou.thanker.subdomain
+                  = link_to thankyou.thanker.name, root_url(:subdomain => thankyou.thanker.subdomain)
+                  thanked
+                  = link_to thankyou.welcomer.name, root_url(:subdomain => thankyou.welcomer.subdomain)
+                  %strong
+                    #{thankyou.headline} --
+                  "#{thankyou.content}"
+                %span.timestamp
+                  Posted recently.
     %td.sidebar.round
       %h3
         Have someone you'd like to thank?
