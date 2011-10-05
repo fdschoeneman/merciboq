@@ -15,12 +15,16 @@ Then /^the welcomer should have a confirmation email$/ do
   And %{"hairstylist@test.com" should have 2 emails}
 end
 
-Then /^the welcomer should have a thankyou notice$/ do
+Then /^the welcomer should have a thankyou email$/ do
   And %{"hairstylist@test.com" should have 1 email}
 end
 
 Then /^the thanker opens her email$/ do
   open_email("customer@test.com")
+end
+
+Then /^the welcomer opens her email$/ do
+  open_email("hairstylist@test.com")
 end
 
 Then /^she should see "Confirmation instructions" in the subject$/ do
