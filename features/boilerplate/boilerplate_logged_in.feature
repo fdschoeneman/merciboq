@@ -16,6 +16,7 @@ Feature: View boilerplate pages
     And I should see a link to "Settings"
     And I should see a link to "Logout"
 
+@wip
   Scenario:
     Given I follow the "About" link
     Then I should see "Merciboq | About" in the title
