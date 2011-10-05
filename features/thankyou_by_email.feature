@@ -3,16 +3,14 @@ Feature: Thankyou by email
   As a person with an email address
   I want to send a thankyou and have it published
 
-  Background: Registered user thanks another registered
+  Background: UNREGISTERED user thanks another UNREGISTERED user
     Given no emails have been sent
     When a thankyou email is sent from one unregistered user to another
-    Then the thanker should have a confirmation email
     And the welcomer should have a confirmation email
-    And the welcomer should have a thankyou notice
+#    And the welcomer should have a thankyou email
 
-
-@wip
-  Scenario: Unregistered thanker signs up after a thankyou
+  Scenario: Unregistered THANKER signs up after a thankyou
+    Then the thanker should have a confirmation email
     When the thanker opens her email
     Then she should see "Confirmation instructions" in the subject
     And she should see "confirm" in the email body
@@ -22,6 +20,10 @@ Feature: Thankyou by email
     And she presses "Accept terms of use and confirm"
     Then she should see "Your account was successfully confirmed"
 
+  Scenario: Unregistered WELCOMER signs up after a thankyou
+    Then the welcomer should have a confirmation email
+    When the welcomer opens her email
+    Then she should see "Confirmation instructions" in the subject
 
   Scenario: Registered user thanks unregistered
 

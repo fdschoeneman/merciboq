@@ -2,23 +2,31 @@ body {
 //  background: #99cc00;
 }
 
-header {
-  padding-top: 20px;
+.container {
+  background: white;
+  width: 710px;
+}
 
-  img {
-    padding: 1em;
+header {
+//  width: 710px;
+//  padding-top: 20px;
+
+//  img {
+//    padding: 1em;
 //    background: #fff;
-    background: #99cc00;
+//    background: #99cc00;
+//  }
+
+  .nav {
+    float: right;
+    display: inline-block;
+    align: right;
   }
 
-  #logo {
-    float: none;
+  .logo {
     font-family: 'Yellowtail', cursive;
-    font-size: 400%;
-    padding-top: 30px;
-    padding-bottom: 10px;
-//    background: black;
-//    font-color: white;
+    font-size: 500%;
+    padding-top: 40px;
   }
 }
 
@@ -34,54 +42,13 @@ footer {
   }
 }
 
-section {
-  margin-top: 1em;
-  font-size: 120%;
-  padding: 20px;
-  background: #fff;
-
-  h1 {
-    font-size: 200%;
-  }
-}
-
-/* Links */
-
-a {
-  color: #09c;
-  text-decoration: none;
-
-  &:hover {
-    color: #069;
-    text-decoration: underline;
-  }
-
-  &:visited {
-    color: #069;
-  }
-}
-
-// Header
-
-header {
-//  padding-top: 20px;
-//  padding-bottom: 20px;
-
-  img {
-    padding: 1em;
-   // background: #fff;
-      background: #000;
-  }
-}
-
-/* Navigation */
-
 nav {
   float: right;
-//  background-color: black;
+  display: inline-block;
   padding: 0 0.7em;
-//  padding-bottom: 10px;
+  padding-bottom: 10px;
   white-space: nowrap;
+  font-weight: bold;
 
   ul {
     margin: 0;
@@ -114,6 +81,21 @@ nav {
   }
 }
 
+
+a {
+  color: #09c;
+  text-decoration: none;
+
+  &:hover {
+    color: #069;
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: #069;
+  }
+}
+
 ul.users {
   margin-top: 2em;
   margin-bottom: 1em;
@@ -125,19 +107,21 @@ ul.users {
 
 // User show page
 
-table.profile {
+.profile {
   width: 100%;
   margin-bottom: 0;
 }
 
 td {
+  width: 710px;
+
   &.main {
-    width: 70%;
+    width: 65%;
     padding: 1em;
   }
 
   &.sidebar {
-    width: 30%;
+    width: 35%;
     padding: 1em;
     vertical-align: top;
     background: #ffc;
@@ -231,4 +215,32 @@ form.new_thankyou {
   -webkit-border-radius: 10px;
   border-radius:         10px;
 }
+
+//section {
+//  margin-top: 1em;
+//  font-size: 120%;
+//  padding: 20px;
+//  background: #fff;
+
+//  h1 {
+//    font-size: 200%;
+//  }
+//}
+
+/* Links */
+
+// Header
+
+//header {
+//  padding-top: 20px;
+//  padding-bottom: 20px;
+
+//  img {
+//    padding: 1em;
+//   // background: #fff;
+//      background: #000;
+//  }
+//}
+
+/* Navigation */
 

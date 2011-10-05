@@ -1,7 +1,7 @@
 %header
-  Merciboq
-  //= link_to logo, root_path
-  %nav.round
+  .logo
+    MerciboQ
+  %nav
     %ul
       - if signed_in?
         %li= link_to_unless_current "Thankyous", thankyou_path
@@ -13,4 +13,5 @@
       = render 'devise/menu/registration_items'
       |
       = render 'devise/menu/login_items'
+  %br
 

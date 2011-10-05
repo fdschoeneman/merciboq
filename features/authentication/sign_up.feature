@@ -10,17 +10,8 @@ Feature: Sign up
     And I am on the home page
     And I follow the "Sign up" link
     Then I should see "Merciboq | Sign up" in the title
-#    And I should see a link to "About"
-#    And I should see a link to "Help"
-#    And I should see a link to "Contact"
-#    And I should see a link to "Terms of Use"
-#    And I should see a link to "Privacy Policy"
-#    And I should see a link to "Login"
-#    And I should see a link to "Home"
-#    And I should see a link to "Forgot your password?"
-#    And I should see a link to "Didn't receive confirmation instructions?"
-#    And I should not see a link to "Sign up"
 
+@wip
     Scenario: Unregistered user signs up with valid email
       And I fill in the following:
         | Email                 | sarahsilverman@test.com     |

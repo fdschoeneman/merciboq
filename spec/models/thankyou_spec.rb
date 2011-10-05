@@ -5,7 +5,8 @@ describe Thankyou do
   before(:each) do
     @thanker  = Factory(:user)
     @welcomer = Factory(:user, :email => Factory.next(:email),
-                               :name  => Factory.next(:name))
+                               :name  => Factory.next(:name),
+                               :subdomain => Factory.next(:subdomain))
     @thankyou = @thanker.thankyous.build(:welcomer_id => @welcomer.id,
                                          :content => "content",
                                          :headline => "headline")
