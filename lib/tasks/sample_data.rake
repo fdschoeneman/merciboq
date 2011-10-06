@@ -4,7 +4,6 @@ namespace :db do
     Rake::Task['db:reset'].invoke
 #    make_admin_users
     sample_fred
-    sample_jones
     sample_nixon
     sample_lenny
     make_users
@@ -15,18 +14,8 @@ end
 
 def sample_fred
   user = User.new(:name => "Fred Schoeneman",
+                  :subdomain => "fred-schoeneman",
                   :email => "fred.schoeneman@gmail.com",
-                  :password => "password",
-                  :password_confirmation => "password"
-                  )
-  user.skip_confirmation!
-  user.save
-  user.confirm!
-end
-
-def sample_jones
-  user = User.new(:name => "Sara Jane Holditch",
-                  :email => "sjholditch@gmail.com",
                   :password => "password",
                   :password_confirmation => "password"
                   )
@@ -37,6 +26,7 @@ end
 
 def sample_nixon
   user = User.new(:name => "Nicole Henderson",
+                  :subdomain => "hola.nicole",
                   :email => "hola.nicole@gmail.com",
                   :password => "password",
                   :password_confirmation => "password"
@@ -48,6 +38,7 @@ end
 
 def sample_lenny
   user = User.new(:name => "Lenny \"Mr Eyzerovich\" Turetsky",
+                  :subdomain => "sweetleonster",
                   :email => "sweetleonster@gmail.com",
                   :password => "password",
                   :password_confirmation => "password"
@@ -60,9 +51,12 @@ end
 def make_users
   99.times do |n|
     name  = Faker::Name.name
-    email = "example-#{n+1}@merciboq.org"
+    downcased_name = name.downcase
+    subdomain = "#{downcased_name.split(' ').join('-')}"
+    email = "#{downcased_name.split(' ').join('-')}@example.com"
     password  = "password"
     user = User.new(:name => name,
+                    :subdomain => subdomain,
                     :email => email,
                     :password => password,
                     :password_confirmation => password
@@ -95,10 +89,4 @@ def make_welcomes
     user.thankyous.create!(:content => content, :headline => headline, :welcomer_id => 1)
   end
 end
-
-#def make_thankyous
-#  user = User.first
-#  users = User.all(:limit => 50)
-#  users.each do user.thank!(:welcomer => users, :)
-#end
 

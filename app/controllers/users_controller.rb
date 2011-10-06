@@ -15,8 +15,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_subdomain!(request.subdomain)
- #   @user = User.find(params[:id])
+    if params[:id]
+      @user = User.find(params[:id])
+    else
+      @user = User.find_by_subdomain!(request.subdomain)
+    end
     @thankyous = @user.thankyous.page(params[:page])
     @welcomes = @user.welcomes.page(params[:page])
     @title = @user.name

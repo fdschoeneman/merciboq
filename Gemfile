@@ -42,5 +42,6 @@ group :test, :development do
   gem 'guard-cucumber', '0.5.2'
   gem 'guard-spork', '0.2.1'
   gem 'guard-livereload'
+  gem 'guard-rails'
 end
 
