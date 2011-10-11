@@ -4,12 +4,16 @@
   %p
     = f.label :email
     = @user.email
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
 
     = f.hidden_field :confirmation_token
   %p
     = f.label :password
     %br/
-    = f.password_field :password
+    = f.password_field :password, :placeholder => "********"
   %p
     = f.label :password_confirmation
     %br/

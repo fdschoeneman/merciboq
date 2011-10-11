@@ -9,13 +9,17 @@ class RegistrationsController < Devise::RegistrationsController
     @title = "Edit Settings"
   end
 
-#  def create
-#    email = params[:email]
-#    @user = User.create!(:email => email,
-#      :name => temporary_name(email),
-#      :subdomain => temporary_subdomain(email))
+  def create
+    @user = User.create!(
+      :email => params[:user][:email],
+      :name => temporary_name(params[:user][:email]),
+      :subdomain => temporary_subdomain(params[:user][:email])
+    )
+      set_flash_message :notice, :inactive_signed_up
+      redirect_to root_url
+
 #    super
-#  end
+  end
 
   def show
     @user = User.find(params[:id])
