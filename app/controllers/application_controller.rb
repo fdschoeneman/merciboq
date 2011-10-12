@@ -25,24 +25,22 @@ class ApplicationController < ActionController::Base
     random_subdomain_number = SecureRandom.random_number(1000)
   end
 
-  protected
+  def subdomain_placeholder
+    modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
+    adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
+    subdomain_placeholder = "#{modifiers.rand}-#{adjectives.rand}"
+  end
 
-    def subdomain_placeholder
-      modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
-      adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
-      subdomain_placeholder = "#{modifiers.rand}-#{adjectives.rand}"
+  def check_user_status
+    unless user_subdomain == default_user_subdomain
+      redirect_to default_user_url if current_user_with_subdomain.nil?
     end
+  end
 
-    def check_user_status
-      unless user_subdomain == default_user_subdomain
-        redirect_to default_user_url if current_user_with_subdomain.nil?
-      end
+  def limit_subdomain_access
+    if request.subdomain.present?
+      redirect_to root_url(:subdomain => false)
     end
-
-    def limit_subdomain_access
-      if request.subdomain.present?
-        redirect_to root_url(:subdomain => false)
-      end
-    end
+  end
 end
 

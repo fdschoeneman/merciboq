@@ -29,7 +29,7 @@ Feature: Sign up
       Then I should see "Confirm your account"
       And I should see a link to "Login"
       And the "Name" field should contain "Sarah Silverman"
-      And the "Password" field should contain ********
+#      And the "Password" field should contain ********
       And I should see a link to "Sign up"
       And I fill in the following:
         | Password              | password |
