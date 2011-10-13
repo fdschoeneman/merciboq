@@ -6,13 +6,14 @@ Feature: Thankyou by email
   Background: UNREGISTERED user thanks another UNREGISTERED user
     Given no emails have been sent
     When a thankyou email is sent from one unregistered user to another
-    And the welcomer should have a confirmation email
+    Then the welcomer should have a confirmation email
+
 #    And the welcomer should have a thankyou email
 
   Scenario: Unregistered THANKER signs up after a thankyou
     Then the thanker should have a confirmation email
     When the thanker opens her email
-    Then she should see "Confirmation instructions" in the subject
+    Then she should see confirmation instructions in the subject
     And she should see "confirm" in the email body
     When she follows the confirmation in the email body
     Then she should see "Merciboq | Confirm your account" in the title
@@ -23,7 +24,7 @@ Feature: Thankyou by email
   Scenario: Unregistered WELCOMER signs up after a thankyou
     Then the welcomer should have a confirmation email
     When the welcomer opens her email
-    Then she should see "Confirmation instructions" in the subject
+    Then she should see confirmation instructions in the subject
 
   Scenario: Registered user thanks unregistered
 

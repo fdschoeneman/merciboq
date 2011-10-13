@@ -1,3 +1,5 @@
+confirmation_instructions = "Welcome to Merciboq! -- Please confirm your account for us."
+
 When /^a thankyou email is sent from one unregistered user to another$/ do
  from_email = "customer@test.com"
   from_name = "Custardy Customer"
@@ -27,9 +29,14 @@ Then /^the welcomer opens her email$/ do
   open_email("hairstylist@test.com")
 end
 
-Then /^she should see "Confirmation instructions" in the subject$/ do
-  current_email.should have_subject("Confirmation instructions")
+Then /^I should see confirmation instructions in the subject$/ do
+  current_email.should have_subject("Welcome to Merciboq! -- Please confirm your account for us.")
 end
+
+Then /^she should see confirmation instructions in the subject$/ do
+  current_email.should have_subject("Welcome to Merciboq! -- Please confirm your account for us.")
+end
+
 
 Then /^she should see "([^"]*)" in the email body$/ do |arg1|
   current_email.default_part_body.to_s.should include(arg1)

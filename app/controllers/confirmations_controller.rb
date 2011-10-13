@@ -14,7 +14,10 @@ class ConfirmationsController < Devise::ConfirmationsController
     if @user.update_attributes(params[:user]) and @user.password_match?
       @user = User.confirm_by_token(@user.confirmation_token)
       set_flash_message :notice, :confirmed
-      sign_in_and_redirect("user", @user)
+      sign_in("user", @user)
+      redirect_to edit_user_registration_path
+#      sign_in_and_redirect(edit_user_registration_path, @user)
+#      sign_in("user", edit_user_registration_path)
 #      super
     else
       render :action => "show"
