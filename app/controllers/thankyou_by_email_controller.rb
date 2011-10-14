@@ -11,14 +11,6 @@ class ThankyouByEmailController < ApplicationController
 #    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
 
     from_email          = message.from[0]
-#    from_split          = from.split('@')
-#    from_local          = from_split[0]
-#    local_spaced        = from_local.split('.').join(' ')
-#    from_name           = local_spaced.titleize
-##    temporary_name      = temporary_name("fred.schoeneman@gmail.com")
-#    local_dashed        = from_local.split('.').join('-')
-##    from_subdomain      = "#{local_dashed}-#{random_subdomain_number}"
-
     from_user = User.find_or_create_by_email(
                 :email => from_email,
                 :name => temporary_name(from_email),

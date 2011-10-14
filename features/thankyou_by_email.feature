@@ -8,11 +8,21 @@ Feature: Thankyou by email
     When a thankyou email is sent from one unregistered user to another
     Then the welcomer should have a confirmation email
 
-#    And the welcomer should have a thankyou email
-
-  Scenario: Unregistered THANKER signs up after a thankyou
+  Scenario: Unregistered THANKER signs up after sending a thankyou
     Then the thanker should have a confirmation email
     When the thanker opens her email
+    Then she should see confirmation instructions in the subject
+    And she should see "confirm" in the email body
+    When she follows the confirmation in the email body
+    Then she should see "Merciboq | Confirm your account" in the title
+    And when she fills in her password and confirmation
+    And she presses "Accept terms of use and confirm"
+    Then she should see "Your account was successfully confirmed"
+
+@wip
+  Scenario: Unregistered WELCOMER signs up after receiving a thankyou
+    Then the welcomer should have a confirmation email
+    When the welcomer opens her email
     Then she should see confirmation instructions in the subject
     And she should see "confirm" in the email body
     When she follows the confirmation in the email body

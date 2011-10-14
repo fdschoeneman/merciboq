@@ -4,15 +4,15 @@
       %h1
         = gravatar_for @user
         = @user.name
-      - if @user.thankyous.empty?
+      - if @user.welcomes.empty?
         Nobody has thanked #{@user.name} yet.  Would you like to be the first?
         = render 'shared/thankyou_steps'
         = render 'shared/thankyou_tips'
       -else
         %table.thankyous{:summary => "User thankyous"}
-          = render @thankyous
-          = paginate @thankyous
-        = paginate @thankyous
+          = render @welcomes
+          = paginate @welcomes
+        = paginate @welcomes
     %td.sidebar.round
       %strong Name
       = @user.name
