@@ -10,7 +10,7 @@
     %p
       %strong
         "#{@thankyou.headline}" --
-      = @thankyou.content}
+      = @thankyou.content
     %p You can see this and all your Merciboq's by visiting your very own subdomain, which we created just for you:
     %p= link_to "#{@thankyou.welcomer.subdomain}.merciboq.com", root_url(:subdomain => @thankyou.welcomer.subdomain)
 
