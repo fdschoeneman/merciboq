@@ -40,6 +40,20 @@ Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and p
   And %{I press "Login"}
 end
 
+Given /^a confirmed user "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
+  user = User.create!(:name => "#{name}",
+                  :email => "#{email}",
+                  :password => "#{password}",
+                  :password_confirmation => "#{password}")
+  user.confirm!
+  Given %{I am not logged in}
+  When %{I go to the home page}
+  And %{I follow the "Login" link}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{I press "Login"}
+end
+
 Then /^I should see "([^"]*)" in the body$/ do |user_name|
   user_name = Regexp.new(user_name)
   page.should have_selector('a', :text => user_name)

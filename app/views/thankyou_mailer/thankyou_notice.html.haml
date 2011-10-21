@@ -3,8 +3,12 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %h1
-      = @thanker
     %p
-      'does this work?
+      Hi #{@thankyou.welcomer.name},
+    %p
+      Here's what #{@thankyou.thanker.name} wrote:
+    %p
+      .em
+        = @thankyou.headline
+      = @thankyou.content
 
