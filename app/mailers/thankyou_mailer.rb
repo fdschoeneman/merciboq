@@ -7,22 +7,5 @@ class ThankyouMailer < ActionMailer::Base
 #    :thanker => thankyou.thanker.name
 
   end
-
-  def thanker(thankyou)
-    @thanker = thankyou.thanker.name
-  end
-
-  def welcomer(thankyou)
-    @welcomer = thankyou.welcomer.name
-  end
-
-  def headline(thankyou)
-    @headline = thankyou.headline
-  end
-
-  def content(thankyou)
-    @content = thankyo.content
-  end
-
 end
 

@@ -8,6 +8,8 @@
     %p
       Here's what #{@thankyou.thanker.name} wrote:
     %p
-      .em "#{@thankyou.headline}" --
-      = @thankyou.content
+      %strong
+        "#{@thankyou.headline}" -- @thankyou.content
+    %p You can see this and all your Merciboq's by visiting your very own subdomain, which we created just for you:
+    %p= link_to @thankyou.welcomer.subdomain, root_url(:subdomain => @thankyou.welcomer.subdomain)
 
