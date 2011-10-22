@@ -15,6 +15,7 @@ Merciboq::Application.routes.draw do
 
   resources :users, :only => [:show, :index] do
     resources :subdomains, :shallow => true
+    resources :thankyous
   end
 
 #  match '/' => 'users#show', :constraints => { :subdomain => /.+/ }
