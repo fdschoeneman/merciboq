@@ -1,2 +1,7 @@
-blah
+= simple_form_for(@thankyou, :url => thankyou_edit_url(@thankyou), :html => { :method => :put }) do |f|
+  .field
+    = f.label :content
+    = f.text_area :content
+  .actions
+    = f.submit "Update"
 

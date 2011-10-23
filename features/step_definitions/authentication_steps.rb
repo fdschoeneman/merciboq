@@ -26,6 +26,20 @@ Then /^I should be signed in as "([^"]*)"$/ do |arg1|
   page.should have_selector 'a', :text => arg1
 end
 
+Given /^"([^"]*)" is confirmed and logged in with an email "([^"]*)" and a password "([^"]*)"$/ do |name, email, password|
+  user = User.create!(:name => "#{name}",
+                  :email => "#{email}",
+                  :password => "#{password}",
+                  :password_confirmation => "#{password}")
+  user.confirm!
+  Given %{I am not logged in}
+  When %{I go to the home page}
+  And %{I follow the "Login" link}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{I press "Login"}
+end
+
 Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
   user = User.create!(:name => "#{name}",
                   :email => "#{email}",

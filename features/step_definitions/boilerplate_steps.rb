@@ -8,6 +8,19 @@ Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   end
 end
 
+Given /^she is on (.+)$/ do |page_name|
+  visit path_to(page_name)
+end
+
+When /^she follows "([^"]*)"$/ do |link|
+  click_link(link)
+end
+
+When /^she fills in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
+
+
 Then /^I should not see a link to "([^"]*)"$/ do |arg1|
   page.should have_no_selector 'a', :text => arg1
 end

@@ -17,8 +17,14 @@ class ThankyousController < UsersController
   end
 
   def edit
-    @thankyou = Thankyou.new
-    @title = "Edit your Thankyou"
+    @thankyou = Thankyou.find(params[:format])
+    @title = "Edit thankyou"
+
+    return unless request.put? or request.post?
+
+    if @thankyou.update_attributes(params[:thankyou])
+     redirect_to root_url, :flash => { :success => "Thankyou updated." }
+    end
   end
 
   def show_thankyous

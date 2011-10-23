@@ -31,6 +31,7 @@ Merciboq::Application.routes.draw do
 
   match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
   match 'attachments/:id', :to => 'attachments#show', :as => :attachment
+  match 'thankyou/edit/:id',  :to => 'thankyous#edit'
 
   match '/contact',       :to => 'pages#contact'
   match '/about',         :to => 'pages#about'
@@ -41,7 +42,7 @@ Merciboq::Application.routes.draw do
 #  match '/thankyous',     :to => 'thankyous#show_thankyous'
 
   match '/thankyou',      :to => 'thankyous#show_thankyous'
-  match '/thankyou/edit', :to => 'thankyous#edit_thankyous'
+  match '/thankyou/edit', :to => 'thankyous#edit'
   match '/welcome',       :to => 'welcomes#show_welcomes'
 
   root :to => 'pages#home'

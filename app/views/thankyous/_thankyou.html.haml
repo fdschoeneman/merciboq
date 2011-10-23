@@ -10,4 +10,5 @@
       Posted #{time_ago_in_words(thankyou.created_at)} ago.
       - thankyou.attachments.each do |attachment|
         = link_to(attachment.filename, attachment, :target => '_blank')
+      = link_to "edit", thankyou_edit_url(thankyou)
 
