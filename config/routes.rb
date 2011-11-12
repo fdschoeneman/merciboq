@@ -42,6 +42,7 @@ Merciboq::Application.routes.draw do
 #  match '/thankyous',     :to => 'thankyous#show_thankyous'
 
   match '/thankyou',      :to => 'thankyous#show_thankyous'
+  match '/thankyou/delete', :to => 'thankyous#delete'
   match '/thankyou/edit', :to => 'thankyous#edit'
   match '/welcome',       :to => 'welcomes#show_welcomes'
 

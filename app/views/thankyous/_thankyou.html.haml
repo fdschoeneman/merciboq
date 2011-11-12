@@ -10,5 +10,13 @@
       Posted #{time_ago_in_words(thankyou.created_at)} ago.
       - thankyou.attachments.each do |attachment|
         = link_to(attachment.filename, attachment, :target => '_blank')
-      = link_to "edit", thankyou_edit_url(thankyou)
+      - if @user = thankyou.thanker
+        |
+        - if url = thankyou_edit_url
+          = link_to "delete", thankyou_delete_url(thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete
+        - else
+          |
+          = link_to "edit", thankyou_edit_url(thankyou)
+          |
+          = link_to "delete", thankyou_delete_url(thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete
 

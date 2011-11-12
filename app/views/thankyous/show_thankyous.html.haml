@@ -13,7 +13,6 @@
           #{@user.thankyou_phrase}
         %table.thankyous{:summary => "User thankyous"}
           = render @thankyous
-          = paginate @thankyous
         = paginate @thankyous
     %td.sidebar.round
       %strong Name
@@ -24,7 +23,7 @@
       %br/
       %strong Subdomain
       %br/
-      = link_to "#{@user.subdomain}.merciboq.com"
+      = link_to "#{@user.subdomain}.merciboq.com", user_path(@user)
       %br/
       %strong Welcomes
       = @user.welcomes.count

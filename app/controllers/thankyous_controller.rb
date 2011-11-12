@@ -23,8 +23,14 @@ class ThankyousController < UsersController
     return unless request.put? or request.post?
 
     if @thankyou.update_attributes(params[:thankyou])
-     redirect_to root_url, :flash => { :success => "Thankyou updated." }
+     redirect_to thankyou_url, :flash => { :success => "Thankyou updated." }
     end
+  end
+
+  def delete
+    @thankyou = Thankyou.find(params[:format])
+    @thankyou.destroy
+    redirect_to thankyou_path, :flash => { :success => "Thankyou destroyed." }
   end
 
   def show_thankyous

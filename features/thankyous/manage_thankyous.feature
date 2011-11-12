@@ -11,6 +11,10 @@ Feature: Edit a Thankyou
     Then she should see "Annette Tracy thanked Chuckybottles"
     And she follows "Thankyous"
     Then she should see "Chuckybottles --"
+#    And she should see ""
+
+  Scenario: Show thankyou
+#    When she
 
   Scenario: Edit thankyou
     When she follows "edit"
@@ -20,18 +24,8 @@ Feature: Edit a Thankyou
     Then she should see "Merciboq | Thankyous"
     And she should see "blah blah"
 
-
-#    When I go to "thankyous"
-
- #   And "annette.tracy@test.com" is logged in
-
-
-#  Scenario: I change my name
-#    When I follow "Settings"
-#    And I fill in the following:
-#      | Name              | baz     |
-#      | Current password  | please  |
-#    And I press "Update"
-#    Then I go to the homepage
-#    And I should see "Merciboq | baz" in the title
+  Scenario: Delete thankyou
+    When she follows "delete"
+    Then she should see "Merciboq | Thankyous"
+    And she should not see "cucumber test"
 

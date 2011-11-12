@@ -8,8 +8,32 @@ body {
 }
 
 header {
-//  width: 710px;
-//  padding-top: 20px;
+
+  .logo {
+    font-family: 'Yellowtail', cursive;
+    font-size: 500%;
+    color: red;
+    padding-top: 30px;
+
+    a {
+      color: red;
+      padding: 20px;
+      opacity: .5;
+        -moz-transition: height 1s ease-out, opacity 2s ease;
+        -webkit-transition: height 2s ease-out, opacity 2s ease;
+        -o-transition: height 1s ease-out, opacity 1s ease;
+        transition: height 1s ease-out, opacity 1s ease;
+
+      &:hover {
+        text-decoration: none;
+        opacity: 1;
+      }
+
+      &:visited {
+     //   color: red;
+      }
+    }
+  }
 
   img {
     padding: 1em;
@@ -21,13 +45,6 @@ header {
     float: right;
     display: inline-block;
     align: right;
-  }
-
-  .logo {
-    font-family: 'Yellowtail', cursive;
-    font-size: 500%;
-//    color: red;
-    padding-top: 40px;
   }
 }
 
@@ -118,7 +135,7 @@ td {
 
   &.main {
     width: 65%;
-    padding: 1em;
+    padding-right: 1em;
   }
 
   &.sidebar {
@@ -201,7 +218,7 @@ div.user_info {
   }
 }
 
-form.new_thankyou {
+form.thankyou {
   margin-bottom: 2em;
 
   textarea {
