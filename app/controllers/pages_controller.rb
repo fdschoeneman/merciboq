@@ -7,7 +7,7 @@ class PagesController < ApplicationController
       @title = "Home"
     end
     @users = User.order("name").page(params[:page]).per(5)
-    @recent_thankyous = Thankyou.order("created_at").page(params[:page]).per(5)
+    @recent_thankyous = Thankyou.order("created_at").page(params[:page])
   end
 
   def contact
