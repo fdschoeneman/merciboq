@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030906) do
+ActiveRecord::Schema.define(:version => 20110804030907) do
 
   create_table "attachments", :force => true do |t|
     t.integer "thankyou_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110804030906) do
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"
     t.integer  "welcomer_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "headline"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20110804030906) do
     t.string   "subdomain"
     t.string   "welcome_phrase",                        :default => "These people dig me:"
     t.string   "thankyou_phrase",                       :default => "I give much props to these people:"
+    t.boolean  "admin",                                 :default => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
