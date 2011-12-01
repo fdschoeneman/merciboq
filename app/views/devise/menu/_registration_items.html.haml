@@ -1,7 +1,7 @@
 - if user_signed_in?
   %li
-    = link_to_unless_current('Settings', edit_user_registration_path)
+    = link_to_unless_current('Settings', edit_user_registration_url(:host => request.domain))
 - else
   %li
-    = link_to_unless_current('Sign up', signup_path)
+    = link_to_unless_current('Sign up', signup_url(:host => request.domain))
 

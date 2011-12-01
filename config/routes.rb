@@ -1,7 +1,5 @@
 Merciboq::Application.routes.draw do
 
-#  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
   devise_for :users, :controllers => {
     :users => "users",
     :registrations => "registrations",
@@ -18,7 +16,6 @@ Merciboq::Application.routes.draw do
     resources :thankyous
   end
 
-#  match '/' => 'users#show', :constraints => { :subdomain => /.+/ }
   constraints(Subdomain) do
     match '/' => 'users#show'
   end
