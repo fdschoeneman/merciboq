@@ -10,7 +10,7 @@
       -else
         %li= link_to_unless_current "Home", root_path
         |
-        %li= link_to_unless_current "About", about_path(:subdomain => false)
+        %li= link_to_unless_current "About", about_url(:host => request.domain))
         |
         %li= link_to_unless_current "Help", help_path
       |
