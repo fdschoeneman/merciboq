@@ -1,7 +1,7 @@
 - if user_signed_in?
   %li
-    = link_to("Not #{current_user.name}? Logout", destroy_user_session_path)
+    = link_to("Not #{current_user.name}? Logout", destroy_user_session_url(:host => request.domain))
 - else
   %li
-    = link_to_unless_current('Login', login_path)
+    = link_to_unless_current('Login', login_url(:host => request.domain))
 

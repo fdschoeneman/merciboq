@@ -27,7 +27,7 @@ Given /^a thankyou email from "([^"]*)" to "([^"]*)"$/ do |arg1, arg2|
 end
 
 Then /^the thanker should have a confirmation email$/ do
-  And %{"customer@test.com" should have 1 email}
+  step %{"customer@test.com" should have 1 email}
 end
 
 Then /^(?:I|they|"([^"]*?)") should not receive an email with subject "([^"]*?)"$/ do |address, subject|
@@ -35,11 +35,11 @@ Then /^(?:I|they|"([^"]*?)") should not receive an email with subject "([^"]*?)"
 end
 
 Then /^the welcomer should have a confirmation email$/ do
-  And %{"hairstylist@test.com" should have 2 emails}
+  step %{"hairstylist@test.com" should have 2 emails}
 end
 
 Then /^the welcomer should have a thankyou email$/ do
-  And %{"hairstylist@test.com" should have 1 email}
+  step %{"hairstylist@test.com" should have 1 email}
 end
 
 Then /^the thanker opens her email$/ do
@@ -58,7 +58,6 @@ Then /^she should see confirmation instructions in the subject$/ do
   current_email.should have_subject("Welcome to Merciboq! -- Please confirm your account for us.")
 end
 
-
 Then /^she should see "([^"]*)" in the email body$/ do |arg1|
   current_email.default_part_body.to_s.should include(arg1)
 end
@@ -68,7 +67,7 @@ When /^she follows the confirmation in the email body$/ do
 end
 
 Then /^she should see "([^"]*)" in the title$/ do |arg1|
-  %{I should see "Merciboq | #{arg1}" in the title}
+  step %{I should see "Merciboq | #{arg1}" in the title}
 end
 
 Then /^when she fills in her password and confirmation$/ do

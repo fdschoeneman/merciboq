@@ -2,8 +2,16 @@ When /^(?:|I )click the "Sign up" link$/ do
   click_link "Sign up"
 end
 
+#When /^(?:|I )follow the "Sign up" link$/ do
+#  click_link "Sign up"
+#end
+
 When /^(?:|I )follow the "([^"]*)" link$/ do |link|
   click_link(link)
+end
+
+When /^(?:|I )follow the "([^"]*)" navigation link$/ do |link|
+  click_link "link"
 end
 
 
@@ -32,12 +40,12 @@ Given /^"([^"]*)" is confirmed and logged in with an email "([^"]*)" and a passw
                   :password => "#{password}",
                   :password_confirmation => "#{password}")
   user.confirm!
-  Given %{I am not logged in}
-  When %{I go to the home page}
-  And %{I follow the "Login" link}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I press "Login"}
+  step %{I am not logged in}
+  step %{I go to the home page}
+  step %{I follow the "Login" link}
+  step %{I fill in "Email" with "#{email}"}
+  step %{I fill in "Password" with "#{password}"}
+  step %{I press "Login"}
 end
 
 Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
@@ -46,12 +54,12 @@ Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and p
                   :password => "#{password}",
                   :password_confirmation => "#{password}")
   user.confirm!
-  Given %{I am not logged in}
-  When %{I go to the home page}
-  And %{I follow the "Login" link}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I press "Login"}
+  step %{I am not logged in}
+  step %{I go to the home page}
+  step %{I follow the "Login" link}
+  step %{I fill in "Email" with "#{email}"}
+  step %{I fill in "Password" with "#{password}"}
+  step %{I press "Login"}
 end
 
 Given /^a confirmed user "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
@@ -60,12 +68,12 @@ Given /^a confirmed user "([^"]*)" with an email "([^"]*)" and password "([^"]*)
                   :password => "#{password}",
                   :password_confirmation => "#{password}")
   user.confirm!
-  Given %{I am not logged in}
-  When %{I go to the home page}
-  And %{I follow the "Login" link}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I press "Login"}
+  step %{I am not logged in}
+  step %{I go to the home page}
+  step %{I follow the "Login" link}
+  step %{I fill in "Email" with "#{email}"}
+  step %{I fill in "Password" with "#{password}"}
+  step %{I press "Login"}
 end
 
 Then /^I should see "([^"]*)" in the body$/ do |user_name|

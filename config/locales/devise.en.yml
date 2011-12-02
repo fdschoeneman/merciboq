@@ -34,9 +34,9 @@ en:
       confirmed: 'Your account was successfully confirmed.  Please take a minute to pick your name and subdomain.'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
-      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is unconfirmed.'
+      inactive_signed_up: "You should have a confirmation email in your inbox soon.  Try your spam or junk folder if it isn't there.  Thanks for signing up!"
       updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      destroyed: 'Your account was successfully cancelled. Sorry to see you go.'
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account was successfully unlocked. You are now signed in.'

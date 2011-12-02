@@ -13,7 +13,7 @@ Feature: Thankyous to unregistered users trigger
     Then she should see confirmation instructions in the subject
     And she should see "confirm" in the email body
     When she follows the confirmation in the email body
-    Then she should see "Merciboq | Confirm your account" in the title
+    Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
     And she presses "Accept terms of use and confirm"
     Then she should see "Your account was successfully confirmed"
@@ -25,7 +25,7 @@ Feature: Thankyous to unregistered users trigger
     Then she should see confirmation instructions in the subject
     And she should see "confirm" in the email body
     When she follows the confirmation in the email body
-    Then she should see "Merciboq | Confirm your account" in the title
+    Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
     And she presses "Accept terms of use and confirm"
     Then she should see "Your account was successfully confirmed"

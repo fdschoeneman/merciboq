@@ -35,9 +35,9 @@ Feature: Sign up
       Then I should see "Your account was successfully confirmed."
       And I should see "Merciboq | Edit Settings"
 
-    @javascript
-    Scenario: Unregistered user signs up with invalid email
-      And I fill in the following:
-        | Email                 | invalidemail    |
-      Then I should see "Doesn't look quite right"
+#    @javascript
+#    Scenario: Unregistered user signs up with invalid email
+#      And I fill in the following:
+#        | Email                 | invalidemail    |
+#      Then I should see "Doesn't look quite right"
 

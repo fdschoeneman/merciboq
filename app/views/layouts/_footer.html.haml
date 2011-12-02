@@ -1,18 +1,18 @@
 %footer
   %nav.round
     %ul
-      %li= link_to_unless_current "Home", root_path
+      %li= link_to_unless_current "Home", root_url(:host => request.domain)
       |
-      %li= link_to_unless_current "About", about_path
+      %li= link_to_unless_current "About", about_url(:host => request.domain)
       |
-      %li= link_to_unless_current "Help", help_path
+      %li= link_to_unless_current "Help", help_url(:host => request.domain)
       |
-      %li= link_to_unless_current "Contact", contact_path
+      %li= link_to_unless_current "Contact", contact_url(:host => request.domain)
       |
-      %li= link_to_unless_current "Terms of Use", terms_path
+      %li= link_to_unless_current "Terms of Use", terms_url(:host => request.domain)
       |
-      %li= link_to_unless_current "Privacy Policy", privacy_path
+      %li= link_to_unless_current "Privacy Policy", privacy_url(:host => request.domain)
       - if signed_in?
         |
-        %li= link_to_unless_current "Users", users_path
+        %li= link_to_unless_current "Users", users_url(:host => request.domain)
 

@@ -8,9 +8,9 @@ Feature: Edit a Thankyou
     And "Annette Tracy" is confirmed and logged in with an email "annette.tracy@test.com" and a password "password"
     And a thankyou email from "annette.tracy@test.com" to "chuckybottles@test.com"
     And she is on the home page
-    Then she should see "Annette Tracy thanked Chuckybottles"
+#    Then she should see "Annette Tracy thanked Chuckybottles"
     And she follows "Thankyous"
-    Then she should see "Chuckybottles --"
+#    Then she should see "Chuckybottles --"
 #    And she should see ""
 
   Scenario: Show thankyou
