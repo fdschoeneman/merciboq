@@ -15,7 +15,7 @@ Feature: Sign up
       And I fill in the following:
         | Email                 | sarah.silverman@test.com     |
       And I press "Sign up"
-      Then I should see "You have signed up successfully."
+      Then I should see "Thanks for signing up"
       And I should see a link to "Login"
       And I should see a link to "Sign up"
       And "sarah.silverman@test.com" should have 1 email

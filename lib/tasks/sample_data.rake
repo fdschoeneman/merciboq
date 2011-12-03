@@ -2,7 +2,6 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
-#    make_admin_users
     sample_fred
     sample_nixon
     sample_lenny
@@ -20,6 +19,7 @@ def sample_fred
                   :password_confirmation => "password"
                   )
   user.skip_confirmation!
+  user.toggle!(:admin)
   user.save
   user.confirm!
 end
@@ -67,26 +67,32 @@ def make_users
   end
 end
 
+#def make_thankyous
+#  50.times do |n|
+#    users = User.all(:limit => 4).each do |user|
+#      welcomer = n+1
+#      headline = Faker::Company.catch_phrase
+#      content = Faker::Company.bs
+#      thankyou = user.thankyous.create!(:welcomer_id => welcomer,
+#                             :content => content,
+#                             :headline => headline)
+#      thankyou.attachments << Attachment.new(:mimetype => "text/plain", :filename => "foo.txt", :bytes => "Fred is the man!\nrecognize, bitches!")
+#    end
+#  end
+#end
+
 def make_thankyous
+  user = User.first
   50.times do |n|
-    users = User.all(:limit => 4).each do |user|
-      welcomer = n+1
-      headline = Faker::Company.catch_phrase
-      content = Faker::Company.bs
-      thankyou = user.thankyous.create!(:welcomer_id => welcomer,
-                             :content => content,
-                             :headline => headline)
-      thankyou.attachments << Attachment.new(:mimetype => "text/plain", :filename => "foo.txt", :bytes => "Fred is the man!\nrecognize, bitches!")
+    user.thankyous.create!(:content => Faker::Company.bs,
+                           :headline => Faker::Company.catch_phrase,
+                           :welcomer_id => n+1)
     end
-  end
 end
 
-
 def make_welcomes
-  headline = Faker::Company.catch_phrase
-  content = Faker::Company.bs
-  User.all(:limit => 50).each do |user|
-    user.thankyous.create!(:content => content, :headline => headline, :welcomer_id => 1)
+  User.all[2..50].each do |user|
+    user.thankyous.create!(:content => Faker::Company.bs, :headline => Faker::Company.catch_phrase, :welcomer_id => 1)
   end
 end
 

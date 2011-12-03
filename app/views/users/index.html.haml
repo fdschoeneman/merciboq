@@ -4,5 +4,5 @@
   - @users.each do |user|
     %li
       #{user.name} profile: #{link_to root_url(:subdomain => user.subdomain), root_url(:subdomain => user.subdomain)}
-  = paginate @users
+      - if current_user.admin?
 

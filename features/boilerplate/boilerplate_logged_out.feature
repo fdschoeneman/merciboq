@@ -7,14 +7,14 @@ Feature: View boilerplate pages
     Given I am not logged in
     And I am on the home page
     And I should see "Merciboq | Home" in the title
-    And I should not see a link to "Home"
-    And I should see a link to "About"
-    And I should see a link to "Help"
-    And I should see a link to "Contact"
-    And I should see a link to "Terms of Use"
-    And I should see a link to "Privacy Policy"
-    And I should see a link to "Sign up"
-    And I should see a link to "Login"
+ #   And I should not see a navigation link to "Home"
+    And I should see a navigation link to "About"
+    And I should see a navigation link to "Help"
+    And I should see a navigation link to "Contact"
+    And I should see a navigation link to "Terms of Use"
+    And I should see a navigation link to "Privacy Policy"
+    And I should see a navigation link to "Sign up"
+    And I should see a navigation link to "Login"
 
   Scenario:
     Given I follow the "About" link

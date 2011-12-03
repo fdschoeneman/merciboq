@@ -19,7 +19,7 @@
       %br/
       %strong Subdomain
       = @user.subdomain
-      //= link_to "#{@user.subdomain}.merciboq.com", @user
+      = link_to "#{@user.subdomain}.merciboq.com", @user
       %br/
       = link_to "#{@user.subdomain}.merciboq.com", root_url(:host => @user.subdomain + '.' + request.domain + request.port_string)
       %br/

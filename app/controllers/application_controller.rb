@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def subdomain_placeholder
     modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
     adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
-    subdomain_placeholder = "#{modifiers.rand}-#{adjectives.rand}"
+    subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
   end
 
   def check_user_status

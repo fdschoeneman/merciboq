@@ -15,3 +15,7 @@ Then /^I should be redirected to the (.+)$/ do |page_name|
   current_path.should == path_to(page_name)
 end
 
+Given /^I visit the "([^"]*)" page$/ do |arg1|
+  visit root_url
+end
+

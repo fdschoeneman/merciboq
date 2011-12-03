@@ -20,16 +20,22 @@ When /^she fills in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-
 Then /^I should not see a link to "([^"]*)"$/ do |arg1|
+  page.should have_no_selector 'a', :text => arg1
+end
+
+Then /^I should not see a navigation link to "([^"]*)"$/ do |arg1|
   page.should have_no_selector 'a', :text => arg1
 end
 
 Then /^I should see "([^"]*)" in the title$/ do |arg2|
   page.should have_selector('title', :text => arg2)
 end
-
 Given /^I should see a link to "([^"]*)"$/ do |arg3|
+  page.should have_selector 'a', :text => arg3
+end
+
+Given /^I should see a navigation link to "([^"]*)"$/ do |arg3|
   page.should have_selector 'a', :text => arg3
 end
 
