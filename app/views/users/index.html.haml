@@ -5,4 +5,5 @@
     %li
       #{user.name} profile: #{link_to root_url(:subdomain => user.subdomain), root_url(:subdomain => user.subdomain)}
       - if current_user.admin?
+        | #{link_to "delete", user, :method => :delete, :confirm => "sure?", :title => "Delete this #{user.name}"}
 

@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:index, :edit, :update]
+  before_filter :authenticate_user!,
+                :only => [:index, :edit, :update, :destroy]
   before_filter :current_user,       :only => [:edit, :update]
   before_filter :signed_in?,         :only => [:edit, :update]
+  before_filter :admin_user,         :only => :destroy
 
   def new
     @title = "Sign up"
@@ -35,6 +37,18 @@ class UsersController < ApplicationController
     local_part = email[0]
     @name = local_part
   end
+
+  def destroy
+    @user = User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_path
+  end
+
+  private
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 
 end
 
