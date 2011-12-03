@@ -32,12 +32,6 @@ class UsersController < ApplicationController
     @users = User.order("name").page(params[:page])
   end
 
-  def temporary_name(email)
-    email = @user.email.split('@')
-    local_part = email[0]
-    @name = local_part
-  end
-
   def destroy
     @user = User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
