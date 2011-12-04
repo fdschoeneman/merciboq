@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030907) do
+ActiveRecord::Schema.define(:version => 20110804030908) do
 
   create_table "attachments", :force => true do |t|
     t.integer "thankyou_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110804030907) do
     t.string   "welcome_phrase",                        :default => "These people dig me:"
     t.string   "thankyou_phrase",                       :default => "I give much props to these people:"
     t.boolean  "admin",                                 :default => false
+    t.string   "calendar"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -1,20 +1,12 @@
 .user_info
-  %a{:href => user_path(current_user)}
-    = gravatar_for current_user, :size => 30
-  %strong
-    Name
+  %center
+  #username
+    %center
+      = link_to current_user.subdomain + ".merciboq.com", (current_user.subdomain + ".merciboq.com")
   %br/
-  = current_user.name
+  = raw(current_user.calendar)
   %br/
-  %strong
-    URL
-    %br/
-  = link_to user_path(current_user), current_user
-  %br/
-  %strong
-    Subdomain
-  %p
-  //#{link_to current_user.subdomain, (current_user.subdomain + ".merciboq.com")}.merciboq.com
+  = current_user.welcome_phrase
   %br/
   %strong
     = current_user.welcomes.count

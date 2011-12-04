@@ -15,6 +15,7 @@
           = render @thankyous
         = paginate @thankyous
     %td.sidebar.round
+      = render 'shared/user_info'
       %strong Name
       = @user.name
       %br/
@@ -23,7 +24,7 @@
       %br/
       %strong Subdomain
       %br/
-      = link_to "#{@user.subdomain}.merciboq.com", user_path(@user)
+      = link_to @user.subdomain + ".merciboq.com", root_url(:subdomain => @user.subdomain)
       %br/
       %strong Welcomes
       = @user.welcomes.count

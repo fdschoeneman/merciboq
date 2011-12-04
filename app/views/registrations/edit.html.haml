@@ -1,19 +1,22 @@
-%h2
-  Edit your settings:
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
-  = devise_error_messages!
-  = f.input :name, :required => true
-  = f.input :subdomain, :label => "#{@user.subdomain}.merciboq.com", :hint => "(Other people can view your welcomes at this address)"
-  = f.input :email
-  = f.input :current_password, :placeholder => "********", :required => true
-  = f.input :welcome_phrase, :hint => "(Other people will see this when they look at your welcomes)"
-  = f.input :thankyou_phrase, :hint => "(Other people will see this when they look at your thankyous)"
-  = f.input :password, label: "New password", required: false, :hint => "(Leave this blank unless you want to change your old password)"
-  = f.input :password_confirmation, label: "New password confirmation", required: false, :placeholder => "Must match new password above", :hint => "(Leave this blank unless you want to change your old password)"
+.twocolumn
+  %h2
+    Edit your settings:
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
+    = devise_error_messages!
+    = f.input :name, :required => true
+    = f.input :subdomain, :label => "#{@user.subdomain}.merciboq.com", :hint => "(Other people can view your welcomes at this address)"
+    = f.input :email
+    = f.input :current_password
+    = f.input :welcome_phrase, :hint => "(Other people will see this when they look at your welcomes)"
+    = f.input :thankyou_phrase, :hint => "(Other people will see this when they look at your thankyous)"
+    = f.input :calendar, :as => :text, :hint => "Put your Google Calendar here so people can see your work schedule"
+
+    = f.input :password, label: "New password", required: false, :hint => "(Leave this blank unless you want to change your old password)"
+    = f.input :password_confirmation, label: "New password confirmation", required: false, :placeholder => "Must match new password above", :hint => "(Leave this blank unless you want to change your old password)"
+    %p
+      = f.button :submit, "Update your settings"
+  %h3 Cancel my account
   %p
-    = f.button :submit, "Update your settings"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
-= link_to "Back", :back
+    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
+  = link_to "Back", :back
 
