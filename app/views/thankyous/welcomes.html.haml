@@ -4,30 +4,27 @@
       %h1
         = gravatar_for @user
         = @user.name
-      - if @user.thankyous.empty?
-        #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
+      - if @user.welcomes.empty?
+        Nobody has thanked #{you_or_user(@user)} yet.
         = render 'shared/thankyou_steps'
         = render 'shared/thankyou_tips'
-      -else
+      - else
         %p
-          #{@user.thankyou_phrase}
+          #{@user.welcome_phrase}
         %table.thankyous{:summary => "User thankyous"}
-          = render @thankyous
-        = paginate @thankyous
+          = render 'welcome'
     %td.sidebar.round
-      = render 'shared/user_info'
       %strong Name
       = @user.name
       %br/
       %strong URL
       = link_to user_path(@user), @user
       %br/
-      %strong Subdomain
-      %br/
-      %br/
-      %strong Welcomes
-      = @user.welcomes.count
-      %br/
-      %strong Thankyous
+      %strong
+        Thankyous
       = @user.thankyous.count
+      %br/
+      %strong
+        Welcomes
+      = @user.welcomes.count
 

@@ -2,7 +2,7 @@
   %center
   #username
     %center
-      = link_to current_user.subdomain + ".merciboq.com", (current_user.subdomain + ".merciboq.com")
+      #{link_to current_user.subdomain, (current_user.subdomain)}
   %br/
   = raw(current_user.calendar)
   %br/

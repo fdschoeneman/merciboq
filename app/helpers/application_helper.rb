@@ -30,9 +30,18 @@ module ApplicationHelper
     end
   end
 
-  def logo
+  def logo_image
     image_tag("redlogo.png", :alt => "Merciboq")
   end
+
+  def logo
+    if controller == "users#show"
+      link_to @user.subdomain ".MerciboQ!", root_path
+    else
+      link_to "MerciboQ!", root_path
+    end
+  end
+
 
   def resource_name
     :user

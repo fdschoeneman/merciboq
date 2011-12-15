@@ -30,7 +30,21 @@ class ThankyousController < UsersController
   def delete
     @thankyou = Thankyou.find(params[:format])
     @thankyou.destroy
-    redirect_to thankyou_path, :flash => { :notice => "Thankyou destroyed." }
+    redirect_to thankyous_url, :flash => { :notice => "Thankyou destroyed." }
+  end
+
+  def thankyous
+    @user = current_user
+    @thankyous = @user.thankyous.page(params[:page])
+    @title = "Thankyous"
+#    @thankyou = Thankyou.new if signed_in?
+  end
+
+  def welcomes
+    @user = current_user
+    @welcomes = @user.welcomes.page(params[:page])
+    @title = "welcomes"
+#    @welcome = Welcome.new if signed_in?
   end
 
   def show_thankyous

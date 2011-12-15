@@ -1,0 +1,14 @@
+- @welcomes.each do |welcome|
+  %tr
+    %td.thankyou
+      %span.content
+        %strong= welcome.headline.titleize
+        &mdash; "#{welcome.content.capitalize}"
+        %br/
+        %span.timestamp
+        Written #{time_ago_in_words(welcome.created_at)} ago by
+        = link_to welcome.thanker.name,
+          root_url(:subdomain => welcome.thanker.subdomain)
+        |
+        #{gravatar_for welcome.thanker, :size => 15}
+
