@@ -26,8 +26,11 @@ Merciboq::Application.routes.draw do
 #  match '/' => 'pages#home', :constraints => { :subdomain => 'www' }
 #  match '/' => 'users#show', :constraints => { :subdomain => '/.+/' }
 
-  match 'thankyou_by_email/create' => 'thankyou_by_email#create', :as => :thankyou_by_email
-  match 'attachments/:id', :to => 'attachments#show', :as => :attachment
+  match 'thankyou_by_email/create' => 'thankyou_by_email#create',
+          :as => :thankyou_by_email
+  match 'attachments/:id', 
+          :to => 'attachments#show', 
+          :as => :attachment
   match 'thankyou/edit/:id',  :to => 'thankyous#edit'
 
   match '/contact',       :to => 'pages#contact'
@@ -38,10 +41,10 @@ Merciboq::Application.routes.draw do
   match '/signup',        :to => 'registrations#new'
 #  match '/thankyous',     :to => 'thankyous#show_thankyous'
 
-  match '/thankyou',      :to => 'thankyous#show_thankyous'
+  match '/thankyous',      :to => 'thankyous#show_thankyous'
   match '/thankyou/delete', :to => 'thankyous#delete'
   match '/thankyou/edit', :to => 'thankyous#edit'
-  match '/welcome',       :to => 'welcomes#show_welcomes'
+  match '/welcomes',       :to => 'welcomes#show_welcomes'
 
   root :to => 'pages#home'
 

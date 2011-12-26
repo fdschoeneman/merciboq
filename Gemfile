@@ -36,10 +36,12 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'rb-inotify'
   gem 'libnotify'
+  
+  # Guards
   gem 'guard'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
   gem 'guard-spork'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'guard-rails'
 end

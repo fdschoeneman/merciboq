@@ -2,9 +2,17 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
-  # Loading more in this block will cause your tests to run faster. However,
-  # if you change any configuration or code from libraries loaded here, you'll
-  # need to restart spork for it take effect.
+require 'cucumber/rails'
+  require 'capybara/rails'
+  require 'email_spec'
+  require 'email_spec/cucumber'
+
+  Capybara.save_and_open_page_path = 'tmp'
+  Capybara.default_selector = :css
+  Capybara.javascript_driver = :selenium
+#  Capybara.register_driver :selenium do |app|
+#    Capybara::Selenium::Driver.new(app, browser: :chrome)
+#  end
 
 end
 

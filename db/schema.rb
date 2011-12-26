@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110804030908) do
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"
     t.integer  "welcomer_id"
-    t.text     "content"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "headline"
