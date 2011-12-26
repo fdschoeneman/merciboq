@@ -112,7 +112,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    heroku (2.15.1)
+    heroku (2.17.0)
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       rubyzip
