@@ -9,6 +9,15 @@ module ApplicationHelper
     end
   end
 
+  def logo
+    base_logo = "Merciboq!"
+    if @subdomain_logo.nil?
+      base_logo
+    else
+      "#{@subdomain_logo}.merciboq.com"
+    end
+  end
+
   def you_or_user(user)
     base_pronoun = "you"
     if user == current_user
@@ -33,15 +42,6 @@ module ApplicationHelper
   def logo_image
     image_tag("redlogo.png", :alt => "Merciboq")
   end
-
-  def logo
-    if controller == "users#show"
-      link_to @user.subdomain ".MerciboQ!", root_path
-    else
-      link_to "MerciboQ!", root_path
-    end
-  end
-
 
   def resource_name
     :user

@@ -39,12 +39,11 @@ Merciboq::Application.routes.draw do
   match '/terms',               :to => 'pages#terms'
   match '/privacy',             :to => 'pages#privacy'
   match '/signup',              :to => 'registrations#new'
-#  match '/thankyous',     :to => 'thankyous#show_thankyous'
 
   match '/thankyous',           :to => 'thankyous#show_thankyous'
+  match '/welcomes',            :to => 'thankyous#show_welcomes'
   match '/thankyou/delete',     :to => 'thankyous#delete'
   match '/thankyou/edit',       :to => 'thankyous#edit'
-  match '/welcomes',            :to => 'welcomes#show_welcomes'
 
   root :to => 'pages#home'
 

@@ -10,7 +10,7 @@ body {
 header {
 
   .logo {
-    font-family: 'Yellowtail', cursive;
+    font-family: 'Yesteryear';
     font-size: 500%;
     color: red;
     padding-top: 30px;
@@ -64,7 +64,7 @@ nav {
   float: right;
   display: inline-block;
   padding: 0 0.7em;
-  padding-bottom: 10px;
+  padding: 10px;
   white-space: nowrap;
   font-weight: bold;
 
@@ -240,6 +240,23 @@ form.thankyou {
     color: red;
     padding-top: 30px;
 }
+
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+}
+
+#flash_notice {
+  background-color: #CFC;
+}
+
+#flash_alert {
+  background-color: #FCC;
+}
+
 //section {
 //  margin-top: 1em;
 //  font-size: 120%;
