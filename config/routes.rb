@@ -26,25 +26,25 @@ Merciboq::Application.routes.draw do
 #  match '/' => 'pages#home', :constraints => { :subdomain => 'www' }
 #  match '/' => 'users#show', :constraints => { :subdomain => '/.+/' }
 
-  match 'thankyou_by_email/create' => 'thankyou_by_email#create',
-          :as => :thankyou_by_email
+  match 'thankyou_by_email/create'  => 'thankyou_by_email#create',
+                                :as => :thankyou_by_email
   match 'attachments/:id', 
-          :to => 'attachments#show', 
-          :as => :attachment
-  match 'thankyou/edit/:id',  :to => 'thankyou#edit'
+                                :to => 'attachments#show', 
+                                :as => :attachment
+  match 'thankyou/edit/:id',    :to => 'thankyou#edit'
 
-  match '/contact',       :to => 'pages#contact'
-  match '/about',         :to => 'pages#about'
-  match '/help',          :to => 'pages#help'
-  match '/terms',         :to => 'pages#terms'
-  match '/privacy',       :to => 'pages#privacy'
-  match '/signup',        :to => 'registrations#new'
+  match '/contact',             :to => 'pages#contact'
+  match '/about',               :to => 'pages#about'
+  match '/help',                :to => 'pages#help'
+  match '/terms',               :to => 'pages#terms'
+  match '/privacy',             :to => 'pages#privacy'
+  match '/signup',              :to => 'registrations#new'
 #  match '/thankyous',     :to => 'thankyous#show_thankyous'
 
-  match '/thankyous',      :to => 'thankyous#show_thankyous'
-  match '/thankyou/delete', :to => 'thankyous#delete'
-  match '/thankyou/edit', :to => 'thankyous#edit'
-  match '/welcomes',       :to => 'welcomes#show_welcomes'
+  match '/thankyous',           :to => 'thankyous#show_thankyous'
+  match '/thankyou/delete',     :to => 'thankyous#delete'
+  match '/thankyou/edit',       :to => 'thankyous#edit'
+  match '/welcomes',            :to => 'welcomes#show_welcomes'
 
   root :to => 'pages#home'
 
