@@ -23,7 +23,7 @@ class ThankyousController < UsersController
     return unless request.put? or request.post?
 
     if @thankyou.update_attributes(params[:thankyou])
-     redirect_to thankyou_url, :flash => { :notice => "Thankyou updated." }
+     redirect_to thankyous_url, :flash => { :notice => "Thankyou updated." }
     end
   end
 

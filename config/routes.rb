@@ -31,7 +31,7 @@ Merciboq::Application.routes.draw do
   match 'attachments/:id', 
           :to => 'attachments#show', 
           :as => :attachment
-  match 'thankyou/edit/:id',  :to => 'thankyous#edit'
+  match 'thankyou/edit/:id',  :to => 'thankyou#edit'
 
   match '/contact',       :to => 'pages#contact'
   match '/about',         :to => 'pages#about'
