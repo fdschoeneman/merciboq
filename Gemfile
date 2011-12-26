@@ -30,7 +30,7 @@ group :test, :development do
   gem 'sqlite3'
   
   # Optional server for development
-  gem 'thin'
+  # gem 'thin'
 
   # Debugging
   gem 'hpricot'
