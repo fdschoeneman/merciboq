@@ -17,12 +17,14 @@ class ApplicationController < ActionController::Base
   def temporary_subdomain(email)
     email_split   = email.split('@')
     email_local   = email_split[0]
-    local_dashed  = email_local.split('.', '_').join('-')
-    if User.find_by_subdomain(local_dashed)
-      "#{local_dashed}-#{subdomain_placeholder}"
-    else
+    local_dashed  = email_local.split('.').join('-').dasherize
+    if User.find_by_subdomain(local_dashed).nil?
       local_dashed
+    else
+      "#{local_dashed}-#{subdomain_placeholder}"    
     end      
+    
+ #   temporary_subdomain = "#{local_dashed}-#{subdomain_placeholder}"
   end
 
   def random_subdomain_number
