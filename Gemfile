@@ -29,9 +29,6 @@ group :test, :development do
   # Dabase for development
   gem 'sqlite3'
   
-  # Optional server for development
-  # gem 'thin'
-
   # Debugging
   gem 'hpricot'
   gem 'ruby_parser'
