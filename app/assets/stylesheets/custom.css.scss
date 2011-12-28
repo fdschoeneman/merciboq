@@ -16,7 +16,7 @@ header {
     padding-top: 30px;
 
     a {
-      color: red;
+      color: green;
       padding: 20px;
       opacity: .5;
         -moz-transition: height 1s ease-out, opacity 2s ease;
@@ -75,7 +75,9 @@ nav {
     li {
       list-style-type: none;
       display: inline-block;
-      padding: 0.2em 0;
+      padding: 0 5px;
+      font-weight: bold;
+      color: grey;
 
       a {
         padding: 0 5px;

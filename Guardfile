@@ -8,6 +8,7 @@ group 'backend' do
     wait: 300 do
       watch('config/application.rb')
       watch('config/environment.rb')
+      watch('config/cucumber.yml')
       watch('Gemfile')
       watch('Gemfile.lock')
       watch('config/application.rb')
@@ -30,7 +31,7 @@ end
 
 group 'tests' do
 
-  guard 'cucumber', bundler: true, cli: "--drb", 
+  guard 'cucumber', bundler: true, cli: "--color --drb", 
     all_after_pass: false, all_on_start: false do
       watch(%r{^features/.+\.feature$})
       watch(%r{^features/support/.+$})          { 'features' }
@@ -56,7 +57,7 @@ group 'tests' do
     watch('app/controllers/application_controller.rb')  { "spec/controllers" }
 
     # Capybara request specs
-    watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
+    watch(%r{^app/views/(.+)/.*\.(erb|haml)$}) { |m| "spec/requests/#{m[1]}_spec.rb" }
   end
 end
 

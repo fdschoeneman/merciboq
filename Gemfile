@@ -6,6 +6,9 @@ gem 'rails', '3.1.3'
 # Rails dependency for linux
 gem 'therubyracer', '>= 0.9.9'
 
+# Authentication
+gem 'devise', '1.4.7'
+
 # Asset handling
 gem 'sass-rails'
 gem 'coffee-script'
@@ -14,7 +17,6 @@ gem 'uglifier'
 # Front end
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'devise', '1.4.7'
 gem 'simple_form'
 gem 'client_side_validations', '3.1.3'
 gem 'kaminari'
