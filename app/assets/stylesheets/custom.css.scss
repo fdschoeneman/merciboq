@@ -12,6 +12,7 @@ header {
   .logo {
     font-family: 'Yesteryear';
     font-size: 500%;
+    color: red;
     padding-top: 30px;
 
     a {
@@ -37,6 +38,7 @@ header {
   img {
     padding: 1em;
     background: #fff;
+//    background: #99cc00;
   }
 
   .nav {
@@ -73,9 +75,7 @@ nav {
     li {
       list-style-type: none;
       display: inline-block;
-      padding: 0 5px;
-      font-weight: bold;
-      color: grey;
+      padding: 0.2em 0;
 
       a {
         padding: 0 5px;
@@ -88,11 +88,11 @@ nav {
 
   	    &:hover {
 	        text-decoration: none;
-	        //opacity: 1;
+	        opacity: 1;
           }
 
         &:visited {
-          //color: #09c;
+          color: #09c;
         }
       }
     }
