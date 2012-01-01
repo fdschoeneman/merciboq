@@ -1,9 +1,9 @@
 body {
-//  background: #99cc00;
+//  background: white;
 }
 
 .container {
-  background: white;
+//  background: white;
   width: 710px;
 }
 
@@ -13,9 +13,11 @@ header {
     font-family: 'Yesteryear';
     font-size: 500%;
     padding-top: 30px;
+    background: white;
 
     a {
       color: red;
+      background: white;
       padding: 20px;
       opacity: .5;
         -moz-transition: height 1s ease-out, opacity 2s ease;
@@ -34,12 +36,13 @@ header {
     }
   }
 
-  img {
-    padding: 1em;
-    background: #fff;
-  }
+//  img {
+//    padding: 1em;
+//    background: #fff;
+//  }
 
   .nav {
+//    background: white;
     float: right;
     display: inline-block;
     align: right;
@@ -48,6 +51,7 @@ header {
 
 footer {
   text-align: left;
+  //background: white;
   margin-top: 10px;
   width: 710px;
   margin-left: auto;
@@ -59,6 +63,7 @@ footer {
 }
 
 nav {
+//  background: white;
   float: right;
   display: inline-block;
   padding: 0 0.7em;
@@ -69,13 +74,16 @@ nav {
   ul {
     margin: 0;
     padding: 0;
+ //   background: white;
 
     li {
       list-style-type: none;
       display: inline-block;
       padding: 0.2em 0;
+      color: grey;
 
       a {
+        background: white;
         color: #09c;
         padding: 0 5px;
         font-weight: bold;
@@ -86,6 +94,7 @@ nav {
          transition: height 1s ease-out, opacity 1s ease;
 
   	    &:hover {
+	        background: white;
 	        text-decoration: none;
 	        opacity: 1;
           }
@@ -98,14 +107,14 @@ nav {
   }
 }
 
-
+/* links */
 a {
   color: #09c;
   text-decoration: none;
 
   &:hover {
-    color: #069;
-    text-decoration: underline;
+    color: #09c;
+    text-decoration: none;
   }
 
   &:visited {
@@ -267,20 +276,4 @@ section {
   }
 }
 
-/* Links */
-
-// Header
-
-//header {
-//  padding-top: 20px;
-//  padding-bottom: 20px;
-
-//  img {
-//    padding: 1em;
-//   // background: #fff;
-//      background: #000;
-//  }
-//}
-
-/* Navigation */
 
