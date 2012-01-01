@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030908) do
+ActiveRecord::Schema.define(:version => 20110804030909) do
+
+  create_table "associations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "attachments", :force => true do |t|
     t.integer "thankyou_id"
@@ -22,19 +27,6 @@ ActiveRecord::Schema.define(:version => 20110804030908) do
   end
 
   add_index "attachments", ["thankyou_id", "filename", "id"], :name => "index_attachments_on_thankyou_id_and_filename_and_id"
-
-  create_table "rails_admin_histories", :force => true do |t|
-    t.string   "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"

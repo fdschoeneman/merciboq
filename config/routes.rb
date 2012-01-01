@@ -1,5 +1,7 @@
 Merciboq::Application.routes.draw do
 
+  resources :associations
+
   devise_for :users, :controllers => {
     :users => "users",
     :registrations => "registrations",

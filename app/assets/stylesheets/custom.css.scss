@@ -12,11 +12,10 @@ header {
   .logo {
     font-family: 'Yesteryear';
     font-size: 500%;
-    color: red;
     padding-top: 30px;
 
     a {
-      color: green;
+      color: red;
       padding: 20px;
       opacity: .5;
         -moz-transition: height 1s ease-out, opacity 2s ease;
@@ -38,7 +37,6 @@ header {
   img {
     padding: 1em;
     background: #fff;
-//    background: #99cc00;
   }
 
   .nav {
@@ -90,11 +88,11 @@ nav {
 
   	    &:hover {
 	        text-decoration: none;
-	        opacity: 1;
+	        //opacity: 1;
           }
 
         &:visited {
-          color: #09c;
+          //color: #09c;
         }
       }
     }

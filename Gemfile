@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Rails
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.0.rc1'
 
 # Rails dependency for linux
 gem 'therubyracer', '>= 0.9.9'
@@ -35,9 +35,7 @@ group :test, :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'heroku'
- 
-  # Debugging
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug19'
   gem "ruby-prof"
   
   # Spork
