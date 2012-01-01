@@ -12,7 +12,6 @@ header {
   .logo {
     font-family: 'Yesteryear';
     font-size: 500%;
-    color: red;
     padding-top: 30px;
 
     a {
@@ -38,7 +37,6 @@ header {
   img {
     padding: 1em;
     background: #fff;
-//    background: #99cc00;
   }
 
   .nav {
@@ -78,9 +76,10 @@ nav {
       padding: 0.2em 0;
 
       a {
+        color: #09c;
         padding: 0 5px;
         font-weight: bold;
-        opacity: .7;
+        opacity: .7;  
          -moz-transition: height 1s ease-out, opacity 2s ease;
          -webkit-transition: height 2s ease-out, opacity 2s ease;
          -o-transition: height 1s ease-out, opacity 1s ease;
