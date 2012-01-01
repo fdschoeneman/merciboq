@@ -18,7 +18,7 @@ header {
       color: red;
       background: white;
       padding: 20px;
-      opacity: .5;
+      opacity: .55;
         -moz-transition: height 1s ease-out, opacity 2s ease;
         -webkit-transition: height 2s ease-out, opacity 2s ease;
         -o-transition: height 1s ease-out, opacity 1s ease;
@@ -86,7 +86,7 @@ nav {
         color: #09c;
         padding: 0 5px;
         font-weight: bold;
-        opacity: .7;  
+        opacity: .6;  
          -moz-transition: height 1s ease-out, opacity 2s ease;
          -webkit-transition: height 2s ease-out, opacity 2s ease;
          -o-transition: height 1s ease-out, opacity 1s ease;
@@ -110,7 +110,7 @@ nav {
 a {
   color: #09c;
   text-decoration: none;
-
+    color: #09c;
   &:hover {
     color: #09c;
     text-decoration: none;
@@ -233,6 +233,7 @@ form.thankyou {
     margin-bottom: 0;
   }
 }
+
 /* Round corners */
 
 .round {
@@ -264,15 +265,5 @@ form.thankyou {
   background-color: #FCC;
 }
 
-section {
-  margin-top: 1em;
-  font-size: 120%;
-  padding: 20px;
-  background: #fff;
-
-  h1 {
-    font-size: 200%;
-  }
-}
 
 
