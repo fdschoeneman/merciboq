@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def logo
-    base_logo = "Merciboq!"
+    base_logo = "MerciboQ!"
     if @subdomain_logo.nil?
       base_logo
     else
