@@ -30,18 +30,11 @@ header {
       }
 
       &:visited {
-     //   color: red;
       }
     }
   }
 
-//  img {
-//    padding: 1em;
-//    background: #fff;
-//  }
-
   .nav {
-//    background: white;
     float: right;
     display: inline-block;
     align: right;
@@ -50,7 +43,6 @@ header {
 
 footer {
   text-align: left;
-  //background: white;
   margin-top: 10px;
   width: 710px;
   margin-left: auto;
@@ -73,19 +65,18 @@ nav {
   ul {
     margin: 0;
     padding: 0;
- //   background: white;
+    background: white;
 
     li {
       list-style-type: none;
       display: inline-block;
-      padding: 0.2em 0;
-      color: grey;
+      padding: 0 5px;
+      font-weight: bold;
 
       a {
         background: white;
         color: #09c;
-        padding: 0 5px;
-        font-weight: bold;
+        //padding: 0 5px;
         opacity: .6;  
          -moz-transition: height 1s ease-out, opacity 2s ease;
          -webkit-transition: height 2s ease-out, opacity 2s ease;
@@ -107,11 +98,13 @@ nav {
 }
 
 /* links */
+
 a {
   color: #09c;
   text-decoration: none;
-    color: #09c;
+  
   &:hover {
+    background: white;
     color: #09c;
     text-decoration: none;
   }
@@ -193,7 +186,6 @@ table.thankyous {
         &.span.timestamp {
           display: block;
           font-size: 85%;
-          color: #666;
         }
         &.span.content {
           #gravatar {
@@ -245,7 +237,6 @@ form.thankyou {
 #username {
     font-family: 'Yellowtail', cursive;
     font-size: 150%;
-    color: red;
     padding-top: 30px;
 }
 

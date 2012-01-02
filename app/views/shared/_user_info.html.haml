@@ -1,8 +1,6 @@
 .user_info
   %center
-  #username
-    %center
-      #{link_to current_user.subdomain, (current_user.subdomain)}
+    #{link_to current_user.subdomain, (current_user.subdomain)}
   %br/
   = raw(current_user.calendar)
   %br/
