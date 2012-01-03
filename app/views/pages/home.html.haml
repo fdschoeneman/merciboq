@@ -1,24 +1,9 @@
-%table.profile
-  %tr
-    %td.main
-      - @recent_thankyous.each do |thankyou|
-        %table.thankyous{:summary => "Recent thankyous"}
-          - @recent_thankyous.each do |thankyou|
-            %tr
-              %td.thankyou
-                %span.content
-                  = link_to gravatar_for thankyou.thanker, :size => 15
-                  = link_to thankyou.thanker.name, root_url(:subdomain => thankyou.thanker.subdomain)
-                  thanked
-                  = link_to thankyou.welcomer.name, root_url(:subdomain => thankyou.welcomer.subdomain)
-                  %strong
-                    #{thankyou.headline} &mdash;
-                  "#{thankyou.content}"
-                %span.timestamp
-                  Posted recently.
-    %td.sidebar.round
-      %h3
-        Have someone you'd like to thank?
-      = render 'shared/thankyou_steps'
-      = render 'shared/thankyou_tips'
+%h1
+  What is Merciboq?
+%p Merciboq is the best way to publicly show your appreciation for someone, or something.  
+%td.sidebar.round
+  %h3
+    Have someone you'd like to thank?
+  = render 'shared/thankyou_steps'
+  = render 'shared/thankyou_tips'
 
