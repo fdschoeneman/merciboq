@@ -1,10 +1,12 @@
 .sixteen.columns
-  %h3 
-    Show your appreciation 
-  %p MerciboQ! is the best way to publicly show your appreciation for someone, or something.  
-  = render 'shared/prepopulated_email'
-  %h3
-    Have someone you'd like to thank?
-  = render 'shared/thankyou_steps'
-  = render 'shared/thankyou_tips'
+  .ten.columns.alpha
+    %h3
+      Who would like to thank?
+    = render 'shared/thankyou_steps'
+    = render 'shared/prepopulated_email'
+    = render 'shared/thankyou_tips'
+  .row
+    .four.columns.omega
+      = render 'shared/mission_statement'
+
 
