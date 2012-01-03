@@ -1,10 +1,15 @@
 body {
-//  background: white;
 }
 
 .container {
-//  background: white;
   width: 710px;
+}
+
+button {
+  #large {
+    padding: 30px;
+    font-size: 200%;
+  }
 }
 
 header {
@@ -16,7 +21,6 @@ header {
     
     a {
       color: red;
-      background: white;
       padding: 20px;
       opacity: .55;
         -moz-transition: height 1s ease-out, opacity 2s ease;
@@ -74,9 +78,7 @@ nav {
       color: grey;
 
       a {
-        background: white;
         color: #09c;
-        //padding: 0 5px;
         opacity: .6;  
          -moz-transition: height 1s ease-out, opacity 2s ease;
          -webkit-transition: height 2s ease-out, opacity 2s ease;
@@ -84,7 +86,6 @@ nav {
          transition: height 1s ease-out, opacity 1s ease;
 
   	    &:hover {
-	        background: white;
 	        text-decoration: none;
 	        opacity: 1;
           }
@@ -104,7 +105,6 @@ a {
   text-decoration: none;
   
   &:hover {
-    background: white;
     color: #09c;
     text-decoration: none;
   }
