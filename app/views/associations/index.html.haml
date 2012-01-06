@@ -1,0 +1,17 @@
+%h1 Listing associations
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @associations.each do |association|
+    %tr
+      %td= link_to 'Show', association
+      %td= link_to 'Edit', edit_association_path(association)
+      %td= link_to 'Destroy', association, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Association', new_association_path

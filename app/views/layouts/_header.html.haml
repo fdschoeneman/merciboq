@@ -1,7 +1,7 @@
 %header
   .logo
-    //= logo
-    = link_to "MerciboQ!", root_path
+    = link_to "#{logo}", root_url(:host => request.domain)
+  %br
   %nav
     %ul
       - if signed_in?

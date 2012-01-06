@@ -23,7 +23,7 @@ class ThankyousController < UsersController
     return unless request.put? or request.post?
 
     if @thankyou.update_attributes(params[:thankyou])
-     redirect_to thankyou_url, :flash => { :notice => "Thankyou updated." }
+     redirect_to thankyous_url, :flash => { :notice => "Thankyou updated." }
     end
   end
 
@@ -50,14 +50,16 @@ class ThankyousController < UsersController
   def show_thankyous
     @user = current_user
     @thankyous = @user.thankyous.page(params[:page])
-    @title = "Thankyous"
     @thankyou = Thankyou.new if signed_in?
+    @title = "Thankyous"
+    @subdomain_logo = current_user.subdomain
   end
 
   def show_welcomes
     @user = current_user
-    @welcomes = @user.thankyous.page(params[:page])
+    @welcomes = @user.welcomes.page(params[:page])
     @title = "Welcomes"
+    @subdomain_logo = current_user.subdomain
   end
 end
 

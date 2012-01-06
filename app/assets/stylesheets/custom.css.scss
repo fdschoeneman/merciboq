@@ -1,24 +1,28 @@
 body {
-//  background: #99cc00;
 }
 
 .container {
-  background: white;
   width: 710px;
+}
+
+button {
+  #large {
+    padding: 30px;
+    font-size: 200%;
+  }
 }
 
 header {
 
   .logo {
-    font-family: 'Yellowtail', cursive;
+    font-family: 'Yesteryear';
     font-size: 500%;
-    color: red;
-    padding-top: 30px;
-
+    padding: 30px;
+    
     a {
       color: red;
       padding: 20px;
-      opacity: .5;
+      opacity: .55;
         -moz-transition: height 1s ease-out, opacity 2s ease;
         -webkit-transition: height 2s ease-out, opacity 2s ease;
         -o-transition: height 1s ease-out, opacity 1s ease;
@@ -30,15 +34,8 @@ header {
       }
 
       &:visited {
-     //   color: red;
       }
     }
-  }
-
-  img {
-    padding: 1em;
-    background: #fff;
-//    background: #99cc00;
   }
 
   .nav {
@@ -64,23 +61,25 @@ nav {
   float: right;
   display: inline-block;
   padding: 0 0.7em;
-  padding-bottom: 10px;
+  padding: 10px;
   white-space: nowrap;
   font-weight: bold;
 
   ul {
     margin: 0;
     padding: 0;
+    background: white;
 
     li {
       list-style-type: none;
       display: inline-block;
-      padding: 0.2em 0;
+      padding: 0 5px;
+      font-weight: bold;
+      color: grey;
 
       a {
-        padding: 0 5px;
-        font-weight: bold;
-        opacity: .7;
+        color: #09c;
+        opacity: .6;  
          -moz-transition: height 1s ease-out, opacity 2s ease;
          -webkit-transition: height 2s ease-out, opacity 2s ease;
          -o-transition: height 1s ease-out, opacity 1s ease;
@@ -99,18 +98,19 @@ nav {
   }
 }
 
+/* links */
 
 a {
   color: #09c;
   text-decoration: none;
-
+  
   &:hover {
-    color: #069;
-    text-decoration: underline;
+    color: #09c;
+    text-decoration: none;
   }
 
   &:visited {
-    color: #069;
+    color: #09c;
   }
 }
 
@@ -186,7 +186,6 @@ table.thankyous {
         &.span.timestamp {
           display: block;
           font-size: 85%;
-          color: #666;
         }
         &.span.content {
           #gravatar {
@@ -226,6 +225,7 @@ form.thankyou {
     margin-bottom: 0;
   }
 }
+
 /* Round corners */
 
 .round {
@@ -237,34 +237,24 @@ form.thankyou {
 #username {
     font-family: 'Yellowtail', cursive;
     font-size: 150%;
-    color: red;
     padding-top: 30px;
 }
-//section {
-//  margin-top: 1em;
-//  font-size: 120%;
-//  padding: 20px;
-//  background: #fff;
 
-//  h1 {
-//    font-size: 200%;
-//  }
-//}
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+}
 
-/* Links */
+#flash_notice {
+  background-color: #CFC;
+}
 
-// Header
+#flash_alert {
+  background-color: #FCC;
+}
 
-//header {
-//  padding-top: 20px;
-//  padding-bottom: 20px;
 
-//  img {
-//    padding: 1em;
-//   // background: #fff;
-//      background: #000;
-//  }
-//}
-
-/* Navigation */
 

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    params[:user][:name]      = temporary_name
+    params[:user][:name] = temporary_name
     super
   end
 
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @thankyous = @user.thankyous.page(params[:page])
     @welcomes = @user.welcomes.page(params[:page])
     @title = @user.name
+    @subdomain_logo = @user.subdomain
   end
 
   def index

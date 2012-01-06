@@ -6,6 +6,10 @@ end
 #  click_link "Sign up"
 #end
 
+Then /^"([^"]*)" should have a confirmation email$/ do |address|
+  open_email(address, with_subject: "Welcome to Merciboq! -- Please confirm your account for us")
+end
+
 When /^(?:|I )follow the "([^"]*)" link$/ do |link|
   click_link(link)
 end
