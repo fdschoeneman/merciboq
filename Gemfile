@@ -17,8 +17,7 @@ gem 'uglifier'
 # Front end
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'simple_form'
-gem 'client_side_validations', '3.1.3'
+gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
 
