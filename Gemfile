@@ -29,6 +29,7 @@ end
 group :test, :development do
   # Dabase for development
   gem 'sqlite3'
+  gem 'thin'
   
   # Debugging
   gem 'hpricot'
