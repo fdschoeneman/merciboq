@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(:version => 20110804030909) do
 
   create_table "associations", :force => true do |t|
+    t.integer  "sub_id"
+    t.integer  "dom_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -28,12 +30,25 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
 
   add_index "attachments", ["thankyou_id", "filename", "id"], :name => "index_attachments_on_thankyou_id_and_filename_and_id"
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.string   "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"
     t.integer  "welcomer_id"
-    t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "headline"
   end
 
@@ -55,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                                              :null => false
+    t.datetime "updated_at",                                                                              :null => false
     t.string   "name"
     t.string   "subdomain"
     t.string   "welcome_phrase",                        :default => "These people dig me:"

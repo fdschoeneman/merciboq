@@ -1,14 +1,16 @@
-%h2 Sign up:
+%form.form-stacked
+  %fieldset
+    %legend Sign up:
 %p The easiest way to signup is to just send a thankyou, like this:
 = render 'shared/thankyou_steps'
 %p If you'd like to play around first, just enter your email address and agree to our Terms of use:
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f|
   = devise_error_messages!
   //= f.input :name, :placeholder => "Anthony Bourdain"
-  = f.input :email, :placeholder => "anthony.bourdain@gmail.com"
+  = f.label :email
+  = f.text_field :email, :placeholder => "anthony.bourdain@gmail.com"
   //= f.input :password, validate: true, :placeholder => "Letters and numbers"
   //= f.input :password_confirmation, :validate => true, :placeholder => "Must match password"
-  %p
-    = f.button :submit, "Sign up and accept our Terms of Use"
+  = f.submit "Sign up and accept our Terms of Use"
 = render :partial => "devise/shared/links"
 
