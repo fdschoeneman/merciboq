@@ -3,6 +3,9 @@ source 'http://rubygems.org'
 # Rails
 gem 'rails', '3.2.0.rc1'
 
+# Dabase for development
+gem 'sqlite3'
+
 # Rails dependency for linux
 gem 'therubyracer', '>= 0.9.9'
 
@@ -18,6 +21,7 @@ gem 'uglifier'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-forms'
 gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
 
@@ -27,9 +31,6 @@ group :production do
 end
 
 group :test, :development do
-  # Dabase for development
-  gem 'sqlite3'
-  gem 'thin'
   
   # Debugging
   gem 'hpricot'
