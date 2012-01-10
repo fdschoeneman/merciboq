@@ -2,13 +2,12 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
-    #Rake::Task['db:migrate'].invoke
     sample_fred
-    sample_nixon
-    sample_lenny
+#    sample_nixon
+#    sample_lenny
     make_users
-    make_thankyous
-    make_welcomes
+#    make_thankyous
+#    make_welcomes
   end
 end
 
@@ -93,8 +92,8 @@ end
 
 def make_welcomes
   User.all[2..50].each do |user|
-    user.thankyous.create!( :content => Faker::Company.bs, 
-                            :headline => Faker::Company.catch_phrase, 
+    user.thankyous.create!( :content => Faker::Company.bs,
+                            :headline => Faker::Company.catch_phrase,
                             :welcomer_id => 1)
   end
 end

@@ -5,20 +5,13 @@ body {
   width: 710px;
 }
 
-//button {
-//  #large {
-//    padding: 30px;
-//    font-size: 200%;
-//  }
-//}
-
 header {
 
   .logo {
     font-family: 'Yesteryear';
     font-size: 500%;
     padding: 30px;
-    
+
     a {
       color: red;
       padding: 20px;
@@ -79,7 +72,7 @@ nav {
 
       a {
         color: #09c;
-        opacity: .6;  
+        opacity: .6;
          -moz-transition: height 1s ease-out, opacity 2s ease;
          -webkit-transition: height 2s ease-out, opacity 2s ease;
          -o-transition: height 1s ease-out, opacity 1s ease;
@@ -103,7 +96,7 @@ nav {
 a {
   color: #09c;
   text-decoration: none;
-  
+
   &:hover {
     color: #09c;
     text-decoration: none;
@@ -166,7 +159,7 @@ h1.thankyou {
   margin-bottom: 0.3em;
 }
 
-// Thankyous
+ Thankyous
 
 table.thankyous {
   margin-top: 1em;
@@ -234,12 +227,6 @@ form.thankyou {
   border-radius:         10px;
 }
 
-#username {
-    font-family: 'Yellowtail', cursive;
-    font-size: 150%;
-    padding-top: 30px;
-}
-
 #flash_notice, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
@@ -255,6 +242,4 @@ form.thankyou {
 #flash_alert {
   background-color: #FCC;
 }
-
-
 

@@ -13,9 +13,12 @@ gem 'therubyracer', '>= 0.9.9'
 gem 'devise', '1.4.7'
 
 # Asset handling
-gem 'sass-rails'
-gem 'coffee-script'
-gem 'uglifier'
+
+group :assets do
+  gem 'sass-rails', git: 'https://github.com/rails/sass-rails.git', branch: '3-2-stable'
+  gem 'coffee-script'
+  gem 'uglifier'
+end
 
 # Front end
 gem 'haml-rails'
