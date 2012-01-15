@@ -1,0 +1,32 @@
+%form
+  %fieldset
+    %legend 
+      Confirm your account and choose a password:
+    = form_for(resource, as: resource_name, :url => confirm_user_path) do |f|
+      = devise_error_messages!
+      %legend 
+        = @user.email
+        = f.hidden_field :confirmation_token
+      %p  
+      .field
+        = f.label :email
+        = f.text_field :email
+      .field
+        = f.label :name
+        = f.text_field :name
+      .field
+        = f.label :subdomain
+        = f.text_field :subdomain
+      .field
+        = f.label :password
+        = f.password_field :password
+      %p
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation
+      %p.clearfix
+        = f.submit 'Accept terms of use and confirm'
+      = link_to 'Home', root_url
+      %br/
+      = render :partial => 'devise/shared/links'
+

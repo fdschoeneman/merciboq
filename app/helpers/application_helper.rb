@@ -17,6 +17,10 @@ module ApplicationHelper
       "#{@subdomain_logo}.merciboq.com"
     end
   end
+  
+  def email_instructions
+    email_instructions = "Replace_this_email_with_that_of_the_person_you_wish_to_appreciate"
+  end
 
   def you_or_user(user)
     base_pronoun = "you"
@@ -58,6 +62,21 @@ module ApplicationHelper
   def welcomer
     welcomer = thankyou.welcomer_id
   end
+  
+  def twitterized_type(type)
+    case type
+      when :alert
+        "warning"
+      when :error
+        "error"
+      when :notice
+        "info"
+      when :success
+        "success"
+      else
+        type.to_s
+  end
+end
 
 end
 

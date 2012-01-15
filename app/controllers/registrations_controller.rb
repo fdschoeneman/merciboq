@@ -30,15 +30,18 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.create!(
-      :email => params[:user][:email],
-      :name => temporary_name(params[:user][:email]),
-      :subdomain => temporary_subdomain(params[:user][:email])
-    )
-      set_flash_message :notice, :inactive_signed_up
-      redirect_to root_url
-
-#    super
+#    @user = User.create!(
+#      :email => params[:user][:email],
+#      :name => temporary_name(params[:user][:email]),
+#      :subdomain => temporary_subdomain(params[:user][:email])
+#      )
+#      set_flash_message :notice, :inactive_signed_up
+#    if success?
+#      f.html { redirect_to root_url }
+#    else
+#      f.html { redirect_to signup_url}
+#    end 
+    super
   end
 
   def show

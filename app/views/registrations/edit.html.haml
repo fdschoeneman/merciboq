@@ -1,29 +1,25 @@
-.twocolumn
-  %h2
-    Edit your settings:
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
+%h3
+  Edit your settings:
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
+  %fieldset
     = devise_error_messages!
-    = f.input :name, :required => true
-    = f.input :subdomain, 
-        :label => "#{@user.subdomain}.merciboq.com", 
-        :hint => "(Other people can view your welcomes at this address)"
-    = f.input :email
-    = f.input :current_password, required: false
-    = f.input :welcome_phrase, 
+    = f.text_field :name, :required => true
+    = f.text_field :subdomain 
+    = f.text_field :email
+    = f.password_field :current_password, required: false
+    = f.text_field :welcome_phrase, 
         :hint => "(Other people will see this when they look at your welcomes)"
-    = f.input :thankyou_phrase, 
+    = f.text_field :thankyou_phrase, 
         :hint => "(Other people will see this when they look at your thankyous)"
-    = f.input :calendar, as: :text,
-        :hint => "Put your Google Calendar here so people can see it"
-    = f.input :password, 
+    = f.password_field :password, 
         label: "New password", required: false, 
         :hint => "(Leave blank unless you want to change your old password)"
-    = f.input :password_confirmation, 
+    = f.password_field :password_confirmation, 
         label: "New password confirmation", required: false, 
         :placeholder => "Must match new password above", 
         :hint => "(Leave blank unless you want to change your old password)"
-    %p
-      = f.button :submit, "Update your settings"
+  %p
+    = f.submit "Update your settings"
   %h3 Cancel my account
   %p
     Unhappy? 

@@ -1,21 +1,20 @@
 !!!
 %html
   %head
-    %title= title
-    %link{:href => "http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps|Bad+Script|Yesteryear|Marck+Script|Engagement|Dynalight|Trykker|Playball|Arizonia|Dynalight", :rel => "stylesheet", :type => "text/css"}/
+    %title
+      = title
+    = render 'layouts/google_fonts'
     = stylesheet_link_tag     :application
-    = render 'layouts/bootstrap'
     = javascript_include_tag  :application
     = csrf_meta_tags
   %body
     .container
-      = render 'layouts/header'
-      %br
-      - flash.each do |name, msg|
-        .round
-          = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-      = yield
-      = render 'layouts/footer'
-      = debug(params) if Rails.env.development?
-      = render 'layouts/googleanalytics'
+      .row
+        .span16
+          = render 'layouts/header'
+          = render 'shared/flash_messages', :locals => {:flash => flash}
+          = yield
+          = render 'layouts/footer'
+          = debug(params) if Rails.env.development?
+          = render 'layouts/googleanalytics'
 

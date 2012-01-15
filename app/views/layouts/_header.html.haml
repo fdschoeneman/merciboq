@@ -1,20 +1,18 @@
-%header
-  .logo
-    = link_to "#{logo}", root_url(:host => request.domain)
-  %br
-  %nav
-    %ul
-      - if signed_in?
-        %li= link_to_unless_current "Thankyous", thankyous_url(:host => request.domain)
+.row
+  %header
+    .logo
+      = link_to "#{logo}", root_url(:host => request.domain)
+    %nav
+      %ul
+        - if signed_in?
+          %li= link_to_unless_current "Thankyous", thankyous_url(:host => request.domain)
+          |
+          %li= link_to_unless_current "Welcomes", welcomes_url(:host => request.domain)
+        -else
+          %li= link_to_unless_current "About", about_url(:host => request.domain)
+          |
+          %li= link_to_unless_current "Help", help_url(:host => request.domain)
         |
-        %li= link_to_unless_current "Welcomes", welcomes_url(:host => request.domain)
-      -else
-        %li= link_to_unless_current "About", about_url(:host => request.domain)
+        = render 'devise/menu/registration_items'
         |
-        %li= link_to_unless_current "Help", help_url(:host => request.domain)
-      |
-      = render 'devise/menu/registration_items'
-      |
-      = render 'devise/menu/login_items'
-  %br
-
+        = render 'devise/menu/login_items'

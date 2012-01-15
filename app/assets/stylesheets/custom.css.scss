@@ -107,7 +107,7 @@ a {
   }
 }
 
-ul.users {
+ul {
   margin-top: 2em;
   margin-bottom: 1em;
 
@@ -243,3 +243,23 @@ form.thankyou {
   background-color: #FCC;
 }
 
+/* Login and Signup buttons -- override Twitter bootstrap defaults */
+
+#email {
+  text-decoration: none;
+  color: white;
+
+  a {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: white;
+  }
+}
+}

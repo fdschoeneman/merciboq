@@ -5,7 +5,9 @@ gem 'rails', '3.2.0.rc1'
 
 # Dabase for development
 gem 'sqlite3'
-
+ 
+# Server for development
+gem 'thin'
 # Rails dependency for linux
 gem 'therubyracer', '>= 0.9.9'
 

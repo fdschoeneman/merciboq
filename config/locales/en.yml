@@ -9,7 +9,7 @@ en:
           attributes:
             email:
               blank: "Can't be blank"
-              invalid: "Doesn't look quite right"
+              invalid: "Doesn't look quite like an email, does it?"
               taken: "Did you already register?  Try \"Forgot your password\" below"
   errors:
     messages:

@@ -1,11 +1,14 @@
-.sixteen.columns
-  .eleven.columns.alpha
+.row
+  .span11
     %h3
-      Who would like to thank?
+      Who would you like to thank?
     = render 'shared/thankyou_steps'
-    = render 'shared/prepopulated_email'
+    %h3
+      Tips:
     = render 'shared/thankyou_tips'
-  .five.columns.omega
+    = render 'shared/prepopulated_email'
+  .span5 
     = render 'shared/mission_statement'
+    
 
 
