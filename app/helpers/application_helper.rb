@@ -73,8 +73,8 @@ module ApplicationHelper
         "info"
       when :success
         "success"
-      else
-        type.to_s
+#      else
+#        type.to_s
   end
 end
 
