@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 # Rails
 gem 'rails', '3.2.0.rc1'
-
-# Dabase for development
-gem 'sqlite3'
  
 # Server for development
 gem 'thin'
@@ -31,11 +28,16 @@ gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
 
 group :production do
+
   # Postgres for Heroku
   gem 'pg'
 end
 
 group :test, :development do
+
+  # Dabase for development
+  gem 'sqlite3'
+
 
   # Debugging
   gem 'hpricot'
