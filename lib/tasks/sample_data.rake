@@ -3,7 +3,7 @@ namespace :db do
   desc "Raise an error unless the RAILS_ENV is development"
     task :development_environment_only do
       raise "Hey, development only you monkey!" unless 
-                                  RAILS_ENV == 'development'
+                                  Rails.env == 'development'
     end
     
   desc "Drop, create, migrate, and then populate the dev database"  

@@ -17,8 +17,8 @@ Feature: Create new user on thankyou
     When she follows the confirmation in the email body
     Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
-    And she presses "Accept terms of use and confirm"
-    Then she should see "Your account was successfully confirmed"
+    And she presses "Confirm that you own"
+    Then she should see "confirmed"
 
   Scenario: Unregistered WELCOMER signs up after receiving a thankyou
     Given a thankyou email is sent from one unregistered user to another
@@ -29,8 +29,8 @@ Feature: Create new user on thankyou
     When she follows the confirmation in the email body
     Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
-    And she presses "Accept terms of use and confirm"
-    Then she should see "Your account was successfully confirmed"
+    And she presses "Confirm"
+    Then she should see "confirmed"
 
   Scenario: Unregistered WELCOMER signs up after a thankyou
     Given a thankyou email is sent from one unregistered user to another

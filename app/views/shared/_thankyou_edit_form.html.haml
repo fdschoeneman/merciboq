@@ -1,4 +1,4 @@
-= simple_form_for(@thankyou, :url => thankyou_edit_url(@thankyou), :html => { :method => :put }) do |f|
+= form_for(@thankyou, :url => thankyou_edit_url(@thankyou), :html => { :method => :put }) do |f|
   .field
     = f.label :headline, :required => false
     = f.text_field :headline

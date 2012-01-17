@@ -5,7 +5,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     if object.errors.full_messages.any?
       content_tag(:div, :class => 'alert-message block-message error') do
         link_to('&times;'.html_safe, '#', :class => 'close') +
-        content_tag(:p, "<strong>Oh snap! You got an error!</strong> Fix the errors below and try again.".html_safe) +
+        content_tag(:p, "<strong>Houston, we have a problem.</strong> Please address the errors below and try again.".html_safe) +
         content_tag(:ul) do
           object.errors.full_messages.map do |message|
             content_tag(:li, message)
@@ -105,7 +105,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     @options[:class] = 'btn primary'
     
     content_tag(:div, :class => 'actions') do
-      super(name, *(args << @options)) + ' ' + link_to('Cancel', :back, :class => 'btn')
+      super(name, *(args << @options)) + ' ' + link_to('Cancel', :root, :class => 'btn')
     end
   end
   

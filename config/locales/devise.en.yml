@@ -22,8 +22,8 @@ en:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: 'You are now logged in'
+      signed_out: 'You are now logged out'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
@@ -34,7 +34,7 @@ en:
       confirmed: 'Your account was successfully confirmed.  Please take a minute to pick your name and subdomain.'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
-      inactive_signed_up: "You should have a confirmation email in your inbox soon.  Try your spam or junk folder if it isn't there.  Thanks for signing up!"
+      inactive_signed_up: "You should have a confirmation email waiting. Thanks for signing up!"
       updated: 'You updated your account successfully.'
       destroyed: 'Your account was successfully cancelled. Sorry to see you go.'
     unlocks:

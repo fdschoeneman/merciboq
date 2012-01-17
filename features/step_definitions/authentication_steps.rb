@@ -66,6 +66,15 @@ Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and p
   step %{I press "Login"}
 end
 
+Given /^a confirmed user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
+  user = User.create!(:name => "#{name}",
+                  :email => "#{email}",
+                  :password => "#{password}",
+                  :password_confirmation => "#{password}")
+  user.confirm!
+end
+
+
 Given /^a confirmed user "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
   user = User.create!(:name => "#{name}",
                   :email => "#{email}",
