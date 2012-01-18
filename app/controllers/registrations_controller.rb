@@ -30,22 +30,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.create!(
-      :email => params[:user][:email],
-      :name => temporary_name(params[:user][:email]),
-      :subdomain => temporary_subdomain(params[:user][:email])
-      )
     super
   end  
       
-    
- #     set_flash_message :notice, :inactive_signed_up
-#    super
-
-  def after_sign_up_path_for(resource)
-    '/'
-  end
-  
   def show
     @user = User.find(params[:id])
   end

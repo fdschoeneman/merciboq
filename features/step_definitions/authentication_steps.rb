@@ -53,10 +53,9 @@ Given /^"([^"]*)" is confirmed and logged in with an email "([^"]*)" and a passw
 end
 
 Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  user = User.create!(:name => "#{name}",
-                  :email => "#{email}",
-                  :password => "#{password}",
-                  :password_confirmation => "#{password}")
+  user = User.create!(  :email => "#{email}",
+                        :password => "#{password}",
+                        :password_confirmation => "#{password}")
   user.confirm!
   step %{I am not logged in}
   step %{I go to the home page}

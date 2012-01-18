@@ -6,15 +6,7 @@ Feature: View boilerplate pages
   Background:
     Given I am registered and logged in as "Chimpy Mchitlerburton" with an email "chimpy@mchitlerburton.com" and password "compassionateconservative"
     And I am on the home page
-    And I should see "Merciboq | Chimpy Mchitlerburton" in the title
-#    And I should not see a link to "Home"
-    And I should see a link to "About"
-    And I should see a link to "Help"
-    And I should see a link to "Contact"
-    And I should see a link to "Terms of Use"
-    And I should see a link to "Privacy Policy"
-    And I should see a link to "Settings"
-    And I should see a link to "Logout"
+    And I should see "Merciboq | Chimpy" in the title
 
   Scenario:
     Given I follow the "About" link

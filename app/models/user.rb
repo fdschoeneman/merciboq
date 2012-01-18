@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
                   :welcome_phrase, :thankyou_phrase,
                   :calendar
 
+  # before each user is created:
+  before_create :set_temporary_name
+  # before_create :set_temporary_subdomain
+   
   # Email validations:
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
@@ -78,11 +82,28 @@ class User < ActiveRecord::Base
     password == password_confirmation and !password.blank?
   end
 
+  def temporary_name(email)
+    email_split = email.split('@')
+    email_local = email_split[0]
+    local_spaced = email_local.split('.').join(' ')
+    temporary_name = local_spaced.titleize
+  end
+  
+  def set_temporary_name
+    email = self.email
+    email_split = email.split('@')
+    email_local = email_split[0]
+    local_spaced = email_local.split('.').join(' ')
+    self.name = local_spaced.titleize
+
+  end
+
   protected
 
     def downcase_subdomain
       self.subdomain.downcase! if attribute_present?("subdomain")
     end
-
+    
+      
 end
 
