@@ -1,8 +1,9 @@
-%table.profile
-  %tr
-    %td.main
-      %h2
-        Want to ask a question?  Email me:
-      %p Fred Schoeneman -- fred@merciboq.com
+.row
+  .span11
+    %h2
+      Want to ask a question?  Email me:
+    %p Fred Schoeneman -- 
+    = mail_to "fred@merciboq.com"
+  .span5
     = render 'shared/sidebar'
 

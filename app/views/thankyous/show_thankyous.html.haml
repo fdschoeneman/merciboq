@@ -1,33 +1,32 @@
-%table.profile{:summary => "Profile information"}
-  %tr
-    %td.main
-      %h1
-        = gravatar_for @user
-        = @user.name
-      - if @user.thankyous.empty?
-        #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
-        = render 'shared/thankyou_steps'
-        = render 'shared/thankyou_tips'
-      -else
-        %p
-          #{@user.thankyou_phrase}
-        %table.thankyous{:summary => "User thankyous"}
-          = render @thankyous
-        = paginate @thankyous
-    %td.sidebar.round
-      = render 'shared/user_info'
-      %strong Name
+.row
+  .span11
+    %h1
+      = gravatar_for @user
       = @user.name
-      %br/
-      %strong URL
-      = link_to user_path(@user), @user
-      %br/
-      %strong Subdomain
-      %br/
-      %br/
-      %strong Welcomes
-      = @user.welcomes.count
-      %br/
-      %strong Thankyous
-      = @user.thankyous.count
+    - if @user.thankyous.empty?
+      #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
+      = render 'shared/thankyou_steps'
+      = render 'shared/thankyou_tips'
+    -else
+      %p
+        #{@user.thankyou_phrase}
+      %table.thankyous{:summary => "User thankyous"}
+        = render @thankyous
+      = paginate @thankyous
+  .span5
+    = render 'shared/user_info'
+    %strong Name
+    = @user.name
+    %br/
+    %strong URL
+    = link_to user_path(@user), @user
+    %br/
+    %strong Subdomain
+    %br/
+    %br/
+    %strong Welcomes
+    = @user.welcomes.count
+    %br/
+    %strong Thankyous
+    = @user.thankyous.count
 
