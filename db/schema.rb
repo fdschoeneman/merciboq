@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20110804030909) do
 
-  create_table "associations", :force => true do |t|
-    t.integer  "sub_id"
-    t.integer  "dom_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "attachments", :force => true do |t|
     t.integer "thankyou_id"
     t.string  "filename"
@@ -29,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
   end
 
   add_index "attachments", ["thankyou_id", "filename", "id"], :name => "index_attachments_on_thankyou_id_and_filename_and_id"
+
+  create_table "bonds", :force => true do |t|
+    t.integer  "submissive_id"
+    t.string   "dominant_id"
+    t.string   "integer"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "bonds", ["dominant_id"], :name => "index_bonds_on_dominant_id"
+  add_index "bonds", ["submissive_id", "dominant_id"], :name => "index_bonds_on_submissive_id_and_dominant_id", :unique => true
+  add_index "bonds", ["submissive_id"], :name => "index_bonds_on_submissive_id"
 
   create_table "thankyous", :force => true do |t|
     t.integer  "thanker_id"
