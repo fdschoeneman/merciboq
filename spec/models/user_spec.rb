@@ -2,6 +2,24 @@ require 'spec_helper'
 
 describe User do
 
+  context "instantiation" do
+    let(:user) { User.new}
+    
+    it "should be of type class" do
+      User.should be_kind_of(Class)
+    end
+    
+    it "should not be valid" do
+      user.should_not be_valid
+    end
+  end
+      
+  context "associations" do 
+    it { should have_many(:welcomes) }
+    it { should have_many(:thankyous) }
+  end
+       
+
   before(:each) do
     @attr = {
       :name => "Example User",

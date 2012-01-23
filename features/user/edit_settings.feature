@@ -8,7 +8,6 @@ Feature: Edit settings
     And I am on the home page
     Then I should see a link to "Settings"
     And I follow the "Settings" link
-    Then I should see "Merciboq | Edit Settings" in the title
     And the "Name" field should contain "Sandra Bullock"
     And the "Email" field should contain "sandra.bullock@gmail.com"
     And the "New password" field should be blank
@@ -23,5 +22,4 @@ Feature: Edit settings
     Given I am not logged in
     And I attempt to visit the settings page
     Then I should be redirected to the login page
-    And I should see "Merciboq | Login" in the title
 
