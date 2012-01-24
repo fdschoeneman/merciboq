@@ -16,38 +16,25 @@ class User < ActiveRecord::Base
 
   # before each user is created:
   before_create :set_temporary_name
-  # before_create :set_temporary_subdomain
+  before_create :set_temporary_subdomain
    
   # Email validations:
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
                     :format => { :with => email_regex },
-                    :uniqueness => true,
-                    :on => :create
+                    :uniqueness => { :case_sensitive => false }
 
-#  validates :password,              :presence => true,
-#                                    :confirmation => true,
-#                                    :on => :create
-#  validates :password_confirmation, :presence => true,
-#                                    :on => :create
-#  validates :current_password,      :presence => true,
-#                                    :on => :update
+  validates_presence_of :subdomain
+  validates_format_of :subdomain, :with => /^[A-Za-z0-9-]+$/,
+    :message => "The subdomain can only contain alphanumeric characters
+     and dashes.", :allow_blank => true
+  validates_uniqueness_of :subdomain, :case_sensitive => false
 
-#  validates_uniqueness_of :name, :email, :case_sensitive => false
-
-#  validates_presence_of :subdomain
-#  validates_format_of :subdomain, :with => /^[A-Za-z0-9-]+$/,
-#    :message => 'The subdomain can only contain alphanumeric characters
-#     and dashes.',
-#    :allow_blank => true
-#  validates_uniqueness_of :subdomain, :case_sensitive => false
-
-#  before_validation :downcase_subdomain
-
-#  validates_exclusion_of :subdomain,
-#    :in => %w( support blog www billing help api ),
-#    :message => "The subdomain <strong>{{value}}</strong>
-#    is reserved and unavailable."
+  before_validation :downcase_subdomain
+  validates_exclusion_of :subdomain,
+    :in => %w( support blog www billing help api ),
+    :message => "The subdomain <strong>{{value}}</strong>
+    is reserved and unavailable."
 
   has_many :thankyous,          :dependent    => :destroy,
                                 :foreign_key  => "thanker_id"
@@ -94,8 +81,23 @@ class User < ActiveRecord::Base
     email_local = email_split[0]
     local_spaced = email_local.split('.').join(' ')
     self.name = local_spaced.titleize
+    # name = self.email.split('@')[0].split('.').join('').titleize
 
   end
+
+  def set_temporary_subdomain
+    email = self.email
+    email_split   = email.split('@')
+    email_local   = email_split[0]
+    local_dashed  = email_local.split('.').join('-').dasherize
+    if User.find_by_subdomain(local_dashed).nil?
+      local_dashed
+    else
+      "#{local_dashed}-#{subdomain_placeholder}"    
+    end  
+    end
+        
+
 
   protected
 

@@ -13,5 +13,5 @@ Feature: Edit User
       | Current password  | please  |
     And I press "Update"
     Then I go to the homepage
-    And I should see "Merciboq | baz" in the title
+    And I should see " | baz" in the title
 

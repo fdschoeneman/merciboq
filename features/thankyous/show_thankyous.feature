@@ -11,6 +11,6 @@ Feature: View thankyous
     Given I am on the home page
     Then I should see a link to "Thankyous"
     And I follow the "Thankyous" link
-#    Then I should see "Merciboq | People who have thanked me" in the title
+#    Then I should see "| People who have thanked me" in the title
 #    And I should see a list of people who have thanked me
 

@@ -14,18 +14,17 @@ Feature: Edit a Thankyou
 #    And she should see ""
 
   Scenario: Show thankyou
-#    When she
 
   Scenario: Edit thankyou
     When she follows "edit"
-    Then she should see "Merciboq | Edit thankyou"
+    Then she should see "| Edit thankyou"
     When she fills in "Content" with "blah blah"
     And she presses "Update"
-    Then she should see "Merciboq | Thankyous"
+    Then she should see "| Thankyous"
     And she should see "blah blah"
 
   Scenario: Delete thankyou
     When she follows "delete"
-    Then she should see "Merciboq | Thankyous"
+    Then she should see "| Thankyous"
     And she should not see "cucumber test"
 

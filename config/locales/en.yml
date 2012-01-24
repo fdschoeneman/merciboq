@@ -8,13 +8,13 @@ en:
         user:
           attributes:
             email:
-              blank: "Can't be blank"
-              invalid: "Doesn't look quite like an email, does it?"
-              taken: "Did you already register?  Try \"Forgot your password\" below"
+              blank: "can't be blank"
+              invalid: "doesn't look quite right, does it?"
+              taken: "has already been registered.  Try \"Forgot your password\" below"
   errors:
     messages:
       email: "Not an email address"
-      email_format: "Doesn't quite look like an email, does it?"
+      email_format: "doesn't quite right, does it?"
   views:
     pagination:
       previous: "&lt; Previous"

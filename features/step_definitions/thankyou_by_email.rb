@@ -1,4 +1,4 @@
-confirmation_instructions = "Welcome to Merciboq! -- Please confirm your account for us."
+confirmation_instructions = "Welcome to MerciboQ! -- Please confirm your account for us."
 
 When /^a thankyou email is sent from one unregistered user to another$/ do
  from_email = "customer@test.com"
@@ -67,7 +67,7 @@ When /^she follows the confirmation in the email body$/ do
 end
 
 Then /^she should see "([^"]*)" in the title$/ do |arg1|
-  step %{I should see "Merciboq | #{arg1}" in the title}
+  step %{I should see "| #{arg1}" in the title}
 end
 
 Then /^when she fills in her password and confirmation$/ do

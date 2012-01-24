@@ -17,8 +17,7 @@ Feature: Sign in
       And I press "Login"
       Then I should see "Invalid email or password."
       And I am on the the home page
-      And I am not signed in
-
+      
     Scenario: Registered user enters wrong password
       And a confirmed user named "Babs" with an email "user@test.com" and password "rightpassword"
       And I am confirmed
