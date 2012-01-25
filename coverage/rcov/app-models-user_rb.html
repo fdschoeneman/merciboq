@@ -25,17 +25,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-user_rb.html">app/models/user.rb</a></td>
-            <td class='right_align'><tt>110</tt></td>
-            <td class='right_align'><tt>50</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>78.18%</tt></div>
+            <td class='right_align'><tt>104</tt></td>
+            <td class='right_align'><tt>45</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>77.88%</tt></div>
       <div class="percent_graph">
         <div class="covered" style="width:78px"></div>
         <div class="uncovered" style="width:22px"></div>
       </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>52.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>48.89%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:52px"></div>
-        <div class="uncovered" style="width:48px"></div>
+        <div class="covered" style="width:49px"></div>
+        <div class="uncovered" style="width:51px"></div>
       </div></td>
           </tr>
         </tbody>
@@ -111,279 +111,261 @@
           <td><pre><a name="line21">21</a>    </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line22">22</a>   # Email validations:</pre></td>
+          <td><pre><a name="line22">22</a>   # Regexes</pre></td>
         </tr>
         <tr class="marked">
           <td><pre><a name="line23">23</a>   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line24">24</a>   validates :email, :presence =&gt; true,</pre></td>
+          <td><pre><a name="line24">24</a>   subdomain_regex = /^[A-Za-z0-9-]+$/</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line25">25</a>                     :format =&gt; { :with =&gt; email_regex },</pre></td>
+          <td><pre><a name="line25">25</a>   </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line26">26</a>                     :uniqueness =&gt; { :case_sensitive =&gt; false }</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line27">27</a> </pre></td>
+          <td><pre><a name="line26">26</a>   # validations:</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line28">28</a>   validates_presence_of :subdomain</pre></td>
+          <td><pre><a name="line27">27</a>   validates :email, </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line28">28</a>     presence: true,</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line29">29</a>     format: { with: email_regex },</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line30">30</a>     uniqueness: { case_sensitive: false }</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line31">31</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line29">29</a>   validates_format_of :subdomain, :with =&gt; /^[A-Za-z0-9-]+$/,</pre></td>
+          <td><pre><a name="line32">32</a>   validates :subdomain, </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line30">30</a>     :message =&gt; &quot;The subdomain can only contain alphanumeric characters</pre></td>
+          <td><pre><a name="line33">33</a>     presence: true, on: :update,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line31">31</a>      and dashes.&quot;, :allow_blank =&gt; true</pre></td>
+          <td><pre><a name="line34">34</a>     allow_blank: true,</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line35">35</a>     uniqueness: { </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line36">36</a>       case_sensitive: false },</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line37">37</a>     format: { with: subdomain_regex, message: &quot;The subdomain can </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line38">38</a>                   only contain numbers, letters, and dashes&quot; },</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a>     exclusion: { in: %w( support blog www billing help api ),</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line40">40</a>       message: &quot;The subdomain &lt;strong&gt;{{value}}&lt;/strong&gt; is </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line41">41</a>                     reserved and unavailable.&quot; }</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line42">42</a>     </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line32">32</a>   validates_uniqueness_of :subdomain, :case_sensitive =&gt; false</pre></td>
+          <td><pre><a name="line43">43</a>   has_many :thankyous,          :dependent    =&gt; :destroy,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line33">33</a> </pre></td>
+          <td><pre><a name="line44">44</a>                                 :foreign_key  =&gt; &quot;thanker_id&quot;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line34">34</a>   before_validation :downcase_subdomain</pre></td>
+          <td><pre><a name="line45">45</a>   has_many :welcomes,           :dependent    =&gt; :destroy,</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line46">46</a>                                 :foreign_key  =&gt; &quot;welcomer_id&quot;,</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line47">47</a>                                 :class_name   =&gt; &quot;Thankyou&quot;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line35">35</a>   validates_exclusion_of :subdomain,</pre></td>
+          <td><pre><a name="line48">48</a>   has_many :thanked,            :through      =&gt; :thankyous,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line36">36</a>     :in =&gt; %w( support blog www billing help api ),</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line37">37</a>     :message =&gt; &quot;The subdomain &lt;strong&gt;{{value}}&lt;/strong&gt;</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line38">38</a>     is reserved and unavailable.&quot;</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line39">39</a> </pre></td>
+          <td><pre><a name="line49">49</a>                                 :source       =&gt; :welcomer</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line40">40</a>   has_many :thankyous,          :dependent    =&gt; :destroy,</pre></td>
+          <td><pre><a name="line50">50</a>   has_many :welcomed,           :through      =&gt; :welcomes,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line41">41</a>                                 :foreign_key  =&gt; &quot;thanker_id&quot;</pre></td>
+          <td><pre><a name="line51">51</a>                                 :source       =&gt; :thanker</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line52">52</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line42">42</a>   has_many :welcomes,           :dependent    =&gt; :destroy,</pre></td>
+          <td><pre><a name="line53">53</a>   def thanked?(welcomer)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line54">54</a>     thankyous.find_by_welcomer_id(welcomer)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line43">43</a>                                 :foreign_key  =&gt; &quot;welcomer_id&quot;,</pre></td>
+          <td><pre><a name="line55">55</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line44">44</a>                                 :class_name   =&gt; &quot;Thankyou&quot;</pre></td>
+          <td><pre><a name="line56">56</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line45">45</a>   has_many :thanked,            :through      =&gt; :thankyous,</pre></td>
+          <td><pre><a name="line57">57</a>   def thank!(welcomer)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line58">58</a>     thankyous.create!(:welcomer_id =&gt; welcomer.id)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line46">46</a>                                 :source       =&gt; :welcomer</pre></td>
+          <td><pre><a name="line59">59</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line60">60</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line47">47</a>   has_many :welcomed,           :through      =&gt; :welcomes,</pre></td>
+          <td><pre><a name="line61">61</a>   def unthank!(welcomer)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line62">62</a>     thankyous.find_by_welcomer_id(welcomer).destroy</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line48">48</a>                                 :source       =&gt; :thanker</pre></td>
+          <td><pre><a name="line63">63</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line49">49</a> </pre></td>
+          <td><pre><a name="line64">64</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line50">50</a>   def thanked?(welcomer)</pre></td>
+          <td><pre><a name="line65">65</a>   def welcomed?(thanker)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line51">51</a>     thankyous.find_by_welcomer_id(welcomer)</pre></td>
+          <td><pre><a name="line66">66</a>     welcomes.find_by_thanker_id(thanker)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line52">52</a>   end</pre></td>
+          <td><pre><a name="line67">67</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line53">53</a> </pre></td>
+          <td><pre><a name="line68">68</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line54">54</a>   def thank!(welcomer)</pre></td>
+          <td><pre><a name="line69">69</a>   def password_match?</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line55">55</a>     thankyous.create!(:welcomer_id =&gt; welcomer.id)</pre></td>
+          <td><pre><a name="line70">70</a>     self.errors[:password] &lt;&lt; 'mismatch' if password != password_confirmation</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line71">71</a>     self.errors[:password] &lt;&lt; 'blank!' if password.blank?</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line72">72</a>     password == password_confirmation and !password.blank?</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line56">56</a>   end</pre></td>
+          <td><pre><a name="line73">73</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line57">57</a> </pre></td>
+          <td><pre><a name="line74">74</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line58">58</a>   def unthank!(welcomer)</pre></td>
+          <td><pre><a name="line75">75</a>   def temporary_name(email)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line59">59</a>     thankyous.find_by_welcomer_id(welcomer).destroy</pre></td>
+          <td><pre><a name="line76">76</a>     email_split = email.split('@')</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line77">77</a>     email_local = email_split[0]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line78">78</a>     local_spaced = email_local.split('.').join(' ')</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line79">79</a>     temporary_name = local_spaced.titleize</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line60">60</a>   end</pre></td>
+          <td><pre><a name="line80">80</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line61">61</a> </pre></td>
+          <td><pre><a name="line81">81</a>   </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line62">62</a>   def welcomed?(thanker)</pre></td>
+          <td><pre><a name="line82">82</a>   def set_temporary_name</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line63">63</a>     welcomes.find_by_thanker_id(thanker)</pre></td>
+          <td><pre><a name="line83">83</a>     email = self.email</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line84">84</a>     email_split = email.split('@')</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line85">85</a>     email_local = email_split[0]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line86">86</a>     local_spaced = email_local.split('.').join(' ')</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line87">87</a>     self.name = local_spaced.titleize</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line64">64</a>   end</pre></td>
+          <td><pre><a name="line88">88</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line65">65</a> </pre></td>
+          <td><pre><a name="line89">89</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line66">66</a>   def password_match?</pre></td>
+          <td><pre><a name="line90">90</a>   def set_temporary_subdomain</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line67">67</a>     self.errors[:password] &lt;&lt; 'mismatch' if password != password_confirmation</pre></td>
+          <td><pre><a name="line91">91</a>     email = self.email</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line68">68</a>     self.errors[:password] &lt;&lt; 'blank!' if password.blank?</pre></td>
+          <td><pre><a name="line92">92</a>     email_split   = email.split('@')</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line69">69</a>     password == password_confirmation and !password.blank?</pre></td>
+          <td><pre><a name="line93">93</a>     email_local   = email_split[0]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line94">94</a>     local_dashed  = email_local.split('.').join('-')</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line95">95</a>     if User.find_by_subdomain(local_dashed).nil?</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line96">96</a>       self.subdomain = local_dashed</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line70">70</a>   end</pre></td>
+          <td><pre><a name="line97">97</a>     else</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line98">98</a>       self.subdomain = &quot;#{local_dashed}-#{subdomain_placeholder}&quot;    </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line71">71</a> </pre></td>
+          <td><pre><a name="line99">99</a>     end  </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line100">100</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line101">101</a>         </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line72">72</a>   def temporary_name(email)</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line73">73</a>     email_split = email.split('@')</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line74">74</a>     email_local = email_split[0]</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line75">75</a>     local_spaced = email_local.split('.').join(' ')</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line76">76</a>     temporary_name = local_spaced.titleize</pre></td>
+          <td><pre><a name="line102">102</a>   protected    </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line77">77</a>   end</pre></td>
+          <td><pre><a name="line103">103</a>       </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line78">78</a>   </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line79">79</a>   def set_temporary_name</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line80">80</a>     email = self.email</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line81">81</a>     email_split = email.split('@')</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line82">82</a>     email_local = email_split[0]</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line83">83</a>     local_spaced = email_local.split('.').join(' ')</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line84">84</a>     self.name = local_spaced.titleize</pre></td>
+          <td><pre><a name="line104">104</a> end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line85">85</a>     # name = self.email.split('@')[0].split('.').join('').titleize</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line86">86</a> </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line87">87</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line88">88</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line89">89</a>   def set_temporary_subdomain</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line90">90</a>     email = self.email</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line91">91</a>     email_split   = email.split('@')</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line92">92</a>     email_local   = email_split[0]</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line93">93</a>     local_dashed  = email_local.split('.').join('-').dasherize</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line94">94</a>     if User.find_by_subdomain(local_dashed).nil?</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line95">95</a>       local_dashed</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line96">96</a>     else</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line97">97</a>       &quot;#{local_dashed}-#{subdomain_placeholder}&quot;    </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line98">98</a>     end  </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line99">99</a>     end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line100">100</a>         </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line101">101</a> </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line102">102</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line103">103</a>   protected</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line104">104</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line105">105</a>     def downcase_subdomain</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line106">106</a>       self.subdomain.downcase! if attribute_present?(&quot;subdomain&quot;)</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line107">107</a>     end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line108">108</a>     </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line109">109</a>       </pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line110">110</a> end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line111">111</a> </pre></td>
+          <td><pre><a name="line105">105</a> </pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2012-01-23 19:24:06 -0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2012-01-25 00:28:17 -0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>
