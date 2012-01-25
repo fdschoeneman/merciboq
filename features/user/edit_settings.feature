@@ -13,6 +13,7 @@ Feature: Edit settings
     And the "New password" field should be blank
     And the "New password confirmation" field should be blank
     And I fill in "Name" with "Sandra Luckbull"
+    And I fill in "Subdomain" with "sandra-luck"
     And I fill in "Current password" with "westcoastchoppers"
     And I click the "Update your settings" button
     Then I should be on the home page

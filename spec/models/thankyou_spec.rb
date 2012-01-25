@@ -6,7 +6,11 @@ describe Thankyou do
     let(:thankyou) { Thankyou.new }
     
     it "should be of type class" do 
-      Thankyou.should_not be_kind_of(Class)
+      Thankyou.should be_kind_of(Class)
+    end
+    
+    it "should not be valid" do
+      thankyou.should_not be_valid
     end
   end
 end

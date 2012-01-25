@@ -47,7 +47,7 @@ group :test, :development do
   gem 'ruby_parser'
   gem 'heroku'
   gem 'ruby-debug19'
-  gem "ruby-prof"
+  gem 'ruby-prof'
 
   # Spork
   gem 'spork', '0.9.0'
@@ -59,8 +59,6 @@ group :test, :development do
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'rb-inotify'
-  gem 'libnotify'
   gem 'launchy'
   gem 'headless'
 
@@ -91,4 +89,8 @@ end
 
 platforms :ruby do 
   gem 'rb-readline'
+  
+  # notification support
+  #  gem 'rb-inotify'
+  #  gem 'libnotify'
 end

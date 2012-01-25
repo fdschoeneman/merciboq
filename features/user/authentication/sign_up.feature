@@ -23,7 +23,6 @@ Feature: Sign up
       And I should see "confirm" in the email body
       When I follow "Confirm my account" in the email
       Then I should see "| Confirm your account" in the title
-      Then I should see "Confirm your account"
       And I fill in the following:
         | Password              | password |
         | Password confirmation | password |
