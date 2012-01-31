@@ -65,46 +65,6 @@ describe UsersController do
     end
   end
 
-#  describe "password validations" do
-
-#    it "should require a password" do
-#      User.new(@attr.merge(:password => "", :password_confirmation => "")).
-#        should_not be_valid
-#    end
-
-#    it "should require a matching password confirmation" do
-#      User.new(@attr.merge(:password_confirmation => "invalid")).
-#        should_not be_valid
-#    end
-
-#    it "should reject short passwords" do
-#      short = "a" * 5
-#      hash = @attr.merge(:password => short, :password_confirmation => short)
-#      User.new(hash).should_not be_valid
-#    end
-
-#    it "should reject long passwords" do
-#      long = "a" * 41
-#      hash = @attr.merge(:password => long, :password_confirmation => long)
-#      User.new(hash).should_not be_valid
-#    end
-#  end
-
-  describe "password encryption" do
-
-    before(:each) do
-      @user = User.create!(@new_user_attr)
-    end
-
-    it "should have an encrypted password attribute" do
-      @user.should respond_to(:encrypted_password)
-    end
-
-    it "should set the encrypted password attribute" do
-      @user.encrypted_password.should_not be_blank
-    end
-  end
-
   describe "thankyous" do
 
     before(:each) do
@@ -159,4 +119,32 @@ describe UsersController do
       @user.should be_admin
     end
   end
+
+#  describe "DELETE 'destroy'" do
+
+#    let(:user) { Factory(:user) }
+
+#    describe "as a non-signed-in user" do
+#
+#      it "should deny access" do
+#        delete :destroy, id: @user
+#        response.should redirect_to(signin_path)
+#      end
+#    end
+
+#    describe "as a regular, non-admin user" do
+#      it "shoudl protect the page" do
+#        sign_in(@user)
+#        delete :destroy, id: @user
+#        response.should redirect_to(root_path)
+#      end
+#    end
+
+#    describe "as an admin user" do
+
+#      let(:user) { Factory(:user, admin: true) }
+#      sign_in(user)
+#    end
+#  end
 end
+

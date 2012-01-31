@@ -1,7 +1,5 @@
 Merciboq::Application.routes.draw do
 
-  resources :bonds
-
   devise_for :users, :controllers => {
     :users => "users",
     :registrations => "registrations",
@@ -10,7 +8,9 @@ Merciboq::Application.routes.draw do
   } do
       match 'confirm_user', :to => 'confirmations#confirm_user'
       match '/signup',      :to => 'registrations#new'
+      match '/delete',      :to => 'registrations#destroy'
       match '/login',       :to => 'sessions#new'
+      match '/users/:id',   :to => 'users#destroy', :as => :destroy_user, :via => :delete
     end
 
   resources :users, :only => [:show, :index] do
@@ -30,8 +30,8 @@ Merciboq::Application.routes.draw do
 
   match 'thankyou_by_email/create'  => 'thankyou_by_email#create',
                                 :as => :thankyou_by_email
-  match 'attachments/:id', 
-                                :to => 'attachments#show', 
+  match 'attachments/:id',
+                                :to => 'attachments#show',
                                 :as => :attachment
   match 'thankyou/edit/:id',    :to => 'thankyou#edit'
 

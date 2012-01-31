@@ -1,37 +1,23 @@
 namespace :db do
-
-  desc "Raise an error unless the RAILS_ENV is development"
-    task :development_environment_only do
-      raise "Hey, development only you monkey!" unless 
-                                  Rails.env == 'development'
-    end
-    
-  desc "Drop, create, migrate, and then populate the dev database"  
-    task :populate => :environment do [
-      'environment',
-      'db:development_environment_only',
-      'db:drop',
-      'db:create',
-      'db:migrate'
-      ]
-      sample_fred
-      make_users
-      make_thankyous
-      make_welcomes
-    end
+  desc "Fill database with sample data" 
+  task populate: :environment do
+    Rake::Task['db:reset'].invoke
+    sample_admin
+    make_users
+    make_thankyous
+    make_welcomes
+  end
 end
 
-def sample_fred
-  user = User.new(:name => "Fred Schoeneman",
-                  :subdomain => "fred-schoeneman",
-                  :email => "fred.schoeneman@gmail.com",
-                  :password => "password",
-                  :password_confirmation => "password"
-                  )
-  user.skip_confirmation!
-  #user.toggle!(:admin)
-  user.save
-  user.confirm!
+def sample_admin
+  admin = User.create!( :name => "admin",
+                          :email => "admin@merciboq.com",
+                          :password => "password",
+                          :password_confirmation => "password"
+                         )
+  admin.skip_confirmation!
+  admin.confirm!
+  admin.toggle!(:admin)
 end
 
 def make_users
@@ -79,9 +65,10 @@ def make_thankyous
       thankyou = user.thankyous.create!(:welcomer_id => welcomer,
                              :content => content,
                              :headline => headline)
-      thankyou.attachments << Attachment.new(:mimetype => 
+      thankyou.attachments << Attachment.new(:mimetype =>
   "text/plain", :filename => "foo.txt", :bytes => "Fred is the man!
  \nrecognize, bitches!")
     end
   end
 end
+
