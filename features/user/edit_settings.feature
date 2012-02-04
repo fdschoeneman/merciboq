@@ -6,6 +6,7 @@ Feature: Edit settings
   Scenario: Logged in user edits her settings
     Given I am registered and logged in as "Sandra Bullock" with an email "sandra.bullock@gmail.com" and password "westcoastchoppers"
     And I am on the home page
+    Then show me the page
     Then I should see a link to "Settings"
     And I follow the "Settings" link
     And the "Name" field should contain "Sandra Bullock"

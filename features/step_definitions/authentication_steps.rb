@@ -2,10 +2,6 @@ When /^(?:|I )click the "Sign up" link$/ do
   click_link "Sign up"
 end
 
-#When /^(?:|I )follow the "Sign up" link$/ do
-#  click_link "Sign up"
-#end
-
 Then /^"([^"]*)" should have a confirmation email$/ do |address|
   open_email(address, with_subject: "Welcome to Merciboq! -- Please confirm your account for us")
 end
@@ -53,9 +49,10 @@ Given /^"([^"]*)" is confirmed and logged in with an email "([^"]*)" and a passw
 end
 
 Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  user = User.create!(  :email => "#{email}",
-                        :password => "#{password}",
-                        :password_confirmation => "#{password}")
+  user = User.create!(  name: name,
+                        email: email,
+                        password: password,
+                        password_confirmation: password )
   user.confirm!
   step %{I am not logged in}
   step %{I go to the home page}
