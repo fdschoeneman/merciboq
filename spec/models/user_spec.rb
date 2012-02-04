@@ -49,6 +49,33 @@ describe User do
     it { should have_many(:thankyous) }
     it { should have_many(:thanked).through(:thankyous) }
     it { should have_many(:welcomed).through(:welcomes) }
-  end       
+  end
+  
+  describe "admin attributes" do
+
+    let(:user) { Factory.create(:user) }
+
+    it { should respond_to(:admin) }
+      
+    it { should_not be_admin } 
+
+    it "should be convertible to an admin" do 
+      user.toggle!(:admin)
+      user.should be_admin
+    end
+  end
+
+  # describe "DELETE 'destroy'" do
+  #   before(:each) do 
+  #     @user = Factory(:user)
+  #   end
+
+  #   describe "as a non-signed-in user" do 
+  #     it "should deny access" do 
+  #       delete :destroy, :id => @user
+  #       response.should redirect_to(signin_path)
+  #     end
+  #   end
+  # end         
 end
 

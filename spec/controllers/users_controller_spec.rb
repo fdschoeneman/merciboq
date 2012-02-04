@@ -66,6 +66,7 @@ describe UsersController do
     end
   end
 
+<<<<<<< HEAD
   describe "password validations" do
     let(:user) { Factory.build(:user) }
     
@@ -112,6 +113,8 @@ describe UsersController do
     end
   end
 
+=======
+>>>>>>> c97abfed176553eac8c292d9b69a1149531569bb
   describe "thankyous" do
 
     before(:each) do
@@ -166,4 +169,36 @@ describe UsersController do
       @user.should be_admin
     end
   end
+<<<<<<< HEAD
 end
+=======
+
+#  describe "DELETE 'destroy'" do
+
+#    let(:user) { Factory(:user) }
+
+#    describe "as a non-signed-in user" do
+#
+#      it "should deny access" do
+#        delete :destroy, id: @user
+#        response.should redirect_to(signin_path)
+#      end
+#    end
+
+#    describe "as a regular, non-admin user" do
+#      it "shoudl protect the page" do
+#        sign_in(@user)
+#        delete :destroy, id: @user
+#        response.should redirect_to(root_path)
+#      end
+#    end
+
+#    describe "as an admin user" do
+
+#      let(:user) { Factory(:user, admin: true) }
+#      sign_in(user)
+#    end
+#  end
+end
+
+>>>>>>> c97abfed176553eac8c292d9b69a1149531569bb

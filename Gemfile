@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 # Rails
 gem 'rails', '3.2.0'
- 
+
 # Server for development
 gem 'thin', '1.3.1'
 
@@ -80,17 +80,18 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'guard-rails'
   gem 'guard-sass'
-  
+
   # Test Coverage
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
-  
+
 end
 
-platforms :ruby do 
+platforms :ruby do
   gem 'rb-readline'
-  
+
   # notification support
   #  gem 'rb-inotify'
   #  gem 'libnotify'
 end
+

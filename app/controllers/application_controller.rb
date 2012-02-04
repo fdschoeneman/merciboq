@@ -21,9 +21,9 @@ class ApplicationController < ActionController::Base
     if User.find_by_subdomain(local_dashed).nil?
       local_dashed
     else
-      "#{local_dashed}-#{subdomain_placeholder}"    
-    end      
-    
+      "#{local_dashed}-#{@subdomain_placeholder}"
+    end
+
  #   temporary_subdomain = "#{local_dashed}-#{subdomain_placeholder}"
   end
 
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   def subdomain_placeholder
     modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
     adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
-    subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
+    @subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
   end
 
   def check_user_status
@@ -48,6 +48,6 @@ class ApplicationController < ActionController::Base
       redirect_to root_url(:subdomain => false)
     end
   end
-  
+
 end
 

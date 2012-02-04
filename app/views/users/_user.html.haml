@@ -1,4 +1,8 @@
 %li
-  = gravatar_for @user,
+  = gravatar_for @user, size: 30
   = link_to user.name, user
+  - if current_user.admin?
+  | #{ link_to "delete", user_registration_path(params[:id]), 
+  							method: :delete, confirm: "You sure?",
+                            title: "Delete #{user.name}" }
 

@@ -5,6 +5,7 @@ tmp/**/*
 tmp/*
 .sass-cache/
 coverage/*
+tmp/
 doc/
 *.swp
 *~
