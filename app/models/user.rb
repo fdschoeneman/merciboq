@@ -30,12 +30,11 @@ class User < ActiveRecord::Base
   validates :subdomain, 
       presence: true, on: :update,
       allow_blank: true,
-      uniqueness: { case_sensitive: false }
-#      exclusion: { in: forbidden_subdomains }, message: "The subdomain is reserved and unavailable." ,
-#      format: { with: subdomain_regex, message: "The subdomain can 
-#                  only contain numbers, letters, and dashes" }
-#      
-   validates_exclusion_of :subdomain, in: forbidden_subdomains, message: "reserved and unavailable"   
+      uniqueness: { case_sensitive: false },
+      format: { with: subdomain_regex, message: "Thecan 
+                  only contain numbers, letters, and dashes" }
+      
+  validates_exclusion_of :subdomain, in: forbidden_subdomains, message: "reserved and unavailable"   
   
     
   has_many :thankyous,          :dependent    => :destroy,

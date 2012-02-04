@@ -1,17 +1,14 @@
-Feature: Edit a Thankyou
-  As a registered user with thankyous and welcomes
-  I want to edit a Thankyou
+Feature: Edit a merciboq
+  As a registered user who is unhappy with a merciboq 
   In order to control my online reputation
-
+  I want to edit the merciboq
+ 
   Background:
     Given a confirmed user "Chucky Bottles" with an email "chucky.bottles@test.com" and password "password"
     And "Annette Tracy" is confirmed and logged in with an email "annette.tracy@test.com" and a password "password"
     And a thankyou email from "annette.tracy@test.com" to "chuckybottles@test.com"
     And she is on the home page
-#    Then she should see "Annette Tracy thanked Chuckybottles"
     And she follows "Thankyous"
-#    Then she should see "Chuckybottles --"
-#    And she should see ""
 
   Scenario: Show thankyou
 

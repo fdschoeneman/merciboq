@@ -13,7 +13,8 @@ describe UsersController do
   end
 
   it "should create a new instance given a valid attribute" do
-    User.create!(@new_user_attr)
+    user = Factory.create(:user)
+    user.should be_valid
   end
 
   it "should require an email address" do
@@ -65,11 +66,17 @@ describe UsersController do
     end
   end
 
-#  describe "password validations" do
-
+  describe "password validations" do
+    let(:user) { Factory.build(:user) }
+    
+#    before(:each) do
+#      @user = User.new(@new_user_attr)
+#    end
+#    @new_user_attr
 #    it "should require a password" do
-#      User.new(@attr.merge(:password => "", :password_confirmation => "")).
+#      User.create(@attr.merge(:password => "", :password_confirmation => "")).
 #        should_not be_valid
+#      end
 #    end
 
 #    it "should require a matching password confirmation" do
@@ -88,7 +95,7 @@ describe UsersController do
 #      hash = @attr.merge(:password => long, :password_confirmation => long)
 #      User.new(hash).should_not be_valid
 #    end
-#  end
+  end
 
   describe "password encryption" do
 
