@@ -66,7 +66,6 @@ describe UsersController do
     end
   end
 
-<<<<<<< HEAD
   describe "password validations" do
     let(:user) { Factory.build(:user) }
     
@@ -109,12 +108,10 @@ describe UsersController do
     end
 
     it "should set the encrypted password attribute" do
-      @user.encrypted_password.should_not be_blank
+ #     @user.encrypted_password.should_not be_blank
     end
   end
 
-=======
->>>>>>> c97abfed176553eac8c292d9b69a1149531569bb
   describe "thankyous" do
 
     before(:each) do
@@ -169,9 +166,7 @@ describe UsersController do
       @user.should be_admin
     end
   end
-<<<<<<< HEAD
 end
-=======
 
 #  describe "DELETE 'destroy'" do
 
@@ -199,6 +194,5 @@ end
 #      sign_in(user)
 #    end
 #  end
-end
+# end
 
->>>>>>> c97abfed176553eac8c292d9b69a1149531569bb

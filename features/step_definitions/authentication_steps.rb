@@ -35,7 +35,11 @@ Then /^I should be signed in as "([^"]*)"$/ do |arg1|
 end
 
 Given /^a logged in user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  user = User.create!( name: name, email: email, password: password, subdomain: name.gsub(" ", "-") )
+  user = User.create!(  name: name, 
+                        email: email, 
+                        password: password, 
+                        password_confirmation: password,
+                        subdomain: name.gsub(" ", "-") )
   user.confirm!
   step %{I am not logged in}
   step %{I go to the home page}

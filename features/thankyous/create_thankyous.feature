@@ -9,4 +9,3 @@ Feature: Write a merciboq from the site
     And I fill in the following:
       | Headline  | 5 stars                 |
       | Content   | Loved working with you  |
-    Then show me the page
