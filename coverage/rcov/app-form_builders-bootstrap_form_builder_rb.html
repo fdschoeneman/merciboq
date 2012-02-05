@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>app/form_builders/bootstrap_form_builder.rb</title>
+    <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="./assets/0.2.3/rcov.js"></script>
+  </head>
+  <body>
+    <h1>Merciboq C0 Coverage Information - Simploco - RCov</h1>
+    <h2>app/form_builders/bootstrap_form_builder.rb</h2>
+
+    <div class="report_table_wrapper">
+      <table class='report' id='report_table'>
+        <thead>
+          <tr>
+            <th class="left_align">Name</th>
+            <th class="right_align">Total Lines</th>
+            <th class="right_align">Lines of Code</th>
+            <th class="left_align">Total Coverage</th>
+            <th class="left_align">Code Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left_align"><a href="app-form_builders-bootstrap_form_builder_rb.html">app/form_builders/bootstrap_form_builder.rb</a></td>
+            <td class='right_align'><tt>159</tt></td>
+            <td class='right_align'><tt>91</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>53.46%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:53px"></div>
+        <div class="uncovered" style="width:47px"></div>
+      </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>18.68%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:19px"></div>
+        <div class="uncovered" style="width:81px"></div>
+      </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Key</h3>
+
+    <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
+
+    <h3>Coverage Details</h3>
+
+    <table class="details">
+      <tbody>
+        <tr class="marked">
+          <td><pre><a name="line2">2</a> class BootstrapFormBuilder &lt; ActionView::Helpers::FormBuilder</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line3">3</a>   delegate :content_tag, :hidden_field_tag, :check_box_tag, :radio_button_tag, :link_to, :to =&gt; :@template</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line4">4</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line5">5</a>   def error_messages</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line6">6</a>     if object.errors.full_messages.any?</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line7">7</a>       content_tag(:div, :class =&gt; 'alert-message block-message error') do</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line8">8</a>         link_to('&amp;times;'.html_safe, '#', :class =&gt; 'close') +</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line9">9</a>         content_tag(:p, &quot;&lt;strong&gt;Houston, we have a problem.&lt;/strong&gt; Please address the errors below and try again.&quot;.html_safe) +</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line10">10</a>         content_tag(:ul) do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line11">11</a>           object.errors.full_messages.map do |message|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line12">12</a>             content_tag(:li, message)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line13">13</a>           end.join('').html_safe</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line14">14</a>         end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line15">15</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line16">16</a>     else</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line17">17</a>       '' # return empty string</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line18">18</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line19">19</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line20">20</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line21">21</a>   %w(collection_select select check_box email_field file_field number_field password_field phone_field radio_button range_field search_field telephone_field text_area text_field url_field).each do |method_name|</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line22">22</a>     define_method(method_name) do |name, *args|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line23">23</a>       @name = name</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line24">24</a>       @options = args.extract_options!</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line25">25</a>       @args = args</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line26">26</a>       </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line27">27</a>       clearfix_div do</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line28">28</a>         label_field + input_div do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line29">29</a>           extras { super(name, *(@args &lt;&lt; @options)) }</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line30">30</a>         end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line31">31</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line32">32</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line33">33</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line34">34</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line35">35</a>   def collection_check_boxes(attribute, records, record_id, record_name, *args)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line36">36</a>     @name = attribute</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line37">37</a>     @options = args.extract_options!</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line38">38</a>     @args = args</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line40">40</a>     clearfix_div do</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line41">41</a>       label_field + input_div do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line42">42</a>         extras do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line43">43</a>           content_tag(:ul, :class =&gt; 'inputs-list') do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line44">44</a>             records.collect do |record|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line45">45</a>               element_id = &quot;#{object_name}_#{attribute}_#{record.send(record_id)}&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line46">46</a>               checkbox = check_box_tag(&quot;#{object_name}[#{attribute}][]&quot;, record.send(record_id), object.send(attribute).include?(record.send(record_id)), :id =&gt; element_id)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line47">47</a>           </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line48">48</a>               content_tag(:li) do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line49">49</a>                 content_tag(:label) do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line50">50</a>                   checkbox + content_tag(:span, record.send(record_name))</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line51">51</a>                 end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line52">52</a>               end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line53">53</a>             end.join('').html_safe</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line54">54</a>           end </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line55">55</a>         end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line56">56</a>       end + hidden_field_tag(&quot;#{object_name}[#{attribute}][]&quot;)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line57">57</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line58">58</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line59">59</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line60">60</a>   def collection_radio_buttons(attribute, records, record_id, record_name, *args)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line61">61</a>     @name = attribute</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line62">62</a>     @options = args.extract_options!</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line63">63</a>     @args = args</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line64">64</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line65">65</a>     clearfix_div do</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line66">66</a>       label_field + input_div do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line67">67</a>         extras do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line68">68</a>           content_tag(:ul, :class =&gt; 'inputs-list') do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line69">69</a>             records.collect do |record|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line70">70</a>               element_id = &quot;#{object_name}_#{attribute}_#{record.send(record_id)}&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line71">71</a>               radiobutton = radio_button_tag(&quot;#{object_name}[#{attribute}][]&quot;, record.send(record_id), object.send(attribute) == record.send(record_id), :id =&gt; element_id)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line72">72</a>             </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line73">73</a>               content_tag(:li) do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line74">74</a>                 content_tag(:label) do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line75">75</a>                   radiobutton + content_tag(:span, record.send(record_name))</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line76">76</a>                 end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line77">77</a>               end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line78">78</a>             end.join('').html_safe</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line79">79</a>           end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line80">80</a>         end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line81">81</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line82">82</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line83">83</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line84">84</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line85">85</a>   def uneditable_field(name, *args)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line86">86</a>     @name = name</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line87">87</a>     @options = args.extract_options!</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line88">88</a>     @args = args</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line89">89</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line90">90</a>     clearfix_div do</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line91">91</a>       label_field + input_div do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line92">92</a>         extras do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line93">93</a>           content_tag(:span, :class =&gt; 'uneditable-input') do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line94">94</a>             @options[:value] || object.send(@name.to_sym)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line95">95</a>           end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line96">96</a>         end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line97">97</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line98">98</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line99">99</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line100">100</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line101">101</a>   def submit(name = nil, *args)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line102">102</a>     @name = name</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line103">103</a>     @options = args.extract_options!</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line104">104</a>     @args = args</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line105">105</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line106">106</a>     @options[:class] = 'btn primary'</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line107">107</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line108">108</a>     content_tag(:div, :class =&gt; 'actions') do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line109">109</a>       super(name, *(args &lt;&lt; @options)) + ' ' + link_to('Cancel', :root, :class =&gt; 'btn')</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line110">110</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line111">111</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line112">112</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line113">113</a>   private</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line114">114</a>   def clearfix_div(&amp;block)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line115">115</a>     @options[:error] = object.errors[@name].collect{|e| &quot;#{@options[:label] || @name} #{e}&quot;.humanize}.join(', ') unless object.errors[@name].empty?</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line116">116</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line117">117</a>     klasses = ['clearfix']</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line118">118</a>     klasses &lt;&lt; 'error' if @options[:error]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line119">119</a>     klasses &lt;&lt; 'success' if @options[:success]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line120">120</a>     klasses &lt;&lt; 'warning' if @options[:warning]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line121">121</a>     klass = klasses.join(' ')</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line122">122</a>     </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line123">123</a>     content_tag(:div, :class =&gt; klass, &amp;block)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line124">124</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line125">125</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line126">126</a>   def input_div(&amp;block)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line127">127</a>     content_tag(:div, :class =&gt; 'input') do</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line128">128</a>       if @options[:append] || @options[:prepend]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line129">129</a>         klass = 'input-prepend' if @options[:prepend]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line130">130</a>         klass = 'input-append' if @options[:append]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line131">131</a>         content_tag(:div, :class =&gt; klass, &amp;block)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line132">132</a>       else</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line133">133</a>         yield if block_given?</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line134">134</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line135">135</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line136">136</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line137">137</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line138">138</a>   def label_field(&amp;block)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line139">139</a>     required = object.class.validators_on(@name).any? { |v| v.kind_of? ActiveModel::Validations::PresenceValidator }</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line140">140</a>     label(@name, block_given? ? block : @options[:label], :class =&gt; ('required' if required))</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line141">141</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line142">142</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line143">143</a>   %w(help_inline error success warning help_block append prepend).each do |method_name|</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line144">144</a>     define_method(method_name) do |*args|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line145">145</a>       return '' unless value = @options[method_name.to_sym]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line146">146</a>       klass = 'help-inline'</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line147">147</a>       klass = 'help-block' if method_name == 'help_block'</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line148">148</a>       klass = 'add-on' if method_name == 'append' || method_name == 'prepend'</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line149">149</a>       content_tag(:span, value, :class =&gt; klass)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line150">150</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line151">151</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line152">152</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line153">153</a>   def extras(&amp;block)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line154">154</a>     [prepend, (yield if block_given?), append, help_inline, error, success, warning, help_block].join('').html_safe</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line155">155</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line156">156</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line157">157</a>   def objectify_options(options)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line158">158</a>     super.except(:label, :help_inline, :error, :success, :warning, :help_block, :prepend, :append)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line159">159</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line160">160</a> end</pre></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Generated on 2012-02-05 14:32:02 -0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+
+  </body>
+</html>

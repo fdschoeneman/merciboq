@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>app/controllers/application_controller.rb</title>
+    <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="./assets/0.2.3/rcov.js"></script>
+  </head>
+  <body>
+    <h1>Merciboq C0 Coverage Information - Simploco - RCov</h1>
+    <h2>app/controllers/application_controller.rb</h2>
+
+    <div class="report_table_wrapper">
+      <table class='report' id='report_table'>
+        <thead>
+          <tr>
+            <th class="left_align">Name</th>
+            <th class="right_align">Total Lines</th>
+            <th class="right_align">Lines of Code</th>
+            <th class="left_align">Total Coverage</th>
+            <th class="left_align">Code Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
+            <td class='right_align'><tt>53</tt></td>
+            <td class='right_align'><tt>27</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>81.13%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:81px"></div>
+        <div class="uncovered" style="width:19px"></div>
+      </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>62.96%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:63px"></div>
+        <div class="uncovered" style="width:37px"></div>
+      </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Key</h3>
+
+    <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
+
+    <h3>Coverage Details</h3>
+
+    <table class="details">
+      <tbody>
+        <tr class="marked">
+          <td><pre><a name="line2">2</a> class ApplicationController &lt; ActionController::Base</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line3">3</a>   include UrlHelper</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line4">4</a> # include SubdomainUsers</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line5">5</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line6">6</a>   protect_from_forgery</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line7">7</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line8">8</a>  # before_filter :check_user_status</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line9">9</a>  # before_filter :limit_subdomain_access</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line10">10</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line11">11</a>   def temporary_name(email)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line12">12</a>     email_split = email.split('@')</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line13">13</a>     email_local = email_split[0]</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line14">14</a>     local_spaced = email_local.split('.').join(' ')</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line15">15</a>     temporary_name = local_spaced.titleize</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line16">16</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line17">17</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line18">18</a>   def temporary_subdomain(email)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line19">19</a>     email_split   = email.split('@')</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line20">20</a>     email_local   = email_split[0]</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line21">21</a>     local_dashed  = email_local.split('.').join('-').dasherize</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line22">22</a>     if User.find_by_subdomain(local_dashed).nil?</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line23">23</a>       local_dashed</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line24">24</a>     else</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line25">25</a>       &quot;#{local_dashed}-#{@subdomain_placeholder}&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line26">26</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line27">27</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line28">28</a>  #   temporary_subdomain = &quot;#{local_dashed}-#{subdomain_placeholder}&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line29">29</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line30">30</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line31">31</a>   def random_subdomain_number</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line32">32</a>     random_subdomain_number = SecureRandom.random_number(1000)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line33">33</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line34">34</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line35">35</a>   def subdomain_placeholder</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line36">36</a>     modifiers  = [&quot;uber&quot;, &quot;way&quot;, &quot;total&quot;, &quot;hardcore&quot;, &quot;way&quot;, &quot;total&quot;, &quot;heavy&quot;, &quot;magma&quot;, &quot;hoopla&quot;, &quot;hot&quot;, &quot;cold&quot;]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line37">37</a>     adjectives = [&quot;cool&quot;, &quot;hot&quot;, &quot;awesome&quot;, &quot;rockstar&quot;, &quot;supafly&quot;, &quot;dope&quot;, &quot;perspicacious&quot;]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line38">38</a>     @subdomain_placeholder = &quot;#{modifiers.sample}-#{adjectives.sample}&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line40">40</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line41">41</a>   def check_user_status</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line42">42</a>     unless user_subdomain == default_user_subdomain</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line43">43</a>       redirect_to default_user_url if current_user_with_subdomain.nil?</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line44">44</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line45">45</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line46">46</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line47">47</a>   def limit_subdomain_access</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line48">48</a>     if request.subdomain.present?</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line49">49</a>       redirect_to root_url(:subdomain =&gt; false)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line50">50</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line51">51</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line52">52</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line53">53</a> end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line54">54</a> </pre></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Generated on 2012-02-05 14:32:02 -0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+
+  </body>
+</html>
