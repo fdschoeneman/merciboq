@@ -38,6 +38,14 @@ Then /^I should be signed in as "([^"]*)"$/ do |arg1|
   page.should have_selector 'a', :text => arg1
 end
 
+Given /^a user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
+ user = User.new(
+                  :email => "#{email}",
+                  :password => "#{password}")
+  user.save
+  user.confirm!
+end
+
 Given /^"([^"]*)" is confirmed and logged in with an email "([^"]*)" and a password "([^"]*)"$/ do |name, email, password|
   user = User.create!(:name => "#{name}",
                   :email => "#{email}",
@@ -53,9 +61,10 @@ Given /^"([^"]*)" is confirmed and logged in with an email "([^"]*)" and a passw
 end
 
 Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  user = User.create!(  :email => "#{email}",
+  user = User.new(  :email => "#{email}",
                         :password => "#{password}",
                         :password_confirmation => "#{password}")
+  user.save!
   user.confirm!
   step %{I am not logged in}
   step %{I go to the home page}
@@ -66,10 +75,11 @@ Given /^I am registered and logged in as "([^"]*)" with an email "([^"]*)" and p
 end
 
 Given /^a confirmed user named "([^"]*)" with an email "([^"]*)" and password "([^"]*)"$/ do |name, email, password|
-  user = User.create!(:name => "#{name}",
+  user = User.new(:name => "#{name}",
                   :email => "#{email}",
                   :password => "#{password}",
                   :password_confirmation => "#{password}")
+  user.save!
   user.confirm!
 end
 

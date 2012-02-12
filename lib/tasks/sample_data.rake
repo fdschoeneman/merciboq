@@ -10,12 +10,11 @@ namespace :db do
 end
 
 def sample_admin
-  admin = User.create!( :name => "admin",
-                          :email => "admin@merciboq.com",
+  admin = User.new(       :email => "admin@merciboq.com",
                           :password => "password",
                           :password_confirmation => "password"
                          )
-  admin.skip_confirmation!
+  admin.save!
   admin.confirm!
   admin.toggle!(:admin)
 end
@@ -27,13 +26,11 @@ def make_users
     subdomain = "#{downcased_name.split(' ').join('-')}"
     email = "#{downcased_name.split(' ').join('-')}@example.com"
     password  = "password"
-    user = User.new(:name => name,
-                    :subdomain => subdomain,
-                    :email => email,
+    user = User.new(:email => email,
                     :password => password,
                     :password_confirmation => password
                     )
-    user.save
+    user.save!
     user.skip_confirmation!
     user.confirm!
   end

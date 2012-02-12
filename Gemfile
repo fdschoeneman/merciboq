@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Rails
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.1'
 
 # Server for development
 gem 'thin', '1.3.1'
@@ -10,7 +10,7 @@ gem 'thin', '1.3.1'
 gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
-gem 'devise', '1.5.3'
+gem 'devise', ">=2.0"
 
 # Asset handling
 

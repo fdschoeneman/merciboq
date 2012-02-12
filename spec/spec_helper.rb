@@ -3,12 +3,6 @@ require 'spork'
 
 Spork.prefork do
 
-  require 'simplecov'
-  require 'simplecov-rcov'
-
-  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-  SimpleCov.start "rails"
-
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
@@ -28,10 +22,24 @@ Spork.prefork do
     config.include Devise::TestHelpers, :type => :controller
     config.include EmailSpec::Helpers
     config.include EmailSpec::Matchers
-
+    
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
     config.use_transactional_fixtures = true
+    config.infer_base_class_for_anonymous_controllers = false
+    
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean_with(:truncation)
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
 end
 

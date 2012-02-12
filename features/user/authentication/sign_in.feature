@@ -28,8 +28,7 @@ Feature: Sign in
       Then I should see "Invalid email or password."
     
     Scenario: Registered user signs in
-      And a confirmed user named "Foo Fighter" with an email "user@test.com" and password "please"
-      And I am confirmed
+      And a user with email "user@test.com" and password "please"
       When I go to the login page
       And I fill in "Email" with "user@test.com"
       And I fill in "Password" with "please"

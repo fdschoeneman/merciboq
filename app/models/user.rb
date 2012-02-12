@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :confirmable, :validatable,
+         :rememberable, :trackable, :confirmable, :validatable ,
          :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
-  attr_accessor :password  
+#  attr_accessor :password  
   attr_accessible :name, :email, :subdomain, 
       :password, :password_confirmation, :remember_me, 
       :welcome_phrase, :thankyou_phrase, :calendar
@@ -30,12 +30,12 @@ class User < ActiveRecord::Base
   validates :subdomain, 
       presence: true, on: :update,
       allow_blank: true,
-      uniqueness: { case_sensitive: false }
-#      exclusion: { in: forbidden_subdomains }, message: "The subdomain is reserved and unavailable." ,
-#      format: { with: subdomain_regex, message: "The subdomain can 
-#                  only contain numbers, letters, and dashes" }
-#      
-   validates_exclusion_of :subdomain, in: forbidden_subdomains, message: "reserved and unavailable"   
+      uniqueness: { case_sensitive: false },
+      format: { with: subdomain_regex, message: "The subdomain can 
+                 only contain numbers, letters, and dashes" }
+     
+   validates_exclusion_of :subdomain, in: forbidden_subdomains, 
+                                  message: "reserved and unavailable"   
   
     
   has_many :thankyous,          :dependent    => :destroy,
