@@ -7,7 +7,6 @@ Merciboq::Application.routes.draw do
     :sessions => "sessions" }
      
   devise_scope :user do
-    match 'password',     :to => 'users#edit_password'
     match 'confirm_user', :to => 'confirmations#confirm_user'
     match '/signup',      :to => 'registrations#new'
     match '/delete',      :to => 'registrations#destroy'

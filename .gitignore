@@ -3,10 +3,11 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+tmp/*
 .sass-cache/
 *.gz
+coverage/*
+coverage/rcov/*
+coverage/
 doc/
-*.swp
-*~
-.project
-coverage
+

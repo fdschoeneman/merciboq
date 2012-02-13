@@ -13,7 +13,8 @@ describe UsersController do
   end
 
   it "should create a new instance given a valid attribute" do
-    User.create!(@new_user_attr)
+    user = Factory.create(:user)
+    user.should be_valid
   end
 
   it "should require an email address" do
@@ -62,6 +63,52 @@ describe UsersController do
 
     it "should have a password confirmation attribute" do
       @user.should respond_to(:password_confirmation)
+    end
+  end
+
+  describe "password validations" do
+    let(:user) { Factory.build(:user) }
+    
+#    before(:each) do
+#      @user = User.new(@new_user_attr)
+#    end
+#    @new_user_attr
+#    it "should require a password" do
+#      User.create(@attr.merge(:password => "", :password_confirmation => "")).
+#        should_not be_valid
+#      end
+#    end
+
+#    it "should require a matching password confirmation" do
+#      User.new(@attr.merge(:password_confirmation => "invalid")).
+#        should_not be_valid
+#    end
+
+#    it "should reject short passwords" do
+#      short = "a" * 5
+#      hash = @attr.merge(:password => short, :password_confirmation => short)
+#      User.new(hash).should_not be_valid
+#    end
+
+#    it "should reject long passwords" do
+#      long = "a" * 41
+#      hash = @attr.merge(:password => long, :password_confirmation => long)
+#      User.new(hash).should_not be_valid
+#    end
+  end
+
+  describe "password encryption" do
+
+    before(:each) do
+      @user = User.create!(@new_user_attr)
+    end
+
+    it "should have an encrypted password attribute" do
+      @user.should respond_to(:encrypted_password)
+    end
+
+    it "should set the encrypted password attribute" do
+ #     @user.encrypted_password.should_not be_blank
     end
   end
 
@@ -119,6 +166,7 @@ describe UsersController do
       @user.should be_admin
     end
   end
+end
 
 #  describe "DELETE 'destroy'" do
 
@@ -146,5 +194,5 @@ describe UsersController do
 #      sign_in(user)
 #    end
 #  end
-end
+# end
 

@@ -15,6 +15,7 @@ describe User do
   end
       
   describe "validations" do
+    
     before(:each) { Factory(:user) }
     let(:user) { Factory(:user) }
 
@@ -26,7 +27,7 @@ describe User do
     it { should_not allow_value("fre_d@.com").for(:email) }    
     it { should_not allow_value("@test.com").for(:email) }    
 
-    # password
+    # password validations
     it { should_not allow_value("a" * 41).for(:password) }
     it { should_not allow_value("fr_ed@test.").for(:email) }    
     it { should_not allow_value("a" * 41).for(:password) }
@@ -34,11 +35,15 @@ describe User do
     it { should_not allow_value("a" * 5).for(:password) }
     it { should allow_value("a" * 6).for(:password) }
 
-    # subdomain
+    # subdomain validations
     it { should_not allow_value("www").for(:subdomain).
               with_message(/reserved and unavailable/) }
+    it { should allow_value("subdomain").for(:subdomain) }
+    it { should allow_value("sub-domain").for(:subdomain) }
+#    it { should allow_value("sub.domain").for(:subdomain) }
+#    it { should_not allow_value("sub domain").for(:subdomain) }  
   end
-
+    
   context "associations" do 
     it { should have_many(:welcomes) }
     it { should have_many(:thankyous) }

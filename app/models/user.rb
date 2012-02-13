@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
      
   validates_exclusion_of :subdomain, in: forbidden_subdomains, 
                                   message: "reserved and unavailable"   
-  
     
   has_many :thankyous,          :dependent    => :destroy,
                                 :foreign_key  => "thanker_id"

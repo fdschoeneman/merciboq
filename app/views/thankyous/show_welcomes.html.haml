@@ -1,41 +1,40 @@
-%table.profile{:summary => "Profile information"}
-  %tr
-    %td.main
-      %h1
-        = gravatar_for @user
-        = @user.name
-      - if @user.welcomes.empty?
-        Nobody has thanked #{you_or_user(@user)} yet.
-        = render 'shared/thankyou_steps'
-        = render 'shared/thankyou_tips'
-      - else
-        %p
-          #{@user.welcome_phrase}
-        %table.thankyous{:summary => "User thankyous"}
-          - @welcomes.each do |welcome|
-            %tr
-              %td.thankyou
-                %span.content
-                  #{gravatar_for welcome.thanker, :size => 15}
-                  |
-                  #{link_to welcome.thanker.name, welcome.thanker} wrote --
-                  %em
-                    = welcome.headline
-                  "#{welcome.content}"
-                %span.timestamp
-                  Thankyou sent #{time_ago_in_words(welcome.created_at)} ago
-    %td.sidebar.round
-      %strong Name
+.row
+  .span11
+    %h1
+      = gravatar_for @user
       = @user.name
-      %br/
-      %strong URL
-      = link_to user_path(@user), @user
-      %br/
-      %strong
-        Thankyous
-      = @user.thankyous.count
-      %br/
-      %strong
-        Welcomes
-        = @user.welcomes.count
+    - if @user.welcomes.empty?
+      Nobody has thanked #{you_or_user(@user)} yet.
+      = render 'shared/thankyou_steps'
+      = render 'shared/thankyou_tips'
+    - else
+      %p
+        #{@user.welcome_phrase}
+      %table.thankyous{:summary => "User thankyous"}
+        - @welcomes.each do |welcome|
+          %tr
+            %td.thankyou
+              %span.content
+                #{gravatar_for welcome.thanker, :size => 15}
+                |
+                #{link_to welcome.thanker.name, welcome.thanker} wrote --
+                %em
+                  = welcome.headline
+                "#{welcome.content}"
+              %span.timestamp
+                Thankyou sent #{time_ago_in_words(welcome.created_at)} ago
+  .span5
+    %strong Name
+    = @user.name
+    %br/
+    %strong URL
+    = link_to user_path(@user), @user
+    %br/
+    %strong
+      Thankyous
+    = @user.thankyous.count
+    %br/
+    %strong
+      Welcomes
+      = @user.welcomes.count
 
