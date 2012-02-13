@@ -10,10 +10,9 @@ namespace :db do
 end
 
 def sample_admin
-  admin = User.new(       :email => "admin@merciboq.com",
-                          :password => "password",
-                          :password_confirmation => "password"
-                         )
+  admin = User.new( :name => "admin",
+                    :email => "admin@merciboq.com",
+                    :password => "password" )
   admin.save!
   admin.confirm!
   admin.toggle!(:admin)
@@ -21,17 +20,11 @@ end
 
 def make_users
   99.times do |n|
-    name  = Faker::Name.name
-    downcased_name = name.downcase
-    subdomain = "#{downcased_name.split(' ').join('-')}"
-    email = "#{downcased_name.split(' ').join('-')}@example.com"
+    email = Faker::Internet.email
     password  = "password"
     user = User.new(:email => email,
-                    :password => password,
-                    :password_confirmation => password
-                    )
+                    :password => password)  
     user.save!
-    user.skip_confirmation!
     user.confirm!
   end
 end

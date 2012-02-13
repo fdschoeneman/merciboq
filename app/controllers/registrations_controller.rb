@@ -24,7 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
   
-  def edit
+  def edit_settings
     @title = "Edit Settings"
     @subdomain_logo = current_user.subdomain
   end

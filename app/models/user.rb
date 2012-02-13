@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :confirmable, :validatable ,
          :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
-#  attr_accessor :password  
   attr_accessible :name, :email, :subdomain, 
       :password, :password_confirmation, :remember_me, 
       :welcome_phrase, :thankyou_phrase, :calendar
@@ -24,17 +23,17 @@ class User < ActiveRecord::Base
   
   # validations:
   validates :email, presence: true,
-      format: { with: email_regex },
-      uniqueness: { case_sensitive: false }
+              format: { with: email_regex },
+              uniqueness: { case_sensitive: false }
 
-  validates :subdomain, 
-      presence: true, on: :update,
-      allow_blank: true,
-      uniqueness: { case_sensitive: false },
-      format: { with: subdomain_regex, message: "The subdomain can 
-                 only contain numbers, letters, and dashes" }
+  validates :subdomain, presence: true, on: :update,
+              allow_blank: true,
+              uniqueness: { case_sensitive: false },
+              format: { with: subdomain_regex, 
+                message: "The subdomain can only contain numbers, 
+                          letters, and dashes" }
      
-   validates_exclusion_of :subdomain, in: forbidden_subdomains, 
+  validates_exclusion_of :subdomain, in: forbidden_subdomains, 
                                   message: "reserved and unavailable"   
   
     
