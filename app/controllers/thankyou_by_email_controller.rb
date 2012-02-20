@@ -20,12 +20,17 @@ class ThankyouByEmailController < ApplicationController
 
     (message.to).each do |address|
       next if internal_address? address # Goes to the next address in the array if it recognizes the email
-
-      to_user = User.find_or_create_by_email(
+      if address.end_with? "@*.merciboq.com"
+        subdomain = address.split('@')
+        subdomain[0]
+        to_user = User.find_by_subdomain
+      else 
+        to_user = User.find_or_create_by_email(
                 :email => address,
                 :name => temporary_name(address),
                 :subdomain => temporary_subdomain(address)
                 )
+      end
 
       thankyou = Thankyou.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
                    :content => content, :headline => headline)

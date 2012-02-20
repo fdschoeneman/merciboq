@@ -10,4 +10,7 @@ coverage/*
 coverage/rcov/*
 coverage/
 doc/
+*.swp
+*~
+.project
 

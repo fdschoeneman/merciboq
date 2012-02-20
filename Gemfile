@@ -10,20 +10,21 @@ gem 'thin', '1.3.1'
 gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
-gem 'devise', ">=2.0"
+gem 'devise', "2.0"
 
 # Asset handling
 
 group :assets do
-  gem 'sass-rails'
+  gem 'sass-rails', '3.2.3'
   gem 'coffee-script'
-  gem 'uglifier'
+  gem 'coffee-rails', '3.2.2'
+  gem 'uglifier', '1.2.3'
   gem 'eventmachine'
 end
 
 # Front end
 gem 'haml-rails'
-gem 'jquery-rails'
+gem 'jquery-rails', '2.0.0'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-forms'
 gem 'kaminari'
@@ -33,14 +34,14 @@ gem 'bourbon'
 group :production do
 
   # Postgres for Heroku
-  gem 'pg'
+  gem 'pg', '0.12.2'
 
 end
 
 group :test, :development do
 
   # Dabase for development
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.5'
 
   # Debugging
   gem 'hpricot'
@@ -68,7 +69,7 @@ group :test, :development do
   gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
   gem 'steak'
   gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'faker', '1.0.1'
   gem 'shoulda-matchers'
 
   # Guards
