@@ -4,8 +4,7 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     sample_admin
     make_users
-    make_thankyous
-    make_welcomes
+    make_merciboqs
   end
 end
 
@@ -20,44 +19,29 @@ end
 
 def make_users
   99.times do |n|
-    email = Faker::Internet.email
+    name = Faker::Name.name 
+    email = "user#{n+1}@merciboq.com"
     password  = "password"
-    user = User.new(:email => email,
+    user = User.new(name: name,
+                    :email => email,
                     :password => password)  
     user.save!
     user.confirm!
   end
 end
 
-#def make_thankyous
-#  user = User.first
-#  50.times do |n|
-#    user.thankyous.create!(:content => Faker::Company.bs,
-#                           :headline => Faker::Company.catch_phrase,
-#                           :welcomer_id => n+1)
-#  end
-#end
-
-def make_welcomes
-  User.all[2..50].each do |user|
-    user.thankyous.create!( :content => Faker::Company.bs,
-                            :headline => Faker::Company.catch_phrase,
-                            :welcomer_id => 1)
-  end
-end
-
-def make_thankyous
+def make_merciboqs
   50.times do |n|
     users = User.all(:limit => 4).each do |user|
       welcomer = n+1
       headline = Faker::Company.catch_phrase
       content = Faker::Company.bs
-      thankyou = user.thankyous.create!(:welcomer_id => welcomer,
+      merciboq = user.thankyous.create!(:welcomer_id => welcomer,
                              :content => content,
                              :headline => headline)
-      thankyou.attachments << Attachment.new(:mimetype =>
-  "text/plain", :filename => "foo.txt", :bytes => "Fred is the man!
- \nrecognize, bitches!")
+ #      merciboq.attachments << Attachment.new(:mimetype =>
+ #  "text/plain", :filename => "foo.txt", :bytes => "Fred is the man!
+ # \nrecognize, bitches!")
     end
   end
 end
