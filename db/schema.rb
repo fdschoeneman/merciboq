@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
     t.string   "dominant_id"
     t.string   "integer"
     t.datetime "created_at",    :null => false
-    t.datetim
-    e "updated_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "bonds", ["dominant_id"], :name => "index_bonds_on_dominant_id"
