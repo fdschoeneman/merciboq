@@ -30,6 +30,7 @@ gem 'bootstrap-forms'
 gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
 gem 'bourbon'
+gem 'best_in_place'
 
 group :production do
 
