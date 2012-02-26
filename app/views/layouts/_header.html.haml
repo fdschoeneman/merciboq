@@ -1,4 +1,4 @@
-.row
+.container-fluid.nav-collapse
   %header
     .logo
       = link_to "#{logo}", root_url(:host => request.domain)
@@ -16,3 +16,8 @@
         = render 'devise/menu/registration_items'
         |
         = render 'devise/menu/login_items'
+
+            %ul.nav
+              %li= link_to "Link 1", "/path1"
+              %li= link_to "Link 2", "/path2"
+              %li= link_to "Link 3", "/path3"
