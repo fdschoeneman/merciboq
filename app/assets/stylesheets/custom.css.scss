@@ -1,8 +1,5 @@
 body {
-}
-
-.container {
-  width: 710px;
+  padding-top: 130px;
 }
 
 header {
@@ -13,8 +10,8 @@ header {
     padding: 30px;
 
     a {
-      color: red;
-      padding: 20px;
+      color: white;
+      padding: 40px;
       opacity: .55;
         -moz-transition: height 1s ease-out, opacity 2s ease;
         -webkit-transition: height 2s ease-out, opacity 2s ease;
@@ -30,15 +27,8 @@ header {
       }
     }
   }
-
-  .nav {
-    float: right;
-    display: inline-block;
-    align: right;
-  }
 }
-
-footer {
+/*footer {
   text-align: left;
   margin-top: 10px;
   width: 710px;
@@ -48,9 +38,10 @@ footer {
   nav {
     float: none;
   }
-}
+}*/
 
-nav {
+
+/*nav {
   float: right;
   display: inline-block;
   padding: 0 0.7em;
@@ -90,10 +81,10 @@ nav {
     }
   }
 }
-
+*/
 /* links */
 
-a {
+/*a {
   color: #09c;
   text-decoration: none;
 
@@ -106,8 +97,8 @@ a {
     color: #09c;
   }
 }
-
-ul {
+*/
+/*ul {
   margin-top: 2em;
   margin-bottom: 1em;
 
@@ -115,7 +106,7 @@ ul {
     list-style: none;
   }
 }
-
+*/
 // User show page
 
 .profile {
@@ -250,16 +241,17 @@ form.thankyou {
   color: white;
 
   a {
-  color: white;
-  text-decoration: none;
-
-  &:hover {
     color: white;
     text-decoration: none;
-  }
 
-  &:visited {
-    color: white;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: white;
+    }
   }
 }
-}
+

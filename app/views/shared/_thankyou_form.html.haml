@@ -1,0 +1,10 @@
+%h4
+  Show your appreciation like it's 1999!
+
+= form_for(@thankyou, :url => thankyou_new_url(@thankyou), :html => { :method => put }) do |f|
+  /= f.label :email, "Thanker's email:"
+  = f.email_field :email, label: "Thanker", placeholder: "your email"
+  = f.email_field :email, label: "Welcomer", placeholder: "the person you appreciate"
+  = f.text_field :headline
+  = f.submit raw "Sign up"
+

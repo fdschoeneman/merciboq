@@ -1,0 +1,7 @@
+= form_for(@thankyou, :url => new_user_thankyou_url, :html => { :method => :put }) do |f|
+  .field
+    //= f.label :headline, :required => false
+    = f.text_field :headline
+    //= f.label :content, :required => false
+    = f.text_area :content
+

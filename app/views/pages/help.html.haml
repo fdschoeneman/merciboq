@@ -1,12 +1,9 @@
-.row
-  .span11
-    %h3
-      Need some help?
-    %p.right If you're having trouble using the Merciboq, I hope you don't feel like it's your fault.  It's mine.  Most of the time with software problems, the developer has either designed something wrong, or built it wrong.  So if you're having trouble, please, just email me and let me know where.  I'll do my best to get you taken care of.  And if I can't take care of you, right away, at least I'll have learned more about what I need to do to make Merciboq better in the future:
-    %p
-      %center
-        fred@merciboq.com
-      %IMG{:alt => "Li'l Fred", :src => "/fredaroiderror.jpg", :style => "display:block; margin-left: auto; margin-right: auto; margin-top: 50px"}/
-  .span5
-    = render 'shared/sidebar'
+.row-fluid
+  .span12
+    .row-fluid
+      .span4
+        .well
+          = render 'shared/left_sidebar'
+      .span6
+        = render 'help'
 

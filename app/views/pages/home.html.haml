@@ -1,13 +1,9 @@
 .row
-  .span7
-    %h3
-      Who would you like to thank?
-    = render 'shared/thankyou_steps'
-    %h3
-      Tips:
-    = render 'shared/thankyou_tips'
-    = render 'shared/prepopulated_email'
-  = render 'shared/mission_statement'
-    
-
+  .span12
+    .row
+      .span4
+        .well
+          = render 'shared/left_sidebar'
+      .span8
+        = render 'thankyous/form'
 
