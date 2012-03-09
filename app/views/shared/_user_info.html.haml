@@ -1,14 +1,10 @@
-.user_info
+.user_info.well
   %center
-    #{link_to current_user.subdomain, (current_user.subdomain)}
-  %br/
-  = raw(current_user.calendar)
-  %br/
-  = current_user.welcome_phrase
+    #{link_to @user.subdomain, (@user.subdomain)}
   %br/
   %strong
     = current_user.welcomes.count
-    Welcomes
+    = link_to "Welcomes", @user.subdomain
   %br/
   %strong
     = current_user.thankyous.count

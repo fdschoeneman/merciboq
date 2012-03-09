@@ -12,15 +12,16 @@ header {
     a {
       color: white;
       padding: 40px;
-      opacity: .55;
-        -moz-transition: height 1s ease-out, opacity 2s ease;
-        -webkit-transition: height 2s ease-out, opacity 2s ease;
-        -o-transition: height 1s ease-out, opacity 1s ease;
-        transition: height 1s ease-out, opacity 1s ease;
 
       &:hover {
+        color: white;
         text-decoration: none;
-        opacity: 1;
+        opacity: .5;
+        -moz-transition: height 1s ease-in, opacity 2s ease;
+        -webkit-transition: height 2s ease-in, opacity 2s ease;
+        -o-transition: height 1s ease-in, opacity 1s ease;
+        transition: height 1s ease-out, opacity 1s ease;
+
       }
 
       &:visited {

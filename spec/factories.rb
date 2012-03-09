@@ -8,7 +8,7 @@ require 'factory_girl'
 #  user.password_confirmation  "foobar"
 #end
 
-FactoryGirl.define :welcomer do |welcomer|
+Factory.define :welcomer do |welcomer|
   welcomer.name                   "welcomer name"
   welcomer.email                  "welcomer.name@gmail.com"
   welcomer.subdomain              "testwelcomer"
@@ -16,7 +16,7 @@ FactoryGirl.define :welcomer do |welcomer|
   welcomer.password_confirmation  "bazquux"
 end
 
-FactoryGirl.define :thanker do |thanker|
+Factory.define :thanker do |thanker|
   thanker.name                   "thanker name"
   thanker.email                  "thanker.name@gmail.com"
   thanker.subdomain              "testthanker"
@@ -24,19 +24,19 @@ FactoryGirl.define :thanker do |thanker|
   thanker.password_confirmation  "foobar"
 end
 
-FactoryGirl.sequence :email do |n|
+Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
 
-FactoryGirl.sequence :name do |n|
+Factory.sequence :name do |n|
   "Person #{n}"
 end
 
-FactoryGirl.sequence :subdomain do |n|
+Factory.sequence :subdomain do |n|
   "person-subdomain-#{n}"
 end
 
-FactoryGirl.define :thankyou do |thankyou|
+Factory.define :thankyou do |thankyou|
   thankyou.content "Foo bar"
   thankyou.headline "baz quuux"
 end

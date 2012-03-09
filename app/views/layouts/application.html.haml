@@ -1,17 +1,10 @@
 !!! 5
-%html{lang: "en"}
-  %head
-    = render 'layouts/meta'
-    %title= title
-    = render 'layouts/icons'
-    = render 'layouts/google_fonts'
-    = stylesheet_link_tag "application"
+%html{:lang => "en"}
+  = render 'layouts/head'
   %body
-    .container
-      = render 'layouts/header'
-      = render 'shared/flash_messages', :locals => {:flash => flash}
+    = render 'layouts/header'
+
+    .container-fluid
+
       = yield
-      = render 'layouts/footer'
-  = javascript_include_tag "application"
-  = render 'layouts/javascripts'
 

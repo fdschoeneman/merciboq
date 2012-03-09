@@ -1,5 +1,8 @@
-.row
-  .span7
+.row-fluid
+  .span3
+    .well
+      = render 'shared/mission_statement'
+  .span3
     .form-vertical
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         %fieldset
