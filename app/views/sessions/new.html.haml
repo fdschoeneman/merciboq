@@ -1,8 +1,7 @@
 .row-fluid
-  .span3
-    .well
-      = render 'shared/mission_statement'
-  .span3
+  .span3.well
+    = render 'shared/mission_statement'
+  .span6
     .form-vertical
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         %fieldset
@@ -12,5 +11,5 @@
           - if devise_mapping.rememberable?
             = f.check_box :remember_me
           = f.submit "Login"
-= render :partial => "devise/shared/links"
+      = render :partial => "devise/shared/links"
 

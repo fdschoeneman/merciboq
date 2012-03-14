@@ -1,13 +1,12 @@
 .row-fluid
-  .span3
-    .well
-      = render 'shared/left_sidebar'
-  .span5
+  .span3.well
+    = render 'shared/mission_statement'
+  .span6
     .form-vertical
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
         %fieldset
-          %legend Sign up without sending a Merciboq!
+          %legend sign up without sending a MerciboQ!
           = f.email_field :email, placeholder: "fred@merciboq.com"
           = f.submit raw "Sign up and we'll email you a confirmation"
-        = render :partial => "devise/shared/links"
+          = render :partial => "devise/shared/links"
 

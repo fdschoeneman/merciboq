@@ -2,9 +2,9 @@
 %html{:lang => "en"}
   = render 'layouts/head'
   %body
-    = render 'layouts/header'
-    .row-fluid
-      = render 'shared/flash_messages', :locals => {:flash => flash}
     .container
+      = render 'layouts/header'
+      = render 'shared/flash_messages', :locals => {:flash => flash}
       = yield
+      = render 'layouts/footer'
 
