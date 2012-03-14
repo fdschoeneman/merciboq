@@ -7,7 +7,7 @@ gem 'rails', '3.2.2'
 gem 'thin', '1.3.1'
 
 # Rails dependency for linux
-gem 'therubyracer', '>= 0.9.9'
+# gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
 gem 'devise', "2.0"
@@ -42,11 +42,12 @@ end
 group :test, :development do
 
   # Dabase for development
-  gem 'sqlite3', '1.3.5'
+  gem 'pg', '0.12.2'
 
   # Debugging
   gem 'hpricot'
   gem 'ruby_parser'
+  gem 'taps'
   gem 'heroku'
   gem 'ruby-debug19'
   gem 'ruby-prof'
