@@ -1,5 +1,6 @@
 body {
   padding-top: 80px;
+
   .thick-header {
     padding-top: 40px;
   }
@@ -17,13 +18,14 @@ header {
       padding: 40px;
 
       &:hover {
+
         color: white;
         text-decoration: none;
-        opacity: .5;
+        opacity: .85;
         -moz-transition: height 1s ease-in, opacity 2s ease;
-        -webkit-transition: height 2s ease-in, opacity 2s ease;
+        -webkit-transition: height 2s ease-in-out, opacity 5s ease;
         -o-transition: height 1s ease-in, opacity 1s ease;
-        transition: height 1s ease-out, opacity 1s ease;
+        transition: height 2s ease-in, opacity 1s ease;
 
       }
 
