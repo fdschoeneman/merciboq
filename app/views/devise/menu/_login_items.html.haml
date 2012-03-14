@@ -1,9 +1,9 @@
 - if user_signed_in?
   %li.divider-vertical
   %li
-    = link_to("Not #{current_user.name}? Logout", destroy_user_session_url(:host => request.domain))
+    = link_to "logout", destroy_user_session_url(:host => request.domain)
 - else
   %li.divider-vertical
   %li
-    = link_to('Login', login_url(:host => request.domain))
+    = link_to('login', login_url(:host => request.domain))
 
