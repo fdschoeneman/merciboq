@@ -2,15 +2,15 @@ development:
   adapter: postgresql
   database: merciboq_development
   pool: 5
-  username: frederick
-  password: tastywave
+  username:
+  password:
 
 test: &test
   adapter: postgresql
   database: merciboq_test
   pool: 5
-  username: frederick
-  password: tastywave
+  username:
+  password:
 
 production:
   adapter: postgresql
