@@ -3,21 +3,21 @@ development:
   database: merciboq_development
   pool: 5
   username:
-  password:
+  password: tastywave
 
 test: &test
   adapter: postgresql
   database: merciboq_test
   pool: 5
   username:
-  password:
+  password: tastywave
 
 production:
   adapter: postgresql
   database: merciboq_production
   pool: 5
   username:
-  password:
+  password: tastywave
 
 cucumber:
   <<: *test
