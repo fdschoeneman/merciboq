@@ -32,17 +32,10 @@ gem 'gravatar_image_tag', '1.0.0'
 gem 'bourbon'
 gem 'best_in_place'
 
-group :production do
-
-  # Postgres for Heroku
-  gem 'pg', '0.12.2'
-
-end
+# db
+gem 'pg', '0.12.2'
 
 group :test, :development do
-
-  # Dabase for development
-  gem 'pg', '0.12.2'
 
   # Debugging
   gem 'hpricot'
@@ -56,7 +49,6 @@ group :test, :development do
   gem 'spork', '0.9.0'
 
   # Cucumber
-  gem 'cucumber-rails'
   gem 'email_spec'
   gem 'capybara', '1.1.2'
   gem 'capybara-webkit'
@@ -66,7 +58,6 @@ group :test, :development do
   gem 'headless'
 
   # Rspec
-  gem 'turn', '0.8.2', :require => false
   gem 'rspec-rails', '2.8.1'
   gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
   gem 'steak'
@@ -83,12 +74,17 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'guard-rails'
   gem 'guard-sass'
+end
+
+group :test do
+
+  gem 'cucumber-rails'
 
   # Test Coverage
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
-
 end
+
 
 platforms :ruby do
   gem 'rb-readline'
