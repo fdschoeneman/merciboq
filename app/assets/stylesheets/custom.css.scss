@@ -18,10 +18,10 @@ header {
         color: white;
         text-decoration: none;
         opacity: .85;
-        -moz-transition: height 1s ease-in, opacity 2s ease;
+        -moz-transition: height 1s ease-in-out, opacity 2s ease;
         -webkit-transition: height 2s ease-in-out, opacity 5s ease;
-        -o-transition: height 1s ease-in, opacity 1s ease;
-        transition: height 2s ease-in, opacity 1s ease;
+        -o-transition: height 1s ease-in-out, opacity 1s ease;
+        transition: height 2s ease-in-out, opacity 1s ease;
 
       }
 
