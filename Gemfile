@@ -13,9 +13,10 @@ gem 'thin', '1.3.1'
 gem 'devise', "2.0"
 
 # Asset handling
+ gem 'sass-rails', '3.2.3'
+ gem 'bootstrap-sass', '~> 2.0.1'
 
 group :assets do
-  gem 'sass-rails', '3.2.3'
   gem 'coffee-script'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
@@ -25,7 +26,6 @@ end
 # Front end
 gem 'haml-rails'
 gem 'jquery-rails', '2.0.0'
-gem 'twitter-bootstrap-rails'
 gem 'bootstrap-forms'
 gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
@@ -45,17 +45,6 @@ group :test, :development do
   gem 'ruby-debug19'
   gem 'ruby-prof'
 
-  # Spork
-  gem 'spork', '0.9.0'
-
-  # Cucumber
-  gem 'email_spec'
-  gem 'capybara', '1.1.2'
-  gem 'capybara-webkit'
-  gem 'selenium-webdriver'
-  gem 'database_cleaner'
-  gem 'launchy'
-  gem 'headless'
 
   # Rspec
   gem 'rspec-rails', '2.8.1'
@@ -64,6 +53,27 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'faker', '1.0.1'
   gem 'shoulda-matchers'
+
+end
+
+group :test do
+
+  # Spork
+  gem 'spork', '0.9.0'
+
+  # Cucumber
+  gem 'email_spec'
+  gem 'cucumber-rails', require: false
+  gem 'capybara', '1.1.2'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'headless'
+
+  # Test Coverage
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
 
   # Guards
   gem 'guard'
@@ -74,15 +84,7 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'guard-rails'
   gem 'guard-sass'
-end
 
-group :test do
-
-  gem 'cucumber-rails'
-
-  # Test Coverage
-  gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
 end
 
 

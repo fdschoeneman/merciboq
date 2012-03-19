@@ -3,7 +3,8 @@
   = render 'layouts/head'
   %body
     .container
-      = render 'layouts/header'
+      %header
+        = render 'layouts/header'
       = render 'shared/flash_messages', :locals => {:flash => flash}
       = yield
       = render 'layouts/footer'

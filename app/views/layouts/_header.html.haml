@@ -1,27 +1,24 @@
-%header
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container-fluid
-        .row-fluid
-          .span
-            .logo
-              = link_to logo, root_url(:host => request.domain)
-          .span6.offset8
-            .nav-collapse
-            %ul.nav.pull-right
-              - if signed_in?
-                %li
-                  = link_to "thankyous", thankyous_url(:host => request.domain)
-                %li.divider-vertical
-                %li
-                  = link_to "welcomes", welcomes_url(:host => request.domain)
-              -else
-                %li.divider-vertical
-                %li
-                  = link_to "about", about_url(:host => request.domain)
-                %li.divider-vertical
-                %li
-                  = link_to "help", help_url(:host => request.domain)
-              = render 'devise/menu/registration_items'
-              = render 'devise/menu/login_items'
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      .logo
+        = link_to logo, root_url(:host => request.domain)
+      .span6.offset8
+        .nav-collapse
+        %ul.nav.pull-right
+          - if signed_in?
+            %li
+              = link_to "thankyous", thankyous_url(:host => request.domain)
+            %li.divider-vertical
+            %li
+              = link_to "welcomes", welcomes_url(:host => request.domain)
+          -else
+            %li.divider-vertical
+            %li
+              = link_to "about", about_url(:host => request.domain)
+            %li.divider-vertical
+            %li
+              = link_to "help", help_url(:host => request.domain)
+          = render 'devise/menu/registration_items'
+          = render 'devise/menu/login_items'
 
