@@ -13,8 +13,8 @@ gem 'thin', '1.3.1'
 gem 'devise', "2.0"
 
 # Asset handling
- gem 'sass-rails', '3.2.3'
- gem 'bootstrap-sass', '~> 2.0.1'
+gem 'sass-rails', '3.2.3'
+gem 'bootstrap-sass', '~> 2.0.1'
 
 group :assets do
   gem 'coffee-script'
@@ -45,10 +45,9 @@ group :test, :development do
   gem 'ruby-debug19'
   gem 'ruby-prof'
 
-
   # Rspec
   gem 'rspec-rails', '2.8.1'
-  gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
+  gem 'rspec-rails-mocha', '~> 0.3.1'
   gem 'steak'
   gem 'factory_girl_rails'
   gem 'faker', '1.0.1'
@@ -64,16 +63,12 @@ group :test do
   # Cucumber
   gem 'email_spec'
   gem 'cucumber-rails', require: false
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'headless'
-
-  # Test Coverage
-  gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
 
   # Guards
   gem 'guard'
