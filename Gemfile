@@ -35,6 +35,7 @@ gem 'best_in_place'
 # db
 gem 'pg', '0.12.2'
 
+gem 'faker', '1.0.1'
 group :test, :development do
 
   # Debugging
@@ -50,7 +51,7 @@ group :test, :development do
   #gem 'rspec-rails-mocha', '~> 0.3.1'
   gem 'steak'
   gem 'factory_girl_rails'
-  gem 'faker', '1.0.1'
+
   gem 'shoulda-matchers'
 
 end
