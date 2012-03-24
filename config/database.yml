@@ -16,7 +16,7 @@ production:
   adapter: postgresql
   database: merciboq_production
   pool: 5
-  username:
+  username: postgres
   password: tastywave
 
 cucumber:
