@@ -1,8 +1,5 @@
-
-
 body {
-  padding-top: 90px;
-
+  
   .thick-header {
     padding-top: 50px;
   }
@@ -244,22 +241,4 @@ form.thankyou {
 
 /* Login and Signup buttons -- override Twitter bootstrap defaults */
 
-#email {
-  text-decoration: none;
-  color: white;
-
-  a {
-    color: white;
-    text-decoration: none;
-
-    &:hover {
-      color: white;
-      text-decoration: none;
-    }
-
-    &:visited {
-      color: white;
-    }
-  }
-}
 

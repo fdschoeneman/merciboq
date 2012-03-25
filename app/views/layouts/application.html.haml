@@ -1,12 +1,12 @@
 !!! 5
 %html{:lang => "en"}
-	%head
-	= render 'layouts/head'
+  %head
+    = render 'layouts/head'
   %body
     .container
       %header
         = render 'layouts/header'
-      = render 'shared/flash_messages', :locals => {:flash => flash}
+        = render 'shared/flash_messages', :locals => {:flash => flash}
       = yield
       = render 'layouts/footer'
 
