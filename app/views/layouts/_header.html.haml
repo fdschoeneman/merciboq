@@ -3,22 +3,21 @@
     .container
       .logo
         = link_to logo, root_url(:host => request.domain)
-      .span6.offset8
         .nav-collapse
-        %ul.nav.pull-right
-          - if signed_in?
-            %li
-              = link_to "thankyous", thankyous_url(:host => request.domain)
-            %li.divider-vertical
-            %li
-              = link_to "welcomes", welcomes_url(:host => request.domain)
-          -else
-            %li.divider-vertical
-            %li
-              = link_to "about", about_url(:host => request.domain)
-            %li.divider-vertical
-            %li
-              = link_to "help", help_url(:host => request.domain)
-          = render 'devise/menu/registration_items'
-          = render 'devise/menu/login_items'
+      %ul.nav.pull-right
+        - if signed_in?
+          %li
+            = link_to "Thankyous", thankyous_url(:host => request.domain)
+          %li.divider-vertical
+          %li
+            = link_to "Welcomes", welcomes_url(:host => request.domain)
+        -else
+          %li.divider-vertical
+          %li
+            = link_to "About", about_url(:host => request.domain)
+          %li.divider-vertical
+          %li
+            = link_to "Help", help_url(:host => request.domain)
+        = render 'devise/menu/registration_items'
+        = render 'devise/menu/login_items'
 

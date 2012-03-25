@@ -48,7 +48,6 @@ group :test, :development do
 
   # Rspec
   gem 'rspec-rails', '2.8.1'
-  #gem 'rspec-rails-mocha', '~> 0.3.1'
   gem 'steak'
   gem 'factory_girl_rails'
 

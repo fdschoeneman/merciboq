@@ -1,12 +1,5 @@
 require 'factory_girl'
 
-#Factory.define :user do |user|
-#  user.name                   "test name"
-#  user.email                  "test.name@gmail.com"
-#  user.subdomain              "testuser"
-#  user.password               "foobar"
-#  user.password_confirmation  "foobar"
-#end
 
 Factory.define :welcomer do |welcomer|
   welcomer.name                   "welcomer name"
