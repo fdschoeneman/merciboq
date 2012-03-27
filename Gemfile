@@ -50,6 +50,7 @@ group :test, :development do
   gem 'rspec-rails', '2.8.1'
   gem 'steak'
   gem 'factory_girl_rails'
+  gem 'factory_girl_rails'
 
   gem 'shoulda-matchers'
 

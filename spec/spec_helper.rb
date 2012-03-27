@@ -22,7 +22,8 @@ Spork.prefork do
     config.include Devise::TestHelpers, :type => :controller
     config.include EmailSpec::Helpers
     config.include EmailSpec::Matchers
-    
+    config.include FactoryGirl::Syntax::Methods
+
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
     config.use_transactional_fixtures = true
