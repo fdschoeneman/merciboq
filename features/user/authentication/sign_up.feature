@@ -15,7 +15,6 @@ Feature: Sign up
       And I fill in the following:
         | Email                 | sarah.silverman@test.com     |
       And I press "Sign up"
-      Then I should see "A message with a confirmation link has been sent"
       And "sarah.silverman@test.com" should have 1 email
       When I open the email
       Then I should see confirmation instructions in the subject

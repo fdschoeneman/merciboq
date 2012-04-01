@@ -30,9 +30,15 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    super
-  end  
-      
+    @user = User.new(params[:user])
+    if @user.save
+      flash[:success] = "Welcome to Merciboq! -- We sent a confirmation to your email"
+      redirect_to @user
+    else
+      render 'new'
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end

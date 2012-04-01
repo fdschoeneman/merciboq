@@ -13,7 +13,7 @@ describe UsersController do
   end
 
   it "should create a new instance given a valid attribute" do
-    user = Factory.create(:user)
+    user = FactoryGirl.create(:user)
     user.should be_valid
   end
 
@@ -116,7 +116,7 @@ describe UsersController do
 
     before(:each) do
       @user = User.create!(@new_user_attr)
-      @welcomer = Factory(:user)
+      @welcomer = FactoryGirl.create(:user)
       content = "content_for_thankyou"
       headline = "headline_for_thankyou"
       @new_user_attr = { :content => "lorem ipsum" }

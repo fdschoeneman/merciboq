@@ -95,6 +95,13 @@ class User < ActiveRecord::Base
     end  
     end
         
+
+  def subdomain_placeholder
+    modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
+    adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
+    subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
+  end
+
   protected    
       
 end

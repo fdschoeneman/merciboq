@@ -1,15 +1,15 @@
-= form_for(resource, :url => confirm_user_path) do |f|
+= simple_form_for(resource, :url => confirm_user_path, class: "form-horizontal") do |f|
   = devise_error_messages!
   %fieldset
     %legend 
-      Choose a password:
-    = f.hidden_field    :confirmation_token
-    = f.email_field     :email
-    = f.text_field      :name
-    = f.text_field      :subdomain
-    = f.password_field  :password
-    = f.password_field  :password_confirmation
-  %p.clearfix
+      Choose a password2:
+    = f.input   :confirmation_token, as: :hidden
+    = f.input   :email
+    = f.input   :name
+    = f.input   :subdomain
+    = f.input   :password
+    = f.input   :password_confirmation
+  .form-actions
     = f.submit raw "Confirm that you own #{@user.email}"
 = link_to 'Home', root_url
 %br/

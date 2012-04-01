@@ -10,22 +10,23 @@ gem 'thin', '1.3.1'
 # gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
-gem 'devise', "2.0"
+gem 'devise'
+gem 'simple_form'
 
 # Asset handling
-gem 'sass-rails', '3.2.3'
-gem 'bootstrap-sass', '~> 2.0.1'
+gem 'sass-rails'
+gem 'bootstrap-sass'
 
 group :assets do
   gem 'coffee-script'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
+  gem 'coffee-rails'
+  gem 'uglifier'
   gem 'eventmachine'
 end
 
 # Front end
 gem 'haml-rails'
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails'
 gem 'bootstrap-forms'
 gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
@@ -47,7 +48,7 @@ group :test, :development do
   gem 'ruby-prof'
 
   # Rspec
-  gem 'rspec-rails', '2.8.1'
+  gem 'rspec-rails'
   gem 'steak'
   gem 'factory_girl_rails'
   gem 'factory_girl_rails'

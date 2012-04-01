@@ -1,15 +1,18 @@
 .row-fluid
   .span3.well
     = render 'shared/mission_statement'
-  .span6
-    .form-vertical
-      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-        %fieldset
-          %legend login
-          = f.email_field :email
-          = f.password_field :password
-          - if devise_mapping.rememberable?
-            = f.check_box :remember_me
-          = f.submit "Login"
-      = render :partial => "devise/shared/links"
+  .span8
+    = simple_form_for(resource, :as => resource_name, html: { class: 'form-horizontal' }, :url => session_path(resource_name)) do |f|
+      %legend login
+      - if f.error_notification
+        .alert.alert-error.fade.in
+          %a.close{"data-dismiss" => "alert", :href => "#"} ×
+          = f.error_notification
+      = f.input :email
+      = f.input :password, required: true
+      - if devise_mapping.rememberable?
+        .form-actions
+          = f.check_box :remember_me
+          = f.button :submit, "Login", class: 'btn btn-success'
+    = render :partial => "devise/shared/links"
 

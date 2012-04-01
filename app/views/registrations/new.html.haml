@@ -1,12 +1,16 @@
 .row-fluid
   .span3.well
     = render 'shared/mission_statement'
-  .span6
-    .form-vertical
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-        %fieldset
-          %legend sign up without sending a MerciboQ!
-          = f.email_field :email, placeholder: "fred@merciboq.com"
-          = f.submit raw "Sign up and we'll email you a confirmation"
-          = render :partial => "devise/shared/links"
+  .span8
+    %fieldset
+      = simple_form_for(resource, :as => resource_name, html: { class: 'form-horizontal' }, :url => registration_path(resource_name)) do |f|
+        - if f.error_notification
+          .alert.alert-error.fade.in
+            %a.close{"data-dismiss" => "alert", :href => "#"} ×
+            = f.error_notification
+        %legend sign up
+        = f.input :email
+        .form-actions
+          = f.button :submit, "Sign up", class: 'btn-success'
+        = render :partial => "devise/shared/links"
 
