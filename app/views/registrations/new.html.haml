@@ -2,15 +2,13 @@
   .span3.well
     = render 'shared/mission_statement'
   .span8
-    %fieldset
-      = simple_form_for(resource, :as => resource_name, html: { class: 'form-horizontal' }, :url => registration_path(resource_name)) do |f|
-        - if f.error_notification
-          .alert.alert-error.fade.in
-            %a.close{"data-dismiss" => "alert", :href => "#"} ×
-            = f.error_notification
-        %legend sign up
-        = f.input :email
-        .form-actions
-          = f.button :submit, "Sign up", class: 'btn-success'
-        = render :partial => "devise/shared/links"
-
+    = simple_form_for(resource, :as => resource_name, html: { class: 'form-horizontal' }, :url => registration_path(resource_name)) do |f|
+      - if f.error_notification
+        .alert.alert-error.fade.in
+          %a.close{"data-dismiss" => "alert", :href => "#"} ×
+          = f.error_notification
+      %legend Sign up
+      = f.input :email
+      .form-actions
+        = f.button :submit, "Sign up", class: 'btn-large btn-primary'
+      = render :partial => "devise/shared/links"

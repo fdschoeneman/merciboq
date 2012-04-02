@@ -1,11 +1,8 @@
 .row
-  .span4.offset1.well
-    = render 'shared/left_sidebar'
-  .span4.offset1
-    %h3
-      Edit your settings:
+  .span12.form-horizontal
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
       %fieldset
+        %legend Edit your settings
         = f.input :name
         = f.input :subdomain
         = f.input :email
@@ -22,7 +19,7 @@
             :placeholder => "Must match new password above",
             :hint => "(Leave blank unless you want to change your old password)"
       .form-actions
-        = f.submit "Update your settings"
+        = f.button :submit, "Update your settings", class: "btn-large btn-primary"
       %h3 Cancel my account
       %p
         Unhappy?

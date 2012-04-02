@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Rails
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.3'
 
 # Server for development
 gem 'thin', '1.3.1'

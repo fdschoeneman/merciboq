@@ -1,8 +1,8 @@
 .thick-header
 .row
-  .span3.offset1.well
+  .span3.well
     = render 'shared/left_sidebar'
-  .span11
+  .span8
     %h1
       = gravatar_for @user
       = @user.name
@@ -26,18 +26,4 @@
                 "#{welcome.content}"
               %span.timestamp
                 Thankyou sent #{time_ago_in_words(welcome.created_at)} ago
-  .span5
-    %strong Name
-    = @user.name
-    %br/
-    %strong URL
-    = link_to user_path(@user), @user
-    %br/
-    %strong
-      Thankyous
-    = @user.thankyous.count
-    %br/
-    %strong
-      Welcomes
-      = @user.welcomes.count
-
+  
