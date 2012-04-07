@@ -11,13 +11,10 @@
       = render 'shared/thankyou_tips'
     - else
       %table.table.table-striped
-        %colgroup
-          %col.span6
-          %col.span2
         %thead
           %tr
-            %th= @user.thankyou_phrase
-            %th 
+            %th.span6= @user.thankyou_phrase
+            %th.span2
         %tbody
           = render @thankyous
   .span5

@@ -1,30 +1,30 @@
-%table.profile{:summary => "Profile information"}
-  %tr
-    %td.main
-      %h1
-        = gravatar_for @user
-        = @user.name
-      - if @user.welcomes.empty?
-        Nobody has thanked #{@user.name} yet.  Would you like to be the first?
-        = render 'shared/thankyou_steps'
-        = render 'shared/thankyou_tips'
-      -else
-        %table.thankyous{:summary => "User thankyous"}
-          = render @welcomes
-          = paginate @welcomes
-        = paginate @welcomes
-    %td.sidebar.round
-      %strong Name
+.row.span12
+  .span2.well
+    = render 'shared/left_sidebar'
+  .span8
+    %h1
+      = gravatar_for @user
       = @user.name
-      %br/
-      %strong Subdomain
-      = @user.subdomain
-      = link_to "#{@user.subdomain}.merciboq.com", @user
-      %br/
-      = link_to "#{@user.subdomain}.merciboq.com", root_url(:host => @user.subdomain + '.' + request.domain + request.port_string)
-      %br/
-      %strong URL
-      = link_to user_path(@user), @user
-      %br/
-      %strong Thankyous
-      %span.badge.badge-info= @user.thankyous.count
+    - if @user.welcomes.empty?
+      Nobody has thanked #{@user.name} yet.  Would you like to be the first?
+      = render 'shared/thankyou_steps'
+      = render 'shared/thankyou_tips'
+    -else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th.span6 What people are saying about #{@user.name}
+            %th.span2
+        %tbody
+          = render @welcomes
+%strong Subdomain
+= @user.subdomain
+= link_to "#{@user.subdomain}.merciboq.com", @user
+%br/
+= link_to "#{@user.subdomain}.merciboq.com", root_url(:host => @user.subdomain + '.' + request.domain + request.port_string)
+%br/
+%strong URL
+= link_to user_path(@user), @user
+%br/
+%strong Thankyous
+%span.badge.badge-info= @user.thankyous.count

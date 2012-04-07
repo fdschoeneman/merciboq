@@ -6,6 +6,6 @@
     - thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
   %td
-    = link_to "edit", thankyou_edit_url(thankyou), class: "btn btn-mini btn-inverse"
-    = link_to "delete", thankyou_delete_url(thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete, class: "btn btn-mini btn-warning"
+    = link_to "edit", thankyou_edit_url(thankyou), class: "btn btn-mini btn-warning"
+    = link_to "delete", thankyou_delete_url(thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete, class: "btn btn-mini btn-danger"
 
