@@ -12,6 +12,7 @@ gem 'thin', '1.3.1'
 # Authentication
 gem 'devise'
 gem 'simple_form'
+gem 'wicked'
 
 # Asset handling
 gem 'sass-rails'

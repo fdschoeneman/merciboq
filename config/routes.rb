@@ -20,6 +20,8 @@ Merciboq::Application.routes.draw do
     resources :thankyous
   end
 
+  resources :after_signup_wizard
+
   constraints(Subdomain) do
     match '/' => 'users#show'
   end

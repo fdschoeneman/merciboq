@@ -1,11 +1,12 @@
 %tr
   %td
-    #{gravatar_for thankyou.thanker, :size => 15} | #{current_user_or_user(thankyou.thanker)} wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) } &mdash; #{thankyou.headline} #{thankyou.content} Posted
+    #{gravatar_for thankyou.thanker, :size => 15} | #{link_to current_user_or_user(thankyou.thanker), root_url(subdomain: thankyou.thanker.subdomain)} wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) } &mdash; #{thankyou.headline} #{thankyou.content} Posted
     = time_ago_in_words(thankyou.created_at)
     ago.
     - thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
   %td
-    = link_to "edit", thankyou_edit_url(thankyou), class: "btn btn-mini btn-warning"
-    = link_to "delete", thankyou_delete_url(thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete, class: "btn btn-mini btn-danger"
+    - if current_user == @user
+      = link_to "edit", thankyou_edit_url(thankyou), class: "btn btn-mini btn-warning"
+      = link_to "delete", thankyou_delete_url(thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete, class: "btn btn-mini btn-danger"
 
