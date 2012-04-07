@@ -1,5 +1,5 @@
-.row
-  .span3.well
+.row.span12
+  .span2.well
     = render 'shared/left_sidebar'
   .span8
     %h1
@@ -10,11 +10,16 @@
       = render 'shared/thankyou_steps'
       = render 'shared/thankyou_tips'
     - else
-      %p
-        #{@user.thankyou_phrase}
-      %table.thankyous{:summary => "User thankyous"}
-        = render @thankyous
-      = paginate @thankyous
+      %table.table.table-striped
+        %colgroup
+          %col.span6
+          %col.span2
+        %thead
+          %tr
+            %th= @user.thankyou_phrase
+            %th 
+        %tbody
+          = render @thankyous
   .span5
     = render 'shared/user_info'
     %strong Name

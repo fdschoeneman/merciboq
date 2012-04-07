@@ -85,11 +85,11 @@ group :test do
 end
 
 
-platforms :ruby do
-  gem 'rb-readline'
+# platforms :ruby do
+  # gem 'rb-readline'
 
   # notification support
   #  gem 'rb-inotify'
   #  gem 'libnotify'
-end
+# end
 
