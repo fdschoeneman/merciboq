@@ -1,6 +1,6 @@
 %tr
   %td
-    #{gravatar_for thankyou.thanker, :size => 15} | You wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) } &mdash; #{thankyou.headline} #{thankyou.content} "Posted"
+    #{gravatar_for thankyou.thanker, :size => 15} | #{current_user_or_user(thankyou.thanker)} wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) } &mdash; #{thankyou.headline} #{thankyou.content} Posted
     = time_ago_in_words(thankyou.created_at)
     ago.
     - thankyou.attachments.each do |attachment|

@@ -33,7 +33,6 @@ class ThankyousController < UsersController
     redirect_to thankyous_url, :flash => { :notice => "Thankyou destroyed." }
   end
 
-
   def show_thankyous
     @user = current_user
     @thankyous = @user.thankyous.page(params[:page])

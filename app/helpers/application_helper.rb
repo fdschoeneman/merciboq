@@ -22,6 +22,16 @@ module ApplicationHelper
     email_instructions = "Replace_this_email_with_that_of_the_person_you_wish_to_appreciate"
   end
 
+  def current_user_or_user(user)
+    base_pronoun = "you"
+    if user == current_user
+      base_pronoun
+    else
+      user.name
+    end
+
+  end
+
   def you_or_user(user)
     base_pronoun = "you"
     if user == current_user

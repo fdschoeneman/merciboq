@@ -27,5 +27,4 @@
       = link_to user_path(@user), @user
       %br/
       %strong Thankyous
-      = @user.thankyous.count
-
+      %span.badge.badge-info= @user.thankyous.count
