@@ -43,5 +43,9 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
   end
 
+  protected
+    def after_sign_up_path_for(resource)
+      after_register_path(:add_zip)
+    end
 end
 

@@ -55,7 +55,7 @@ def make_merciboqs
     users = User.all(:limit => 4).each do |user|
       welcomer = n+1
       headline = Faker::Company.catch_phrase
-      content = Faker::Company.bs
+      content = Faker::Lorem.paragraph
       merciboq = user.thankyous.create!(:welcomer_id => welcomer,
                              :content => content,
                              :headline => headline)
