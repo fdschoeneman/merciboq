@@ -25,7 +25,7 @@ Feature: Sign up
       And I fill in the following:
         | Password              | password |
         | Password confirmation | password |
-      And I press "Confirm that you own"
+      And I press "Choose my password"
       Then I should see "Your account was successfully confirmed."
 
     Scenario: Unregistered user signs up with invalid email

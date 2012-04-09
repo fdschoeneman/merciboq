@@ -2,7 +2,7 @@
   %fieldset
     %legend 
       Confirm your account and choose a password:
-    = form_for(resource, as: resource_name, :url => confirm_user_path) do |f|
+    = simple_form_for(resource, as: resource_name, :url => confirm_user_path, class: "form-horizontal") do |f|
       = devise_error_messages!
       %legend 
         = @user.email

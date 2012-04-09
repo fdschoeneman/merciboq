@@ -15,7 +15,7 @@ Feature: Thankyous to unregistered users trigger
     When she follows the confirmation in the email body
     Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
-    And she presses "Confirm"
+    And she presses "Choose my password"
     Then she should see "Your account was successfully confirmed"
 
   Scenario: Unregistered WELCOMER signs up after receiving a thankyou
@@ -27,7 +27,7 @@ Feature: Thankyous to unregistered users trigger
     When she follows the confirmation in the email body
     Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
-    And she presses "Confirm that you own"
+    And she presses "Choose my password"
     Then she should see "Your account was successfully confirmed"
 
   Scenario: Unregistered WELCOMER signs up after a thankyou

@@ -1,17 +1,26 @@
-= simple_form_for(resource, :url => confirm_user_path, class: "form-horizontal") do |f|
-  = devise_error_messages!
-  %fieldset
-    %legend 
-      Choose a password2:
-    = f.input   :confirmation_token, as: :hidden
-    = f.input   :email
-    = f.input   :name
-    = f.input   :subdomain
-    = f.input   :password
-    = f.input   :password_confirmation
-  .form-actions
-    = f.submit raw "Confirm that you own #{@user.email}"
-= link_to 'Home', root_url
+.row-fluid
+  .span3.well
+    = render 'shared/mission_statement'
+  .span8.form-horizontal
+    .row-fluid 
+      .span3.label
+        Step 1: Sign up 
+      .span3.label.label-warning
+        Step 2: Choose Password 
+      .span3.label
+        Step 3: Choose Subdomain 
+    %br/
+    %legend Step 2: Choose your password  
+    = simple_form_for(resource, :url => confirm_user_path) do |f|
+      - if f.error_notification
+        .alert.alert-error.fade.in
+        %a.close{"data-dismiss" => "alert", :href => "#"} 
+        = f.error_notification
+      = f.input   :confirmation_token, as: :hidden
+      = f.input   :password
+      = f.input   :password_confirmation
+      .form-actions
+        = f.button :submit, "Choose my password", class: "btn btn-primary"
 %br/
 = render :partial => 'devise/shared/links'
 

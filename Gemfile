@@ -17,7 +17,8 @@ gem 'wicked'
 # Asset handling
 gem 'sass-rails'
 gem 'bootstrap-sass'
-
+gem 'font-awesome-rails'
+      
 group :assets do
   gem 'coffee-script'
   gem 'coffee-rails'

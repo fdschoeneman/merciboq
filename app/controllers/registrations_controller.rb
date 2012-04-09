@@ -45,7 +45,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
     def after_sign_up_path_for(resource)
-      after_register_path(:add_zip)
+      after_signup_wizard_path(:choose_password)
     end
 end
 
