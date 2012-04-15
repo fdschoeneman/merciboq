@@ -23,10 +23,14 @@ Feature: Sign up
       When I follow "Confirm my account" in the email
       Then I should see "| Confirm your account" in the title
       And I fill in the following:
-        | Password              | password |
-        | Password confirmation | password |
+        | Password              | password        |
+        | Password confirmation | password        |
       And I press "Choose my password"
-      Then I should see "Your account was successfully confirmed."
+      And I should see "Your account was successfully confirmed."
+      And I fill in the following:
+        | Subdomain             | sarah-silverman |
+      And I press "Choose my subdomain"
+      Then show me the page
 
     Scenario: Unregistered user signs up with invalid email
       And I fill in the following:

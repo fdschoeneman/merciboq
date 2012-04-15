@@ -11,7 +11,7 @@
         Step 3: Choose Subdomain 
     %br/
     %legend Step 3: Choose your subdomain
-    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal" } ) do |f|
+    = simple_form_for(resource, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal" } ) do |f|
       = f.input :subdomain, wrapper: :append do
         = f.input_field :subdomain, placeholder: @user.subdomain
         = content_tag :span, ".merciboq.com", class: "add-on"

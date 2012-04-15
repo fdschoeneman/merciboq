@@ -46,8 +46,9 @@ group :test, :development do
   gem 'ruby_parser'
   gem 'taps'
   gem 'heroku'
-  gem 'ruby-debug19'
-  gem 'ruby-prof'
+  # gem 'ruby-debug19'
+  # gem 'ruby-prof'
+  gem 'debugger'
 
   # Rspec
   gem 'rspec-rails'

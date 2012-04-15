@@ -27,7 +27,6 @@ class User < ActiveRecord::Base
               uniqueness: { case_sensitive: false }
 
   validates :subdomain, presence: true, on: :update,
-              allow_blank: true,
               uniqueness: { case_sensitive: false },
               format: { with: subdomain_regex, 
                 message: "The subdomain can only contain numbers, 
