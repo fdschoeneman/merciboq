@@ -32,8 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to Merciboq! -- We sent a confirmation to your email"
-      redirect_to @user
+      render 'confirmations/new'
     else
       render 'new'
     end
@@ -44,8 +43,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   protected
-    def after_sign_up_path_for(resource)
-      after_signup_wizard_path(:choose_password)
-    end
+    # def after_sign_up_path_for(resource)
+    #   after_signup_wizard_path(:choose_password)
+    # end
 end
 

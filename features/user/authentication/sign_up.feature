@@ -15,6 +15,7 @@ Feature: Sign up
       And I fill in the following:
         | Email                 | sarah.silverman@test.com     |
       And I press "Sign up"
+      Then show me the page
       And "sarah.silverman@test.com" should have 1 email
       When I open the email
       Then I should see confirmation instructions in the subject
@@ -30,10 +31,8 @@ Feature: Sign up
       And I fill in the following:
         | Subdomain             | sarah-silverman |
       And I press "Choose my subdomain"
-      Then show me the page
 
     Scenario: Unregistered user signs up with invalid email
       And I fill in the following:
         | Email                 | invalidemail    |
-      #Then I should see "Doesn't look quite right"
 

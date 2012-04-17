@@ -14,8 +14,8 @@
     = simple_form_for(resource, :url => confirm_user_path) do |f|
       - if f.error_notification
         .alert.alert-error.fade.in
-        %a.close{"data-dismiss" => "alert", :href => "#"} 
-        = f.error_notification
+          %a.close{"data-dismiss" => "alert", :href => "#"} 
+          = f.error_notification
       = f.input   :confirmation_token, as: :hidden
       = f.input   :password
       = f.input   :password_confirmation
