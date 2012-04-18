@@ -15,22 +15,25 @@ Feature: Sign up
       And I fill in the following:
         | Email                 | sarah.silverman@test.com     |
       And I press "Sign up"
-      Then show me the page
+      Then I should see "Step 1: Sign up"
       And "sarah.silverman@test.com" should have 1 email
       When I open the email
       Then I should see confirmation instructions in the subject
       And I should see "Sarah Silverman" in the email body
       And I should see "confirm" in the email body
       When I follow "Confirm my account" in the email
-      Then I should see "| Confirm your account" in the title
+      Then I should see "| Step 2: Choose" in the title
       And I fill in the following:
         | Password              | password        |
         | Password confirmation | password        |
       And I press "Choose my password"
-      And I should see "Your account was successfully confirmed."
+      Then I should see "| Step 3: Choose subdomain" in the title
       And I fill in the following:
         | Subdomain             | sarah-silverman |
       And I press "Choose my subdomain"
+      Then show me the page
+      Then I should see "| Thankyous" in the title
+      
 
     Scenario: Unregistered user signs up with invalid email
       And I fill in the following:

@@ -30,6 +30,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    @title = "Step 1: Sign up"
     @user = User.new(params[:user])
     if @user.save
       render 'confirmations/new'
@@ -46,5 +47,9 @@ class RegistrationsController < Devise::RegistrationsController
     # def after_sign_up_path_for(resource)
     #   after_signup_wizard_path(:choose_password)
     # end
+
+    def after_update_path_for(resource)
+      thankyous_path
+    end
 end
 

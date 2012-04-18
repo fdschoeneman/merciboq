@@ -10,8 +10,7 @@ class AfterSignupWizardController < ApplicationController
       when :choose_subdomain
         @title = "Step 3: Choose subdomain"
       end
-
-      render_wizard
+    render_wizard
   end
 
   def update
@@ -21,11 +20,10 @@ class AfterSignupWizardController < ApplicationController
       @user.update_attributes(params[:user])
     when :choose_subdomain
       if @user.update_attributes(params[:user])
-        redirect_to thankyous_url(:host => request.domain)
+        render :user_thankyous
       else 
         render nothing: true
       end
-
     end
     sign_in(@user, bypass: true)
     render_wizard @user

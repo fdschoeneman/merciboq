@@ -1,7 +1,8 @@
 class ConfirmationsController < Devise::ConfirmationsController
 
   def show
-    @title = "Confirm your account"
+    @title = "Step 2: Choose password" 
+
     if @user = User.find_by_confirmation_token(params[:confirmation_token])
       @user.name = temporary_name(@user.email)
       if !@user.present?
