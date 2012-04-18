@@ -31,11 +31,9 @@ Feature: Sign up
       And I fill in the following:
         | Subdomain             | sarah-silverman |
       And I press "Choose my subdomain"
-      Then show me the page
       Then I should see "| Thankyous" in the title
       
 
     Scenario: Unregistered user signs up with invalid email
       And I fill in the following:
         | Email                 | invalidemail    |
-
