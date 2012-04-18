@@ -2,7 +2,7 @@
   .span12.form-horizontal
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
       %fieldset
-        %legend Fredit your settings
+        %legend Edit your settings
         = f.input :name
         = f.input :subdomain
         = f.input :email
