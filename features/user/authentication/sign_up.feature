@@ -37,3 +37,5 @@ Feature: Sign up
     Scenario: Unregistered user signs up with invalid email
       And I fill in the following:
         | Email                 | invalidemail    |
+      And I press "Sign up"
+      Then I should see "doesn't look quite right"

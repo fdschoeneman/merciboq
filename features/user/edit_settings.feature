@@ -16,7 +16,7 @@ Feature: Edit settings
     And I fill in "Subdomain" with "sandra-luck"
     And I fill in "Current password" with "westcoastchoppers"
     And I click the "Update your settings" button
-    Then I should be on the home page
+    Then I should be on the thankyous page
     And I should see "You updated your account successfully."
 
   Scenario: Logged out user tries and fails to edit her settings

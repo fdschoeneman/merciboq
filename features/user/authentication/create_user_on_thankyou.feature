@@ -15,7 +15,7 @@ Feature: Create new user on thankyou
     Then I should see confirmation instructions in the subject
     And she should see "confirm" in the email body
     When she follows the confirmation in the email body
-    Then she should see "Confirm your account" in the title
+    Then she should see "Step 2: Choose password" in the title
     And when she fills in her password and confirmation
     And she presses "Choose my password"
     Then she should see "confirmed"
@@ -27,7 +27,6 @@ Feature: Create new user on thankyou
     Then she should see confirmation instructions in the subject
     And she should see "confirm" in the email body
     When she follows the confirmation in the email body
-    Then she should see "Confirm your account" in the title
     And when she fills in her password and confirmation
     And she presses "Choose my password"
     Then she should see "confirmed"
