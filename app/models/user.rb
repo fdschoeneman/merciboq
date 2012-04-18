@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
     email = self.email
     email_split   = email.split('@')
     email_local   = email_split[0]
-    local_dashed  = email_local.split('.').join('-')
+    local_dashed  = email_local.gsub(/[.+]/, '-')
     if User.find_by_subdomain(local_dashed).nil?
       self.subdomain = local_dashed
     else
