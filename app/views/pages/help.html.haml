@@ -1,7 +1,4 @@
-.row-fluid
-  .span3
-    .well
-      = render 'shared/left_sidebar'
-  .span6
-    = render 'help'
-
+- content_for :column1 do
+  = render 'shared/left_sidebar'
+- content_for :column2 do
+  = render 'help'

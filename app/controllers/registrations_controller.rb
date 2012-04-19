@@ -52,4 +52,3 @@ class RegistrationsController < Devise::RegistrationsController
       thankyous_path
     end
 end
-

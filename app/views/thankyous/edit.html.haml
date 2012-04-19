@@ -1,18 +1,13 @@
-%tr
-  %td.thankyou
-    %span.content
-      %h2
-        Edit this thankyou
-      #{gravatar_for @thankyou.welcomer, :size => 15}
-      | #{link_to @thankyou.welcomer.name, @thankyou.welcomer} --
-      %strong
-        = @thankyou.headline
-        = @thankyou.content
-    %span.timestamp
-      Posted #{time_ago_in_words(@thankyou.created_at)} ago.
-      - @thankyou.attachments.each do |attachment|
-        = link_to(attachment.filename, attachment, :target => '_blank')
-      |
-      = link_to "delete", thankyou_delete_url(@thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete
-      = render 'shared/thankyou_edit_form'
+.row-fluid
+  .span3.well
+    = render 'shared/mission_statement'
+  .span8
+    %h2 Edit this thankyou
+    = render @thankyou
+    - @thankyou.attachments.each do |attachment|
+      = link_to(attachment.filename, attachment, :target => '_blank')
+    %br/
+    %br/
+    
+    = render 'shared/thankyou_edit_form'
 

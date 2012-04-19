@@ -1,4 +1,4 @@
-.row-fluid
-  .span12-fluid
-    .span5= render 'shared/left_sidebar'
-    .span5.well= render 'shared/mission_statement'
+- content_for :column1 do
+  = render 'shared/left_sidebar'
+- content_for :column2 do
+  = render 'shared/mission_statement'

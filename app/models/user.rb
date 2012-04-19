@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
     else
       self.subdomain = "#{local_dashed}-#{subdomain_placeholder}"    
     end  
-    end
+  end
         
 
   def subdomain_placeholder
@@ -101,7 +101,6 @@ class User < ActiveRecord::Base
     subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
   end
 
-  protected    
       
 end
 

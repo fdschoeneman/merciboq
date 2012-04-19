@@ -1,9 +1,8 @@
-.row
-  .span11
-    %h2
-      Want to ask a question?  Email me:
-    %p Fred Schoeneman -- 
-    = mail_to "fred@merciboq.com"
-  .span5
-    = render 'shared/sidebar'
-
+- content_for :column1 do
+  = render 'shared/left_sidebar'
+- content_for :column2 do
+  %h2 
+    Want to ask a question?  Email me:
+  %p Fred Schoeneman -- 
+  %i.icon-envelope= mail_to "fred@merciboq.com"
+  
