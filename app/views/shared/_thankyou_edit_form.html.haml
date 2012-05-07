@@ -1,5 +1,5 @@
 .form-horizontal
-  = simple_form_for(@thankyou, url: thankyou_edit_url(@thankyou), html: { method: :put }) do |f|
+  = simple_form_for(@thankyou, url: thankyous(@thankyou), html: { method: :put }) do |f|
     = f.input :headline, input_html: { class: "span4", rows: 2}
     = f.input :content, input_html: {class: "span4"}
     .form-actions

@@ -7,13 +7,21 @@ class ThankyousController < UsersController
 
   def create
     @thankyou = Thankyou.new(params[:thankyou])
-##    current_user.thankyous.build(params[:thankyou])
-##    if @thankyou.save
-#      flash[:success] = "Thanks for saying thanks!"
-#      redirect_to root_path
-#    else
-#      render 'thankyous/show'
-#    end
+    if current_user 
+      @thankyou.thanker = current_user
+    else
+      @thankyou.thanker = User.find_or_create_by_email(params[:thankyou][:thanker])
+    end
+    @thankyou.welcomer = User.find_or_create_by_email(params[:thankyou][:welcomer])
+    if @thankyou.save
+      if current_user
+        redirect_to root_url, flash: { notice: "Well played, sir" }
+      else
+        redirect_to root_url, flash: { notice: "check your email" }
+      end
+    else
+      redirect_to root_url, flash: { notice: "oops" }
+    end
   end
 
   def edit
@@ -23,7 +31,20 @@ class ThankyousController < UsersController
     return unless request.put? or request.post?
 
     if @thankyou.update_attributes(params[:thankyou])
-     redirect_to thankyous_url, :flash => { :notice => "Thankyou updated." }
+      debugger
+      redirect_to root_url, :flash => { :notice => "Thankyou updated." }
+    else
+      redirect to thankyous_url, flash: { notice: "oops" }
+    end
+  end
+
+  def update
+    @thankyou = Thankyou.find(params[:format])
+    debugger
+    if @thankyou.update_attributes(params[:thankyou])
+      redirect_to root_url
+    else
+      render 'edit'
     end
   end
 

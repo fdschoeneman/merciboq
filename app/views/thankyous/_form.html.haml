@@ -1,13 +1,14 @@
 .form-horizontal
   %legend Show your appreciation
-  = simple_form_for @thankyou, class: "form-horizontal" do |f|
-    - if current_user
-      = f.input :thanker, disabled: true, placeholder: "#{current_user.email}", class: "disabled"
-    - else
-      = f.input :thanker, label: "Thanker", placeholder: "Your email"
-    = f.input :welcomer, label: "Welcomer", placeholder: "Email for the person you appreciate"
-    = f.input :headline, placeholder: "4 stars!"
-    = f.input :content, placeholder: "Be genuine.  Be specific.  Be tasteful."
-    .form-actions
-      = f.submit "Show your appreciation", class: "btn btn-primary"
+  = simple_form_for @thankyou, :url => thankyou_create_path, class: "form-horizontal" do |f|
+    .row
+      - if current_user
+        = f.input :thanker, input_html: {class: "span4"}, disabled: true, placeholder: "#{current_user.email}", class: "disabled"
+      - else
+        = f.input :thanker, input_html: {class: "span4"}, label: "Thanker", placeholder: "Your email"
+      = f.input :welcomer, input_html: {class: "span4"}, label: "Welcomer", placeholder: "Email for the person you appreciate"
+      = f.input :headline, input_html: { class: "span4", rows: 2 }, placeholder: "4 stars!"
+      = f.input :content, input_html: { class: "span4", rows: 7 }, placeholder: "Be genuine.  Be specific.  Be tasteful."
+      .form-actions
+        = f.submit "Publish your MerciboQ!", class: "btn btn-primary"
 
