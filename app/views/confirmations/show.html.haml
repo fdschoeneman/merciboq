@@ -1,17 +1,17 @@
-.row-fluid
-  .span3.well
+- content_for :column1 do
+  %blockquote.pull-right
     = render 'shared/mission_statement'
-  .span8.form-horizontal
-    .row-fluid 
-      .span3.label
-        Step 1: Sign up 
-      .span3.label.label-warning
-        Step 2: Choose Password 
-      .span3.label
-        Step 3: Choose Subdomain 
+- content_for :column2 do
+  .row-fluid
+    .span3.label
+      Step 1: Sign up 
+    .span3.label.label-warning
+      Step 2: Choose Password 
+    .span3.label
+      Step 3: Choose Subdomain 
     %br/
     %legend Step 2: Choose your password  
-    = simple_form_for(resource, :url => confirm_user_path) do |f|
+    = simple_form_for(resource, :url => confirm_user_path, class: "form-horizontal") do |f|
       - if f.error_notification
         .alert.alert-error.fade.in
           %a.close{"data-dismiss" => "alert", :href => "#"} 

@@ -1,9 +1,10 @@
-%h2 Forgot your password?
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-  = devise_error_messages!
-  %p
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %p= f.submit "Send me reset password instructions"
-= render :partial => "devise/shared/links"
+- content_for :column1 do
+  %blockquote.pull-right
+    = render 'shared/mission_statement'
+- content_for :column2 do
+  %legend Forgot your password?
+  = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+    = f.input :email
+    = f.submit "Send me reset password instructions", class: "btn btn-primary"
+  = render :partial => "devise/shared/links"

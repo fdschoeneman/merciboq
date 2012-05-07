@@ -1,6 +1,7 @@
-.row.span12
-  .span2.well
-    = render 'shared/left_sidebar'
+- content_for :column1 do
+  %blockquote.pull-right
+    = render 'shared/mission_statement'
+- content_for :column2 do
   .span8
     %h1
       = gravatar_for @user

@@ -1,8 +1,9 @@
-.row-fluid
-  .span3.well
+- content_for :column1 do
+  %blockquote.pull-right
     = render 'shared/mission_statement'
-  .span8
-    %h2 Edit this thankyou
+- content_for :column2 do
+  .row-fluid
+    %legend Edit this thankyou
     = render @thankyou
     - @thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')

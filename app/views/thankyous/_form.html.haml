@@ -1,13 +1,12 @@
-.form-vertical
-  %fieldset
-    %legend Show your appreciation
-    = form_for @thankyou do |f|
-      - if current_user
-        = f.email_field :thanker, disabled: true, placeholder: "#{current_user.email}", class: "disabled"
-      - else
-        = f.email_field :thanker, label: "Thanker", placeholder: "Your email"
-      = f.email_field :welcomer, label: "Welcomer", placeholder: "Email for the person you appreciate"
-      = f.text_field :headline, placeholder: "4 stars!"
-      = f.text_area :content, placeholder: "Be genuine.  Be specific.  Be tasteful."
-      = f.submit raw "Show your appreciation"
+.form-horizontal
+  %legend Show your appreciation
+  = simple_form_for @thankyou do |f|
+    - if current_user
+      = f.input :thanker, disabled: true, placeholder: "#{current_user.email}", class: "disabled"
+    - else
+      = f.input :thanker, label: "Thanker", placeholder: "Your email"
+    = f.email_field :welcomer, label: "Welcomer", placeholder: "Email for the person you appreciate"
+    = f.text_field :headline, placeholder: "4 stars!"
+    = f.text_area :content, placeholder: "Be genuine.  Be specific.  Be tasteful."
+    = f.submit "Show your appreciation"
 
