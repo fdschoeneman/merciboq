@@ -1,20 +1,20 @@
-.row-fluid
-  .span3.well
+- content_for :column1 do
+  %blockquote.pull-right
     = render 'shared/mission_statement'
-  .span8
-    .row-fluid 
-      .span3.label.label-warning
-        Step 1: Sign up 
-      .span3.label
-        Step 2: Choose password 
-      .span3.label
-        Step 3: Choose subdomain 
-    %br/
-    %legend Please check your email &mdash; you should have a confirmation sitting in your inbox.  
-    .alert.alert-success
-      %small If it's not there, please look in your spam folder.  Not that we spam.  Ever.  While we're at it, we will never sell your information to anyone else &mdash; unlike your bank.
-    = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { class: 'form-horizontal', :method => :post }) do |f|
-      = f.input :email
-      .form-actions
-        = f.button :submit, "Resend confirmation instructions", class: "btn-primary"
+- content_for :column2 do
+  .row-fluid 
+    .span3.label.label-warning
+      Step 1: Sign up 
+    .span3.label
+      Step 2: Choose password 
+    .span3.label
+      Step 3: Choose subdomain 
+  %br/
+  %legend Please check your email &mdash; you should have a confirmation sitting in your inbox.  
+  .alert.alert-success
+    %small If it's not there, please look in your spam folder.  Not that we spam.  Ever.  While we're at it, we will never sell your information to anyone else &mdash; unlike your bank.
+  = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { class: 'form-horizontal', :method => :post }) do |f|
+    = f.input :email
+    .form-actions
+      = f.button :submit, "Resend confirmation instructions", class: "btn-primary"
 = render :partial => "devise/shared/links"

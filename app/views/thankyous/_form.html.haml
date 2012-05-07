@@ -1,12 +1,13 @@
 .form-horizontal
   %legend Show your appreciation
-  = simple_form_for @thankyou do |f|
+  = simple_form_for @thankyou, class: "form-horizontal" do |f|
     - if current_user
       = f.input :thanker, disabled: true, placeholder: "#{current_user.email}", class: "disabled"
     - else
       = f.input :thanker, label: "Thanker", placeholder: "Your email"
-    = f.email_field :welcomer, label: "Welcomer", placeholder: "Email for the person you appreciate"
-    = f.text_field :headline, placeholder: "4 stars!"
-    = f.text_area :content, placeholder: "Be genuine.  Be specific.  Be tasteful."
-    = f.submit "Show your appreciation"
+    = f.input :welcomer, label: "Welcomer", placeholder: "Email for the person you appreciate"
+    = f.input :headline, placeholder: "4 stars!"
+    = f.input :content, placeholder: "Be genuine.  Be specific.  Be tasteful."
+    .form-actions
+      = f.submit "Show your appreciation", class: "btn btn-primary"
 
