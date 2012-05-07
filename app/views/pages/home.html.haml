@@ -1,4 +1,5 @@
 - content_for :column1 do
-  = render 'shared/left_sidebar'
+  %blockquote.pull-right
+    = render 'shared/mission_statement'
 - content_for :column2 do
-  = render 'shared/mission_statement'
+  /= render 'shared/mission_statement'

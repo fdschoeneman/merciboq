@@ -69,7 +69,7 @@ group :test do
   gem 'email_spec'
   gem 'cucumber-rails', require: false
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '0.10.1'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
