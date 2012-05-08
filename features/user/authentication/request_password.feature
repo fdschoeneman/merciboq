@@ -30,7 +30,6 @@ Feature: Request password reset
       And I should see "Change my password" in the email body
       When I follow "Change my password" in the email
       Then I should see "Change your password"
-      Then show me the page
       And I fill in the following:
         | New password          | please                 |
         | Once more             | please                 |

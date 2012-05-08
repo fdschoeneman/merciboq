@@ -31,8 +31,7 @@ class ThankyousController < UsersController
     return unless request.put? or request.post?
 
     if @thankyou.update_attributes(params[:thankyou])
-      debugger
-      redirect_to root_url, :flash => { :notice => "Thankyou updated." }
+      redirect_to thankyous_url, :flash => { :notice => "Thankyou updated." }
     else
       redirect to thankyous_url, flash: { notice: "oops" }
     end
@@ -40,7 +39,6 @@ class ThankyousController < UsersController
 
   def update
     @thankyou = Thankyou.find(params[:format])
-    debugger
     if @thankyou.update_attributes(params[:thankyou])
       redirect_to root_url
     else

@@ -16,5 +16,4 @@ Feature: Reconfirmation
     Then I should see "Step 1: Sign up"
     And I am on the sign in page
     And I follow the "Didn't receive confirmation instructions?" link
-    Then show me the page
     

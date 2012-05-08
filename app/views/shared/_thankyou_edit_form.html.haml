@@ -1,9 +1,9 @@
 .form-horizontal
-  = simple_form_for(@thankyou, url: thankyous(@thankyou), html: { method: :put }) do |f|
+  = simple_form_for(@thankyou, url: thankyous_edit_url(@thankyou), html: { method: :put }) do |f|
     = f.input :headline, input_html: { class: "span4", rows: 2}
     = f.input :content, input_html: {class: "span4"}
     .form-actions
-      = f.button :submit, "Update this Merciboq"
+      = f.button :submit, "Update this Merciboq", 
       = button_to "delete", thankyou_delete_url(@thankyou), :confirm => 'Not feeling it any more, huh?', :method => :delete, class: "btn btn-danger"
 
 

@@ -17,7 +17,6 @@ Feature: Edit a merciboq
     Then she should see "| Edit thankyou"
     When she fills in "Content" with "blah blah"
     And she presses "Update"
-    Then show me the page
     Then she should see "| Thankyous"
     And she should see "blah blah"
 
