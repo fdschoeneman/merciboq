@@ -3,27 +3,22 @@
     = render 'shared/mission_statement'
 - content_for :column2 do
   .row-fluid
-    .span3.well
-      = render 'shared/mission_statement'
-    .span8
-      .row-fluid 
-        .span3.label
-          Step 1: Sign up 
-        .span3.label
-          Step 2: Choose password 
-        .span3.label.label-warning
-          Step 3: Choose subdomain 
-      %br/
-      %legend Step 3: Choose your subdomain
-      = simple_form_for(resource, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal" } ) do |f|
-        - if f.error_notification
-          .alert.alert-error.fade.in
-            %a.close{"data-dismiss" => "alert", :href => "#"} ×
-            = f.error_notification
-        = f.input :subdomain, wrapper: :append do
-          = f.input_field :subdomain
-          = content_tag :span, ".merciboq.com", class: "add-on"
-        .form-actions
-          = f.button :submit, "Choose my subdomain", class: "btn btn-primary"
+    .span3.label
+      Step 1: Sign up 
+    .span3.label
+      Step 2: Choose password 
+    .span3.label.label-warning
+      Step 3: Choose subdomain 
+    %legend Step 3: Choose your subdomain
+    = simple_form_for(resource, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal" } ) do |f|
+      - if f.error_notification
+        .alert.alert-error.fade.in
+          %a.close{"data-dismiss" => "alert", :href => "#"} ×
+          = f.error_notification
+      = f.input :subdomain, wrapper: :append do
+        = f.input_field :subdomain
+        = content_tag :span, ".merciboq.com", class: "add-on"
+      .form-actions
+        = f.button :submit, "Choose my subdomain", class: "btn btn-primary"
     %br/
     = render :partial => 'devise/shared/links'
