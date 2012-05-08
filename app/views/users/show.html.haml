@@ -1,22 +1,22 @@
-.row.span12
-  .span2.well
-    = render 'shared/left_sidebar'
-  .span8
-    %h1
-      = gravatar_for @user
-      = @user.name
-    - if @user.welcomes.empty?
-      Nobody has thanked #{@user.name} yet.  Would you like to be the first?
-      = render 'shared/thankyou_steps'
-      = render 'shared/thankyou_tips'
-    -else
-      %table.table.table-striped
-        %thead
-          %tr
-            %th.span6 What people are saying about #{@user.name}
-            %th.span2
-        %tbody
-          = render @welcomes
+- content_for :column1 do
+  %blockquote.pull-right
+    = render 'shared/mission_statement'
+- content_for :column2 do
+  %h1
+    = gravatar_for @user
+    = @user.name
+  - if @user.welcomes.empty?
+    Nobody has thanked #{@user.name} yet.  Would you like to be the first?
+    = render 'shared/thankyou_steps'
+    = render 'shared/thankyou_tips'
+  -else
+    %table.table.table-striped
+      %thead
+        %tr
+          %th.span6 What people are saying about #{@user.name}
+          %th.span2
+      %tbody
+        = render @welcomes
 %strong Subdomain
 = @user.subdomain
 = link_to "#{@user.subdomain}.merciboq.com", @user
