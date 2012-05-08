@@ -9,8 +9,6 @@ Feature: Write a merciboq from the site
     And I fill in the following:
       | Headline  | 5 stars                 |
       | Content   | Loved working with you  |
-    Then show me the page
     And I press "Publish your MerciboQ!"
-    Then show me the page
 
 
