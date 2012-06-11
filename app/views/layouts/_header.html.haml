@@ -1,9 +1,43 @@
 .navbar.navbar-fixed-top
   .navbar-inner
-    .container
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
       .logo
         = link_to logo, root_url(:host => request.domain)
-        .nav-collapse
+      .btn-group.pull-right
+        %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          - if user_signed_in?
+            %i.icon-user 
+            = current_user.email
+          - else
+            %i.icon-user 
+            Sign in or Signup
+            %span.care
+        %ul.dropdown-menu
+          - if user_signed_in?
+            %li
+              = link_to('Settings', edit_user_registration_url(:host => request.domain))
+            %li.divider
+            = link_to "Logout", destroy_user_session_url(:host => request.domain)
+          - else
+            %li
+              = link_to('Sign up', signup_url(:host => request.domain))
+            %li.divider
+            %li
+              = link_to('Login', login_url(:host => request.domain))
+      .nav-collapse
+        %ul.nav
+          %li
+            = link_to 'Home', root_url
+          %li
+            = link_to 'About', about_url
+          %li
+            = link_to 'Contact', contact_url
+
+
       %ul.nav.pull-right
         - if signed_in?
           %li

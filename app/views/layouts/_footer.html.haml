@@ -9,3 +9,4 @@
       %li= link_to "Privacy Policy", privacy_url(:host => request.domain)
       - if signed_in?
         %li= link_to "Users", users_url(:host => request.domain)
+= stylesheet_link_tag 'application'

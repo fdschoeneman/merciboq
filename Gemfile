@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 gem 'thin', '1.3.1'
 
 # Rails dependency for linux
-# gem 'therubyracer', '>= 0.9.9'
+gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
 gem 'devise'
@@ -41,6 +41,8 @@ gem 'pg', '0.12.2'
 gem 'faker', '1.0.1'
 group :test, :development do
 
+  # Database
+  gem 'sqlite3'
   # Debugging
   gem 'hpricot'
   gem 'ruby_parser'
