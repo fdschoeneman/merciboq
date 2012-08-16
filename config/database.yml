@@ -1,24 +1,14 @@
 development:
-  adapter: postgresql
-  database: merciboq_development
+  adapter: sqlite3
+  database: db/development.merciboq
   pool: 5
-  username: frederick
-  password: tastywave
+  timeout: 5000
 
 test: &test
-  adapter: postgresql
-  database: merciboq_test
+  adapter: sqlite3
+  database: db/test.merciboq
   pool: 5
-  username: frederick
-  password: tastywave
-
-production:
-  adapter: postgresql
-  database: merciboq_production
-  pool: 5
-  username: postgres
-  password: 
+  timeout: 5000
 
 cucumber:
   <<: *test
-

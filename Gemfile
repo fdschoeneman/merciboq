@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
 # Rails
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.8'
 
 # Server for development
 gem 'thin', '1.3.1'
 
 # Rails dependency for linux
-# gem 'therubyracer', '>= 0.9.9'
+# gem 'therubyracer', '>= 0.9.9'co
 
 # Authentication
 gem 'devise'
@@ -34,11 +34,13 @@ gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0'
 gem 'bourbon'
 gem 'best_in_place'
-
-# db
-gem 'pg', '0.12.2'
-
 gem 'faker', '1.0.1'
+
+group :production do 
+  # database
+  # gem 'pg', '0.12.2'
+end
+
 group :test, :development do
 
   # Debugging
@@ -49,13 +51,13 @@ group :test, :development do
   # gem 'ruby-debug19'
   # gem 'ruby-prof'
   gem 'debugger'
+  gem 'sqlite3'
 
   # Rspec
   gem 'rspec-rails'
   gem 'steak'
   gem 'factory_girl_rails'
   gem 'factory_girl_rails'
-
   gem 'shoulda-matchers'
 
 end
@@ -63,13 +65,13 @@ end
 group :test do
 
   # Spork
-  gem 'spork', '0.9.0'
+  gem 'spork'
 
   # Cucumber
   gem 'email_spec'
   gem 'cucumber-rails', require: false
   gem 'capybara'
-  gem 'capybara-webkit', '0.10.1'
+  gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
@@ -83,7 +85,7 @@ group :test do
   gem 'guard-bundler'
   gem 'guard-livereload'
   gem 'guard-rails'
-  gem 'guard-sass'
+  gem 'guard-sass', :require => false
 
 end
 

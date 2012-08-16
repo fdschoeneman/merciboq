@@ -20,7 +20,6 @@ Feature: Write a merciboq from the site
       | Welcomer  | welcomer@test.com       |
       | Thanker   | thanker@test.com        |
     And I press "Publish your MerciboQ!"
-    Then show me the page
 
 
 
