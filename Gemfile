@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 gem 'thin', '1.3.1'
 
 # Rails dependency for linux
-# gem 'therubyracer', '>= 0.9.9'co
+# gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
 gem 'devise'
@@ -38,7 +38,7 @@ gem 'faker', '1.0.1'
 
 group :production do 
   # database
-  # gem 'pg', '0.12.2'
+  gem 'pg', '0.12.2'
 end
 
 group :test, :development do
