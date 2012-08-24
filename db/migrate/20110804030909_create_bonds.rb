@@ -2,8 +2,7 @@ class CreateBonds < ActiveRecord::Migration
   def change
     create_table :bonds do |t|
       t.integer   :submissive_id
-      t.string    :dominant_id
-      t.string    :integer
+      t.integer   :dominant_id
 
       t.timestamps
     end

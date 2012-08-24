@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
 
   create_table "bonds", :force => true do |t|
     t.integer  "submissive_id"
-    t.string   "dominant_id"
-    t.string   "integer"
+    t.integer  "dominant_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

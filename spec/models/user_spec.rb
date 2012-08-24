@@ -9,7 +9,7 @@ describe User do
       User.should be_kind_of(Class)
     end
 
-    it "should not be valid" do
+    it "should not be valid out of the box" do
       user.should_not be_valid
     end
   end

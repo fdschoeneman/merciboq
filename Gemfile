@@ -81,11 +81,11 @@ group :test do
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-cucumber'
-  gem 'guard-rspec', '0.5.5'
+  gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'guard-livereload'
   gem 'guard-rails'
-  gem 'guard-sass', :require => false
+  gem 'guard-sass', require: false
 
 end
 

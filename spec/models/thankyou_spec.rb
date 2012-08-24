@@ -9,23 +9,39 @@ describe Thankyou do
       Thankyou.should be_kind_of(Class)
     end
     
-    it "should not be valid" do
+    it "should not be validout of the box" do
       thankyou.should_not be_valid
     end
   end
-end
 
-  #  before(:each) do
-#       @thanker  = Factory(:user)
-#       @welcomer = Factory(:user, :email => Factory.next(:email),
-#                                :name  => Factory.next(:name),
-#                                :subdomain => Factory.next(:subdomain))
-#       @thankyou = @thanker.thankyous.build(:welcomer_id => @welcomer.id,
-#                                          :content => "content",
-#                                          :headline => "headline")
-#       end
+  describe "validations" do
+    it { should validate_presence_of :thanker_id }
+    it { should validate_presence_of :welcomer_id }
+  end
 
-#   end
+  describe "associations" do 
+    it { should belong_to :thanker }
+    it { should belong_to :welcomer }
+    it { should have_many :attachments }
+
+  end
+
+  describe "methods" do 
+    it { should respond_to :thanker }
+    it { should respond_to :welcomer }
+  end
+
+#   before(:each) do
+#     # let(:thanker) { Factory.create(:user) }
+#     # @thanker  = Factory(:user)
+#     # @welcomer = Factory(:user, :email => Factory.next(:email),
+#     #                          :name  => Factory.next(:name),
+#     #                          :subdomain => Factory.next(:subdomain))
+#     # @thankyou = @thanker.thankyous.build(:welcomer_id => @welcomer.id,
+#     #                                    :content => "content",
+#     #                                    :headline => "headline")
+#   end 
+# end
 
 #   it "should create a new instance given valid attributes" do
 #     @thankyou.save!
@@ -77,6 +93,4 @@ end
 #       @thankyou.should_not be_valid
 #     end
 #   end
-# end
-
-# 
+end
