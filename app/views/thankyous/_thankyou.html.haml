@@ -8,7 +8,7 @@
     &mdash; Posted
     = time_ago_in_words(thankyou.created_at)
     ago.
-    = render "add_this"
+    = render "thankyous/add_this"
     - thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
   %td
