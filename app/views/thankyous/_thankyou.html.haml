@@ -1,6 +1,6 @@
 %tr
   %td
-    hhop #{gravatar_for thankyou.thanker, :size => 15} | #{link_to current_user_or_user(thankyou.thanker).titleize, root_url(subdomain: thankyou.thanker.subdomain)} wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) }: 
+    #{gravatar_for thankyou.thanker, :size => 15} | #{link_to current_user_or_user(thankyou.thanker).titleize, root_url(subdomain: thankyou.thanker.subdomain)} wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) }: 
     %strong
       = thankyou.headline
     .merciboq
