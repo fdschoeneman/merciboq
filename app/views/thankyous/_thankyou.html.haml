@@ -9,7 +9,6 @@
     = time_ago_in_words(thankyou.created_at)
     ago.
     = render "thankyous/add_this"
-    = render "thankyous/fb_metatags"
     - thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
   %td

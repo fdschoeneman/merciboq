@@ -5,5 +5,5 @@
 %meta{:content => "#{@user.name}'s advertisements", :property => "og:title"}
 %meta{:content => "The world's best place for saying thankyou.", :property => "og:description"}
 %meta{:content => "DateTime", :property => "article:published_time"}
-%meta{:content => "#{@thankyou.content}", :property => "article:section"}
+%meta{:content => "#{@user.thankyous.first.content}", :property => "article:section"}
 %meta{:content => "review", :property => "article:tag"}/
