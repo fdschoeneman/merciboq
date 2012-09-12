@@ -45,25 +45,25 @@ describe User do
   end
 
   context "associations" do
-    it { should have_many(:welcomes) }
+    it { should have_many(:welcomes).class_name("Merciboku") }
     it { should have_many(:thankyous) }
     it { should have_many(:thanked).through(:thankyous) }
     it { should have_many(:welcomed).through(:welcomes) }
   end
 
-  describe "admin attributes" do
+  # describe "admin attributes" do
 
-    let(:user) { FactoryGirl.create(:user) }
+  #   let(:admin) { FactoryGirl.create(:user) }
 
-    it { should respond_to(:admin) }
+  #   it { should respond_to(:admin) }
 
-    it { should_not be_admin }
+  #   it { should_not be_admin }
 
-    it "should be convertible to an admin" do
-      user.toggle!(:admin)
-      user.should be_admin
-    end
-  end
+  #   it "should be convertible to an admin" do
+  #     user.toggle!(:admin)
+  #     user.should be_admin
+  #   end
+  # end
 
   # describe "DELETE 'destroy'" do
   #   before(:each) do

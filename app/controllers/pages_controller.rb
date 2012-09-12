@@ -1,14 +1,14 @@
 class PagesController < ApplicationController
 
   def home
-    @thankyou = Thankyou.new
+    @thankyou = Merciboku.new
     if signed_in?
       @title = current_user.name
     else
       @title = "Home"
     end
     @users = User.order("name").page(params[:page]).per(5)
-    @recent_thankyous = Thankyou.order("created_at").page(params[:page])
+    @recent_thankyous = Merciboku.order("created_at").page(params[:page])
   end
 
   def contact

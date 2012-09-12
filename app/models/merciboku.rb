@@ -1,4 +1,4 @@
-class Thankyou < ActiveRecord::Base
+class Merciboku < ActiveRecord::Base
 
   attr_accessible :thanker_id, :welcomer_id, :content, :headline,
                   :created_at, :updated_at
@@ -12,7 +12,7 @@ class Thankyou < ActiveRecord::Base
   validates :content,     presence: true
   validates :headline,    presence: true
 
-  default_scope order: 'thankyous.created_at DESC'
+  default_scope order: 'mercibokus.created_at DESC'
 
 
 end
