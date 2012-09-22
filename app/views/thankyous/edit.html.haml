@@ -4,7 +4,7 @@
 - content_for :column2 do
   .row-fluid
     %legend Edit this thankyou
-    = render @thankyou
+    / = render 'thankyou'
     - @thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
     .form-horizontal

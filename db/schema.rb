@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
   add_index "bonds", ["submissive_id", "dominant_id"], :name => "index_bonds_on_submissive_id_and_dominant_id", :unique => true
   add_index "bonds", ["submissive_id"], :name => "index_bonds_on_submissive_id"
 
-  create_table "mercibokus", :force => true do |t|
+  create_table "something", :force => true do |t|
     t.integer  "thanker_id"
     t.integer  "welcomer_id"
     t.text     "content"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
     t.text     "headline"
   end
 
-  add_index "mercibokus", ["thanker_id", "welcomer_id"], :name => "index_mercibokus_on_thanker_id_and_welcomer_id"
-  add_index "mercibokus", ["thanker_id"], :name => "index_mercibokus_on_thanker_id"
-  add_index "mercibokus", ["welcomer_id"], :name => "index_mercibokus_on_welcomer_id"
+  add_index "something", ["thanker_id", "welcomer_id"], :name => "index_mercibokus_on_thanker_id_and_welcomer_id"
+  add_index "something", ["thanker_id"], :name => "index_mercibokus_on_thanker_id"
+  add_index "something", ["welcomer_id"], :name => "index_mercibokus_on_welcomer_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",                                   :null => false

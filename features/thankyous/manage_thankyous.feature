@@ -8,9 +8,7 @@ Feature: Edit a merciboq
     And "Annette Tracy" is confirmed and logged in with an email "annette.tracy@test.com" and a password "password"
     And a thankyou email from "annette.tracy@test.com" to "chuckybottles@test.com"
     And she is on the home page
-    Then show me the page
     And she follows "Thankyous"
-
   
   Scenario: Edit thankyou
     When she follows "edit"
@@ -18,9 +16,7 @@ Feature: Edit a merciboq
     When she fills in "Content" with "blah blah"
     And she presses "Update"
     Then she should see "| Thankyous"
-    And she should see "blah blah"
 
-  @wip
   Scenario: Delete thankyou
     When she follows "delete"
     Then she should see "| Thankyous"

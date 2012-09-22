@@ -16,7 +16,7 @@
           %th.span6 What people are saying about #{@user.name}
           %th.span2
       %tbody
-        = render @welcomes
+        = render partial: 'welcomes/welcome', collection: @welcomes
 %strong Subdomain
 = @user.subdomain
 = link_to "#{@user.subdomain}.merciboq.com", @user

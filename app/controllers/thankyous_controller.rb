@@ -1,5 +1,8 @@
 class ThankyousController < UsersController
 
+  def index
+  end
+
   def new
     @thankyou = Merciboku.new
     @title = "Sign up"
@@ -57,6 +60,7 @@ class ThankyousController < UsersController
     @thankyous = @user.thankyous.page(params[:page])
     @thankyou = Merciboku.new if signed_in?
     @title = "Thankyous"
+    # debugger
     @subdomain_logo = current_user.subdomain
   end
 
