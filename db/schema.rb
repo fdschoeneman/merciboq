@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030911) do
+ActiveRecord::Schema.define(:version => 20110804030910) do
 
-  create_table "Mercibokus", :force => true do |t|
+  create_table "Thankyous", :force => true do |t|
     t.integer  "thanker_id"
     t.integer  "welcomer_id"
     t.text     "content"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(:version => 20110804030911) do
     t.text     "headline"
   end
 
-  add_index "Mercibokus", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
-  add_index "Mercibokus", ["thanker_id"], :name => "index_thankyous_on_thanker_id"
-  add_index "Mercibokus", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
+  add_index "Thankyous", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
+  add_index "Thankyous", ["thanker_id"], :name => "index_thankyous_on_thanker_id"
+  add_index "Thankyous", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
 
   create_table "attachments", :force => true do |t|
-    t.integer "merciboku_id"
+    t.integer "thankyou_id"
     t.string  "filename"
     t.string  "mimetype"
     t.integer "bytecount"
