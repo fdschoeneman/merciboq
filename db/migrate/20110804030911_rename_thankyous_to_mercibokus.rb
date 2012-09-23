@@ -5,6 +5,6 @@ class RenameThankyousToMercibokus < ActiveRecord::Migration
 
 
   def down
-    rename_table("Mercibokus", "Thankyous")
+    rename_table("mercibokus", "thankyous")
   end
 end
