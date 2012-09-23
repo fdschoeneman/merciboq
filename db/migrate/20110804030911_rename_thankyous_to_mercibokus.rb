@@ -3,7 +3,7 @@ class RenameThankyousToMercibokus < ActiveRecord::Migration
   end
 
   def up
-    rename_table("thankyous", "mercibokus")
+    rename_table("Thankyous", "Mercibokus")
   end
 
 
