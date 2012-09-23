@@ -36,10 +36,11 @@ class User < ActiveRecord::Base
                                   message: "reserved and unavailable"   
     
   has_many :thankyous,          :dependent    => :destroy,
-                                :foreign_key  => "thanker_id"
+                                :foreign_key  => "thanker_id",
+                                :class_name   => "Merciboku"
   has_many :welcomes,           :dependent    => :destroy,
                                 :foreign_key  => "welcomer_id",
-                                :class_name   => "Thankyou"
+                                :class_name   => "Merciboku"
   has_many :thanked,            :through      => :thankyous,
                                 :source       => :welcomer
   has_many :welcomed,           :through      => :welcomes,

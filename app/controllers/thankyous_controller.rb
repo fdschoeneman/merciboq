@@ -1,18 +1,21 @@
 class ThankyousController < UsersController
 
+  def index
+  end
+
   def new
-    @thankyou = Thankyou.new
+    @thankyou = Merciboku.new
     @title = "Sign up"
   end
 
   def create
-    @thankyou = Thankyou.new(params[:thankyou])
+    @thankyou = Merciboku.new(params[:thankyou])
     if current_user 
       @thankyou.thanker = current_user
     else
-      @thankyou.thanker = User.find_or_create_by_email(params[:thankyou][:thanker])
+      @thankyou.thanker = User.find_or_create_by_email(params[:merciboku][:thanker])
     end
-    @thankyou.welcomer = User.find_or_create_by_email(params[:thankyou][:welcomer])
+    @thankyou.welcomer = User.find_or_create_by_email(params[:merciboku][:welcomer])
     if @thankyou.save
       if current_user
         redirect_to root_url, flash: { notice: "Well played, sir" }
@@ -25,7 +28,7 @@ class ThankyousController < UsersController
   end
 
   def edit
-    @thankyou = Thankyou.find(params[:format])
+    @thankyou = Merciboku.find(params[:format])
     @title = "Edit thankyou"
 
     return unless request.put? or request.post?
@@ -38,7 +41,7 @@ class ThankyousController < UsersController
   end
 
   def update
-    @thankyou = Thankyou.find(params[:format])
+    @thankyou = Merciboku.find(params[:format])
     if @thankyou.update_attributes(params[:thankyou])
       redirect_to root_url
     else
@@ -47,7 +50,7 @@ class ThankyousController < UsersController
   end
 
   def delete
-    @thankyou = Thankyou.find(params[:format])
+    @thankyou = Merciboku.find(params[:format])
     @thankyou.destroy
     redirect_to thankyous_url, :flash => { :notice => "Thankyou destroyed." }
   end
@@ -55,8 +58,9 @@ class ThankyousController < UsersController
   def show_thankyous
     @user = current_user
     @thankyous = @user.thankyous.page(params[:page])
-    @thankyou = Thankyou.new if signed_in?
+    @thankyou = Merciboku.new if signed_in?
     @title = "Thankyous"
+    # debugger
     @subdomain_logo = current_user.subdomain
   end
 

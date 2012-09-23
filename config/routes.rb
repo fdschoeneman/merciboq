@@ -1,5 +1,17 @@
 Merciboq::Application.routes.draw do
 
+  get "thankyous/new"
+
+  get "thankyous/edit"
+
+  get "thankyous/show"
+
+  get "thankyous/index"
+
+  get "thankyous/delete"
+
+  get "thankyous/update"
+
   devise_for :users, :controllers => { 
     :users => "users",
     :registrations => "registrations",
@@ -17,7 +29,7 @@ Merciboq::Application.routes.draw do
 
   resources :users, :only => [:show, :index] do
     resources :subdomains, :shallow => true
-    resources :thankyous
+    resources :thankyous, :welcomes
   end
 
   resources :after_signup_wizard

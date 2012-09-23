@@ -19,7 +19,9 @@
             %th.span6= @user.thankyou_phrase
             %th.span2
         %tbody
-          = render @thankyous
+          = render partial: 'thankyou', collection: @thankyous
+          /- @thankyous.each do |thankyou|
+          /  = render 'thankyou', collection: @thankyous
   .span5
     = render 'shared/user_info'
     %strong Name

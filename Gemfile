@@ -47,7 +47,7 @@ group :test, :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'taps'
-  gem 'heroku'
+  # gem 'heroku'
   # gem 'ruby-debug19'
   # gem 'ruby-prof'
   gem 'debugger'

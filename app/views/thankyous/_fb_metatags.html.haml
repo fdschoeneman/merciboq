@@ -1,5 +1,6 @@
-%meta{:content => "430109280352538", :property => "fb:app_id"}
-%meta{:content => "website", :property => "og:type"}
-%meta{:content => "http://#{@user.subdomain}.merciboq.com", :property => "og:url"}
-%meta{:content => "#{@user.name}'s advertisements", :property => "og:title"}
-%meta{:content => "#{@user.thankyous.first.content}", :property => "og:description"}
+- unless @user.thankyous.empty?
+  %meta{:content => "430109280352538", :property => "fb:app_id"}
+  %meta{:content => "website", :property => "og:type"}
+  %meta{:content => "http://#{@user.subdomain}.merciboq.com", :property => "og:url"}
+  %meta{:content => "#{@user.name}'s advertisements", :property => "og:title"}
+  %meta{:content => "#{@user.thankyous.first.content}", :property => "og:description"}

@@ -1,15 +1,19 @@
 %tr
   %td
-    #{gravatar_for thankyou.thanker, :size => 15} | #{link_to current_user_or_user(thankyou.thanker).titleize, root_url(subdomain: thankyou.thanker.subdomain)} wrote about #{link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain) }: 
+    = gravatar_for thankyou.thanker, :size => 15
+    | 
+    = link_to thankyou.thanker.name.titleize, root_url(subdomain: thankyou.thanker.subdomain) 
+    wrote about 
+    = link_to thankyou.welcomer.name, root_url(subdomain: thankyou.welcomer.subdomain)  
     %strong
       = thankyou.headline
     .merciboq
-      "#{thankyou.content}"
+      = thankyou.content
     &mdash; Posted
-    = time_ago_in_words(thankyou.created_at)
-    ago.
+    / = time_ago_in_words(@thankyou.created_at)
+    / ago.
     = render "thankyous/add_this"
-    - thankyou.attachments.each do |attachment|
+    - @thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
   %td
     - if current_user == @user

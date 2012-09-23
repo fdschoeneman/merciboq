@@ -11,17 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030909) do
+ActiveRecord::Schema.define(:version => 20110804030911) do
+
+  create_table "Mercibokus", :force => true do |t|
+    t.integer  "thanker_id"
+    t.integer  "welcomer_id"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "headline"
+  end
+
+  add_index "Mercibokus", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
+  add_index "Mercibokus", ["thanker_id"], :name => "index_thankyous_on_thanker_id"
+  add_index "Mercibokus", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
 
   create_table "attachments", :force => true do |t|
-    t.integer "thankyou_id"
+    t.integer "merciboku_id"
     t.string  "filename"
     t.string  "mimetype"
     t.integer "bytecount"
     t.binary  "bytes"
   end
-
-  add_index "attachments", ["thankyou_id", "filename", "id"], :name => "index_attachments_on_thankyou_id_and_filename_and_id"
 
   create_table "bonds", :force => true do |t|
     t.integer  "submissive_id"
@@ -33,19 +44,6 @@ ActiveRecord::Schema.define(:version => 20110804030909) do
   add_index "bonds", ["dominant_id"], :name => "index_bonds_on_dominant_id"
   add_index "bonds", ["submissive_id", "dominant_id"], :name => "index_bonds_on_submissive_id_and_dominant_id", :unique => true
   add_index "bonds", ["submissive_id"], :name => "index_bonds_on_submissive_id"
-
-  create_table "thankyous", :force => true do |t|
-    t.integer  "thanker_id"
-    t.integer  "welcomer_id"
-    t.text     "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.text     "headline"
-  end
-
-  add_index "thankyous", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
-  add_index "thankyous", ["thanker_id"], :name => "index_thankyous_on_thanker_id"
-  add_index "thankyous", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",                                   :null => false
