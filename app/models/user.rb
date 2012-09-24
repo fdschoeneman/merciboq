@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
    
   # Variables
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  subdomain_regex = /^[A-Za-z0-9-]+$/
+  subdomain_regex = /^([a-z0-9]([_\-](?![_\-])|[a-z0-9]){0,61}[a-z0-9]|[a-z0-9])$/i 
   forbidden_subdomains = %w( support blog www billing help api )
   
   # validations:

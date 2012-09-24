@@ -115,23 +115,42 @@ describe User do
 
     describe "password" do 
 
-      it { should validate_presence_of(:password).on(:update) } 
+      # it { should validate_presence_of(:password).on(:update) } 
+
+      describe "should be between 6 and 40 characters or less" do 
+        it { should_not allow_value("a" * 41).for(:password) }
+        it { should allow_value("a" * 40).for(:password) }
+        it { should_not allow_value("a" * 5).for(:password) }
+        it { should allow_value("a" * 6).for(:password) }
+      end
     end
 
-    # password validations
-    it { should_not allow_value("a" * 41).for(:password) }
-    it { should_not allow_value("a" * 41).for(:password) }
-    it { should allow_value("a" * 40).for(:password) }
-    it { should_not allow_value("a" * 5).for(:password) }
-    it { should allow_value("a" * 6).for(:password) }
+    describe "subdomain" do 
 
-    # subdomain validations
-    it { should_not allow_value("www").for(:subdomain).
-              with_message(/reserved and unavailable/) }
-    it { should allow_value("subdomain").for(:subdomain) }
-    it { should allow_value("sub-domain").for(:subdomain) }
-#    it { should allow_value("sub.domain").for(:subdomain) }
-#    it { should_not allow_value("sub domain").for(:subdomain) }
+      describe "should accept valid subdomains" do
+
+        ["SuBDomain", "subdomain", "subdomain-with-dashes", "su830ma1n-w174-num3rs", 
+          "3u8d0ma1n-s7ar71ng-with-num3rs"
+          ].each do |valid_subdomain|
+          it { should allow_value(valid_subdomain).for(:subdomain) }
+        end
+      end
+
+      describe "should not accept bad subdomains" do 
+
+        # ["sub domain with spaces", "subdomain_with_non"
+        #   ].each do |bad_subdomain|
+        #   it { should_not allow_value(bad_subdomain).for(:subdomain) }
+        # end
+        
+        # it { should_not allow_value("sub domain").for(:subdomain) }
+        # it { should allow_value("subdomain").for(:subdomain) }
+      
+        # it { should_not allow_value("www").for(:subdomain)
+          # .with_message(/reserved and unavailable/) }
+
+      end
+    end
   end
 
 
