@@ -11,6 +11,12 @@ Spork.prefork do
   require 'capybara/rails'
   require 'factory_girl_rails'
   require 'shoulda-matchers'
+  require 'email_spec'
+  require 'email_spec'
+  
+  Mail.defaults do
+    delivery_method :test 
+  end
 
   Capybara.javascript_driver = :webkit
 
@@ -23,6 +29,7 @@ Spork.prefork do
     config.include EmailSpec::Helpers
     config.include EmailSpec::Matchers
     config.include FactoryGirl::Syntax::Methods
+    config.include EmailMacros
 
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"

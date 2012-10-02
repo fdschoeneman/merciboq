@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030912) do
+ActiveRecord::Schema.define(:version => 20110804030913) do
 
   create_table "Mercibokus", :force => true do |t|
     t.integer  "thanker_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110804030912) do
 
   add_index "Mercibokus", ["thanker_id", "welcomer_id"], :name => "index_thankyous_on_thanker_id_and_welcomer_id"
   add_index "Mercibokus", ["thanker_id"], :name => "index_thankyous_on_thanker_id"
+  add_index "Mercibokus", ["welcomer_id", "thanker_id"], :name => "index_mercibokus_on_welcomer_id_and_thanker_id"
   add_index "Mercibokus", ["welcomer_id"], :name => "index_thankyous_on_welcomer_id"
 
   create_table "attachments", :force => true do |t|

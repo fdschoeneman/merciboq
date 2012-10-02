@@ -1,8 +1,8 @@
 FactoryGirl.define do 
 
-  factory :merciboku do
-    thanker_id  1
-    welcomer_id  2
+  factory :merciboku do 
+    association :thanker,   factory: :thanker
+    association :welcomer,  factory: :welcomer
     content "Foo bar"
     headline "baz quuux"
   end

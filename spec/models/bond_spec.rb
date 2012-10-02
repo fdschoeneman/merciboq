@@ -10,12 +10,22 @@ describe Bond do
     end 
   end
 
-  describe "db structure" do 
-    it { should have_db_column(:submissive_id).of_type(:integer) }
-    it { should have_db_column(:dominant_id).of_type(:integer) }
-    it { should have_db_index(:submissive_id) }
-    it { should have_db_index(:dominant_id) }
-    it { should have_db_index([:submissive_id, :dominant_id]).unique(true) }
+  describe "database" do
+
+    describe "columns" do 
+  
+      it { should have_db_column(:submissive_id).of_type(:integer) }
+      it { should have_db_column(:dominant_id).of_type(:integer) }
+    end
+
+    describe "indexes" do 
+
+      [:submissive_id, :dominant_id].each do |index|
+        it { should have_db_index(index) }
+      end
+  
+      it { should have_db_index([:submissive_id, :dominant_id]).unique(true) }
+    end
   end
 
   describe "validations" do 
@@ -23,5 +33,16 @@ describe Bond do
     it { should validate_presence_of :dominant_id }
   end
 
-  # end
+  describe "security" do 
+
+    describe "mass assignable" do 
+
+      it { should allow_mass_assignment_of(:dominant_id) }
+      it { should allow_mass_assignment_of(:submissive_id)}
+    end
+
+    describe "protected" do 
+
+    end
+  end
 end

@@ -7,25 +7,25 @@ class ApplicationController < ActionController::Base
  # before_filter :check_user_status
  # before_filter :limit_subdomain_access
 
-  def temporary_name(email)
-    email_split = email.split('@')
-    email_local = email_split[0]
-    local_spaced = email_local.split('.').join(' ')
-    temporary_name = local_spaced.titleize
-  end
+  # def temporary_name(email)
+  #   email_split = email.split('@')
+  #   email_local = email_split[0]
+  #   local_spaced = email_local.split('.').join(' ')
+  #   temporary_name = local_spaced.titleize
+  # end
 
-  def temporary_subdomain(email)
-    email_split   = email.split('@')
-    email_local   = email_split[0]
-    local_dashed  = email_local.split('.').join('-').dasherize
-    if User.find_by_subdomain(local_dashed).nil?
-      local_dashed
-    else
-      "#{local_dashed}-#{@subdomain_placeholder}"
-    end
+  # def temporary_subdomain(email)
+  #   email_split   = email.split('@')
+  #   email_local   = email_split[0]
+  #   local_dashed  = email_local.split('.').join('-').dasherize
+  #   if User.find_by_subdomain(local_dashed).nil?
+  #     local_dashed
+  #   else
+  #     "#{local_dashed}-#{@subdomain_placeholder}"
+  #   end
 
  #   temporary_subdomain = "#{local_dashed}-#{subdomain_placeholder}"
-  end
+  # end
 
   def random_subdomain_number
     random_subdomain_number = SecureRandom.random_number(1000)
@@ -49,5 +49,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def random_subdomain_number
+    random_subdomain_number = SecureRandom.random_number(10)
+  end
+
+  def temporary_name(email)
+    email_split = email.split('@')
+    email_local = email_split[0]
+    local_spaced = email_local.split('.').join(' ')
+    temporary_name = local_spaced.titleize
+  end
+
+  def temporary_subdomain(email)
+    email_split   = email.split('@')
+    email_local   = email_split[0]
+    local_dashed  = email_local.split('.').join('-').dasherize
+    if User.find_by_subdomain(local_dashed).nil?
+      local_dashed
+    else
+      "#{local_dashed}-#{@subdomain_placeholder}"
+    end
+  end
 end
 

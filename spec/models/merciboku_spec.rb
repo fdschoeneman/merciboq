@@ -9,20 +9,49 @@ describe Merciboku do
     it "should be of type class" do 
       Merciboku.should be_kind_of(Class)
     end
-    
-    it "should have a valid factory" do
-      merciboku.should be_valid
+  end
+
+  describe "database" do
+
+    describe "columns" do 
+
+      [:created_at, :updated_at].each do |column|
+        it {should have_db_column(column).of_type(:datetime) }
+      end
+
+      [:thanker_id, :welcomer_id].each do |column|
+        it {should have_db_column(column).of_type(:integer) }
+      end
+
+      [:content, :headline].each do |column|
+        it { should have_db_column(column).of_type(:text) }
+      end
+    end
+
+    describe "indexes" do 
+
+      [:thanker_id, :welcomer_id, 
+        [:thanker_id, :welcomer_id], 
+        [:welcomer_id, :thanker_id]
+      ].each do |index|
+        it { should have_db_index(index) }
+      end
     end
   end
 
-  describe "table structure" do
-    it { should have_db_column(:thanker_id) }
-    it { should have_db_column(:welcomer_id) }
-    it { should have_db_column(:content) }
-    it { should have_db_column(:headline) }
-    it { should have_db_index(:thanker_id) }
-    it { should have_db_index(:welcomer_id) }
-    it { should have_db_index([:thanker_id, :welcomer_id]) }
+  describe "security" do 
+
+    describe "mass assignable" do 
+      [:content, :headline, :thanker_id, :welcomer_id].each do |attribute|
+        it { should allow_mass_assignment_of(attribute) }
+      end
+    end
+
+    describe "protected" do 
+      [:created_at, :updated_at].each do |attribute|
+        it { should_not allow_mass_assignment_of(attribute) }
+      end
+    end
   end
 
   describe "validations" do

@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :confirmable, :validatable ,
-         :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+    :rememberable, :trackable, :confirmable, :validatable ,
+    :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   attr_accessible :name, :email, :subdomain, 
-      :password, :password_confirmation, :remember_me, 
-      :welcome_phrase, :thankyou_phrase, :calendar
+    :password, :password_confirmation, :remember_me, 
+    :welcome_phrase, :thankyou_phrase, :calendar
 
   # before each user is created:
   before_create :set_temporary_name
@@ -18,22 +18,24 @@ class User < ActiveRecord::Base
    
   # Variables
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  subdomain_regex = /^([a-z0-9]([_\-](?![_\-])|[a-z0-9]){0,61}[a-z0-9]|[a-z0-9])$/i 
-  forbidden_subdomains = %w( support blog www billing help api )
+  subdomain_regex = 
+    /^([a-z0-9]([_\-](?![_\-])|[a-z0-9]){0,61}[a-z0-9]|[a-z0-9])$/i 
+  forbidden_subdomains = %w( support blog www billing help api 
+    merciboku privacy help legal terms blog )
   
   # validations:
-  validates :email, presence: true,
-              format: { with: email_regex },
-              uniqueness: { case_sensitive: false }
+  validates :email, presence: true, format: { with: email_regex },
+    uniqueness: { case_sensitive: false }
 
-  validates :subdomain, presence: true, on: :update,
-              uniqueness: { case_sensitive: false },
-              format: { with: subdomain_regex, 
-                message: "The subdomain can only contain numbers, 
-                          letters, and dashes" }
+  validates :subdomain, presence: true, on: :update
+  validates :subdomain, uniqueness: { case_sensitive: false },
+    format: { with: subdomain_regex, 
+    message: "The subdomain can only contain numbers, 
+      letters, and dashes" },
+    allow_blank: true
      
   validates_exclusion_of :subdomain, in: forbidden_subdomains, 
-                                  message: "reserved and unavailable"   
+     message: "reserved and unavailable"   
     
   has_many :thankyous,          :dependent    => :destroy,
                                 :foreign_key  => "thanker_id",
@@ -87,7 +89,7 @@ class User < ActiveRecord::Base
     email = self.email
     email_split   = email.split('@')
     email_local   = email_split[0]
-    local_dashed  = email_local.gsub(/[.+]/, '-')
+    local_dashed  = email_local.gsub(/[.+]/, '-').dasherize
     if User.find_by_subdomain(local_dashed).nil?
       self.subdomain = local_dashed
     else

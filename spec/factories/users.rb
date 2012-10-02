@@ -4,23 +4,22 @@ FactoryGirl.define do
     sequence(:name)       {|n| "username#{n}" }
     sequence(:email)      {|n| "user#{n}@test.com" }
     sequence(:subdomain)  { |n| "user-#{n}-subdomain" }
-    password              "123qweasd"
+    password              "password"
   end
 
   factory :thanker, parent: :user do
-    name                   "thanker name"
-    email                  "thanker.name@gmail.com"
-    subdomain              "testthanker"
-    password               "foobar"
-    password_confirmation  "foobar"
+    name                   "Customer Bob"
+    email                  "bob.the.customer@gmail.com"
+    subdomain              "bob-the-customer"
+    password               "password"
+    password_confirmation  "password"
   end
 
   factory :welcomer, parent: :user do 
-    name                   "welcomer name"
-    email                  "welcomer.name@gmail.com"
-    subdomain              "testwelcomer"
+    name                   "bartender chad"
+    email                  "bartender.chad@gmail.com"
+    subdomain              "chad-the-bartender"
     password               "bazquux"
     password_confirmation  "bazquux"
   end
-  
 end
