@@ -51,11 +51,11 @@ Then /^the welcomer opens her email$/ do
 end
 
 Then /^I should see confirmation instructions in the subject$/ do
-  current_email.should have_subject("Welcome to Merciboq! -- Please confirm your account for us.")
+  current_email.should have_subject("Welcome to MerciboQ! -- Please confirm your account for us.")
 end
 
 Then /^she should see confirmation instructions in the subject$/ do
-  current_email.should have_subject("Welcome to Merciboq! -- Please confirm your account for us.")
+  current_email.should have_subject("Welcome to MerciboQ! -- Please confirm your account for us.")
 end
 
 Then /^she should see "([^"]*)" in the email body$/ do |arg1|

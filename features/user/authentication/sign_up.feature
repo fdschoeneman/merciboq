@@ -18,7 +18,6 @@ Feature: Sign up
       Then I should see "Step 1: Sign up"
       And "sarah.silverman@test.com" should have 1 email
       When I open the email
-      Then I should see confirmation instructions in the subject
       And I should see "Sarah Silverman" in the email body
       And I should see "confirm" in the email body
       When I follow "Confirm my account" in the email

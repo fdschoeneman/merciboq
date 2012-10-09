@@ -80,12 +80,13 @@ describe User do
 
   describe "validations" do
 
-    before(:each) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
     
     describe "email" do 
 
       it { should validate_presence_of(:email)
         .with_message(/can't be blank/) }
+      
       it { should validate_uniqueness_of(:email)
         .with_message(/already been registered/) }
     

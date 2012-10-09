@@ -2,12 +2,15 @@ require 'spec_helper'
 
 describe ThankyouByEmailController do
   
+  after do
+    Mail::TestMailer.deliveries.clear
+  end
+
   thankyou_note = Mail.new do 
 
     from "Frommy McFrommerton <frommy.mcfrommerton@unregistered.com>"
     to ["toohey.receivesalot@unregistered.com", "toohey_comrade@unregistered.com", 
       "333581f1ce6f4de6207a@cloudmailin.net", 
-      "2009zinfandel@ferringtonvineyard.merciboq.com"
     ]
     cc "like_a_boss@unregistered.com"
     subject 'subject of an email goes to headline'
@@ -22,50 +25,53 @@ describe ThankyouByEmailController do
       body '<h1>Funky Title</h1><p>Here is the attachment you wanted</p>'
     end
   end
-  
+
+
   let(:merciboqs) { Merciboku.all(limit: 2) }
   let(:sender) { User.find_by_email(thankyou_note.from) }
   let(:first_recipient) { User.find_by_email(thankyou_note.to[0])}  
   let(:second_recipient) { User.find_by_email(thankyou_note.to[1])}
   let(:new_users) { User.all }
-  let(:internal_address) { 
-    User.find_by_email("333581f1ce6f4de6207a@cloudmailin.net") }
-  let(:merciboq_address) { 
-    User.find_by_email("2009zinfandel@ferringtonvineyard.merciboq.com") }
   let(:registered_sender) { User.create(email: "registered@sender.com") }
   let(:registered_recipient) { User.create(email: "registered@recipient.com") }     
+  let(:user_confirmation_subject) { "Welcome to MerciboQ! -- Please confirm your account for us." }
+  let(:thankyou_note_subject) { "Welcome to MerciboQ! -- Please confirm your account for us." }
+
   
   before do
     registered_recipient
     registered_sender
+    Mail::TestMailer.deliveries.clear
   end
 
   context "unregistered sender and two unregistered recipients" do
       
     before do
-      post :create, message: thankyou_note
+      post :create, thankyou_note: thankyou_note
     end
 
-    describe "user creation" do 
+    describe "user" do 
+
+      let(:internal_address) { User.find_by_email(
+        "333581f1ce6f4de6207a@cloudmailin.net") }
+      let(:merciboq_address) { User.find_by_email(
+        "2009zinfandel@ferringtonvineyard.merciboq.com") }
  
-      it "should not create an account for an internal address" do
+      it "should not be created for an internal address" do
         internal_address.should_not be_present
-        internal_address.should be nil 
       end
+
+      it { should_not have_sent_email.to(internal_address) }
 
       it "should not create an account for a user's merciboq.com address" do 
         merciboq_address.should_not be_present
       end
+      
+      it { should_not have_sent_email.to(merciboq_address) }
 
       xit "should notify sender if a user's merciboq.com address doesn't exist" do
       end
 
-      it "should have an account" do 
-        new_users.each do |user|
-          user.should be_present
-          user.should_not be_nil
-        end
-      end
 
       describe "should have temporary name which" do 
         
@@ -139,15 +145,22 @@ describe ThankyouByEmailController do
     end
 
     describe "notification emails" do 
-      include Mail::Matchers
 
-      # ThankyouMailer.should_receive(:thankyou_notifier).with("email@example.com", "Jimmy Bean")
-      # last_delivery = ActionMailer::Base.deliveries.last
-      
-      it "should have an email" do 
-        ActionMailer::Base.deliveries.count.should eq 1
-      end# last_delivery.to.should include "email@example.com"
-      it { should have_sent_email }
+      [thankyou_note .from, thankyou_note.to.first, thankyou_note.to.second
+      ].each do |unregistered_email|
+        it { should have_sent_email.from("fred@merciboq.com")
+        .to( unregistered_email )
+        .matching_subject(user_confirmation_subject) }
+      end
+
+      [thankyou_note.to.first, thankyou_note.to.second
+      ].each do |welcomer|
+        it { should have_sent_email.from("fred@merciboq.com")
+        .to( welcomer )
+        .matching_subject(
+          "#{sender.name} thanked you.")
+        }
+      end
     end
   end
 
@@ -159,11 +172,24 @@ describe ThankyouByEmailController do
     end
 
     it "should create 2 new users" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(2)
+      expect{post :create, thankyou_note: thankyou_note}.to change(User, :count).by(2)
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(1)
+      expect{post :create, thankyou_note: thankyou_note}.to change(Merciboku, :count).by(1)
+    end
+
+    describe "notifications & confirmations" do
+
+      before do 
+        post :create, thankyou_note: thankyou_note
+      end
+
+      it { should have_sent_email.to("unregistered@sender.com")
+        .with_subject(user_confirmation_subject) }
+
+      it { should have_sent_email.to("unregistered@recipient.com")
+        .with_subject("#{sender.name} thanked you.") }
     end
   end
 
@@ -176,11 +202,25 @@ describe ThankyouByEmailController do
     end
 
     it "should create 1 new user" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(1)
+      expect{post :create, thankyou_note: thankyou_note}.to change(User, :count).by(1)
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(1)
+      expect{post :create, thankyou_note: thankyou_note}.to change(Merciboku, :count).by(1)
+    end
+
+    describe "notifications & confirmations" do
+
+      before(:each) do 
+        post :create, thankyou_note: thankyou_note
+        registered_recipient
+      end
+
+      it { should have_sent_email.to("unregistered@sender.com")
+        .with_subject(user_confirmation_subject) }
+
+      it { should have_sent_email.to("registered@recipient.com")
+        .with_subject("Unregistered thanked you.") }
     end
   end
 
@@ -194,14 +234,30 @@ describe ThankyouByEmailController do
     end
     
     it "should create 1 new user" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(1)
+      expect{post :create, thankyou_note: thankyou_note}
+      .to change(User, :count).by(1)
     end
 
     it "should create 2 new merciboqs" do
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(2)    
+      expect{post :create, thankyou_note: thankyou_note}
+      .to change(Merciboku, :count).by(2)    
+    end
+  
+    describe "notifications & confirmations" do
+
+      before(:each) do 
+        post :create, thankyou_note: thankyou_note
+        registered_recipient
+      end
+
+      it { should have_sent_email.to("unregistered@recipient.com")
+        .with_subject(user_confirmation_subject) }
+
+      it { should have_sent_email.to("unregistered@recipient.com")
+        .with_subject("Registered thanked you.") }
     end
   end
-  
+
   context "registered sender and 1 registered recipient" do 
     
     before do 
@@ -210,11 +266,24 @@ describe ThankyouByEmailController do
     end
 
     it "should not create any new users" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(0)
+      expect{post :create, thankyou_note: thankyou_note}
+      .to change(User, :count).by(0)
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(1)
+      expect{post :create, thankyou_note: thankyou_note}
+      .to change(Merciboku, :count).by(1)
+    end
+
+    describe "notifications & confirmations" do
+
+      before do 
+        post :create, thankyou_note: thankyou_note
+        registered_recipient
+      end
+
+      it { should have_sent_email.to("registered@recipient.com")
+        .with_subject("Registered thanked you.") }
     end
   end
 end

@@ -3,7 +3,7 @@ When /^(?:|I )click the "Sign up" link$/ do
 end
 
 Then /^"([^"]*)" should have a confirmation email$/ do |address|
-  open_email(address, with_subject: "Welcome to Merciboq! -- Please confirm your account for us")
+  open_email(address, with_subject: "Welcome to MerciboQ! -- Please confirm your account for us")
 end
 
 When /^(?:|I )follow the "([^"]*)" link$/ do |link|

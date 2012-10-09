@@ -29,7 +29,6 @@ Spork.prefork do
     config.include EmailSpec::Helpers
     config.include EmailSpec::Matchers
     config.include FactoryGirl::Syntax::Methods
-    config.include EmailMacros
 
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -12,11 +12,6 @@ describe UsersController do
     }
   end
 
-  it "should create a new instance given a valid attribute" do
-    user = FactoryGirl.create(:user)
-    user.should be_valid
-  end
-
   it "should require an email address" do
     no_email_user = User.new(@new_user_attr.merge(:email => ""))
     no_email_user.should_not be_valid
@@ -66,36 +61,6 @@ describe UsersController do
     end
   end
 
-  describe "password validations" do
-    let(:user) { Factory.build(:user) }
-    
-#    before(:each) do
-#      @user = User.new(@new_user_attr)
-#    end
-#    @new_user_attr
-#    it "should require a password" do
-#      User.create(@attr.merge(:password => "", :password_confirmation => "")).
-#        should_not be_valid
-#      end
-#    end
-
-#    it "should require a matching password confirmation" do
-#      User.new(@attr.merge(:password_confirmation => "invalid")).
-#        should_not be_valid
-#    end
-
-#    it "should reject short passwords" do
-#      short = "a" * 5
-#      hash = @attr.merge(:password => short, :password_confirmation => short)
-#      User.new(hash).should_not be_valid
-#    end
-
-#    it "should reject long passwords" do
-#      long = "a" * 41
-#      hash = @attr.merge(:password => long, :password_confirmation => long)
-#      User.new(hash).should_not be_valid
-#    end
-  end
 
   describe "password encryption" do
 
@@ -116,10 +81,10 @@ describe UsersController do
 
     before(:each) do
       @user = User.create!(@new_user_attr)
-      @welcomer = FactoryGirl.create(:user)
+      @welcomer = FactoryGirl.create(:welcomer)
       content = "content_for_thankyou"
       headline = "headline_for_thankyou"
-      @new_user_attr = { :content => "lorem ipsum" }
+      # @new_user_attr = { :content => "lorem ipsum" }
     end
 
     it "should have a thankyous method" do
