@@ -50,7 +50,6 @@ describe ThankyouByEmailController do
  
       it "should not create an account for an internal address" do
         internal_address.should_not be_present
-        internal_address.should be nil 
       end
 
       it "should not create an account for a user's merciboq.com address" do 
