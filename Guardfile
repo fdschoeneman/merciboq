@@ -43,10 +43,14 @@ group "tests" do
   end
 
   # Rspec
-  guard 'rspec', :version => 2, :cli => "--color --drb", all_on_start: false, all_after_pass: false  do
+  guard 'rspec', :version => 2, :cli => "--color --drb", :turnip => true, all_on_start: false, all_after_pass: false  do
+      watch(%r{^spec/.+\.feature$})
+      watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+  
       watch(%r{^spec/.+_spec\.rb$}) 
       watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
-      watch('spec/spec_helper.rb')  { "spec" }
+      watch('spec/spec_helper.rb')    { "spec" }
+      watch('spec/turnip_helper.rb')  { "spec/acceptance" }
       watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
       watch(%r{^app/(.*)(\.erb|\.haml)$})                 { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
       watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }

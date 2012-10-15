@@ -49,7 +49,7 @@ en:
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Welcome to Merciboq! -- Please confirm your account for us.'
+        subject: 'Welcome to MerciboQ! -- Please confirm your account for us.'
       reset_password_instructions:
         subject: 'Reset password instructions'
       unlock_instructions:

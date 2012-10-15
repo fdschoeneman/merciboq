@@ -1,17 +1,17 @@
 class ThankyouByEmailController < ApplicationController
   
-  skip_before_filter :verify_authenticity_token
-  
   require 'mail'
+
+  skip_before_filter :verify_authenticity_token
 
   def create
 
     message = Mail.new params[:message]
 
-    message_sender_address = message.from.first
+    message_sender_addresses = message.from
     message_recipient_addresses = message.to
 
-    from_user = User.find_or_create_by_email(message_sender_address)
+    from_user = User.find_or_create_by_email(message_sender_addresses.first)
     content   = (message.text_part || message.html_part).body.decoded
     headline  = message.subject
 
@@ -22,6 +22,7 @@ class ThankyouByEmailController < ApplicationController
       if merciboq_subdomain?(address)
         subdomain = address.split('@').second.split('.merciboq.com')
         to_user = User.find_by_subdomain(subdomain)
+        # to_user = User.find_by_subdomain(address.split('@').second.split)
         next if to_user.nil?
       else 
         to_user = User.find_or_create_by_email(address)
@@ -30,11 +31,10 @@ class ThankyouByEmailController < ApplicationController
       thankyou = Merciboku.new(:thanker_id => from_user.id, :welcomer_id => to_user.id,
                    :content => content, :headline => headline)
       thankyou.save( :validate => false )
-
+      
       ThankyouMailer.thankyou_notifier(thankyou).deliver
 
       message.attachments.each{|attachment|
-#        Rails.logger.info attachment.inspect
         thankyou.attachments << Attachment.new(:filename => attachment.filename, :mimetype => attachment.mime_type, :bytes => attachment.body.decoded)
         # TODO: bytecount
       }

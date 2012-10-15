@@ -57,13 +57,13 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'steak'
   gem 'factory_girl_rails'
-  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-
 end
 
 group :test do
 
+  # turnip allows cucumber features in rspec
+  gem 'turnip'
   # Spork
   gem 'spork'
 
@@ -86,15 +86,15 @@ group :test do
   gem 'guard-livereload'
   gem 'guard-rails'
   gem 'guard-sass', require: false
-
 end
 
-
+group :development do 
+  # notification support
+  gem 'rb-inotify'
+  gem 'libnotify'
+end
 # platforms :ruby do
   # gem 'rb-readline'
 
-  # notification support
-  #  gem 'rb-inotify'
-  #  gem 'libnotify'
 # end
 

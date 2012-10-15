@@ -12,8 +12,8 @@ Spork.prefork do
   require 'factory_girl_rails'
   require 'shoulda-matchers'
   require 'email_spec'
-  require 'email_spec'
-  
+  require 'turnip/capybara'
+
   Mail.defaults do
     delivery_method :test 
   end
@@ -23,6 +23,7 @@ Spork.prefork do
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  Dir[Rails.root.join("spec/acceptance/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
     config.include Devise::TestHelpers, :type => :controller
@@ -30,6 +31,7 @@ Spork.prefork do
     config.include EmailSpec::Matchers
     config.include FactoryGirl::Syntax::Methods
     config.include EmailMacros
+    config.include SignUpSteps 
 
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"

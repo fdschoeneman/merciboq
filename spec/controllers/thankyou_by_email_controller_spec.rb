@@ -143,9 +143,9 @@ describe ThankyouByEmailController do
       # ThankyouMailer.should_receive(:thankyou_notifier).with("email@example.com", "Jimmy Bean")
       # last_delivery = ActionMailer::Base.deliveries.last
       
-      it "should have an email" do 
-        ActionMailer::Base.deliveries.count.should eq 1
-      end# last_delivery.to.should include "email@example.com"
+      # it "should have an email" do 
+      #   ActionMailer::Base.deliveries.count.should eq 1
+      # end# last_delivery.to.should include "email@example.com"
       it { should have_sent_email }
     end
   end
