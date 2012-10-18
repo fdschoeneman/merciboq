@@ -31,15 +31,15 @@ Spork.prefork do
     config.include EmailSpec::Matchers
     config.include FactoryGirl::Syntax::Methods
     config.include EmailMacros
-    config.include SignUpSteps 
+    config.include SignUpSteps
 
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
     config.infer_base_class_for_anonymous_controllers = false
     
     config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.clean_with(:truncation)
     end
 

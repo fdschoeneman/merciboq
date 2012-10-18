@@ -2,52 +2,31 @@ require 'spec_helper'
 
 describe ThankyouByEmailController do
   
-  thankyou_note = Mail.new do 
-
-    from "Frommy McFrommerton <frommy.mcfrommerton@unregistered.com>"
-    to ["toohey.receivesalot@unregistered.com", "toohey_comrade@unregistered.com", 
-      "333581f1ce6f4de6207a@cloudmailin.net", 
-      "2009zinfandel@ferringtonvineyard.merciboq.com"
-    ]
-    cc "like_a_boss@unregistered.com"
-    subject 'subject of an email goes to headline'
-    body 'body of an email goes to content'
-
-    text_part do
-      body 'Here is the attachment you wanted'
-    end
-
-    html_part do
-      content_type 'text/html; charset=UTF-8'
-      body '<h1>Funky Title</h1><p>Here is the attachment you wanted</p>'
-    end
-  end
-  
-  let(:merciboqs) { Merciboku.all(limit: 2) }
-  let(:sender) { User.find_by_email(thankyou_note.from) }
-  let(:first_recipient) { User.find_by_email(thankyou_note.to[0])}  
-  let(:second_recipient) { User.find_by_email(thankyou_note.to[1])}
-  let(:new_users) { User.all }
-  let(:internal_address) { 
-    User.find_by_email("333581f1ce6f4de6207a@cloudmailin.net") }
-  let(:merciboq_address) { 
-    User.find_by_email("2009zinfandel@ferringtonvineyard.merciboq.com") }
-  let(:registered_sender) { User.create(email: "registered@sender.com") }
-  let(:registered_recipient) { User.create(email: "registered@recipient.com") }     
-  
-  before do
-    registered_recipient
-    registered_sender
+  before(:each) do
+    Mail::TestMailer.deliveries.clear  
+    previously_registered_sender
+    previously_registered_recipient
   end
 
   context "unregistered sender and two unregistered recipients" do
       
+    let(:us2ur_msg) { thankyou_note }
+    let(:sender) { User.find_by_email(us2ur_msg.from) }
+    let(:first_recipient) { User.find_by_email(us2ur_msg.to[0])}  
+    let(:second_recipient) { User.find_by_email(us2ur_msg.to[1])}
+    let(:new_users) { User.all }
+    
     before do
-      post :create, message: thankyou_note
+      post :create, message: us2ur_msg
     end
 
     describe "user creation" do 
- 
+      
+      let(:internal_address) { 
+        User.find_by_email("333581f1ce6f4de6207a@cloudmailin.net") }
+      let(:merciboq_address) { 
+        User.find_by_email("2009zinfandel@ferringtonvineyard.merciboq.com") }
+          
       it "should not create an account for an internal address" do
         internal_address.should_not be_present
       end
@@ -56,7 +35,7 @@ describe ThankyouByEmailController do
         merciboq_address.should_not be_present
       end
 
-      xit "should notify sender if a user's merciboq.com address doesn't exist" do
+      it "should notify sender if a user's merciboq.com address doesn't exist" do
       end
 
       it "should have an account" do 
@@ -111,6 +90,8 @@ describe ThankyouByEmailController do
       end
 
       describe "each" do
+    
+        let(:merciboqs) { Merciboku.all }
         
         it "should take the thanker from the sender" do 
           merciboqs.each do |merciboq|
@@ -150,70 +131,83 @@ describe ThankyouByEmailController do
     end
   end
 
+  let(:previously_registered_sender) { User.create(email: "registered@sender.com") }
+  let(:previously_registered_recipient) { User.create(email: "registered@recipient.com") }
+  
   context "unregistered sender and 1 unregistered recipient" do 
     
-    before do 
-      thankyou_note.from = "unregistered@sender.com"
-      thankyou_note.to = ["unregistered@recipient.com", "thanks@merciboq.com"]
+    let(:us1ur_msg) { thankyou_note }
+
+    before do
+      us1ur_msg.from = "unregistered@sender.com"
+      us1ur_msg.to = ["unregistered@recipient.com", "thanks@merciboq.com"]
     end
 
     it "should create 2 new users" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(2)
+      expect{
+        post :create, message: @message}.to change(User, :count).by(2)
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(1)
+      expect{post :create, message: @message}.to change(Merciboku, :count).by(1)
     end
   end
-
+  
   context "unregistered sender and 1 registered recipient" do 
+
+    let(:us1r_msg) { thankyou_note }
     
     before do 
-      registered_recipient
-      thankyou_note.from = "unregistered@sender.com"
-      thankyou_note.to = ["registered@recipient.com", "thanks@merciboq.com"]
+      us1r_msg.to = ["registered@recipient.com", "thanks@merciboq.com"]
+      us1r_msg.from = "unregistered@sender.com"
     end
 
     it "should create 1 new user" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(1)
+      expect{post :create, message: us1r_msg}.to change(User, :count).by(1) 
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(1)
+      expect{
+        post :create, message: us1r_msg}.to change(Merciboku, :count).by(1)
     end
   end
 
-  context "registered sender and 1 unregistered recipient" do 
+  context "registered sender and 1 unregistered recipient 
+    and 1 registered recipient" do 
 
-    before do 
-      thankyou_note.from = "registered@sender.com"
-      thankyou_note.to = ["unregistered@recipient.com", 
+    let(:rs1ur1rr_msg) { thankyou_note }
+    
+    before(:each) do 
+      rs1ur1rr_msg.from "registered@sender.com"
+      rs1ur1rr_msg.to = ["unregistered@recipient.com", 
         "registered@recipient.com", "thanks@merciboq.com"
       ]
     end
     
     it "should create 1 new user" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(1)
+      expect{post :create, message: @message}.to change(User, :count).by(1)
     end
 
     it "should create 2 new merciboqs" do
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(2)    
+      expect{post :create, message: @message}.to change(Merciboku, :count).by(2)    
     end
   end
   
   context "registered sender and 1 registered recipient" do 
+
+    let(:rs1rr_msg) { thankyou_note }
     
-    before do 
-      thankyou_note.from = "registered@sender.com"
-      thankyou_note.to = ["registered@recipient.com", "thanks@merciboq.com"]
+    before(:each) do
+      rs1rr_msg.from = "registered@sender.com"
+      rs1rr_msg.to = ["registered@recipient.com", "thanks@merciboq.com"]
     end
 
     it "should not create any new users" do
-      expect{post :create, message: thankyou_note}.to change(User, :count).by(0)
+      expect{post :create, message: @message}.to change(User, :count).by(0)
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: thankyou_note}.to change(Merciboku, :count).by(1)
+      expect{post :create, message: @message}.to change(Merciboku, :count).by(1)
     end
   end
 end

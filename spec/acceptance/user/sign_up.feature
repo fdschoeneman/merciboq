@@ -3,3 +3,4 @@ Feature: User sign up
     Given there are no emails
 
   Scenario: Successful signup
+
