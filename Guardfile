@@ -3,7 +3,7 @@ HOST_OS = RbConfig::CONFIG['host_os']
 
 group "background" do
   
-  # Spork
+  # Spork 
   guard 'spork', bundler: true, 
     cucumber_env: { 'RAILS_ENV' => 'test' }, 
     rspec_env: { 'RAILS_ENV' => 'test' }, wait: 200 do
@@ -13,7 +13,10 @@ group "background" do
       watch(%r{^config/environments/.+\.rb$})
       watch(%r{^config/initializers/.+\.rb$})
       watch('spec/spec_helper.rb')
+      watch('spec/turnip_helper.rb')
       watch(%r{^features/support/.+\.rb$})
+      watch(%r{^spec/acceptance/steps/.+\.rb$})
+      watch(%r{^lib/turnip/steps/.+\.rb$})
   end
 
   # Run Bundle with each Gemfile edit
@@ -43,10 +46,14 @@ group "tests" do
   end
 
   # Rspec
-  guard 'rspec', :version => 2, :cli => "--color --drb", :turnip => true, all_on_start: false, all_after_pass: false  do
-      watch(%r{^spec/.+\.feature$})
-      watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+  guard 'rspec', :version => 2, :turnip => true, all_on_start: false, all_after_pass: false  do
+
+      watch(%r{^spec/acceptance/.+\.feature$})
+      watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) { 'spec/acceptance'}
+
+      watch(%r{^spec/acceptance/steps/*/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
   
+    #rspec
       watch(%r{^spec/.+_spec\.rb$}) 
       watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
       watch('spec/spec_helper.rb')    { "spec" }

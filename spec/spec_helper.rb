@@ -13,25 +13,23 @@ Spork.prefork do
   require 'shoulda-matchers'
   require 'email_spec'
   require 'turnip/capybara'
-
-  Mail.defaults do
-    delivery_method :test 
-  end
+  require 'turnip_helper'
 
   Capybara.javascript_driver = :webkit
 
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-  Dir[Rails.root.join("spec/acceptance/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
     config.include Devise::TestHelpers, :type => :controller
+    config.include Warden::Test::Helpers
     config.include EmailSpec::Helpers
     config.include EmailSpec::Matchers
+    # config.include ::Rails.application.routes.url_helpers
+
     config.include FactoryGirl::Syntax::Methods
     config.include EmailMacros
-    config.include SignUpSteps
 
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -40,7 +38,7 @@ Spork.prefork do
     
     config.before(:suite) do
       DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
+      DatabaseCleaner.clean_with :truncation
     end
 
     config.before(:each) do
@@ -54,6 +52,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  
   FactoryGirl.reload
 
   Dir["#{Rails.root}/app/controllers//*.rb"].each do |controller|
