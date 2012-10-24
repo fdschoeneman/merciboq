@@ -134,10 +134,6 @@ describe UsersController do
       @user.should respond_to(:thanked?)
     end
 
-    it "should have a thank! method" do
-      @user.should respond_to(:thank!)
-    end
-
     it "should have a welcomes method" do
       @user.should respond_to(:welcomes)
     end

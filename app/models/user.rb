@@ -52,10 +52,6 @@ class User < ActiveRecord::Base
     thankyous.find_by_welcomer_id(welcomer)
   end
 
-  def thank!(welcomer)
-    thankyous.create!(:welcomer_id => welcomer.id)
-  end
-
   def unthank!(welcomer)
     thankyous.find_by_welcomer_id(welcomer).destroy
   end
@@ -97,13 +93,11 @@ class User < ActiveRecord::Base
     end  
   end
         
-
   def subdomain_placeholder
     modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
     adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
     subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
   end
-
       
 end
 

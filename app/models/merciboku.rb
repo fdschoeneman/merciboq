@@ -13,6 +13,5 @@ class Merciboku < ActiveRecord::Base
 
   default_scope order: 'mercibokus.created_at DESC'
 
-
 end
 

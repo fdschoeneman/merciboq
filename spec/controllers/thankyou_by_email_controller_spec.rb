@@ -86,7 +86,6 @@ describe ThankyouByEmailController do
       
       it "should result in two merciboqs" do
         Merciboku.count.should eq 2
-        Merciboku.count.should_not eq 3
       end
 
       describe "each" do

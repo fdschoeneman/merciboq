@@ -1,7 +1,11 @@
 module UtilitySteps 
 
-   step 'I am on the home page' do
+  step 'I am on the home page' do
     visit '/'
+  end
+
+  step 'I am on the :path path' do |path|
+    visit "/#{path}"
   end
 
   step 'show me the page' do 
@@ -28,5 +32,7 @@ module UtilitySteps
     page.should have_content(text)
   end
 
-
+  step 'I should see an error notice with :text' do |text|
+    page.should have_content(text)
+  end
 end
