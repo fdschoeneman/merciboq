@@ -16,6 +16,7 @@ Feature: Edit a merciboq
     When she fills in "Content" with "blah blah"
     And she presses "Update"
     Then she should see "| Thankyous"
+    Then she should see "blah blah"
 
   Scenario: Delete thankyou
     When she follows "delete"

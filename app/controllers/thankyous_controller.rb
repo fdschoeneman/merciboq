@@ -9,7 +9,7 @@ class ThankyousController < UsersController
   end
 
   def create
-    @thankyou = Merciboku.new(params[:thankyou])
+    @thankyou = Merciboku.new(params[:merciboku])
     if current_user 
       @thankyou.thanker = current_user
     else
@@ -42,7 +42,7 @@ class ThankyousController < UsersController
 
   def update
     @thankyou = Merciboku.find(params[:format])
-    if @thankyou.update_attributes(params[:thankyou])
+    if @thankyou.update_attributes(params[:merciboku])
       redirect_to root_url
     else
       render 'edit'
