@@ -14,6 +14,12 @@ module AuthenticationSteps
     login_as(@actor)
   end
 
+  step 'I am registered, confirmed and logged in as a/an :user_type' do |user_type|
+    @actor = FactoryGirl.create(user_type.to_sym).confirm!
+    @actor.confirm!
+    login_as(@actor)
+  end
+
   step 'I open the password reset email' do 
     open_email(@actor.email)
   end
