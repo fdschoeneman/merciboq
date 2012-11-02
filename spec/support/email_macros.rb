@@ -1,10 +1,15 @@
 module EmailMacros
 
-  def base_thankyou_note 
-    base_thankyou_note = Mail.new do 
+  def thankyou_note
+    
+    @message = Mail.new do 
 
-      from "Frommy McFrommerton <frommy.mcfrommerton@unregistered.com>"
-      to "toohey.receivesalot@unregistered.com"
+      from ["Frommy McFrommerton <frommy.mcfrommerton@unregistered.com>"] 
+      to ["toohey.receivesalot@unregistered.com", "toohey_comrade@unregistered.com", 
+        "333581f1ce6f4de6207a@cloudmailin.net", 
+        "2009zinfandel@ferringtonvineyard.merciboq.com"
+      ]
+      cc "like_a_boss@unregistered.com"
       subject 'subject of an email goes to headline'
       body 'body of an email goes to content'
 

@@ -60,6 +60,11 @@ class ApplicationController < ActionController::Base
     temporary_name = local_spaced.titleize
   end
 
+  # def find_user_by_merciboq_address(address)
+  #   subdomain = address.split('@').second.split('.merciboq.com')
+  #   @user = User.find_by_subdomain(subdomain) unless @user.nil?
+  # end
+
   def temporary_subdomain(email)
     email_split   = email.split('@')
     email_local   = email_split[0]
