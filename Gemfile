@@ -38,7 +38,7 @@ gem 'faker', '1.0.1'
 
 group :production do 
   # database
-  gem 'pg', '0.12.2'
+  # gem 'pg', '0.12.2'
 end
 
 group :test, :development do
@@ -47,9 +47,6 @@ group :test, :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'taps'
-  # gem 'heroku'
-  # gem 'ruby-debug19'
-  # gem 'ruby-prof'
   gem 'debugger'
   gem 'sqlite3'
 

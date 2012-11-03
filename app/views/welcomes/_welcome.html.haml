@@ -1,9 +1,21 @@
 %tr
-  %td.thankyou
-    %span.content
-      / welcomed #{link_to welcome.thanker.name} --
-      %em
-        = welcome.headline
-      "#{welcome.content}"
-    %span.timestamp
-      Posted #{time_ago_in_words(welcome.created_at)} ago.
+  %td
+    = gravatar_for welcome.thanker, :size => 15
+    | 
+    = link_to welcome.thanker.name.titleize, root_url(subdomain: welcome.thanker.subdomain) 
+    wrote about 
+    = link_to welcome.welcomer.name, root_url(subdomain: welcome.welcomer.subdomain)  
+    %strong
+      = welcome.headline
+    .merciboq
+      = welcome.content
+    &mdash; Posted
+    = time_ago_in_words(welcome.created_at)
+    ago.
+    = render "welcomes/add_this"
+    - welcome.attachments.each do |attachment|
+      = link_to(attachment.filename, attachment, :target => '_blank')
+  %td
+    - if current_user == @user
+      = link_to "edit", welcome_edit_url(welcome), class: "btn btn-mini btn-warning"
+      = link_to "delete", welcome_delete_url(welcome), :confirm => 'Not feeling it any more, huh?', :method => :delete, class: "btn btn-mini btn-danger"
