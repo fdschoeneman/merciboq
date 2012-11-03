@@ -2,7 +2,7 @@
 .bundle
 db/*.sqlite3
 db/development.merciboq
-db/test.merciboq
+db/test.*
 log/*.log
 tmp/**/*
 tmp/*
