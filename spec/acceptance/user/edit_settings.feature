@@ -4,11 +4,7 @@ Feature: Edit settings
   I want to edit my settings
 
   Scenario: Logged in user edits her settings
-<<<<<<< HEAD
-    # Given I am registered, confirmed, and logged in
-=======
     Given I am registered, confirmed, and logged in
->>>>>>> 793add486d98a180d9b7bdcd59e1d4eecba80c68
     # And I am on the home page
     # And I follow the "Settings" link
     # And the "Name" field should contain "Sandra Bullock"
