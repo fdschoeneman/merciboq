@@ -38,7 +38,7 @@ gem 'faker', '1.0.1'
 
 group :production do 
   # database
-  # gem 'pg', '0.12.2'
+  gem 'pg', '0.12.2'
 end
 
 group :test, :development do
