@@ -1,17 +1,5 @@
 Merciboq::Application.routes.draw do
 
-  get "thankyous/new"
-
-  get "thankyous/edit"
-
-  get "thankyous/show"
-
-  get "thankyous/index"
-
-  get "thankyous/delete"
-
-  get "thankyous/update"
-
   devise_for :users, :controllers => { 
     :users => "users",
     :registrations => "registrations",
@@ -57,6 +45,7 @@ Merciboq::Application.routes.draw do
   match '/thankyou/delete',     :to => 'thankyous#delete'
   match '/thankyou/edit',       :to => 'thankyous#edit'
   match '/thankyou/create',     :to => 'thankyous#create'
+  match '/thankyou/update',     :to => 'thankyous#update'
 
   root :to => 'pages#home'
 
