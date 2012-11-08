@@ -3,10 +3,10 @@ Feature: User sign up
   Background:
     Given there are no emails
     And I am not logged in
-    And that no user exists with an email "unregistered@sender.com"
-    And that no user exists with an email "unregistered@recipient.com"
-    And that a user does exist with an email "registered@sender.com"
-    And that a user does exist with an email "registered@recipient.com"
+    And no user exists with an email "unregistered@sender.com"
+    And no user exists with an email "unregistered@recipient.com"
+    And a user does exist with an email "registered@sender.com"
+    And a user does exist with an email "registered@recipient.com"
 
   Scenario: Successful signup via website
     Given I am on the home page

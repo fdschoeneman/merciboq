@@ -1,7 +1,7 @@
 module UtilitySteps 
 
   step 'I am on the home page' do
-    visit '/'
+    visit root_url
   end
 
   step 'I am on the :path path' do |path|
@@ -21,6 +21,10 @@ module UtilitySteps
   end
 
   step 'I fill in :value for :key' do |value, key|
+    fill_in key, with: value
+  end
+
+  step 'I fill in :key with :value' do |key, value|
     fill_in key, with: value
   end
 

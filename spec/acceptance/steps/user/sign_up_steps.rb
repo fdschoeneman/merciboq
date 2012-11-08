@@ -13,7 +13,7 @@ module SignUpSteps
     send ":email_addressee should have :count email with subject :email_subject", email_addressee, 1, "Welcome" 
   end
 
-  step 'that no user exists with an email :unregistered_email' do |unregistered_email|
+  step 'no user exists with an email :unregistered_email' do |unregistered_email|
     User.find_by_email(unregistered_email).should be nil
   end
   

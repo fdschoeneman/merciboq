@@ -5,7 +5,7 @@ group "background" do
   
   # Spork 
   guard 'spork', bundler: true, 
-    cucumber_env: { 'RAILS_ENV' => 'test' }, 
+    # cucumber_env: { 'RAILS_ENV' => 'test' }, 
     rspec_env: { 'RAILS_ENV' => 'test' }, wait: 200 do
       watch('Gemfile.lock')
       watch('config/application.rb')
@@ -38,12 +38,12 @@ end
 group "tests" do
 
   # Cucumber
-  guard 'cucumber', bundler: true, cli: "--drb", 
-    all_after_pass: false, all_on_start: false do
-      watch(%r{^features/.+\.feature$})
-      watch(%r{^features/support/.+$})          { 'features' }
-  #    watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
-  end
+  # guard 'cucumber', bundler: true, cli: "--drb", 
+  #   all_after_pass: false, all_on_start: false do
+  #     watch(%r{^features/.+\.feature$})
+  #     watch(%r{^features/support/.+$})          { 'features' }
+  # #    watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+  # end
 
   # Rspec
   guard 'rspec', :version => 2, :turnip => true, all_on_start: false, all_after_pass: false  do
