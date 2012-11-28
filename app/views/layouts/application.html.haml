@@ -5,7 +5,11 @@
     .container
       %header
         = render 'layouts/header'
+        .row
         = render 'shared/flash_messages', :locals => {:flash => flash}
+        .row.span12.offset4
+          .logo
+            = link_to logo, root_url(:host => request.domain)
       .row
         .span1
           %p
