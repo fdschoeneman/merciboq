@@ -1,8 +1,6 @@
 %meta{:charset => "utf-8"}/
 = csrf_meta_tags
 = yield :metatags
-
-/ Le HTML5 shim, for IE6-8 support of HTML elements
-/[if lt IE 9]
-= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-/ Le styles
+%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+%meta{:content => "The best way to say thankyou to random folks", :name => "description"}
+%meta{:content => "Frederick D. Schoeneman", :name => "author"}

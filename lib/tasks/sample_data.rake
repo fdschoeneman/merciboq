@@ -29,12 +29,13 @@ namespace :db do
 end
 
 def sample_admin
-  admin = User.new( :name => "Fred Schoeneman",
-                    :email => "fred.schoeneman@gmail.com",
-                    :password => "password" )
+  admin = User.new( name: "Fred Schoeneman",
+                    email: "test@merciboq.com",
+                    password: "password",
+                    password_confirmation: "password" )
   admin.save!
   admin.confirm!
-  admin.toggle!(:admin)
+  # admin.toggle!(:admin)
 end
 
 def make_users

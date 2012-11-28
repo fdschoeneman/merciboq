@@ -1,9 +1,6 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      .logo
-        = link_to logo, root_url(:host => request.domain)
-        .nav-collapse
       %ul.nav.pull-right
         - if signed_in?
           %li
@@ -20,4 +17,6 @@
             = link_to "Help", help_url(:host => request.domain)
         = render 'devise/menu/registration_items'
         = render 'devise/menu/login_items'
-
+.row.span12.offset4
+  .logo
+    = link_to logo, root_url(:host => request.domain)
