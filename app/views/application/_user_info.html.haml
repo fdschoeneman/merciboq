@@ -9,11 +9,9 @@
     ago
   %dt Welcomes:
   %dd
-    %span.badge
-      = link_to current_user.welcomes.count, welcomes_path
+    %span.badge.badge-info
+      = @user.welcomes.count
   %dt Thankyous:
   %dd
-    %span.badge
-      = link_to current_user.thankyous.count, thankyous_path
-
-
+    %span.badge.badge-info
+      = current_user.thankyous.count

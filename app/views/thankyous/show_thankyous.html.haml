@@ -6,20 +6,33 @@
       = render 'user_info'
   .span8
     - content_for :column2 do
-      %h1
-        = gravatar_for @user
-        = @user.name
       - if @user.thankyous.empty?
         #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
         = render 'shared/thankyou_steps'
         = render 'shared/thankyou_tips'
       - else
-        %table.table.table-striped
+        %table.table
           %thead
             %tr
-              %th.span6= @user.thankyou_phrase
+              %th.span6
+                %h1
+                  .welcome-phrase
+                    = gravatar_for @user
+                    %small{:href => "#", "data-placement" => "top", :title => "change this in settings"} #{@user.welcome_phrase}
               %th.span2
           %tbody
             = render partial: 'thankyou', collection: @thankyous
-    
-
+:javascript
+  window.onload = function()
+  {
+      if(!window.jQuery)
+      {
+          alert('jQuery not loaded');
+      }
+      else
+      {
+          $(document).ready(function(){
+              $('#example').tooltip({'placement':'top', 'trigger' : 'hover'});
+          });
+      }
+  }

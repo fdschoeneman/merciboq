@@ -18,6 +18,7 @@ namespace :db do
      if Rails.env.development?
       puts "#{red("==>")} Clearing Current Data"
       Rake::Task['db:reset'].invoke
+      Rake::Task['db:test:prepare'].invoke
     end
     puts "#{green("==>")} Creating sample admin user"
     sample_admin

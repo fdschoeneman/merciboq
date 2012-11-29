@@ -10,8 +10,8 @@
     .merciboq
       = thankyou.content
     &mdash; Posted
-    / = time_ago_in_words(@thankyou.created_at)
-    / ago.
+    = time_ago_in_words(thankyou.created_at)
+    ago.
     = render "thankyous/add_this"
     - @thankyou.attachments.each do |attachment|
       = link_to(attachment.filename, attachment, :target => '_blank')
