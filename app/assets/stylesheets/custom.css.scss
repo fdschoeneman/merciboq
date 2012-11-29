@@ -5,24 +5,21 @@ body {
   }
 }
 
-header {
 
-  .logo {
-    font-family: 'Yesteryear';
-    font-size: 500%;
-    padding: 50px;
-    margin-bottom: 50px;
+.logo {
+  font-family: 'Yesteryear';
+  font-size: 500%;
+  padding: 50px;
 
-    a {
-      color: grey;
-      padding: 40px;
+  a {
+    color: grey;
+    padding: 40px;
 
-      &:hover {
-        text-decoration: none;
-      }
+    &:hover {
+      text-decoration: none;
+    }
 
-      &:visited {
-      }
+    &:visited {
     }
   }
 }
