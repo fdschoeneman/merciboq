@@ -3,6 +3,8 @@
   %dd= @user.name
   %dt Subdomain:
   %dd= @user.subdomain
+  %dt Custom email:
+  %dd= link_to "thanks@#{@user.subdomain}.merciboq.com"
   %dt Member since:
   %dd
     = time_ago_in_words(@user.created_at)
