@@ -1,3 +1,7 @@
+.row
+  .span4
+    - content_for :column1 do
+      = render 'user_info'
 = gravatar_for @user
 %h1= @user.name
 - if @user.welcomes.empty?

@@ -1,41 +1,25 @@
 - content_for :metatags do
   = render "thankyous/fb_metatags"
-- content_for :column1 do
-  %blockquote.pull-right
-    = render 'shared/mission_statement'
-- content_for :column2 do
+.row
+  .span4
+    - content_for :column1 do
+      = render 'user_info'
   .span8
-    %h1
-      = gravatar_for @user
-      = @user.name
-    - if @user.thankyous.empty?
-      #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
-      = render 'shared/thankyou_steps'
-      = render 'shared/thankyou_tips'
-    - else
-      %table.table.table-striped
-        %thead
-          %tr
-            %th.span6= @user.thankyou_phrase
-            %th.span2
-        %tbody
-          = render partial: 'thankyou', collection: @thankyous
-          /- @thankyous.each do |thankyou|
-          /  = render 'thankyou', collection: @thankyous
-  .span5
-    = render 'shared/user_info'
-    %strong Name
-    = @user.name
-    %br/
-    %strong URL
-    = link_to user_path(@user), @user
-    %br/
-    %strong Subdomain
-    %br/
-    %br/
-    %strong Welcomes
-    = @user.welcomes.count
-    %br/
-    %strong Thankyous
-    = @user.thankyous.count
+    - content_for :column2 do
+      %h1
+        = gravatar_for @user
+        = @user.name
+      - if @user.thankyous.empty?
+        #{you_or_user(@user).capitalize} #{has_or_have(@user)} not thanked anyone yet.  Would you like to thank someone?
+        = render 'shared/thankyou_steps'
+        = render 'shared/thankyou_tips'
+      - else
+        %table.table.table-striped
+          %thead
+            %tr
+              %th.span6= @user.thankyou_phrase
+              %th.span2
+          %tbody
+            = render partial: 'thankyou', collection: @thankyous
+    
 

@@ -1,0 +1,19 @@
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @user.name
+  %dt Subdomain:
+  %dd= @user.subdomain
+  %dt Member since:
+  %dd
+    = time_ago_in_words(@user.created_at)
+    ago
+  %dt Welcomes:
+  %dd
+    %span.badge
+      = link_to current_user.welcomes.count, welcomes_path
+  %dt Thankyous:
+  %dd
+    %span.badge
+      = link_to current_user.thankyous.count, thankyous_path
+
+

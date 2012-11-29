@@ -1,29 +1,30 @@
-- content_for :column1 do
-  %blockquote.pull-right
-    = render 'shared/mission_statement'
-- content_for :column2 do
-  .span8
-    %h1
-      = gravatar_for @user
-      = @user.name
-    - if @user.welcomes.empty?
-      Nobody has thanked #{you_or_user(@user)} yet.
-      = render 'shared/thankyou_steps'
-      = render 'shared/thankyou_tips'
-    - else
-      %p
-        #{@user.welcome_phrase}
-      %table.thankyous{:summary => "User thankyous"}
-        - @welcomes.each do |welcome|
-          %tr
-            %td.thankyou
-              %span.content
-                #{gravatar_for welcome.thanker, :size => 15}
-                |
-                #{link_to welcome.thanker.name, welcome.thanker} wrote --
-                %em
-                  = welcome.headline
-                "#{welcome.content}"
-              %span.timestamp
-                Thankyou sent #{time_ago_in_words(welcome.created_at)} ago
-  
+.row
+  .span4
+    - content_for :column1 do
+      = render 'user_info'
+    - content_for :column2 do
+      .span8
+        %h1
+          = gravatar_for @user
+          = @user.name
+        - if @user.welcomes.empty?
+          Nobody has thanked #{you_or_user(@user)} yet.
+          = render 'shared/thankyou_steps'
+          = render 'shared/thankyou_tips'
+        - else
+          %p
+            #{@user.welcome_phrase}
+          %table.thankyous{:summary => "User thankyous"}
+            - @welcomes.each do |welcome|
+              %tr
+                %td.thankyou
+                  %span.content
+                    #{gravatar_for welcome.thanker, :size => 15}
+                    |
+                    #{link_to welcome.thanker.name, welcome.thanker} wrote --
+                    %em
+                      = welcome.headline
+                    "#{welcome.content}"
+                  %span.timestamp
+                    Thankyou sent #{time_ago_in_words(welcome.created_at)} ago
+      

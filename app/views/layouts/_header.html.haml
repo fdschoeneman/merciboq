@@ -17,4 +17,7 @@
             = link_to "Help", help_url(:host => request.domain)
         = render 'devise/menu/registration_items'
         = render 'devise/menu/login_items'
+  .row
+    %center.logo
+      = link_to logo, root_url(:host => request.domain)
 

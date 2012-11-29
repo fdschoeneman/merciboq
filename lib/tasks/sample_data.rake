@@ -29,13 +29,9 @@ namespace :db do
 end
 
 def sample_admin
-  admin = User.new( name: "Fred Schoeneman",
-                    email: "test@merciboq.com",
-                    password: "password",
-                    password_confirmation: "password" )
-  admin.save!
+  admin = User.create(email: "fred.schoeneman@gmail.com",
+                      password: "password" )
   admin.confirm!
-  # admin.toggle!(:admin)
 end
 
 def make_users
