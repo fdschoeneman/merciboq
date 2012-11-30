@@ -47,7 +47,6 @@ group :test, :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'taps'
-  gem 'debugger'
   gem 'sqlite3'
 
   # Rspec
@@ -87,6 +86,7 @@ end
 
 group :development do 
   # notification support
+  gem 'debugger'
   gem 'rb-inotify'
   gem 'libnotify'
 end
