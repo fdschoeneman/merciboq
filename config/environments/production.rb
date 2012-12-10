@@ -62,7 +62,7 @@ ActionMailer::Base.smtp_settings = {
   :domain         => 'heroku.com'
 }
 
-ActionMailer::Base.delivery_method = :smtp
+# ActionMailer::Base.delivery_method = :smtp
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'merciboq.com' }
