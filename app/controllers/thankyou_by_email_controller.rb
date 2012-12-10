@@ -7,7 +7,11 @@ class ThankyouByEmailController < ApplicationController
   def create
 
     parse_message(params[:message])
-
+    Rails.logger.fatal message.inspec
+    t
+#    Rails.logger.fatal message.subject #print the subject to the logs
+   Rails.logger.fatal @message.body.decoded #print the decoded body to the logs
+#    message.attachments.each{|attachment| Rails.logger.fatal attachment.inspect} #inspect each attachment
     @recipients.each do |address|
       
       next if internal_address?(address)
