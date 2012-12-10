@@ -10,12 +10,6 @@ class UsersController < ApplicationController
     @title = "Sign up"
   end
 
-  def create
-    @user = User.new(params[:user])
-    params[:user][:name] = temporary_name
-    super
-  end
-
   def show
     if params[:id]
       @user = User.find(params[:id])
@@ -44,6 +38,8 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+
+
 
 end
 

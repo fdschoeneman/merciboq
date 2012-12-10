@@ -60,7 +60,7 @@ describe User do
         reset_password_sent_at remember_created_at unconfirmed_email 
         reconfirmable sign_in_count current_sign_in_at last_sign_in_at
         confirmation_token confirmed_at confirmation_sent_at 
-        unconfirmed_email
+        unconfirmed_email submissive_id
       ].each do |attribute|
         it {should_not allow_mass_assignment_of(attribute.to_sym) }
       end
@@ -72,6 +72,11 @@ describe User do
     [:welcomes, :thankyous
     ].each do |model|
       it { should have_many(model).class_name("Merciboku") }
+    end
+
+    [:submissives, :dominants
+    ].each do |model|
+      it { should have_many(model).through(:bonds) }
     end
 
     it { should have_many(:thanked).through(:thankyous) }
@@ -108,8 +113,6 @@ describe User do
 
     describe "password" do 
 
-      # it { should validate_presence_of(:password).on(:update) } 
-
       it "should be more than 5 and less than 41 characters long" do 
         should_not allow_value("a" * 41).for(:password) 
         should_not allow_value("a" * 5).for(:password) 
@@ -145,33 +148,3 @@ describe User do
     end
   end
 end
-
-
-  # describe "admin attributes" do
-
-  #   let(:admin) { FactoryGirl.create(:user) }
-
-  #   it { should respond_to(:admin) }
-
-  #   it { should_not be_admin }
-
-  #   it "should be convertible to an admin" do
-  #     user.toggle!(:admin)
-  #     user.should be_admin
-  #   end
-  # end
-
-  # describe "DELETE 'destroy'" do
-  #   before(:each) do
-  #     @user = Factory(:user)
-  #   end
-
-  #   describe "as a non-signed-in user" do
-  #     it "should deny access" do
-  #       delete :destroy, :id => @user
-  #       response.should redirect_to(signin_path)
-  #     end
-  #   end
-  # end
-# end
-

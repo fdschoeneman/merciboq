@@ -1,9 +1,5 @@
 class User < ActiveRecord::Base
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :validatable,
-  # :lockable, :timeoutable and :omniauthable
-
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :confirmable, :validatable ,
     :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
@@ -12,48 +8,49 @@ class User < ActiveRecord::Base
     :password, :password_confirmation, :remember_me, 
     :welcome_phrase, :thankyou_phrase, :calendar
 
-  # before each user is created:
   before_create :set_temporary_name
   before_create :set_temporary_subdomain
    
-  # Variables
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   subdomain_regex = 
     /^([a-z0-9]([_\-](?![_\-])|[a-z0-9]){0,61}[a-z0-9]|[a-z0-9])$/i 
   forbidden_subdomains = %w( support blog www billing help api 
     merciboku privacy help legal terms blog )
   
-  # validations:
-  validates :email, presence: true, format: { with: email_regex },
-    uniqueness: { case_sensitive: false }
+  validates :email, presence: true, 
+                    format: { with: email_regex },
+                    uniqueness: { case_sensitive: false }
 
   validates :subdomain, presence: true, on: :update
   validates :subdomain, uniqueness: { case_sensitive: false },
-    format: { with: subdomain_regex, 
-    message: "The subdomain can only contain numbers, 
-      letters, and dashes" },
-    allow_blank: true
+              format: { with: subdomain_regex, message: 
+                "The subdomain can only contain numbers, 
+                letters, and dashes" },
+              allow_blank: true
      
   validates_exclusion_of :subdomain, in: forbidden_subdomains, 
      message: "reserved and unavailable"   
     
-  has_many :thankyous,          :dependent    => :destroy,
-                                :foreign_key  => "thanker_id",
-                                :class_name   => "Merciboku"
-  has_many :welcomes,           :dependent    => :destroy,
-                                :foreign_key  => "welcomer_id",
-                                :class_name   => "Merciboku"
-  has_many :thanked,            :through      => :thankyous,
-                                :source       => :welcomer
-  has_many :welcomed,           :through      => :welcomes,
-                                :source       => :thanker
+  has_many :thankyous,          dependent: :destroy,
+                                foreign_key: "thanker_id",
+                                class_name: "Merciboku"
+  has_many :welcomes,           dependent: :destroy,
+                                foreign_key: "welcomer_id",
+                                class_name: "Merciboku"
+  has_many :thanked,            through: :thankyous,
+                                source: :welcomer
+  has_many :welcomed,           through: :welcomes,
+                                source: :thanker
+  has_many :bonds
+  has_many :submissives,        through: :bonds,
+                                dependent: :destroy,
+                                foreign_key: "submissive_id"
+  has_many :dominants,          through: :bonds,
+                                dependent: :destroy,
+                                foreign_key: "dominant_id"
 
   def thanked?(welcomer)
     thankyous.find_by_welcomer_id(welcomer)
-  end
-
-  def unthank!(welcomer)
-    thankyous.find_by_welcomer_id(welcomer).destroy
   end
 
   def welcomed?(thanker)
@@ -66,26 +63,13 @@ class User < ActiveRecord::Base
     password == password_confirmation and !password.blank?
   end
 
-  def temporary_name(email)
-    email_split = email.split('@')
-    email_local = email_split[0]
-    local_spaced = email_local.split('.').join(' ')
-    temporary_name = local_spaced.titleize
-  end
-  
   def set_temporary_name
-    email = self.email
-    email_split = email.split('@')
-    email_local = email_split[0]
-    local_spaced = email_local.split('.').join(' ')
-    self.name = local_spaced.titleize
+    self.name = self.email.split('@').first.gsub('.', ' ').titleize
   end
 
   def set_temporary_subdomain
-    email = self.email
-    email_split   = email.split('@')
-    email_local   = email_split[0]
-    local_dashed  = email_local.gsub(/[.+]/, '-').dasherize
+
+    local_dashed = self.email.split('@').first.gsub(/[.+]/, '-').dasherize
     if User.find_by_subdomain(local_dashed).nil?
       self.subdomain = local_dashed
     else
@@ -96,8 +80,9 @@ class User < ActiveRecord::Base
   def subdomain_placeholder
     modifiers  = ["uber", "way", "total", "hardcore", "way", "total", "heavy", "magma", "hoopla", "hot", "cold"]
     adjectives = ["cool", "hot", "awesome", "rockstar", "supafly", "dope", "perspicacious"]
-    subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}"
+    random_subdomain_number = SecureRandom.random_number(1000)
+    subdomain_placeholder = "#{modifiers.sample}-#{adjectives.sample}-#{random_subdomain_number}"
   end
-      
+
 end
 

@@ -46,7 +46,7 @@ group "tests" do
   # end
 
   # Rspec
-  guard 'rspec', :version => 2, :turnip => true, all_on_start: false, all_after_pass: false  do
+  guard 'rspec', :turnip => true, all_on_start: false, all_after_pass: false  do
 
       watch(%r{^spec/acceptance/.+\.feature$})
       watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) { 'spec/acceptance'}

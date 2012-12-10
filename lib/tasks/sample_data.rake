@@ -18,7 +18,6 @@ namespace :db do
      if Rails.env.development?
       puts "#{red("==>")} Clearing Current Data"
       Rake::Task['db:reset'].invoke
-      Rake::Task['db:test:prepare'].invoke
     end
     puts "#{green("==>")} Creating sample admin user"
     sample_admin
@@ -30,8 +29,9 @@ namespace :db do
 end
 
 def sample_admin
-  admin = User.create(email: "fred.schoeneman@gmail.com",
+  admin = User.new(email: "fred.schoeneman@gmail.com",
                       password: "password" )
+  admin.save!
   admin.confirm!
 end
 

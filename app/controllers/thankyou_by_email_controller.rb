@@ -9,13 +9,11 @@ class ThankyouByEmailController < ApplicationController
     parse_message(params[:message])
 
     @recipients.each do |address|
-      
+      debugger
       next if internal_address?(address)
-   
-      find_welcomer(address) #unless internal_address?(address)
-      
-      create_merciboq unless @welcomer.nil?
-      
+      find_welcomer(address) 
+      next if @welcomer.nil?
+      create_merciboq 
       notify_welcomer
 
       @message.attachments.each do |attachment|
