@@ -12,7 +12,7 @@ module ThankViaEmailSteps
     recipient = User.find_by_email(recipient)
     @merciboqmail = thankyou_note
     @merciboqmail.from = sender
-    @merciboqmail.to = ["thanks@#{recipient.subdomain}.merciboq.com"]
+    @merciboqmail.to = ["#{recipient.subdomain}@merciboq.com"]
     @merciboqmail.subject = subject
     @merciboqmail.body = body
   end
@@ -23,23 +23,12 @@ module ThankViaEmailSteps
   end
 
   step 'the system should have :count new merciboq(s)' do |count| 
-    # post "thankyou_by_email/create", message: @merciboqmail
-    # debugger
     expect{
        post "thankyou_by_email/create", message: @merciboqmail}.to change(Merciboku, :count).by(count.to_i)
   end
 
   step ':user_email should have an account' do |user_email|
     User.find_by_email(user_email).should_not be_nil
-  end
-
-  step 'something' do 
-    @someemail = thankyou_note
-    @someemail.to = ["thankpps@registered.mercboq.com"]
-    post "thankyou_by_email/create", message: @someemail
-    
-
-
   end
 
 end

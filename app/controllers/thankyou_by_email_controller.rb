@@ -9,9 +9,10 @@ class ThankyouByEmailController < ApplicationController
     parse_message(params[:message])
 
     @recipients.each do |address|
-      debugger
+      
       next if internal_address?(address)
       find_welcomer(address) 
+      # debugger
       next if @welcomer.nil?
       create_merciboq 
       notify_welcomer
@@ -26,14 +27,15 @@ class ThankyouByEmailController < ApplicationController
     render :text => 'success', :status => 200 # 404 would reject the mail
   end
 
-  def find_user_by_merciboq_address(address)
-    subdomain = address.split('@').second.split('.merciboq.com')
-    @user = User.find_by_subdomain(subdomain) unless @user.nil?
-  end
-
   def find_welcomer(address)
-    if merciboq_subdomain?(address)
-      find_user_by_merciboq_address(address)
+    # debugger
+    # if address.end_with? ".merciboq.com"
+    #   subdomain = address.split('@').second.split('.merciboq.com')
+    #   @user = User.find_by_subdomain(subdomain) unless @user.nil?
+    #   @welcomer = @user
+    if address.end_with?("@merciboq.com")
+      localpart = address.split('@').first
+      @user = User.find_by_subdomain(localpart)
       @welcomer = @user
     else 
       @welcomer = User.find_or_create_by_email(address)
@@ -60,11 +62,15 @@ private
   end
 
   def internal_address?(address)
-    "333581f1ce6f4de6207a@cloudmailin.net" == address or address.end_with? "@merciboq.com"
+    "333581f1ce6f4de6207a@cloudmailin.net" == address
   end
 
-  def merciboq_subdomain?(address)
+  def merciboq_subdomain_address?(address)
     address.end_with? ".merciboq.com"
+  end
+
+  def merciboq_address?(address)
+    address.end_with? "@merciboq.com"
   end
 end
 
