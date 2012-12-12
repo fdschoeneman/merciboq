@@ -60,7 +60,6 @@ class ThankyousController < UsersController
     @thankyous = @user.thankyous.page(params[:page])
     @thankyou = Merciboku.new if signed_in?
     @title = "Thankyous"
-    # debugger
     @subdomain_logo = current_user.subdomain
   end
 
