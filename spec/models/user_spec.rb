@@ -67,22 +67,6 @@ describe User do
     end
   end
 
-  describe "associations" do
-
-    [:welcomes, :thankyous
-    ].each do |model|
-      it { should have_many(model).class_name("Merciboku") }
-    end
-
-    [:submissives, :dominants
-    ].each do |model|
-      it { should have_many(model).through(:bonds) }
-    end
-
-    it { should have_many(:thanked).through(:thankyous) }
-    it { should have_many(:welcomed).through(:welcomes) }
-  end
-
   describe "validations" do
 
     before(:each) { FactoryGirl.create(:user) }
@@ -145,6 +129,48 @@ describe User do
           should_not allow_value(reserved_subdomain).for(:subdomain) #.with_message(/reserved and unavailable/) 
         end
       end  
+    end
+  end
+
+  describe "associations" do
+
+    [:welcomes, :thankyous
+    ].each do |model|
+      it { should have_many(model).class_name("Merciboku") }
+    end
+
+    [:subordinates, :dominants
+    ].each do |model|
+      it { should have_many(model).through(:bonds).dependent(:destroy) }
+    end
+
+    it { should have_many(:bonds) }
+
+    it { should have_many(:thanked).through(:thankyous) }
+    it { should have_many(:welcomed).through(:welcomes) }
+  end
+  
+  describe "methods" do 
+
+    it { should respond_to(:bonds) }
+    it { should respond_to(:subordinates) }
+    it { should respond_to(:dominants) }
+    it { should respond_to(:subordinate_to?) }
+    it { should respond_to(:submit!) }
+
+    Given(:user) { FactoryGirl.create(:user) }
+    Given(:boss) { FactoryGirl.create(:dominant) }
+
+    describe "creating a bond" do
+      When { user.submit!(boss) }
+      Then { user.should be_subordinate_to(boss) }
+      Then { user.dominants.should include(boss)}
+
+      describe "destroying a bond" do 
+        When { user.emancipate!(boss) }
+        Then { user.should_not be_subordinate_to(boss) }
+        Then { boss.subordinates.should_not include(user) }
+      end
     end
   end
 end

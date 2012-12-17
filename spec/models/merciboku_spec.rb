@@ -4,13 +4,6 @@ describe Merciboku do
 
   let(:merciboku) { build(:merciboku) }
     
-  describe "instantiation" do 
-    
-    it "should be of type class" do 
-      Merciboku.should be_kind_of(Class)
-    end
-  end
-
   describe "database" do
 
     describe "columns" do 

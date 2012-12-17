@@ -47,8 +47,9 @@ class ThankyouByEmailController < ApplicationController
   end
 
   def create_merciboq
-    @merciboq = Merciboku.create(thanker_id: @thanker.id, welcomer_id: @welcomer.id, 
-      content: @content, headline: @headline, validate: false)
+    @merciboq = Merciboku.create(thanker_id: @thanker.id, 
+      welcomer_id: @welcomer.id, content: @content, headline: @headline, 
+      validate: false)
   end
 
   def notify_welcomer

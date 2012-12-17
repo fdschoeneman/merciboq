@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable,
-    :rememberable, :trackable, :confirmable, :validatable ,
-    :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+    :rememberable, :trackable, :confirmable, :validatable #,
+    # :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   attr_accessible :name, :email, :subdomain, 
     :password, :password_confirmation, :remember_me, 
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
      
   validates_exclusion_of :subdomain, in: forbidden_subdomains, 
      message: "reserved and unavailable"   
-    
+
   has_many :thankyous,          dependent: :destroy,
                                 foreign_key: "thanker_id",
                                 class_name: "Merciboku"
@@ -41,13 +41,12 @@ class User < ActiveRecord::Base
                                 source: :welcomer
   has_many :welcomed,           through: :welcomes,
                                 source: :thanker
-  has_many :bonds
-  has_many :submissives,        through: :bonds,
-                                dependent: :destroy,
-                                foreign_key: "submissive_id"
+  has_many :bonds,              foreign_key: "subordinate_id", 
+                                dependent: :destroy
+  has_many :subordinates,       through: :bonds,
+                                dependent: :destroy
   has_many :dominants,          through: :bonds,
-                                dependent: :destroy,
-                                foreign_key: "dominant_id"
+                                dependent: :destroy
 
   def thanked?(welcomer)
     thankyous.find_by_welcomer_id(welcomer)
@@ -55,6 +54,18 @@ class User < ActiveRecord::Base
 
   def welcomed?(thanker)
     welcomes.find_by_thanker_id(thanker)
+  end
+
+  def subordinate_to?(dominant_user)
+    bonds.find_by_dominant_id(dominant_user.id)
+  end
+
+  def submit!(dominant_user)
+    bonds.create!(dominant_id: dominant_user.id)
+  end
+
+  def emancipate!(dominant_user)
+    bonds.find_by_dominant_id(dominant_user).destroy
   end
 
   def password_match?

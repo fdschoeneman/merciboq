@@ -54,6 +54,7 @@ group :test, :development do
   gem 'steak'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'rspec-given'
 end
 
 group :test do

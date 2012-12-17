@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030913) do
+ActiveRecord::Schema.define(:version => 20110804030914) do
 
   create_table "Mercibokus", :force => true do |t|
     t.integer  "thanker_id"
@@ -36,15 +36,15 @@ ActiveRecord::Schema.define(:version => 20110804030913) do
   end
 
   create_table "bonds", :force => true do |t|
-    t.integer  "submissive_id"
+    t.integer  "subordinate_id"
     t.integer  "dominant_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "bonds", ["dominant_id"], :name => "index_bonds_on_dominant_id"
-  add_index "bonds", ["submissive_id", "dominant_id"], :name => "index_bonds_on_submissive_id_and_dominant_id", :unique => true
-  add_index "bonds", ["submissive_id"], :name => "index_bonds_on_submissive_id"
+  add_index "bonds", ["subordinate_id", "dominant_id"], :name => "index_bonds_on_subordinate_id_and_dominant_id", :unique => true
+  add_index "bonds", ["subordinate_id"], :name => "index_bonds_on_subordinate_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",                                   :null => false

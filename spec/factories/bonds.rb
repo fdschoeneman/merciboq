@@ -1,6 +1,7 @@
 FactoryGirl.define do
+  
   factory :bond do
-    submissive_id     1
-    dominant_id       2
+    association :subordinate,  factory: :subordinate
+    association :dominant,    factory: :dominant
   end
-end
+end 

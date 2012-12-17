@@ -5,7 +5,6 @@ group "background" do
   
   # Spork 
   guard 'spork', bundler: true, 
-    # cucumber_env: { 'RAILS_ENV' => 'test' }, 
     rspec_env: { 'RAILS_ENV' => 'test' }, wait: 200 do
       watch('Gemfile.lock')
       watch('config/application.rb')
@@ -13,8 +12,9 @@ group "background" do
       watch(%r{^config/environments/.+\.rb$})
       watch(%r{^config/initializers/.+\.rb$})
       watch('spec/spec_helper.rb')
+      watch('spec/factories_spec.rb')
       watch('spec/turnip_helper.rb')
-      watch(%r{^features/support/.+\.rb$})
+      watch(%r{^spec/factories/.+\.rb$})
       watch(%r{^spec/acceptance/steps/.+\.rb$})
       watch(%r{^lib/turnip/steps/.+\.rb$})
   end
@@ -37,24 +37,17 @@ end
 
 group "tests" do
 
-  # Cucumber
-  # guard 'cucumber', bundler: true, cli: "--drb", 
-  #   all_after_pass: false, all_on_start: false do
-  #     watch(%r{^features/.+\.feature$})
-  #     watch(%r{^features/support/.+$})          { 'features' }
-  # #    watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
-  # end
-
   # Rspec
   guard 'rspec', :turnip => true, all_on_start: false, all_after_pass: false  do
 
+      watch(%r{^spec/factories/.+\.rb$})
       watch(%r{^spec/acceptance/.+\.feature$})
       watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) { 'spec/acceptance'}
 
       watch(%r{^spec/acceptance/steps/*/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
   
     #rspec
-      watch(%r{^spec/.+_spec\.rb$}) 
+      watch(%r{^spec/.+_spec\.rb$})   { "spec" }
       watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
       watch('spec/spec_helper.rb')    { "spec" }
       watch('spec/turnip_helper.rb')  { "spec/acceptance" }
