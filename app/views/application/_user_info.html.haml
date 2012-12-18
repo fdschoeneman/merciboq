@@ -2,12 +2,13 @@
   %dt 
   %dd
     %address 
+      / - if @user.business_name.present?
       %strong= @user.business_name 
       - if @user.address_1.present?
         %br= @user.address_1
       - if @user.address_2.present?
         %br= @user.address_2
-      = @user.city + ", " + @user.state + " " + @user.zip_code
+      #{@user.city} #{@user.state}  #{@user.zip_code}
       %br
       %abbr{ title: "Phone" } P:
       = @user.phone
