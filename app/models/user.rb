@@ -4,9 +4,14 @@ class User < ActiveRecord::Base
     :rememberable, :trackable, :confirmable, :validatable #,
     # :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
-  attr_accessible :name, :email, :subdomain, 
-    :password, :password_confirmation, :remember_me, 
-    :welcome_phrase, :thankyou_phrase, :calendar
+  # attr_accessible :name, :email, :subdomain, 
+  #   :password, :password_confirmation, :remember_me, 
+  #   :welcome_phrase, :thankyou_phrase, :calendar
+  attr_protected :user_id, :admin, :encrypted_password, 
+    :reset_password_token, :reset_password_sent_at, :remember_created_at, 
+    :unconfirmed_email, :reconfirmable, :sign_in_count, :current_sign_in_at, 
+    :last_sign_in_at, :confirmation_token, :confirmed_at, 
+    :confirmation_sent_at, :unconfirmed_email, :submissive_id
 
   before_create :set_temporary_name
   before_create :set_temporary_subdomain
@@ -41,11 +46,15 @@ class User < ActiveRecord::Base
                                 source: :welcomer
   has_many :welcomed,           through: :welcomes,
                                 source: :thanker
-  has_many :bonds,              foreign_key: "subordinate_id", 
+  has_many :subordinate_bonds,  class_name: "Bond",
+                                foreign_key: "subordinate_id", 
                                 dependent: :destroy
-  has_many :subordinates,       through: :bonds,
+  has_many :dominant_bonds,     class_name: "Bond",
+                                foreign_key: "dominant_id", 
                                 dependent: :destroy
-  has_many :dominants,          through: :bonds,
+  has_many :subordinates,       through: :dominant_bonds,
+                                dependent: :destroy
+  has_many :dominants,          through: :subordinate_bonds,
                                 dependent: :destroy
 
   def thanked?(welcomer)
@@ -57,15 +66,15 @@ class User < ActiveRecord::Base
   end
 
   def subordinate_to?(dominant_user)
-    bonds.find_by_dominant_id(dominant_user.id)
+    subordinate_bonds.find_by_dominant_id(dominant_user.id)
   end
 
   def submit!(dominant_user)
-    bonds.create!(dominant_id: dominant_user.id)
+    subordinate_bonds.create!(dominant_id: dominant_user.id)
   end
 
   def emancipate!(dominant_user)
-    bonds.find_by_dominant_id(dominant_user).destroy
+    subordinate_bonds.find_by_dominant_id(dominant_user).destroy
   end
 
   def password_match?

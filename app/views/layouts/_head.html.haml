@@ -1,6 +1,7 @@
 %head
   = render 'layouts/meta'
   %title= title
+  = favicon_link_tag
   = render 'layouts/icons'
   = render 'layouts/google_fonts'
   = stylesheet_link_tag 'application'
@@ -8,6 +9,7 @@
   /[if lt IE 9]
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   / Fav and touch icons
+
   %link{:href => "../assets/ico/favicon.ico", :rel => "shortcut icon"}
   %link{:href => "../assets/ico/apple-touch-icon-144-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}
   %link{:href => "../assets/ico/apple-touch-icon-114-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}

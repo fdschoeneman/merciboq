@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804030914) do
+ActiveRecord::Schema.define(:version => 20110804030915) do
 
   create_table "Mercibokus", :force => true do |t|
     t.integer  "thanker_id"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(:version => 20110804030914) do
     t.string   "thankyou_phrase",        :default => "I give much props to these people:"
     t.boolean  "admin",                  :default => false
     t.string   "calendar"
+    t.string   "business_name"
+    t.string   "public_email"
+    t.string   "hours_of_operation"
+    t.string   "web_address"
+    t.string   "state"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "phone"
+    t.string   "address_1"
+    t.string   "address_2"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

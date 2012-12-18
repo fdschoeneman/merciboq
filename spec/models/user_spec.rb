@@ -2,14 +2,6 @@ require 'spec_helper'
 
 describe User do
 
-  describe "instantiation" do
-    let(:user) { User.new}
-
-    it "should be of type class" do
-      User.should be_kind_of(Class)
-    end
-  end
-
   describe 'database' do 
 
     describe 'columns' do 
@@ -24,7 +16,9 @@ describe User do
       %w[email encrypted_password 
         reset_password_token current_sign_in_ip last_sign_in_ip
         confirmation_token unconfirmed_email reconfirmable name 
-        subdomain welcome_phrase thankyou_phrase calendar
+        subdomain business_name address_1 address_2 phone city state 
+        zip_code web_address hours_of_operation public_email 
+        welcome_phrase thankyou_phrase calendar
         ].each do |column|
         it { should have_db_column(column.to_sym).of_type(:string) }
       end
@@ -134,42 +128,54 @@ describe User do
 
   describe "associations" do
 
-    [:welcomes, :thankyous
-    ].each do |model|
-      it { should have_many(model).class_name("Merciboku") }
+    describe "with merciboku model" do
+
+      [:welcomes, :thankyous
+      ].each do |model|
+        it { should have_many(model).class_name("Merciboku") }
+      end
+
+      it { should have_many(:thanked).through(:thankyous) }
+      it { should have_many(:welcomed).through(:welcomes) }
     end
 
-    [:subordinates, :dominants
-    ].each do |model|
-      it { should have_many(model).through(:bonds).dependent(:destroy) }
+    describe "with bond model" do 
+
+      it { should have_many(:subordinate_bonds).dependent(:destroy) }
+      it { should have_many(:dominants).through(:subordinate_bonds) }
+      it { should have_many(:dominant_bonds).dependent(:destroy) }
+      it { should have_many(:subordinates).through(:dominant_bonds) }
     end
-
-    it { should have_many(:bonds) }
-
-    it { should have_many(:thanked).through(:thankyous) }
-    it { should have_many(:welcomed).through(:welcomes) }
   end
   
   describe "methods" do 
 
-    it { should respond_to(:bonds) }
-    it { should respond_to(:subordinates) }
-    it { should respond_to(:dominants) }
-    it { should respond_to(:subordinate_to?) }
-    it { should respond_to(:submit!) }
+    describe "on merciboku model" do 
 
-    Given(:user) { FactoryGirl.create(:user) }
-    Given(:boss) { FactoryGirl.create(:dominant) }
+      it { should respond_to(:thanked) }
+      it { should respond_to(:welcomed) }
+    end
 
-    describe "creating a bond" do
-      When { user.submit!(boss) }
-      Then { user.should be_subordinate_to(boss) }
-      Then { user.dominants.should include(boss)}
+    describe "on bond model" do 
 
-      describe "destroying a bond" do 
-        When { user.emancipate!(boss) }
-        Then { user.should_not be_subordinate_to(boss) }
-        Then { boss.subordinates.should_not include(user) }
+      it { should respond_to(:subordinates) }
+      it { should respond_to(:dominants) }
+      it { should respond_to(:subordinate_to?) }
+      it { should respond_to(:submit!) }      
+      
+      Given(:subordinate_user) { FactoryGirl.create(:subordinate) }
+      Given(:dominant_user) { FactoryGirl.create(:dominant) }
+
+      describe "creating a bond" do
+        
+        When { subordinate_user.submit!(dominant_user) }
+        Then { subordinate_user.should be_subordinate_to(dominant_user) }
+        Then { subordinate_user.dominants.should include(dominant_user)}
+        
+        describe "and then destroying the same bond" do
+          When  { subordinate_user.emancipate!(dominant_user) }
+          Then  { dominant_user.subordinates.should_not include(subordinate_user) }
+        end
       end
     end
   end

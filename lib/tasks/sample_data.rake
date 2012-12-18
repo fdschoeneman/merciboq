@@ -25,6 +25,8 @@ namespace :db do
     make_users
     puts "#{green("==>")} Creating merciboqs"
     make_merciboqs
+    puts "#{green("==>")} Creating bonds"
+    make_bonds
   end
 end
 
@@ -64,3 +66,17 @@ def make_merciboqs
   end
 end
 
+def make_bonds
+  users = User.all
+  development_user = User.find_by_email("fred.schoeneman@gmail.com")
+  subordinate_users = users[2..50]
+  dominant_users = users[3..40]
+  subordinate_users.each do |subordinate|
+    subordinate.submit!(development_user)
+  end
+
+  dominant_users.each do |dominant|
+    development_user.submit!(dominant)
+  end
+
+end
