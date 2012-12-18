@@ -30,14 +30,14 @@
   %dd
     %span.badge.badge-info
       = current_user.thankyous.count
-  %dt User number:
-  %dd
-    = @user.id
-  %dt subordinates:
-  %dd
-    %span.badge.badge-info
-      = @user.dominants.count
-  %dt dominants:
-  %dd
-    %span.badge.badge-info
-      = current_user.subordinates.count
+  / %dt User number:
+  / %dd
+  /   = @user.id
+  / %dt subordinates:
+  / %dd
+  /   %span.badge.badge-info
+  /     = @user.dominants.count
+  / %dt dominants:
+  / %dd
+  /   %span.badge.badge-info
+  /     = current_user.subordinates.count
