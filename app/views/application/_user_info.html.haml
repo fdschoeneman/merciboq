@@ -1,24 +1,74 @@
 %dl.dl-horizontal
-  / %dt 
-  / %dd
-  /   %address 
-  /     / - if @user.business_name.present?
-  /     %strong= @user.business_name 
-  /     - if @user.address_1.present?
-  /       %br= @user.address_1
-  /     - if @user.address_2.present?
-  /       %br= @user.address_2
-  /     #{@user.city} #{@user.state}  #{@user.zip_code}
-  /     %br
-  /     %abbr{ title: "Phone" } P:
-  /     = @user.phone
+  - if @user.business_name.present?
+    %dt Business Name:
+  - else
+    %dt Name
+  - if @user.business_name.present?
+    %dd
+      = @user.business_name 
+  - else
+    %dd
+      = @user.name
+.row
+  .span1
+    %br
+  .span3
+    %address
+      = @user.address_1
+      %br    
+      = @user.address_2
+      %br
+      = "#{@user.city}, #{@user.state}  #{@user.zip_code}"
+      %br
+      %abbr{ title: "Phone number" } P:
+      = @user.phone
+      %br
+      = link_to @user.web_address
+.row
+  .span1
+    .pull-right 
+      Merciboqmail
+  .span3
+    = merciboq_mail_to(@user)
+    %i.icon-envelope.icon-white 
+%dl.dl-horizontal.inverse
+  - if @user.business_name.present?
+    %dt 
+      Business Name:
+    %dd
+      %strong= @user.business_name 
+  %dt.normal Address:
+
+  - unless nil?
+    %dd
+      = @user.address_1
+  - unless @user.address_2.blank?
+    %dd
+      = @user.address_2
+  %dd
+    #{@user.city} #{@user.state}  #{@user.zip_code}
+  %dt P:
+  %dd
+    = @user.phone
+  %dt
+    Web:
+  %dd
+    = link_to @user.web_address
+  %dt
+    Merciboqmail
+    %i.icon-envelope.icon-white 
+  %dd
+    = merciboq_mail_to(@user)
+  %br
+
   %dt Name:
   %dd= @user.name
   %dt Subdomain:
   %dd= @user.subdomain
-  %dt Custom email:
-  %dd= link_to "#{@user.subdomain}@merciboq.com"
-  %dt Member since:
+  %dt
+    %i.icon-envelope Merciboqmail:
+  %dd
+    / = mail_to("#{@user.subdomain}@merciboq.com", name="#{@user.subdomain}@merciboq.com", html_options = {:subject=> "something"})
   %dd
     = time_ago_in_words(@user.created_at)
     ago
@@ -30,14 +80,14 @@
   %dd
     %span.badge.badge-info
       = current_user.thankyous.count
-  / %dt User number:
-  / %dd
-  /   = @user.id
-  / %dt subordinates:
-  / %dd
-  /   %span.badge.badge-info
-  /     = @user.dominants.count
-  / %dt dominants:
-  / %dd
-  /   %span.badge.badge-info
-  /     = current_user.subordinates.count
+  %dt subordinates:
+  %dd
+    %span.badge.badge-info
+      = @user.dominants.count
+  %dt dominants:
+  %dd
+    %span.badge.badge-info
+      = current_user.subordinates.count
+  %dt 
+  %dt
+  %dt

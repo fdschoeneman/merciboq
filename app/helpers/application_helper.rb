@@ -22,6 +22,16 @@ module ApplicationHelper
     email_instructions = "Replace_this_email_with_that_of_the_person_you_wish_to_appreciate"
   end
 
+  def merciboq_mail_to(user)
+    subject_suggestion = "Replace this text with a catchy headline"
+    body_suggestion = "What did this person do that you would like to recognize? What you write here will be published as soon as you hit send"
+    mail_to("#{user.subdomain}@merciboq.com", 
+      name="#{@user.subdomain}@merciboq.com", 
+      html_options = {  subject: subject_suggestion,
+                        body: body_suggestion, 
+                        :encode=> "hex" })
+  end
+
   def current_user_or_user(user)
     base_pronoun = "you"
     if user == current_user
@@ -29,7 +39,6 @@ module ApplicationHelper
     else
       user.name
     end
-
   end
 
   def you_or_user(user)

@@ -17,8 +17,14 @@ Merciboq::Application.routes.draw do
 
   resources :users, :only => [:show, :index] do
     resources :subdomains, :shallow => true
-    resources :thankyous, :welcomes
   end
+
+  resources :users do 
+    member do
+      get :thankyous, :welcomes, :subordinates, :dominants
+    end
+  end
+
 
   resources :after_signup_wizard
 

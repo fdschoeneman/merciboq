@@ -35,6 +35,7 @@ gem 'gravatar_image_tag', '1.0.0'
 gem 'bourbon'
 gem 'best_in_place'
 gem 'faker', '1.0.1'
+gem 'gmaps4rails'
 
 group :production do 
   # database
