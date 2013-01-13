@@ -9,28 +9,6 @@
   - else
     %dd
       = @user.name
-.row
-  .span1
-    %br
-  .span3
-    %address
-      = @user.address_1
-      %br    
-      = @user.address_2
-      %br
-      = "#{@user.city}, #{@user.state}  #{@user.zip_code}"
-      %br
-      %abbr{ title: "Phone number" } P:
-      = @user.phone
-      %br
-      = link_to @user.web_address
-.row
-  .span1
-    .pull-right 
-      Merciboqmail
-  .span3
-    = merciboq_mail_to(@user)
-    %i.icon-envelope.icon-white 
 %dl.dl-horizontal.inverse
   - if @user.business_name.present?
     %dt 
@@ -60,15 +38,9 @@
   %dd
     = merciboq_mail_to(@user)
   %br
-
-  %dt Name:
-  %dd= @user.name
   %dt Subdomain:
   %dd= @user.subdomain
-  %dt
-    %i.icon-envelope Merciboqmail:
-  %dd
-    / = mail_to("#{@user.subdomain}@merciboq.com", name="#{@user.subdomain}@merciboq.com", html_options = {:subject=> "something"})
+  %dt Member since
   %dd
     = time_ago_in_words(@user.created_at)
     ago
@@ -80,14 +52,14 @@
   %dd
     %span.badge.badge-info
       = current_user.thankyous.count
-  %dt subordinates:
-  %dd
-    %span.badge.badge-info
-      = @user.dominants.count
-  %dt dominants:
-  %dd
-    %span.badge.badge-info
-      = current_user.subordinates.count
-  %dt 
-  %dt
-  %dt
+  / %dt subordinates:
+  / %dd
+  /   %span.badge.badge-info
+  /     / = @user.dominants.count
+  / %dt dominants:
+  / %dd
+  /   %span.badge.badge-info
+  /     / = current_user.subordinates.count
+  / %dt 
+  / %dt
+  / %dt
