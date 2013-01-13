@@ -1,65 +1,65 @@
-%dl.dl-horizontal
-  - if @user.business_name.present?
-    %dt Business Name:
-  - else
-    %dt Name
-  - if @user.business_name.present?
-    %dd
-      = @user.business_name 
-  - else
-    %dd
-      = @user.name
-%dl.dl-horizontal.inverse
-  - if @user.business_name.present?
-    %dt 
-      Business Name:
-    %dd
-      %strong= @user.business_name 
-  %dt.normal Address:
+/ %dl.dl-horizontal
+/   - if @user.business_name.present?
+/     %dt Business Name:
+/   - else
+/     %dt Name
+/   - if @user.business_name.present?
+/     %dd
+/       = @user.business_name 
+/   - else
+/     %dd
+/       = @user.name
+/ %dl.dl-horizontal.inverse
+/   - if @user.business_name.present?
+/     %dt 
+/       Business Name:
+/     %dd
+/       %strong= @user.business_name 
+/   %dt.normal Address:
 
-  - unless nil?
-    %dd
-      = @user.address_1
-  - unless @user.address_2.blank?
-    %dd
-      = @user.address_2
-  %dd
-    #{@user.city} #{@user.state}  #{@user.zip_code}
-  %dt P:
-  %dd
-    = @user.phone
-  %dt
-    Web:
-  %dd
-    = link_to @user.web_address
-  %dt
-    Merciboqmail
-    %i.icon-envelope.icon-white 
-  %dd
-    = merciboq_mail_to(@user)
-  %br
-  %dt Subdomain:
-  %dd= @user.subdomain
-  %dt Member since
-  %dd
-    = time_ago_in_words(@user.created_at)
-    ago
-  %dt Welcomes:
-  %dd
-    %span.badge.badge-info
-      = @user.welcomes.count
-  %dt Thankyous:
-  %dd
-    %span.badge.badge-info
-      = current_user.thankyous.count
-  / %dt subordinates:
-  / %dd
-  /   %span.badge.badge-info
-  /     / = @user.dominants.count
-  / %dt dominants:
-  / %dd
-  /   %span.badge.badge-info
-  /     / = current_user.subordinates.count
-  / %dt 
-  / %dt
-  / %dt
+/   - unless nil?
+/     %dd
+/       = @user.address_1
+/   - unless @user.address_2.blank?
+/     %dd
+/       = @user.address_2
+/   %dd
+/     #{@user.city} #{@user.state}  #{@user.zip_code}
+/   %dt P:
+/   %dd
+/     = @user.phone
+/   %dt
+/     Web:
+/   %dd
+/     = link_to @user.web_address
+/   %dt
+/     Merciboqmail
+/     %i.icon-envelope.icon-white 
+/   %dd
+/     = merciboq_mail_to(@user)
+/   %br
+/   %dt Subdomain:
+/   %dd= @user.subdomain
+/   %dt Member since
+/   %dd
+/     = time_ago_in_words(@user.created_at)
+/     ago
+/   %dt Welcomes:
+/   %dd
+/     %span.badge.badge-info
+/       = @user.welcomes.count
+/   %dt Thankyous:
+/   %dd
+/     %span.badge.badge-info
+/       = current_user.thankyous.count
+/   / %dt subordinates:
+/   / %dd
+/   /   %span.badge.badge-info
+/   /     / = @user.dominants.count
+/   / %dt dominants:
+/   / %dd
+/   /   %span.badge.badge-info
+/   /     / = current_user.subordinates.count
+/   / %dt 
+/   / %dt
+/   / %dt
