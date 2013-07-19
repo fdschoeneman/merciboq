@@ -32,21 +32,6 @@ describe Merciboku do
     end
   end
 
-  describe "security" do 
-
-    describe "mass assignable" do 
-      [:content, :headline, :thanker_id, :welcomer_id].each do |attribute|
-        it { should allow_mass_assignment_of(attribute) }
-      end
-    end
-
-    describe "protected" do 
-      [:created_at, :updated_at].each do |attribute|
-        it { should_not allow_mass_assignment_of(attribute) }
-      end
-    end
-  end
-
   describe "validations" do
     it { should validate_presence_of :thanker_id }
     it { should validate_presence_of :welcomer_id }

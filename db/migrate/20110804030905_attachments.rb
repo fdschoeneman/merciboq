@@ -1,14 +1,14 @@
 class Attachments < ActiveRecord::Migration
   def up
     create_table :attachments do |t|
-      t.integer :thankyou_id # foreign key
+      t.integer :merciboku_id # foreign key
       t.string :filename     # "cuddly_bunny.jpg"
       t.string :mimetype     # "image/jpeg"
       t.integer :bytecount   # file size
       t.binary :bytes        # the bytes of the file
     end
 
-    add_index :attachments, [:thankyou_id,:filename,:id]
+    add_index :attachments, [:merciboku_id, :filename, :id]
   end
 
   def down

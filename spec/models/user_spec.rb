@@ -30,33 +30,9 @@ describe User do
 
     describe 'indexes' do 
 
-      %w[confirmation_token email reset_password_token subdomain
+      %w[confirmation_token email reset_password_token
       ].each do |index|
         it { should have_db_index(index.to_sym).unique(true)}
-      end
-    end
-  end
-
-  describe "security" do
-
-    describe "mass assignable" do 
-
-      %w[name email subdomain password password_confirmation
-        remember_me welcome_phrase thankyou_phrase calendar
-      ].each do |attribute|
-        it {should allow_mass_assignment_of(attribute.to_sym) }
-      end
-    end
-
-    describe "protected" do 
-
-      %w[user_id admin encrypted_password reset_password_token 
-        reset_password_sent_at remember_created_at unconfirmed_email 
-        reconfirmable sign_in_count current_sign_in_at last_sign_in_at
-        confirmation_token confirmed_at confirmation_sent_at 
-        unconfirmed_email submissive_id
-      ].each do |attribute|
-        it {should_not allow_mass_assignment_of(attribute.to_sym) }
       end
     end
   end
@@ -101,18 +77,20 @@ describe User do
 
     describe "subdomain" do 
 
-      it "should accept valid subdomains" do
-        ["SuBDomain", "subdomain", "subdomain-with-dashes", "su830ma1n-w174-num3rs", 
-          "3u8d0ma1n-s7ar71ng-with-num3rs"
-        ].each do |valid_subdomain|
+      ["subdomain", "subdomain-with-dashes", "su830ma1n-w174-num3rs", 
+        "3u8d0ma1n-s7ar71ng-with-num3rs", "fredshoeneman"
+      ].each do |valid_subdomain|
+      
+        it "should accept valid subdomains like #{valid_subdomain}" do
           should allow_value(valid_subdomain).for(:subdomain) 
         end
       end
 
-      it "should not accept bad subdomains" do 
 
-        ["sub domain with spaces", "subdomain_with_non_ascii%$#"
+      ["sub domain with spaces", "subdomain_with_non_ascii%$#", "sub_do_main",
+        "-subdomain", "subdomain-"
         ].each do |bad_subdomain|
+          it "should not accept #{bad_subdomain}" do 
           should_not allow_value(bad_subdomain).for(:subdomain)
         end
       end

@@ -1,17 +1,19 @@
 source 'http://rubygems.org'
 
 # Rails
-gem 'rails', '3.2.11'
+gem 'rails', '4.0.0'
 
+# database
+  gem 'pg'
 # Server for development
-gem 'thin', '1.3.1'
+gem 'thin'
 
 # Rails dependency for linux
 # gem 'therubyracer', '>= 0.9.9'
 
 # Authentication
-gem 'devise'
-gem 'simple_form'
+gem 'devise', '~> 3.0.0.rc'
+gem 'simple_form', '~> 3.0.0.rc'
 gem 'wicked'
 
 # Asset handling
@@ -31,15 +33,14 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'bootstrap-forms'
 gem 'kaminari'
-gem 'gravatar_image_tag', '1.0.0'
+gem 'gravatar_image_tag'
 gem 'bourbon'
-gem 'best_in_place'
-gem 'faker', '1.0.1'
-gem 'gmaps4rails'
+# gem 'best_in_place'
+gem 'faker'
 
 group :production do 
   # database
-  gem 'pg', '0.12.2'
+  # gem bu'pg', '0.12.2'
 end
 
 group :test, :development do
@@ -48,7 +49,6 @@ group :test, :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'taps'
-  gem 'sqlite3'
 
   # Rspec
   gem 'rspec-rails'
@@ -87,13 +87,11 @@ group :test do
 end
 
 group :development do 
-  # notification support
+  
   gem 'debugger'
+  
+  # notification support
   gem 'rb-inotify'
   gem 'libnotify'
 end
-# platforms :ruby do
-  # gem 'rb-readline'
-
-# end
 

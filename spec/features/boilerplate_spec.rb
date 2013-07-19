@@ -1,14 +1,24 @@
 require 'spec_helper'
 
 describe "Boilerplate" do
+
+def full_title(page_title)
+  base_title = "MerciboQ!"
+  if page_title.empty?
+    base_title
+  else
+    "#{base_title} | #{page_title}"
+  end
+end
+
   
   subject { page }
   
   describe "'Home' page" do
     
-    before { visit root_url }
+    before { visit "/" }
 
-    it { should have_selector('title', text: full_title("Home")) }
+    it { should have_title(full_title("Home")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Terms of Use') }
@@ -23,7 +33,7 @@ describe "Boilerplate" do
     
     before { visit privacy_url }
 
-    it { should have_selector('title', text: full_title("Privacy Policy")) }
+    it { should have_title(full_title("Privacy Policy")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Home') }
     it { should have_selector( 'a', text: 'Terms of Use') }
@@ -38,7 +48,7 @@ describe "Boilerplate" do
     
     before { visit terms_url }
 
-    it { should have_selector('title', text: full_title("Terms")) }
+    it { should have_title(full_title("Terms")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Home') }
@@ -53,7 +63,7 @@ describe "Boilerplate" do
     
     before { visit contact_url }
 
-    it { should have_selector('title', text: full_title("Contact")) }
+    it { should have_title(full_title("Contact")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Home') }
@@ -68,7 +78,7 @@ describe "Boilerplate" do
     
     before { visit about_url }
 
-    it { should have_selector('title', text: full_title("About")) }
+    it { should have_title(full_title("About")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Home') }
@@ -83,7 +93,7 @@ describe "Boilerplate" do
     
     before { visit help_url }
 
-    it { should have_selector('title', text: full_title("Help")) }
+    it { should have_title(full_title("Help")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Home') }
@@ -98,7 +108,7 @@ describe "Boilerplate" do
     
     before { visit login_url }
 
-    it { should have_selector('title', text: full_title("Login")) }
+    it { should have_title(full_title("Login")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Home') }
@@ -108,11 +118,12 @@ describe "Boilerplate" do
     it { should have_selector( 'a', text: 'Home') }
     it { should have_selector( 'a', text: 'Sign up') }            
   end
-  describe "'Sign Up' page" do
+  
+  describe "'Sign up' page" do
   
     before { visit signup_url }
 
-    it { should have_selector('title', text: full_title("Sign up")) }
+    it { should have_title(full_title("Sign up")) }
     it { should have_selector( 'a', text: 'MerciboQ!') }
     it { should have_selector( 'a', text: 'Privacy Policy') }
     it { should have_selector( 'a', text: 'Home') }
@@ -123,5 +134,3 @@ describe "Boilerplate" do
     it { should have_selector( 'a', text: 'Home') }            
   end
 end
-
-

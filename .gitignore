@@ -1,19 +1,33 @@
-.DS_Store
-.bundle
-db/*.sqlite3
-db/development.merciboq
-db/test.*
-log/*.log
-tmp/**/*
-tmp/*
-vendor/plugins/*
-.sass-cache/
-*.gz
-coverage/*
-coverage/rcov/*
-coverage/
-doc/
-*.swp
-*~
-.project
+# Ignore bundler config.
+/.bundle
+/vendor/bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/log/*
+/tmp
+/spec/tmp/*
+
+# created by chrome
+libpeerconnection.log
+
+# created by zeus
+.zeus.sock
+
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/public/system/*
+/coverage/
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# Ignore application configuration
+/config/application.yml

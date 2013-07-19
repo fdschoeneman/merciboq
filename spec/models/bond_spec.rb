@@ -25,20 +25,6 @@ describe Bond do
     it { should validate_presence_of :dominant_id }
   end
 
-  describe "security" do 
-
-    describe "mass assignable" do 
-
-      it { should allow_mass_assignment_of(:dominant_id) }
-    end
-
-    describe "protected" do 
-      [:subordinate_id, :created_at, :updated_at].each do |attribute|
-        it { should_not allow_mass_assignment_of(attribute) }
-      end
-    end
-  end
-
   describe "associations" do 
     it { should belong_to :subordinate }
     it { should belong_to :dominant }

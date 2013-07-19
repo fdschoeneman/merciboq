@@ -1,17 +1,19 @@
+
 development:
   adapter: postgresql
   encoding: unicode
-  database: merciboq_development
+  database: bloocher_development
   pool: 5
   timeout: 5000
   username: fred
   password: tastywave
 
-test: 
+test:
   adapter: postgresql
   encoding: unicode
-  database: merciboq_test
+  database: bloocher_test<%= ENV['TEST_ENV_NUMBER'] %>
   pool: 5
   timeout: 5000
   username: fred
   password: tastywave
+

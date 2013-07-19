@@ -3,22 +3,6 @@ HOST_OS = RbConfig::CONFIG['host_os']
 
 group "background" do
   
-  # Spork 
-  guard 'spork', bundler: true, 
-    rspec_env: { 'RAILS_ENV' => 'test' }, wait: 200 do
-      watch('Gemfile.lock')
-      watch('config/application.rb')
-      watch('config/environment.rb')
-      watch(%r{^config/environments/.+\.rb$})
-      watch(%r{^config/initializers/.+\.rb$})
-      watch('spec/spec_helper.rb')
-      watch('spec/factories_spec.rb')
-      watch('spec/turnip_helper.rb')
-      watch(%r{^spec/factories/.+\.rb$})
-      watch(%r{^spec/acceptance/steps/.+\.rb$})
-      watch(%r{^lib/turnip/steps/.+\.rb$})
-  end
-
   # Run Bundle with each Gemfile edit
   guard 'bundler' do
     watch('Gemfile')
@@ -47,7 +31,7 @@ group "tests" do
       watch(%r{^spec/acceptance/steps/*/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
   
     #rspec
-      watch(%r{^spec/.+_spec\.rb$})   { "spec" }
+      watch(%r{^spec/.+_spec\.rb$})   
       watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
       watch('spec/spec_helper.rb')    { "spec" }
       watch('spec/turnip_helper.rb')  { "spec/acceptance" }

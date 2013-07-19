@@ -7,11 +7,11 @@ Merciboq::Application.routes.draw do
     :sessions => "sessions" }
      
   devise_scope :user do
-    match 'confirm_user', :to => 'confirmations#confirm_user'
-    match '/signup',      :to => 'registrations#new'
-    match '/delete',      :to => 'registrations#destroy'
-    match '/login',       :to => 'sessions#new'
-    match '/users/:id',   :to => 'users#destroy', 
+    get 'confirm_user', :to => 'confirmations#confirm_user'
+    get '/signup',      :to => 'registrations#new'
+    get '/delete',      :to => 'registrations#destroy'
+    get '/login',       :to => 'sessions#new'
+    get '/users/:id',   :to => 'users#destroy', 
                           :as => :destroy_user, :via => :delete
   end
 
@@ -29,31 +29,31 @@ Merciboq::Application.routes.draw do
   resources :after_signup_wizard
 
   constraints(Subdomain) do
-    match '/' => 'users#show'
+    get '/' => 'users#show'
   end
 
-  match 'thankyou_by_email/create'  => 'thankyou_by_email#create',
+  get 'thankyou_by_email/create'  => 'thankyou_by_email#create',
                                 :as => :thankyou_by_email
-  match 'attachments/:id',
+  get 'attachments/:id',
                                 :to => 'attachments#show',
                                 :as => :attachment
-  match 'thankyou/edit/:id',    :to => 'thankyou#edit'
+  get 'thankyou/edit/:id',    :to => 'thankyou#edit'
 
-  match '/contact',             :to => 'pages#contact'
-  match '/about',               :to => 'pages#about'
-  match '/help',                :to => 'pages#help'
-  match '/terms',               :to => 'pages#terms'
-  match '/privacy',             :to => 'pages#privacy'
-  match '/signup',              :to => 'registrations#new'
+  get '/contact',             :to => 'pages#contact'
+  get '/about',               :to => 'pages#about'
+  get '/help',                :to => 'pages#help'
+  get '/terms',               :to => 'pages#terms'
+  get '/privacy',             :to => 'pages#privacy'
+  get '/signup',              :to => 'registrations#new'
 
-  match '/thankyous',           :to => 'thankyous#show_thankyous'
-  match '/welcomes',            :to => 'thankyous#show_welcomes'
-  match '/thankyou/delete',     :to => 'thankyous#delete'
-  match '/thankyou/edit',       :to => 'thankyous#edit'
-  match '/thankyou/create',     :to => 'thankyous#create'
-  match '/thankyou/update',     :to => 'thankyous#update'
+  get '/thankyous',           :to => 'thankyous#show_thankyous'
+  get '/welcomes',            :to => 'thankyous#show_welcomes'
+  get '/thankyou/delete',     :to => 'thankyous#delete'
+  get '/thankyou/edit',       :to => 'thankyous#edit'
+  get '/thankyou/create',     :to => 'thankyous#create'
+  get '/thankyou/update',     :to => 'thankyous#update'
 
-  root :to => 'pages#home'
+  root 'pages#home'
 
 end
 

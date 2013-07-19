@@ -148,7 +148,7 @@ describe ThankyouByEmailController do
     end
 
     it "should create 1 new merciboq" do 
-      expect{post :create, message: @message}.to change(Merciboku, :count).by(1)
+      expect{ post :create, message: @message }.to change(Merciboku, :count).by(1)
     end
   end
   

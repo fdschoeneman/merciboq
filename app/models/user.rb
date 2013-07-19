@@ -3,18 +3,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :confirmable, :validatable #,
 
-  attr_accessible :name, :subdomain, :email, :business_name,  
-    :hours_of_operation, :web_address, :address_1, :address_2, :city, :state,
-    :zip_code, :phone, :welcome_phrase, :thankyou_phrase, :calendar,
-    :public_email, :password, :password_confirmation, :remember_me
 
   before_create :set_temporary_name
   before_create :set_temporary_subdomain
    
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  
-  subdomain_regex = 
-    /^([a-z0-9]([_\-](?![_\-])|[a-z0-9]){0,61}[a-z0-9]|[a-z0-9])$/i 
+  subdomain_regex = /^[a-z\d]+[a-z\d-]+[^-]$/
   
   forbidden_subdomains = %w( support blog www billing help api 
     merciboku privacy help legal terms blog )
@@ -24,8 +18,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
   validates :subdomain, presence: true, on: :update
-  validates :subdomain, uniqueness: { case_sensitive: false },
-              format: { with: subdomain_regex, message: 
+  validates :subdomain, uniqueness: { case_sensitive: false }
+  validates :subdomain, format: { with: subdomain_regex, multiline: true, message: 
                 "The subdomain can only contain numbers, 
                 letters, and dashes" },
               allow_blank: true

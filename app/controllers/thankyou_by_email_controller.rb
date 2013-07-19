@@ -42,14 +42,13 @@ class ThankyouByEmailController < ApplicationController
       @user = User.find_by_subdomain(localpart)
       @welcomer = @user
     else 
-      @welcomer = User.find_or_create_by_email(address)
+      @welcomer = User.where(email: address).first_or_create
     end
   end
 
   def create_merciboq
     @merciboq = Merciboku.create(thanker_id: @thanker.id, 
-      welcomer_id: @welcomer.id, content: @content, headline: @headline, 
-      validate: false)
+      welcomer_id: @welcomer.id, content: @content, headline: @headline)
   end
 
   def notify_welcomer
@@ -61,7 +60,7 @@ private
   def parse_message(message_params)
     @message    = Mail.new(message_params)
     @recipients = @message.to
-    @thanker    = User.find_or_create_by_email(@message.from.first)
+    @thanker    = User.where(email: @message.from.first).first_or_create
     @headline   = @message.subject
     @content    = (@message.text_part || @message.html_part).body.decoded
   end
